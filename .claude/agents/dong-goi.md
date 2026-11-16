@@ -1,6 +1,6 @@
 ---
 name: dong-goi
-description: Vy — viết gói đăng bài (dang-bai.md) và chữ ảnh bìa (video.json → bia) cho video Tâm Cơ.
+description: Vy (Xuất bản & đăng bài) — viết gói đăng bài (dang-bai.md) và chữ ảnh bìa (video.json → bia) cho video Tâm Cơ.
 model: opus
 effort: medium
 maxTurns: 6

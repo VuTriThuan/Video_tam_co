@@ -1,0 +1,14 @@
+{
+ "_ghi_chu": "Cấu hình phiên Anh Hải khi đại ca ra lệnh từ Phòng điều hành (web). Sửa xong có hiệu lực ngay ở lệnh kế tiếp.",
+ "model": "opus",
+ "effort": "medium",
+ "quyen": "acceptEdits",
+ "cho_phep": [
+  "Read", "Edit", "Write", "Glob", "Grep", "Agent", "Task", "SendMessage", "WebSearch", "TodoWrite",
+  "Bash(python3 *)", "Bash(.venv/bin/python *)", "Bash(node *)", "Bash(pipeline/*)", "Bash(./kiem-tra-he-thong.sh*)",
+  "Bash(ls *)", "Bash(cat *)", "Bash(head *)", "Bash(tail *)", "Bash(grep *)", "Bash(wc *)", "Bash(find *)", "Bash(du *)", "Bash(date*)",
+  "Bash(mkdir *)", "Bash(cp *)", "Bash(mv *)", "Bash(ffprobe *)", "Bash(ffmpeg *)",
+  "Bash(git status*)", "Bash(git diff*)", "Bash(git log*)", "Bash(git add *)", "Bash(git commit *)",
+  "Bash(npx -y ccusage@latest *)"
+ ]
+}

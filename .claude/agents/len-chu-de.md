@@ -1,6 +1,6 @@
 ---
 name: len-chu-de
-description: Linh — gợi ý 10 chủ đề video cho kênh Tâm Cơ, ghi vào chu-de/kho.md.
+description: Linh (Nghiên cứu chủ đề) — gợi ý 10 chủ đề video cho kênh Tâm Cơ, ghi vào chu-de/kho.md.
 model: opus
 effort: medium
 maxTurns: 10

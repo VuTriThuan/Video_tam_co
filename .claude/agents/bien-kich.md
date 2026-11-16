@@ -1,6 +1,6 @@
 ---
 name: bien-kich
-description: Viết kịch bản video dọc (lẻ 75–90 giây hoặc chuỗi 3–5 phần) kèm canh.json có cấu trúc (chỉ dùng khối trong docs/catalog.md) và video.json cho kênh Tâm Cơ.
+description: Tuấn (Biên kịch) — viết kịch bản video dọc (lẻ 75–90 giây hoặc chuỗi 3–5 phần) kèm canh.json có cấu trúc (chỉ dùng khối trong docs/catalog.md) và video.json cho kênh Tâm Cơ.
 model: opus
 effort: high
 maxTurns: 10

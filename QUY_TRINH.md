@@ -12,7 +12,9 @@
 - Phiên chính là **Anh Hải** (`CLAUDE.md`). Agent con: Linh `len-chu-de`, Tuấn `bien-kich`, Chị Mai `kiem-duyet`, Khoa `hoa-si`, Vy `dong-goi`, Đức `phan-tich`. Lệnh: `/goi-y`, `/chu-de`, `/sua`, `/phan-tich`, `/lam-moi`, `/token` (`.claude/commands/`).
 - Phòng điều hành: `./dieu-hanh.sh` → http://localhost:4747. Dữ liệu do hook ghi (`.claude/hooks/ghi-su-kien.sh` → `dieu-hanh/su-kien.jsonl`, tin nhắn nguyên văn vào `du-an/<slug>/ban-tin.jsonl`), 0 token. Script dựng gửi tiến độ qua `dieu-hanh/su_kien.py` và `render/quay.mjs`.
 - Đánh dấu chủ đề/giai đoạn: `python3 dieu-hanh/su_kien.py bat-dau <slug>` / `giai-doan <ten>`. Hook `chan-vong-lap.sh` đếm lượt theo (agent, giai đoạn): lượt 4 bị chặn.
-- Duyệt trên web ghi `du-an/<slug>/duyet.json`; đại ca gõ "tiếp" thì đọc mục `da_xu_ly: false` mới nhất.
+- Duyệt trên web ghi `du-an/<slug>/duyet.json` rồi máy chủ tự gửi "tiếp" cho Anh Hải (`dieu-hanh/server.mjs` chạy `claude -p`, lệnh gạch chéo được mở rộng từ `.claude/commands/`); nhận "tiếp" thì đọc mục `da_xu_ly: false` mới nhất.
+- Văn phòng 3D: `dieu-hanh/van-phong.js` (Three.js 0.160 tải từ jsDelivr qua importmap trong `index.html`; vị trí từng người ở bảng `VT`). Lỗi tải hoặc màn hình hẹp thì `index.html` vẽ sơ đồ 2D.
+- Nhân viên và vị trí: `dieu-hanh/doi-ngu.json` (giao diện đọc file này; thêm agent mới thì thêm một dòng ở đây và trong `MODEL` của `su_kien.py`, `server.mjs`).
 - Phân tích: ảnh vào `phan-tich/inbox/<slug>/` → `/phan-tich <slug>` → `phan-tich/so-lieu.csv`, `phan-tich/bao-cao/<slug>.md`, `chu-de/bai-hoc.md` (Tuấn, Linh, Vy đọc).
 
 ## Hai định dạng (Bước 4)

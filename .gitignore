@@ -18,3 +18,4 @@ dieu-hanh/su-kien.jsonl
 dieu-hanh/.nho*.json
 .DS_Store
 __pycache__/
+dieu-hanh/.phien.json

@@ -1,0 +1,20 @@
+[
+ {"id": "dai-ca", "ten": "Đại ca", "chuc_danh": "Chủ kênh", "phong": "Ban lãnh đạo", "loai": "nguoi", "mau": "#b4342d",
+  "viec": "Chọn chủ đề, duyệt 3 chốt (kịch bản, phong cách, bản nháp), đăng bài và gửi số liệu."},
+ {"id": "truong-nhom", "ten": "Anh Hải", "chuc_danh": "Trưởng nhóm sản xuất", "phong": "Điều phối", "loai": "ai", "mau": "#2f6f5e",
+  "viec": "Nhận lệnh của đại ca, giao việc cho từng người, chạy máy dựng và báo cáo lại."},
+ {"id": "len-chu-de", "ten": "Linh", "chuc_danh": "Nghiên cứu chủ đề", "phong": "Nội dung", "loai": "ai", "mau": "#e07a5f",
+  "viec": "Tìm và đề xuất 10 chủ đề mỗi lần, ghi vào kho chủ đề."},
+ {"id": "bien-kich", "ten": "Tuấn", "chuc_danh": "Biên kịch", "phong": "Nội dung", "loai": "ai", "mau": "#3d5a80",
+  "viec": "Viết kịch bản, dàn cảnh (canh.json) và thông số video (video.json)."},
+ {"id": "kiem-duyet", "ten": "Chị Mai", "chuc_danh": "Biên tập kiểm duyệt", "phong": "Nội dung", "loai": "ai", "mau": "#b5838d",
+  "viec": "Rà lời cho tự nhiên, đúng thời lượng; chạy máy kiểm cảnh và kiểm lặp."},
+ {"id": "hoa-si", "ten": "Khoa", "chuc_danh": "Họa sĩ thiết kế", "phong": "Hình ảnh & dựng", "loai": "ai", "mau": "#5f8f74",
+  "viec": "Vẽ khối và bối cảnh mới cho thư viện khi kịch bản cần."},
+ {"id": "may-dung", "ten": "Máy dựng", "chuc_danh": "Kỹ thuật dựng (tự động)", "phong": "Hình ảnh & dựng", "loai": "may", "mau": "#475569",
+  "viec": "Đọc giọng, làm 3 mẫu phong cách, quay, ghép và kiểm tra video. Là script, không tốn token."},
+ {"id": "dong-goi", "ten": "Vy", "chuc_danh": "Xuất bản & đăng bài", "phong": "Xuất bản & số liệu", "loai": "ai", "mau": "#c98a1e",
+  "viec": "Viết gói đăng bài (tiêu đề, mô tả, hashtag, giờ đăng) và chữ ảnh bìa."},
+ {"id": "phan-tich", "ten": "Đức", "chuc_danh": "Phân tích số liệu", "phong": "Xuất bản & số liệu", "loai": "ai", "mau": "#6d597a",
+  "viec": "Đọc ảnh số liệu 24 giờ, so với trung vị, viết báo cáo và rút bài học."}
+]

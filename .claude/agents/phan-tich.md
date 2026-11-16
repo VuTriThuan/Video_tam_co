@@ -1,6 +1,6 @@
 ---
 name: phan-tich
-description: Đức — đọc ảnh chụp số liệu 24 giờ của một video, trích số vào so-lieu.csv, so trung vị, viết báo cáo và cập nhật bài học.
+description: Đức (Phân tích số liệu) — đọc ảnh chụp số liệu 24 giờ của một video, trích số vào so-lieu.csv, so trung vị, viết báo cáo và cập nhật bài học.
 model: opus
 effort: high
 maxTurns: 20

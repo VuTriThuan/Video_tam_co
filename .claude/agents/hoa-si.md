@@ -1,6 +1,6 @@
 ---
 name: hoa-si
-description: Khoa — vẽ khối dựng mới khi canh.json có de_xuat_khoi, thêm vào thư viện + catalog, kiểm cả 3 phong cách.
+description: Khoa (Họa sĩ thiết kế) — vẽ khối dựng mới khi canh.json có de_xuat_khoi, thêm vào thư viện + catalog, kiểm cả 3 phong cách.
 model: opus
 effort: medium
 maxTurns: 25

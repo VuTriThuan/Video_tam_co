@@ -21,6 +21,7 @@ NHO = GOC / "dieu-hanh" / ".nho-agent.json"  # agent_id -> agent_type, việc đ
 MODEL = {"truong-nhom": "opus · medium", "len-chu-de": "opus · medium", "bien-kich": "opus · high", "kiem-duyet": "opus · medium",
          "hoa-si": "opus · medium", "dong-goi": "opus · medium", "phan-tich": "opus · high", "may-dung": "script · 0 token"}
 DOI = [k for k in MODEL if k not in ("truong-nhom", "may-dung")]
+WEB = bool(os.environ.get("TAMCO_WEB"))
 
 
 def hien_tai():
@@ -101,14 +102,23 @@ def hook():
     slug = hien_tai().get("slug", "chung")
     if e == "SessionStart":
         tt("truong-nhom", "onl", ""); tt("may-dung", "onl", "")
+        if d.get("source") in ("startup", "clear"):
+            for k in DOI: tt(k, "onl", "")  # phiên mới: chưa ai nhận việc
     elif e == "UserPromptSubmit":
         tt("truong-nhom", "lam", "Đọc yêu cầu của đại ca")
+        # phiên mở từ web (TAMCO_WEB) thì máy chủ đã tự ghi lời đại ca và câu trả lời
+        if not WEB and (d.get("prompt") or "").strip(): tin("dai-ca", "truong-nhom", d["prompt"].strip()[:4000])
     elif e == "Stop":
         tt("truong-nhom", "cho", "Chờ đại ca")
+        if not WEB:
+            bc = bo_duoi(chu_cua(d.get("last_assistant_message") or bao_cao_tu_transcript(d.get("transcript_path", ""))))
+            if bc: tin("truong-nhom", "dai-ca", bc)
     elif e == "Notification":
         tt("truong-nhom", "cho", (d.get("message") or "Chờ đại ca duyệt")[:120])
     elif e == "SessionEnd":
-        for k in MODEL: tt(k, "off", "")
+        # phiên mở từ web kết thúc sau mỗi lệnh nhưng đội vẫn trực: không cho mọi người "vắng"
+        if not WEB:
+            for k in MODEL: tt(k, "off", "")
     elif e in ("PreToolUse", "PostToolUse"):
         ten, vao = d.get("tool_name", ""), d.get("tool_input") or {}
         if ten in ("Agent", "Task"):
