@@ -568,6 +568,7 @@ VE.duyet=async function(){
   const nhan=l=>cho===l?'<span class="the-nhan do">Đang chờ đại ca</span>':'';
   const moSan=cho||((phan.length||d.nhap)?'nhap':d.mau.length?'phong-cach':'kich-ban'), mo_=l=>moSan===l?' open':'';
   const daGhi=d.duyet.slice(-5).reverse().map(x=>`<li>${new Date(x.luc).toLocaleString('vi-VN')} · ${({'kich-ban':'kịch bản','phong-cach':'phong cách',nhap:'bản nháp'})[x.loai]} · ${x.quyet==='duyet'?'duyệt':'yêu cầu sửa'}${x.phong_cach?' · '+PCTEN[x.phong_cach]:''}${x.ghi_chu?' — '+esc(x.ghi_chu):''} ${x.da_xu_ly?'<span class="the-nhan xanh">đã làm</span>':'<span class="the-nhan cam">chờ anh Hải</span>'}</li>`).join('');
+  const cu=new Map($$('#view video').map(v=>[v.getAttribute('src'),v]));
   $('#view').innerHTML=`
    <div class="dau"><div><h1>Duyệt</h1><p>Ba chốt của đại ca. Bấm xong là anh Hải tự làm tiếp, không cần gõ gì thêm.</p></div>
      <div class="phai"><select id="dy-chon">${S.duAn.map(x=>`<option value="${x.slug}"${x.slug===slugDuyet?' selected':''}>${esc(x.ten)}${x.hien_tai?' (đang làm)':''}</option>`).join('')}</select></div></div>
@@ -577,8 +578,10 @@ VE.duyet=async function(){
      ${d.dang_bai?`<details style="margin-top:12px"><summary class="mo">Gói đăng bài của Vy</summary><div class="md" style="margin-top:8px">${md(d.dang_bai,1)}</div></details>`:''}
      ${phan.length||d.nhap?hopDuyet(slugDuyet,'nhap',{phan:phan.length?phan:null}):''}</details>
    ${daGhi?`<div class="the"><h2>Đã ghi</h2><ul class="mo" style="padding-left:18px;line-height:2">${daGhi}</ul></div>`:''}`;
+  // video cùng nguồn thì giữ thẻ cũ (khỏi tải lại từ đầu mỗi lần trang tự cập nhật)
+  $$('#view video').forEach(v=>{const o=cu.get(v.getAttribute('src'));if(o&&o!==v)v.replaceWith(o);});
   $('#dy-chon').onchange=e=>{slugDuyet=e.target.value;VE.duyet();};
-  $('#phat3')?.addEventListener('click',()=>{const v=$$('#view .luoi video');v.forEach(x=>{x.currentTime=0;x.muted=true;});v[0]&&(v[0].muted=false);v.forEach(x=>x.play());});
+  $('#phat3')?.addEventListener('click',()=>{const v=$$('#view .luoi video');v.forEach((x,i)=>{x.muted=i>0;const di=()=>{try{x.currentTime=0;}catch{}x.play().catch(()=>{});};x.readyState>=1?di():(x.preload='auto',x.addEventListener('loadedmetadata',di,{once:true}),x.load());});});
 };
 
 /* ================= ĐĂNG BÀI ================= */
@@ -716,8 +719,10 @@ $('#giaodien').onclick=()=>{const t=document.documentElement.dataset.theme==='da
 
 /* ================= CẬP NHẬT TRỰC TIẾP ================= */
 let henTT;const napSau=(ms=800)=>{clearTimeout(henTT);henTT=setTimeout(()=>{napTT();napDuAn();},ms);};
-const es=new EventSource('/api/stream');
-es.onmessage=ev=>{let d;try{d=JSON.parse(ev.data);}catch{return;}
+// tab ẩn thì đóng luồng sự kiện, nhường kết nối cho video (trình duyệt chỉ cho ~6 kết nối tới một máy chủ)
+let es;const moLuong=()=>{if(es)return;es=new EventSource('/api/stream');es.onmessage=nhanSuKien;};
+document.addEventListener('visibilitychange',()=>{if(document.hidden){es?.close();es=null;}else{moLuong();napSau(300);}});
+function nhanSuKien(ev){let d;try{d=JSON.parse(ev.data);}catch{return;}
   if(d.loai==='trang-thai'){S.nv[d.id]={...(S.nv[d.id]||{id:d.id}),trang_thai:d.trang_thai,ts:d.ts,...(d.viec!==undefined?{viec:d.viec}:{})};
     const e=$(`.tram[data-id="${d.id}"]`);if(e&&S.view==='ban'){const t=ttCua(d.id);e.dataset.tt=t.trang_thai;e.querySelector('.bong').textContent=t.viec||TT[t.trang_thai];e.querySelector('.tt').textContent=TT[t.trang_thai];}
     veChatDau();dongBoVP();if(d.id==='truong-nhom')napSau();}
@@ -725,7 +730,8 @@ es.onmessage=ev=>{let d;try{d=JSON.parse(ev.data);}catch{return;}
   else if(d.loai==='tin'){themTin(d);bayThu(d.tu,d.den);if(d.tu==='may-dung'||d.den==='dai-ca')napSau(1200);}
   else if(d.loai==='hoat-dong'){S.phien.hoat_dong=d.noi;veChatDau();const e=$('.tram[data-id="truong-nhom"] .bong');if(e)e.textContent=d.noi;VP?.trangThai('truong-nhom','lam',d.noi);}
   else if(d.loai==='phien'){const truoc=S.phien.dang_chay;S.phien=d;veChatDau();if(truoc!==d.dang_chay){napSau(500);if(!d.dang_chay&&['duyet','dangbai','chude','phantich'].includes(S.view)&&!$$('#view textarea').some(t=>t.value.trim()))setTimeout(()=>VE[S.view](),900);}}
-};
+}
+moLuong();
 setInterval(()=>{if(!document.hidden)napTT();},30000);
 
 (async()=>{veGD();veFab();S.doi=(await api('/api/doi-ngu')).ds;await Promise.all([napTT(),napDuAn()]);napTin();mo(location.hash.slice(1)||'ban',1);})();

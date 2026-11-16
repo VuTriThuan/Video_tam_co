@@ -107,7 +107,7 @@ const cauHinh = () => ({ model: 'opus', effort: 'medium', quyen: 'acceptEdits', 
 const ttPhien = () => ({ dang_chay: !!chay, bat_dau: chay?.bat_dau || 0, lenh: chay?.noi || '', xep_hang: hangCho.length, noi_tiep: !!phien.session_id, hoat_dong: chay?.hoat_dong || '' });
 const NHAC = `Phiên này do đại ca điều khiển từ Phòng điều hành trên web, không có ai bấm cho phép trong terminal.
 - Không dùng run_in_background. Lệnh dài chạy tiền cảnh với timeout đủ lớn (tối đa 3600000 ms).
-- Không dùng lệnh open: đại ca xem video, ảnh bìa, gói đăng ngay trên web (mục Duyệt, Đăng bài).
+- Không dùng lệnh open, không đưa đường dẫn review/*.html hay localhost: đại ca xem video, ảnh bìa, gói đăng ngay trên web (mục Duyệt, Đăng bài). Chỉ cần nói "đại ca xem ở mục Duyệt".
 - Câu trả lời cuối mỗi lượt hiện trong khung trò chuyện của đại ca: viết ngắn, nói rõ đại ca cần làm gì tiếp.
 - Ở các chốt duyệt, đại ca bấm trên mục Duyệt; hệ thống tự gửi "tiếp" cho em.`;
 
@@ -318,6 +318,8 @@ const MIME = { '.html': 'text/html; charset=utf-8', '.js': 'text/javascript', '.
   '.mp4': 'video/mp4', '.png': 'image/png', '.jpg': 'image/jpeg', '.jpeg': 'image/jpeg', '.webp': 'image/webp', '.wav': 'audio/wav', '.svg': 'image/svg+xml', '.csv': 'text/csv; charset=utf-8', '.txt': 'text/plain; charset=utf-8' };
 const CHO_PHEP = ['ra', 'xuat-ban', 'review', 'phan-tich', 'chu-de', 'du-an', 'assets', 'fonts'];
 
+// trình duyệt bỏ ngang (tua, chuyển video) thì đóng file ngay, không giữ kết nối
+const ong = (rs, res) => { res.on('close', () => rs.destroy()); rs.on('error', () => res.destroy()); rs.pipe(res); };
 function guiTep(req, res, f) {
   let st; try { st = fs.statSync(f); if (!st.isFile()) throw 0; } catch { res.writeHead(404); return res.end('Không thấy'); }
   const loai = MIME[path.extname(f).toLowerCase()] || 'application/octet-stream';
@@ -325,10 +327,10 @@ function guiTep(req, res, f) {
   if (r) {
     const a = r[1] ? +r[1] : st.size - +r[2], b = r[1] && r[2] ? Math.min(+r[2], st.size - 1) : st.size - 1;
     res.writeHead(206, { 'Content-Type': loai, 'Content-Range': `bytes ${a}-${b}/${st.size}`, 'Accept-Ranges': 'bytes', 'Content-Length': b - a + 1, 'Cache-Control': 'no-cache' });
-    return fs.createReadStream(f, { start: a, end: b }).pipe(res);
+    return ong(fs.createReadStream(f, { start: a, end: b }), res);
   }
   res.writeHead(200, { 'Content-Type': loai, 'Content-Length': st.size, 'Accept-Ranges': 'bytes', 'Cache-Control': 'no-cache' });
-  fs.createReadStream(f).pipe(res);
+  ong(fs.createReadStream(f), res);
 }
 const json = (res, o, ma = 200) => { res.writeHead(ma, { 'Content-Type': 'application/json; charset=utf-8', 'Cache-Control': 'no-store' }); res.end(JSON.stringify(o)); };
 const docBody = (req, max = 30e6) => new Promise((ok, loi) => { const c = []; let n = 0; req.on('data', d => { n += d.length; if (n > max) { loi(new Error('quá lớn')); req.destroy(); } else c.push(d); }); req.on('end', () => ok(Buffer.concat(c))); });
