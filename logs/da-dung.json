@@ -189,5 +189,52 @@
   ],
   "dinh_dang": "chuoi",
   "so_phan": 3
+ },
+ {
+  "chu_de": "bi-cuop-loi",
+  "ngay": "2026-11-17",
+  "phong_cach": "tranh-tinh-zoom",
+  "tong_mau": "sang-xam",
+  "seed": 23,
+  "mo_dau": {
+   "bo_cuc": "hook-chu-to",
+   "nen": "trung"
+  },
+  "bo_cuc": {
+   "hook-chu-to": 1,
+   "nhan-vat-ke": 5,
+   "nhan-vat-va-dong-nghiep": 6,
+   "dien-thoai": 3,
+   "so-sanh": 1,
+   "dau-hieu-so": 1,
+   "loi-khuyen": 3,
+   "ket": 1
+  },
+  "nen": {
+   "trung": 3,
+   "phong-hop": 8,
+   "man-hinh": 2,
+   "o-nha-toi": 1,
+   "chia-doi": 1,
+   "dau-hieu": 1,
+   "van-phong-mo": 3,
+   "loi-khuyen": 2
+  },
+  "goc_may": {
+   "can": 5,
+   "toan": 4,
+   "trung": 9,
+   "qua-vai": 2,
+   "tu-tren": 1
+  },
+  "man_hinh": [
+   "Chị Thư",
+   "Gọi lại khách cũ: kế hoạch tháng mười hai",
+   "Hay tại em nói nhỏ quá hả chị?",
+   "Phòng Kinh Doanh Miền Bắc",
+   "Sáng mai em xin trình bày ý gọi lại khách cũ ạ"
+  ],
+  "dinh_dang": "le",
+  "so_phan": 1
  }
 ]

@@ -1,0 +1,31 @@
+[
+ {
+  "luc": "2026-11-16T13:52:42.351Z",
+  "loai": "kich-ban",
+  "quyet": "duyet",
+  "ghi_chu": "",
+  "da_xu_ly": true
+ },
+ {
+  "luc": "2026-11-16T17:42:05.187Z",
+  "loai": "phong-cach",
+  "quyet": "duyet",
+  "phong_cach": "tranh-tinh-zoom",
+  "ghi_chu": "",
+  "da_xu_ly": true
+ },
+ {
+  "luc": "2026-11-16T17:50:53.581Z",
+  "loai": "nhap",
+  "quyet": "sua",
+  "ghi_chu": "thêm 1 đặc điểm nhỏ để phân biệt đâu là nhân vật chính",
+  "da_xu_ly": true
+ },
+ {
+  "luc": "2026-11-16T17:57:42.948Z",
+  "loai": "nhap",
+  "quyet": "duyet",
+  "ghi_chu": "",
+  "da_xu_ly": true
+ }
+]

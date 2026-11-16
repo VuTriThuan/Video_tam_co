@@ -1,6 +1,6 @@
 # Kho chủ đề Tâm Cơ
 
-> Đã làm (không lặp): ghet-ngam, thao-tung.
+> Đã làm (không lặp): ghet-ngam, thao-tung, darvo, cuop-cong.
 
 ## 1. Kẻ cướp công: làm xong việc, tên trên slide lại là người khác
 - slug: cuop-cong
@@ -27,7 +27,7 @@
 - goc_ke: Họp sáng thứ hai, em nói "em nghĩ mình nên thử..." thì anh Minh chen vào "đúng rồi, ý anh là mình thử...", nói tiếp đúng ý em, cả phòng gật gù với anh.
 - y_chinh: 1) Chen lời không phải vô tình, đó là cách giành chỗ đứng trong họp 2) Câu chặn lịch sự: "Cho em nói nốt ý này nhé" kèm một cử chỉ tay 3) Gửi ý tưởng trước họp vào nhóm chat, để ai cũng biết ý đó của ai
 - khoi: có sẵn đủ
-- trang_thai: moi
+- trang_thai: da-lam
 
 ## 4. Sếp im lặng: không mắng, không khen, chỉ "seen"
 - slug: sep-im-lang
@@ -90,4 +90,94 @@
 - goc_ke: Em đang nằm lướt điện thoại thì thấy bạn cùng lớp đăng lên chức trưởng nhóm, 300 lượt thích. Em mở email công việc của mình ra, thấy toàn việc vặt, rồi bắt đầu nghĩ mình chậm hơn cả lớp.
 - y_chinh: 1) Em đang so "hậu trường" của mình với "sân khấu" của người khác 2) Mạng xã hội nghề nghiệp chỉ đăng phần đẹp: không ai đăng bị từ chối, bị chê 3) Đổi câu hỏi: từ "sao mình chưa bằng nó" thành "6 tháng qua mình học thêm được gì"
 - khoi: cần khối mới: man_hinh loại "bai-dang-mang-xa-hoi" (bài đăng kiểu LinkedIn có ảnh đại diện, chức danh mới, số lượt thích đếm dần)
+- trang_thai: moi
+
+## 11. Bánh vẽ thăng chức: "Cuối năm anh tính cho em lên"
+- slug: banh-ve-thang-chuc
+- dinh_dang: chuoi
+- hook: Em được hứa thăng chức ba lần, lần nào cột mốc cũng dời thêm sáu tháng.
+- goc_ke: Tháng ba sếp bảo "làm tốt dự án này là cuối năm anh đề xuất em". Em làm vượt chỉ tiêu, tháng mười hai sếp nói "em cần thêm kinh nghiệm dẫn team, sang quý hai mình xem lại". Sang quý hai, tiêu chí lại là "phải có thêm một khách hàng lớn".
+- y_chinh: 1) Vẽ tương lai (future faking): hứa thật đẹp để em cố hết sức ở hiện tại mà không phải trả gì 2) Dời cột gôn: em đạt mốc nào, mốc mới lại xuất hiện, không bao giờ có chữ "đủ" 3) Dấu hiệu: lời hứa chỉ nói miệng, không có mốc thời gian, không có tiêu chí viết ra 4) Cách chốt: xin buổi 1-1, đề nghị ghi lại tiêu chí và thời hạn bằng email: "Em tóm tắt lại để mình cùng theo dõi nhé"
+- khoi: có sẵn đủ
+- trang_thai: moi
+
+## 12. "Ủa em không biết à?": bị giấu thông tin để tự trượt chân
+- slug: giau-thong-tin
+- dinh_dang: le
+- hook: Không ai cãi nhau với em, chỉ là lần nào đổi giờ họp cũng "quên" báo em.
+- goc_ke: Em ôm laptop vào phòng họp lúc 2 giờ đúng lịch, phòng trống trơn. Hóa ra cuộc họp đã dời lên 1 giờ, cả team đã chốt xong, chị Trang nhìn em: "Ủa, em không biết à? Chị tưởng em đọc tin rồi".
+- y_chinh: 1) Giấu thông tin là cách phá người khác sạch nhất: không có lời nào xấu, chỉ có một lần "quên" 2) Một lần là sơ suất, ba lần cùng một người là có chủ đích 3) Tự vệ: xin được thêm vào lịch chung, chủ động hỏi lại trước mỗi mốc quan trọng, nhắn xác nhận trong nhóm chung thay vì hỏi riêng
+- khoi: có sẵn đủ
+- trang_thai: moi
+
+## 13. Sếp nóng lạnh: hôm nay khen lên mây, mai chê không ra gì
+- slug: sep-nong-lanh
+- dinh_dang: chuoi
+- hook: Sếp không cần mắng em mỗi ngày, chỉ cần em không bao giờ biết hôm nay sếp vui hay giận.
+- goc_ke: Thứ hai sếp khen em trước cả phòng "đây mới là chuẩn". Thứ tư cũng kiểu làm đó, sếp ném tài liệu lên bàn "em làm cái gì thế này". Từ đó sáng nào em cũng nhìn mặt sếp trước khi dám mở lời.
+- y_chinh: 1) Thưởng ngẫu nhiên: khen và chê không theo quy luật làm người ta bám chặt hơn cả khi được khen đều 2) Hậu quả: em bắt đầu đọc sắc mặt thay vì nhìn vào chất lượng công việc 3) Dấu hiệu: cùng một việc mà phản ứng trái ngược, tiêu chuẩn đổi theo tâm trạng 4) Giữ trục: tự viết ra tiêu chí đạt của từng việc, nhờ sếp xác nhận trước khi làm, đánh giá mình theo tiêu chí đó chứ không theo câu khen
+- khoi: có sẵn đủ
+- trang_thai: moi
+
+## 14. "Cả team còn ngồi mà em về à?": tội lỗi vì về đúng giờ
+- slug: ve-dung-gio
+- dinh_dang: le
+- hook: Không ai bắt em ở lại, chỉ có một câu "về sớm thế em?" lúc 6 giờ chiều.
+- goc_ke: Em xong việc, gập laptop đứng dậy lúc 6 giờ. Chị trưởng nhóm không ngẩng đầu, nói nhỏ đủ cả dãy nghe: "Sướng nhỉ, về sớm thế". Hôm sau em ngồi lì tới 8 giờ dù chẳng còn việc gì.
+- y_chinh: 1) Gieo cảm giác tội lỗi: không ra lệnh, chỉ làm em thấy mình là người duy nhất "không cố gắng" 2) Ngồi lại cho có là đổi thời gian của mình lấy cái nhìn của người khác 3) Cách về mà không áy náy: báo kết quả trước khi về ("hôm nay em xong A, B rồi ạ"), để người ta nhìn vào việc chứ không nhìn vào giờ
+- khoi: có sẵn đủ
+- trang_thai: moi
+
+## 15. "Công ty mình là một gia đình": câu nói đắt nhất văn phòng
+- slug: cong-ty-gia-dinh
+- dinh_dang: chuoi
+- hook: Khi sếp gọi team là "gia đình", em nên kiểm tra lại bảng lương.
+- goc_ke: Buổi đầu đi làm, anh giám đốc nói "ở đây mình như anh em một nhà". Sáu tháng sau em xin tăng lương, anh nhìn em buồn buồn: "Anh tưởng em gắn bó vì anh em, chứ đâu phải vì tiền".
+- y_chinh: 1) Chữ "gia đình" biến quan hệ công việc thành quan hệ tình cảm, nên đòi quyền lợi nghe như bội bạc 2) Dấu hiệu: được kêu gọi "hy sinh vì nhà" nhưng quyết định thì chỉ một người làm 3) Một đội tốt thì không cần gọi là gia đình, chỉ cần sòng phẳng 4) Cách nói: tách bạch tình cảm và công việc, "Em quý mọi người thật, và em cũng muốn mình trao đổi về mức đãi ngộ cho đúng với việc em đang làm"
+- khoi: có sẵn đủ
+- trang_thai: moi
+
+## 16. Tâm sự với đồng nghiệp thân: chuyện riêng thành chuyện cả phòng
+- slug: tam-su-thanh-vu-khi
+- dinh_dang: chuoi
+- hook: Bí mật em kể cho đúng một người, cả phòng biết trước khi em kịp hối hận.
+- goc_ke: Đi cà phê tối thứ sáu, em kể với chị Ngọc là em đang đi phỏng vấn chỗ khác. Thứ hai sếp gọi em vào phòng, hỏi nhẹ nhàng "dạo này em có định đi đâu không?", và em biết chính xác ai đã nói.
+- y_chinh: 1) Thân nhanh quá ở công sở thường không phải vì hợp nhau, mà là vì người kia đang thu thập thông tin 2) Dấu hiệu: hỏi sâu chuyện riêng, kể chuyện người khác cho em nghe (thì cũng sẽ kể chuyện em cho người khác) 3) Ba thứ không kể ở công ty: chuyện nhảy việc, chuyện lương, chuyện chê sếp 4) Lỡ kể rồi: đừng chối loanh quanh, trả lời ngắn và chuyển về công việc
+- khoi: có sẵn đủ
+- trang_thai: moi
+
+## 17. Vỡ ngầm: vẫn đúng deadline, chỉ là bên trong đã nứt
+- slug: vo-ngam
+- dinh_dang: le
+- hook: Em chưa bỏ việc, em chỉ đang vỡ dần mà không ai nhìn thấy.
+- goc_ke: Báo cáo nào em cũng nộp đúng hạn, sếp còn khen "dạo này ổn định". Nhưng sáng nào em cũng ngồi trong xe thêm mười phút mới dám bước lên văn phòng, và đã hai tháng em không còn nhớ lần cuối mình thấy vui khi làm xong việc.
+- y_chinh: 1) Vỡ ngầm (quiet cracking): hiệu suất vẫn đẹp nhưng động lực cạn dần, khác với "nghỉ việc trong im lặng" 2) Dấu hiệu: tê liệt cảm xúc, chủ nhật tối đã thấy nặng ngực, không còn tò mò học thêm gì 3) Tự cứu: gọi đúng tên cảm giác, nói với một người tin được, tìm lại một phần việc mình còn thấy ý nghĩa thay vì gắng gượng cho xong
+- khoi: cần khối mới: hieu_ung "vet-nut" (vết nứt mảnh lan dần trên nhân vật hoặc trên khung, nhân vật vẫn cười)
+- trang_thai: moi
+
+## 18. "Em rảnh không?" lúc 10 giờ đêm
+- slug: em-ranh-khong
+- dinh_dang: le
+- hook: Ba chữ "em rảnh không" lúc 10 giờ đêm đáng sợ hơn mọi deadline.
+- goc_ke: Em đang ăn cơm với mẹ thì điện thoại sáng lên tên sếp: "Em rảnh không?". Không có thêm chữ nào. Em bỏ đũa, tim đập nhanh, nghĩ hết mười kịch bản mình bị mắng, mười phút sau sếp nhắn: "À thôi, mai nói".
+- y_chinh: 1) Tin nhắn mập mờ ngoài giờ giữ em "trực" mà không cần giao việc gì 2) Trả lời ngay mỗi lần là dạy người khác rằng em luôn sẵn sàng 3) Đặt khung nhẹ nhàng: trả lời một lần "Dạ em đang ở ngoài, việc gấp anh nhắn luôn nội dung, không thì sáng mai 8 giờ em xử lý ngay ạ"
+- khoi: có sẵn đủ
+- trang_thai: moi
+
+## 19. Câu hỏi bẫy trong buổi 1-1: "Em thấy team mình có vấn đề gì không?"
+- slug: cau-hoi-bay-1-1
+- dinh_dang: le
+- hook: Sếp hỏi em "cứ nói thật đi", em nói thật, và từ đó em thành người hay nói xấu team.
+- goc_ke: Buổi 1-1 đầu tiên, sếp mới rót nước cho em, cười: "Em cứ thoải mái, anh muốn nghe thật". Em kể chuyện anh Long hay giao việc sát giờ. Tuần sau trong họp, sếp nói "có bạn phản ánh anh Long...", và cả phòng quay sang nhìn em.
+- y_chinh: 1) "Cứ nói thật đi" chưa chắc là mời góp ý, có khi là đang dò xem em đứng phe nào 2) Nói về quy trình, đừng nói về con người: "giao việc sát giờ" thay vì "anh Long hay..." 3) Luôn kèm giải pháp và nói được câu đó trước mặt người được nhắc đến thì mới nói
+- khoi: có sẵn đủ
+- trang_thai: moi
+
+## 20. Lời khen kẹp dao: "Em giỏi thật đấy, so với tuổi"
+- slug: khen-kep-dao
+- dinh_dang: le
+- hook: Có những lời khen nghe xong em phải về nhà nghĩ cả tối mới thấy đau.
+- goc_ke: Em trình bày xong, chị Phương vỗ vai: "Em nói hay ghê, chị không nghĩ em làm được đấy". Cả phòng cười, em cũng cười, đến tối nằm nhớ lại mới thấy câu đó có hai nửa.
+- y_chinh: 1) Khen kẹp dao: nửa đầu là khen, nửa sau là hạ ("so với tuổi", "lần này", "không ngờ") 2) Mục đích: đặt em xuống thấp hơn mà người nói vẫn có vẻ tử tế, em phản ứng là thành "nhạy cảm" 3) Đáp lại nhẹ: chỉ nhận nửa khen, "Dạ em cảm ơn chị", không cười theo nửa còn lại; nếu lặp lại thì hỏi thẳng "Ý chị 'không nghĩ em làm được' là sao ạ?"
+- khoi: có sẵn đủ
 - trang_thai: moi
