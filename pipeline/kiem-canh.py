@@ -89,6 +89,11 @@ def main():
         elif b.get("tu_khoa") and b["tu_khoa"].lower() not in b["chu"].lower(): loi.append("video.json: bia.tu_khoa không nằm trong bia.chu")
         if not re.fullmatch(r"[a-z0-9-]+", str(v.get("chu_de", ""))):
             loi.append("video.json: chu_de phải ngắn, không dấu, gạch nối")
+        ht = GOC / "du-an/hien-tai.json"
+        if len(sys.argv) <= 1 and ht.exists():
+            slug = json.loads(ht.read_text()).get("slug")
+            if slug and v.get("chu_de") != slug:
+                loi.append(f"video.json ở gốc là '{v.get('chu_de')}', không phải chủ đề đang làm '{slug}' (file ghi sai chỗ?)")
     else:
         loi.append("thiếu video.json")
     ids = set()
@@ -98,6 +103,10 @@ def main():
         ids.add(n)
         for k in ("id", "loi", "chu", "bo_cuc", "nen", "goc_may", "sfx"):
             if k not in c: loi.append(f"{n}: thiếu trường '{k}'")
+        if sum(1 for x in c.get("nhan_vat") or [] if isinstance(x, dict) and x.get("vai") == "minh") > 1:
+            loi.append(f"{n}: vai 'minh' (người dẫn chuyện) chỉ được một lần mỗi cảnh")
+        if c.get("bo_cuc") == "so-sanh" and c.get("goc_may") == "can":
+            loi.append(f"{n}: so-sanh không dùng goc_may 'can' (cắt mất hai bên khung) — dùng 'trung' hoặc 'toan'")
         if len(c.get("chu", "").split()) > 6: loi.append(f"{n}: chu quá 6 từ")
         if c.get("tu_khoa") and c["tu_khoa"].lower() not in c.get("chu", "").lower(): loi.append(f"{n}: tu_khoa không nằm trong chu")
         if len(c.get("loi", "").split()) > 25: loi.append(f"{n}: câu đọc quá 25 từ")

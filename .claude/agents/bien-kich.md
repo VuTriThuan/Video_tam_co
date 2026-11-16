@@ -15,9 +15,9 @@ Phiên chính giao: chủ đề + dàn ý. Viết video TRỌN VẸN **280–300
 
 Phiên chính nói rõ định dạng: **lẻ** (mặc định cũ, như trên) hoặc **chuỗi** (xem mục Chuỗi bên dưới).
 
-Ghi 3 file:
+Ghi 3 file **ở thư mục gốc dự án** (`./kich-ban.md`, `./canh.json`, `./video.json` — máy kiểm và máy dựng chỉ đọc ở đây), rồi ghi y hệt một bản lưu vào `du-an/<slug>/`. `video.json → chu_de` phải đúng slug phiên chính giao.
 - `kich-ban.md`: chỉ lời đọc, mỗi câu một dòng. Cuối file thêm dòng `---` rồi 2 hook thay thế.
-- `canh.json`: 18–22 cảnh, mỗi câu một cảnh (ghép trường `loi` theo thứ tự = đúng nguyên văn kich-ban.md). Mỗi cảnh điền đủ: `id, loi, chu (≤6 từ hoặc ""), tu_khoa, bo_cuc, nen, goc_may, nhan_vat, sfx` và khi cần: `so, xep, dao_cu, man_hinh, hieu_ung`. Cảnh đầu `hook-chu-to`, cảnh cuối `ket`.
+- `canh.json`: 18–22 cảnh, mỗi câu một cảnh (ghép trường `loi` theo thứ tự = đúng nguyên văn kich-ban.md). Mỗi cảnh điền đủ: `id, loi, chu (≤6 từ hoặc ""), tu_khoa, bo_cuc, nen, goc_may, nhan_vat, sfx` và khi cần: `so, xep, dao_cu, man_hinh, hieu_ung`. Cảnh đầu `hook-chu-to`, cảnh cuối `ket`. Một cảnh chỉ có một `minh`; `so-sanh` không dùng `goc_may: can` (cận sẽ cắt mất hai bên khung).
 - `video.json`: `{"chu_de":"<ten-ngan-khong-dau>","tong_mau":"<tong_mau>","seed":<số nguyên ≥1, khác video trước>,"bia":{"chu":"<chữ ảnh bìa 3–6 từ, viết hoa>","tu_khoa":"<từ tô đỏ>"}}`.
 
 Luật dùng khối:

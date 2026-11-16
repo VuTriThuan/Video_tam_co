@@ -39,10 +39,17 @@
 
 Ghi chú đo: `npx ccusage` bị chặn tải gói trong phiên, nên cộng `usage` trực tiếp từ transcript (`~/.claude/projects/.../<phiên>.jsonl` + `subagents/*.jsonl`, bỏ trùng theo message id).
 
-## Lỗi gặp khi chạy thật (đã xử lý tay, CHƯA sửa gốc)
+## Lỗi gặp khi chạy thật (đã sửa gốc 2026-11-16, xem mục Đã sửa)
 1. **Tuấn ghi file vào `du-an/<slug>/`** trong khi máy kiểm và bộ dựng đọc `canh.json`/`video.json`/`kich-ban.md` ở thư mục gốc → máy kiểm chạy nhầm bản cũ (DARVO) và báo "ĐẠT". Phải chép tay lên gốc. → Sửa `bien-kich.md` (ghi ở gốc + bản lưu `du-an/<slug>/`) hoặc cho script nhận slug.
 2. **`so-sanh` + `goc_may: can` cắt mất hai bên khung**: chỉ còn một người giữa vạch chia. Thêm vào đó hai nhân vật cùng vai `minh`. Đổi người phải sang `dong-nghiep-nam` + `goc_may: toan` thì đúng. → `kiem-canh.py` nên cấm `so-sanh` với `can`, và cấm trùng `vai` trong một cảnh.
 3. **Đỉnh âm bản gốc và phần 1 vượt -1,5 dB** (true peak -0,6) dù loudnorm TP=-2,5 → `chot-phong-cach.sh` dừng trước khi chép `xuat-ban/`. Đã hạ bằng `alimiter` sau ghép rồi chạy nốt bước chép tay. → Thêm limiter cuối trong `ghep.py`/`ghep-chuoi.py` (sau loudnorm, trước AAC).
 4. **Chị Mai chạm giới hạn 5 lượt** hai lần, không kịp báo cáo (vẫn sửa file). → Nới `maxTurns` của `kiem-duyet` hoặc bảo chị gom lệnh.
 5. **Hook `chan-vong-lap.sh` tính cả lượt giao bị lỗi** (2 lần Agent lỗi do bộ phân loại không trả lời) → lượt sửa thứ hai của Tuấn bị chặn, Anh Hải tự sửa.
 6. Mẫu `bang-trang` và `tranh-tinh-zoom` -15,1 LUFS (sát ngưỡng -15) — không ảnh hưởng chọn phong cách.
+
+## Đã sửa (2026-11-16)
+1. `bien-kich.md`: ghi 3 file ở thư mục gốc + bản lưu `du-an/<slug>/`; `kiem-canh.py` báo lỗi khi `video.json` ở gốc khác slug trong `du-an/hien-tai.json`.
+2. `kiem-canh.py`: cấm `so-sanh` + `goc_may: can`; cấm hai `minh` trong một cảnh (trùng vai đồng nghiệp vẫn vẽ được, như c16, nên không cấm). Thử lại bản lỗi c45: bắt đúng cả hai.
+3. `ghep.py` (dùng chung cho `ghep-chuoi.py`): loudnorm I=-13,5 rồi `alimiter` -2,5 dB cuối cùng. Ghép lại cuop-cong: bản gốc -14,7 LUFS / -2,2 dB; 3 phần -14,6 / -14,9 / -14,8 LUFS, đỉnh ≤ -2,2 dB — đạt hết, không cần chỉnh tay.
+4. `kiem-duyet.md`: maxTurns 5 → 12.
+5. Hook `chan_vong_lap.py`: PreToolUse chỉ kiểm, PostToolUse mới đếm (lượt lỗi không tính); SendMessage tới agentId quy về loại agent (`_ten` trong `luot.json`). Thử giả lập: 2 lần lỗi + 1 Agent + 2 SendMessage = 3 lượt, lượt 4 bị chặn. Dạng `tool_response` của Agent lấy agentId bằng regex — cần xem lại ở lần chạy thật đầu tiên.

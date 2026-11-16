@@ -34,5 +34,5 @@ Kế hoạch: `CHAY_TOAN_BO.md` → Bước 3 (`BUOC_3_DOI_AGENT.md`) → Bướ
 2. ✅ `/chu-de 2` DARVO xong → `xuat-ban/darvo/`.
 3. ✅ Đo token: 4,71 triệu/~$2.83 một chủ đề (đã điền `bao-cao-buoc-3.md`).
 4. ✅ Bước 4 nghiệm thu xong → `bao-cao-buoc-4.md`, `bao-cao-hoan-thien.md`.
-5. ⏳ Sửa 5 lỗi gặp khi chạy chuỗi thật (danh sách trong `bao-cao-buoc-4.md` mục "Lỗi gặp khi chạy thật") — chờ đại ca đồng ý.
+5. ✅ Đã sửa 5 lỗi gặp khi chạy chuỗi thật (`bao-cao-buoc-4.md` mục "Đã sửa"). Lần `/chu-de` tới: xem `du-an/<slug>/luot.json` có bảng `_ten` (hook bắt được agentId) không.
 6. ⏳ `/phan-tich` khi có ảnh số liệu 24 giờ.

@@ -45,11 +45,13 @@ def loudnorm(vao, ra):
          "-c:a", "pcm_s24le", str(truoc))
     vao = truoc
     # lượt 1: đo
-    r = subprocess.run(["ffmpeg", "-hide_banner", "-i", str(vao), "-af", "loudnorm=I=-14:TP=-2.5:LRA=11:print_format=json", "-f", "null", "-"],
+    r = subprocess.run(["ffmpeg", "-hide_banner", "-i", str(vao), "-af", "loudnorm=I=-13.5:TP=-2.5:LRA=11:print_format=json", "-f", "null", "-"],
                        capture_output=True, text=True)
     m = json.loads(re.findall(r"\{[^{}]*\}", r.stderr)[-1])
-    f = (f"loudnorm=I=-14:TP=-2.5:LRA=11:measured_I={m['input_i']}:measured_TP={m['input_tp']}:"
-         f"measured_LRA={m['input_lra']}:measured_thresh={m['input_thresh']}:offset={m['target_offset']}:linear=true,aresample={SR}")
+    f = (f"loudnorm=I=-13.5:TP=-2.5:LRA=11:measured_I={m['input_i']}:measured_TP={m['input_tp']}:"
+         f"measured_LRA={m['input_lra']}:measured_thresh={m['input_thresh']}:offset={m['target_offset']}:linear=true,aresample={SR},"
+         # chặn đỉnh lần cuối ở -2,5 dB: bản dài loudnorm có thể vượt TP, AAC còn đội thêm ~1 dB
+         "alimiter=limit=0.75:attack=1:release=50:level=false")
     chay("ffmpeg", "-y", "-loglevel", "error", "-i", str(vao), "-af", f, "-ar", str(SR), "-c:a", "pcm_s24le", str(ra))
 
 

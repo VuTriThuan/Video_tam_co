@@ -34,13 +34,13 @@
 Phiên chính chiếm ~95% token, gần hết là đọc lại cache mỗi lượt. Chuỗi tốn hơn chủ yếu vì phải xử lý tay các lỗi ở mục 4 (mỗi lượt thêm của Anh Hải ≈ 100–150K token cache).
 
 ## 4. Giới hạn còn lại
-- **Lỗi quy trình phát hiện khi chạy chuỗi thật** (chi tiết `bao-cao-buoc-4.md`): Tuấn ghi file sai chỗ; `so-sanh` + góc cận cắt mất nhân vật; đỉnh âm bản gốc vượt ngưỡng làm `chot-phong-cach.sh` dừng; Chị Mai hết 5 lượt; hook tính cả lượt giao bị lỗi.
+- **Lỗi quy trình phát hiện khi chạy chuỗi thật — đã sửa** (chi tiết `bao-cao-buoc-4.md`): Tuấn ghi file sai chỗ; `so-sanh` + góc cận cắt mất nhân vật; đỉnh âm bản gốc vượt ngưỡng làm `chot-phong-cach.sh` dừng; Chị Mai hết 5 lượt; hook tính cả lượt giao bị lỗi.
 - Giọng đọc: một giọng `gia_bao` chạy CPU, ngữ điệu đều; đọc chuỗi 245 giây mất ~4 phút máy.
 - `/phan-tich` chưa nghiệm thu với số liệu thật.
 - Đo token bằng ccusage cần tải `npx` (bị chặn trong phiên tự động) → đang đếm từ transcript.
 
 ## 5. Đề xuất nâng cấp
-1. Sửa 5 lỗi ở mục 4 (ưu tiên: vị trí file của Tuấn, limiter cuối khi ghép, luật `so-sanh` trong `kiem-canh.py`) — giảm lượt sửa tay, ước tiết kiệm 2–3 triệu token mỗi chuỗi.
+1. ✅ Đã sửa 5 lỗi ở mục 4 (2026-11-16) — chi tiết `bao-cao-buoc-4.md`.
 2. Gom các bước máy sau Chốt 2 thành một lệnh (dựng → kiểm → chép → báo) để Anh Hải chỉ đọc một kết quả.
 3. Thêm khung hình kiểm tự động cho cảnh nhiều nhân vật (đếm bóng người) trước khi ghép.
 4. Sau 10 video: chạy `/lam-moi`; khi có số liệu 24 giờ: `/phan-tich` để chỉnh giờ đăng và hook.
