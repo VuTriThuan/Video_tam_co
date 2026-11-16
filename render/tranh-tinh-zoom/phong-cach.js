@@ -33,6 +33,7 @@
   const PHONG_RIENG = ['phong-hop', 'pantry', 'thang-may', 'phong-sep', 'quan-ca-phe', 'o-nha-toi'];
   P.nen = (kieu, t, ctx) => {
     if (kieu === 'ket') return `<rect width="1080" height="1920" fill="#0B0A0D"/>`;
+    if (kieu === 'soi-day') return P.soiDay(t, ctx) + bui(t);
     if (PHONG_RIENG.includes(kieu)) {
       // trời theo tông, tường tối khoét ô cửa, đồ đạc thành bóng có viền sáng
       const T = P.tong(ctx), ph = P.nenPhong(kieu, t, T);

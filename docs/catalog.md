@@ -61,7 +61,9 @@ Bối cảnh:
 - `phong-sep`: phòng sếp: cửa kính lớn, tủ sách, bàn lớn
 - `quan-ca-phe`: quán cà phê ngoài giờ: đèn treo, quầy, bàn tròn
 - `o-nha-toi`: ở nhà buổi tối: cửa sổ trăng, sofa, đèn cây
-Nền trừu tượng: `trung`, `dau-hieu`, `loi-khuyen`, `chia-doi`, `man-hinh`, `burst`, `van-phong`, `toi`
+Nền trừu tượng: `trung`, `dau-hieu`, `loi-khuyen`, `chia-doi`, `man-hinh`, `burst`, `van-phong`, `toi`, `soi-day`
+Nền đặc biệt (khi nào dùng):
+- `soi-day`: Sợi Dây Vô Hình: hàng nghìn sợi mảnh trôi lên, bị 3 điểm hút ẩn kéo thành xoáy đỏ, một số sợi thoát ra màu sáng. Dùng cho cảnh mở / hook / kết của chủ đề thao túng, người giật dây, kiểm soát ngầm. Tối đa 1–3 cảnh mỗi video; hợp với hook-chu-to, nhan-vat-ke, loi-khuyen. Hình tất định theo video.seed.
 
 ## goc_may (bắt buộc mỗi cảnh; ≥3 loại mỗi video)
 - `can`: cận mặt nhân vật chính

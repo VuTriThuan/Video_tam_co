@@ -93,6 +93,7 @@
 
   // nền giấy + vài nét phác
   P.nen = (kieu, t, ctx) => {
+    if (kieu === 'soi-day') return P.soiDay(t, ctx, { sang: true });
     const T = P.tong(ctx), giay = T ? T.giay : GIAY;
     let s = `<rect width="1080" height="1920" fill="${giay}"/>`;
     for (let k = 0; k < 14; k++) { const y = (k * 151 + t * 6) % 1920; s += `<path d="M0 ${y} L1080 ${y + 30}" stroke="#E9E2D3" stroke-width="2"/>`; }

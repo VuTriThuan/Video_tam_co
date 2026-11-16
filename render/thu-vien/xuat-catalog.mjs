@@ -56,6 +56,8 @@ ${ds(TV.XEP)}
 Bối cảnh:
 ${ds(TV.BOI_CANH)}
 Nền trừu tượng: ${TV.NEN.filter(k => !TV.BOI_CANH[k]).map(k => `\`${k}\``).join(', ')}
+Nền đặc biệt (khi nào dùng):
+${ds(TV.NEN_DAC_BIET || {})}
 
 ## goc_may (bắt buộc mỗi cảnh; ≥3 loại mỗi video)
 ${ds(TV.GOC_MAY)}

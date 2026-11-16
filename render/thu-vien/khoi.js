@@ -55,7 +55,11 @@
     'phong-sep': 'phòng sếp: cửa kính lớn, tủ sách, bàn lớn', 'quan-ca-phe': 'quán cà phê ngoài giờ: đèn treo, quầy, bàn tròn',
     'o-nha-toi': 'ở nhà buổi tối: cửa sổ trăng, sofa, đèn cây',
   };
-  TV.NEN = [...Object.keys(TV.BOI_CANH), 'trung', 'dau-hieu', 'loi-khuyen', 'chia-doi', 'man-hinh', 'burst', 'van-phong', 'toi'];
+  TV.NEN = [...Object.keys(TV.BOI_CANH), 'trung', 'dau-hieu', 'loi-khuyen', 'chia-doi', 'man-hinh', 'burst', 'van-phong', 'toi', 'soi-day'];
+  // nền đặc biệt: khi nào nên dùng (in vào catalog)
+  TV.NEN_DAC_BIET = {
+    'soi-day': 'Sợi Dây Vô Hình: hàng nghìn sợi mảnh trôi lên, bị 3 điểm hút ẩn kéo thành xoáy đỏ, một số sợi thoát ra màu sáng. Dùng cho cảnh mở / hook / kết của chủ đề thao túng, người giật dây, kiểm soát ngầm. Tối đa 1–3 cảnh mỗi video; hợp với hook-chu-to, nhan-vat-ke, loi-khuyen. Hình tất định theo video.seed.',
+  };
   TV.GOC_MAY = { 'can': 'cận mặt nhân vật chính', 'trung': 'trung (mặc định)', 'toan': 'toàn cảnh, lùi xa', 'tu-tren': 'nhìn từ trên xuống', 'qua-vai': 'qua vai một người ở tiền cảnh' };
   // tông màu chung cả video (giữ đen + đỏ thương hiệu, chỉ đổi tông nền)
   TV.TONG_MAU = {

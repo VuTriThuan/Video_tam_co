@@ -13,6 +13,110 @@
     sep: { ao: '#2B2D42', co: '#FFFFFF', quan: '#1B1B2A', toc: '#9A9A9A', da: '#EBBE98', cavat: '#E63946' },
   };
 
+  // ---------------- nền "soi-day" (Sợi Dây Vô Hình) ----------------
+  // Trường dòng chảy + 3 điểm hút ẩn. Vẽ MỘT lần vào canvas ẩn (tất định theo seed), cache dataURL, mỗi khung chỉ zoom nhẹ.
+  // o: { sang: true → nền giấy, sợi đậm hơn nền }, màu lấy theo tong_mau.
+  const SOI_DAY_CACHE = {};
+  const hex3 = h => { const n = parseInt(h.slice(1), 16); return [(n >> 16) & 255, (n >> 8) & 255, n & 255]; };
+  const tron = (a, b, p) => a.map((v, i) => Math.round(v + (b[i] - v) * p));
+  function rngSeed(s) { let a = (s * 2654435761) >>> 0 || 1; return () => { a = (a + 0x6D2B79F5) >>> 0; let x = a; x = Math.imul(x ^ (x >>> 15), x | 1); x ^= x + Math.imul(x ^ (x >>> 7), x | 61); return ((x ^ (x >>> 14)) >>> 0) / 4294967296; }; }
+  function taoNhieu(rnd) { // Perlin 2D 4 quãng, ra ~0..1
+    const p = new Uint8Array(512), g = new Float32Array(512);
+    const b = [...Array(256).keys()];
+    for (let i = 255; i > 0; i--) { const j = Math.floor(rnd() * (i + 1)); [b[i], b[j]] = [b[j], b[i]]; }
+    for (let i = 0; i < 512; i++) { p[i] = b[i & 255]; g[i] = rnd() * Math.PI * 2; }
+    const gx = g.map(Math.cos), gy = g.map(Math.sin);
+    const f = t => t * t * t * (t * (t * 6 - 15) + 10);
+    const mot = (x, y) => {
+      const X = Math.floor(x), Y = Math.floor(y), xf = x - X, yf = y - Y, xi = X & 255, yi = Y & 255;
+      const d = (i, j, dx, dy) => { const h = p[p[xi + i] + yi + j]; return gx[h] * dx + gy[h] * dy; };
+      const u = f(xf), v = f(yf);
+      const a = d(0, 0, xf, yf) + u * (d(1, 0, xf - 1, yf) - d(0, 0, xf, yf));
+      const c = d(0, 1, xf, yf - 1) + u * (d(1, 1, xf - 1, yf - 1) - d(0, 1, xf, yf - 1));
+      return a + v * (c - a);
+    };
+    return (x, y) => { let s = 0, a = 0.5, k = 1; for (let o = 0; o < 4; o++) { s += a * mot(x * k, y * k); a *= 0.5; k *= 2; } return 0.5 + s * 0.9; };
+  }
+  function veSoiDay(seed, o) {
+    const W = 1080, H = 1920, T = o.T, sang = !!o.sang;
+    const nenM = sang ? (T ? T.giay : '#FBF8F1') : (T ? T.troi[0] : '#141414');
+    const nenRgb = hex3(nenM);
+    const dong = sang ? hex3(T ? T.troi[1] : '#8E6A50') : (T ? tron(hex3(T.troi[2]), hex3(T.troi[3]), 0.5) : [200, 135, 90]);
+    const doM = [230, 57, 70], sangM = sang ? hex3(T ? T.troi[0] : '#1A1A1A') : [243, 239, 239];
+    const kAlpha = sang ? 1.7 : 1.6;
+    const cv = document.createElement('canvas'); cv.width = W; cv.height = H;
+    const g = cv.getContext('2d');
+    g.fillStyle = nenM; g.fillRect(0, 0, W, H);
+    const rnd = rngSeed(seed), noise = taoNhieu(rnd), noise2 = taoNhieu(rngSeed(seed + 7));
+    const R = (a, b) => a + rnd() * (b - a);
+    const SO_HAT = 3000, SO_BUOC = 320, BAT = 190, LUC = 1.35, TN = 0.0018, THOAT = 0.28;
+    // điểm hút: giữa khung, tránh dải chữ trên cùng
+    const dk = []; let thu = 0;
+    while (dk.length < 3 && thu++ < 500) { const x = R(W * 0.18, W * 0.82), y = R(H * 0.34, H * 0.72); if (dk.every(q => Math.hypot(q[0] - x, q[1] - y) > 360)) dk.push([x, y]); }
+    // quầng tối/nhạt rất nhẹ quanh điểm hút
+    for (const [x, y] of dk) { const rg = g.createRadialGradient(x, y, 0, x, y, 300); rg.addColorStop(0, sang ? 'rgba(120,100,90,.10)' : 'rgba(0,0,0,.35)'); rg.addColorStop(1, 'rgba(0,0,0,0)'); g.fillStyle = rg; g.fillRect(0, 0, W, H); }
+    g.lineCap = 'round'; g.lineJoin = 'round';
+    const CHUNK = 16;
+    for (let i = 0; i < SO_HAT; i++) {
+      let px = R(-40, W + 40), py = R(H * 0.15, H + 60), vx = 0, vy = -1.6;
+      let biBat = false, thoat = false, buocBat = 0, trang = 0, dem = 0;
+      const seThoat = rnd() < THOAT, day = rnd() < 0.08 ? 2.2 : R(0.55, 1.15);
+      const net = (s) => {
+        const mo = (15 - 12 * s / SO_BUOC) / 255 * kAlpha;
+        const [m, a, w] = trang === 2 ? [sangM, mo * 1.3, day] : trang === 1 ? [doM, mo * 1.6, day * 0.8] : [dong, mo, day];
+        g.strokeStyle = `rgba(${m[0]},${m[1]},${m[2]},${Math.min(1, a).toFixed(4)})`; g.lineWidth = w; g.stroke();
+      };
+      g.beginPath(); g.moveTo(px, py);
+      for (let s = 0; s < SO_BUOC; s++) {
+        const n = noise(px * TN, py * TN), n2 = noise2(px * TN * 3.1, py * TN * 3.1);
+        const goc = -Math.PI / 2 + (n - 0.5) * 2.4 + (n2 - 0.5) * 0.7;
+        let fx = Math.cos(goc) * 0.22, fy = Math.sin(goc) * 0.22;
+        let gan = dk[0], kc = 1e9;
+        for (const q of dk) { const d = Math.hypot(q[0] - px, q[1] - py); if (d < kc) { kc = d; gan = q; } }
+        if (!thoat) {
+          const m = LUC * 160 / (kc + 160) / (kc || 1), kx = (gan[0] - px) * m, ky = (gan[1] - py) * m;
+          const xo = kc < BAT * 1.6 ? 1.1 : 0.15;
+          fx += kx * 0.35 - ky * xo * 0.3; fy += ky * 0.35 + kx * xo * 0.3;
+        }
+        if (!biBat && kc < BAT) { biBat = true; buocBat = s; }
+        if (biBat && !thoat && seThoat && s - buocBat > 70) { thoat = true; const d = kc || 1; vx += (px - gan[0]) / d * 2.4; vy += (py - gan[1]) / d * 2.4; }
+        vx += fx; vy += fy;
+        const v = Math.hypot(vx, vy); if (v > 2.6) { vx *= 2.6 / v; vy *= 2.6 / v; }
+        px += vx; py += vy;
+        const tt = thoat ? 2 : biBat ? 1 : 0;
+        g.lineTo(px, py);
+        if (tt !== trang || ++dem >= CHUNK) { net(s); trang = tt; dem = 0; g.beginPath(); g.moveTo(px, py); }
+        if (py < -60 || px < -80 || px > W + 80) break;
+      }
+      net(SO_BUOC - 1);
+    }
+    // giữ chữ & nhân vật đọc rõ: dải trên (chữ) và vùng giữa–dưới (nhân vật) phủ màu nền
+    const c = (a) => `rgba(${nenRgb[0]},${nenRgb[1]},${nenRgb[2]},${a})`;
+    let lg = g.createLinearGradient(0, 0, 0, 980);
+    lg.addColorStop(0, c(0.3)); lg.addColorStop(0.18, c(0.5)); lg.addColorStop(0.62, c(0.42)); lg.addColorStop(1, c(0));
+    g.fillStyle = lg; g.fillRect(0, 0, W, 980);
+    const rg = g.createRadialGradient(540, 1450, 60, 540, 1450, 620);
+    rg.addColorStop(0, c(sang ? 0.45 : 0.3)); rg.addColorStop(1, c(0));
+    g.fillStyle = rg; g.fillRect(0, 0, W, H);
+    if (!sang) { const vg = g.createRadialGradient(540, 960, 600, 540, 960, 1250); vg.addColorStop(0, 'rgba(0,0,0,0)'); vg.addColorStop(1, 'rgba(0,0,0,.3)'); g.fillStyle = vg; g.fillRect(0, 0, W, H); }
+    // hạt mịn
+    const im = g.getImageData(0, 0, W, H), px = im.data;
+    for (let k = 0; k < px.length; k += 4) { const d = (rnd() - 0.5) * 10; px[k] += d; px[k + 1] += d; px[k + 2] += d; }
+    g.putImageData(im, 0, 0);
+    const url = cv.toDataURL('image/jpeg', 0.9);
+    const anh = new Image(); anh.src = url; // giữ ảnh đã giải mã trong bộ nhớ đệm
+    return { url, anh };
+  }
+  // trả SVG: <image> từ cache, zoom 1,00 → 1,05 theo t (tâm hơi cao để cảm giác trôi lên)
+  function soiDay(t, ctx, o = {}) {
+    const seed = ((ctx && ctx.seed) || 0) + 19, T = o.T || null;
+    const khoa = `${seed}|${o.sang ? 1 : 0}|${(ctx && ctx.tong) || ''}`;
+    if (!SOI_DAY_CACHE[khoa]) { const t0 = performance.now(); SOI_DAY_CACHE[khoa] = veSoiDay(seed, o); SOI_DAY_CACHE[khoa].ms = performance.now() - t0; window.SOI_DAY_MS = SOI_DAY_CACHE[khoa].ms; }
+    const D = (ctx && ctx.D) || 6, z = 1 + 0.05 * clamp(t / D);
+    return `<g transform="translate(540,880) scale(${z.toFixed(5)}) translate(-540,-880)"><image href="${SOI_DAY_CACHE[khoa].url}" x="0" y="0" width="1080" height="1920" preserveAspectRatio="none"/></g>`;
+  }
+  window.SOI_DAY = { soiDay, cache: SOI_DAY_CACHE };
+
   function TaoP(cfg) {
     const che = cfg.che || 'phang';
     const M = Object.assign({
@@ -407,6 +511,7 @@
         for (let k = 0; k < 18; k++) s += `<path d="M540 900 L${540 + 2400 * Math.cos(k * Math.PI / 9 + t * 0.25)} ${900 + 2400 * Math.sin(k * Math.PI / 9 + t * 0.25)} L${540 + 2400 * Math.cos(k * Math.PI / 9 + 0.17 + t * 0.25)} ${900 + 2400 * Math.sin(k * Math.PI / 9 + 0.17 + t * 0.25)} Z" fill="#D62F3D"/>`;
         return s + chamNen(t, '#141414', 0.12);
       }
+      if (kieu === 'soi-day') return SOI_DAY.soiDay(t, ctx, { T, sang: !!cfg.nenSoiSang });
       if (kieu === 'man-hinh' || kieu === 'ket') return `<rect width="${W}" height="${H}" fill="${M.den}"/>` + chamNen(t, '#FFFFFF', 0.06);
       if (kieu === 'chia-doi') return `<rect width="${W}" height="${H}" fill="${N1}"/><rect width="540" height="${H}" fill="${M.phu}"/>` + `<rect x="534" y="0" width="12" height="${H}" fill="${M.do}"/>` + `<rect x="0" y="1380" width="${W}" height="540" fill="${N2}"/>`;
       let s = `<rect width="${W}" height="${H}" fill="${N1}"/>` + chamNen(t, '#C9BDB8', 0.35);
@@ -473,7 +578,8 @@
       return `<path d="M${x1} ${y1} Q${mx} ${my} ${x2} ${y2}" fill="none" stroke="${M.do}" stroke-width="12" stroke-linecap="round" pathLength="1" stroke-dasharray="1" stroke-dashoffset="${(1 - clamp(p)).toFixed(3)}"/>` +
         (p > 0.95 ? `<path d="M0 0 L-34 -18 L-34 18 Z" fill="${M.do}" transform="translate(${x2},${y2}) rotate(${goc * 180 / Math.PI})"/>` : '');
     }
-    const P = { nenPhong, tong, PHONG, bongChat, email, lichHop, muiTen, cfg, M, VAI, A, nguoi, ban, laptop, manHinh, cuaSo, thongBao, chatDau, chu2, avatar, choTrong, anhLau, camXuc, so, icon, bong, vong, chu, nen, dat, ket, chamNen, tim, sao, toc, mat };
+    const soiDay = (t, ctx, o = {}) => SOI_DAY.soiDay(t, ctx, { T: tong(ctx), ...o });
+    const P = { soiDay, nenPhong, tong, PHONG, bongChat, email, lichHop, muiTen, cfg, M, VAI, A, nguoi, ban, laptop, manHinh, cuaSo, thongBao, chatDau, chu2, avatar, choTrong, anhLau, camXuc, so, icon, bong, vong, chu, nen, dat, ket, chamNen, tim, sao, toc, mat };
     return P;
   }
   window.TaoP = TaoP;
