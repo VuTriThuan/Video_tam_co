@@ -15,6 +15,14 @@
 - Duyệt trên web ghi `du-an/<slug>/duyet.json`; đại ca gõ "tiếp" thì đọc mục `da_xu_ly: false` mới nhất.
 - Phân tích: ảnh vào `phan-tich/inbox/<slug>/` → `/phan-tich <slug>` → `phan-tich/so-lieu.csv`, `phan-tich/bao-cao/<slug>.md`, `chu-de/bai-hoc.md` (Tuấn, Linh, Vy đọc).
 
+## Hai định dạng (Bước 4)
+- **`chuoi` (mặc định):** video gốc 4–6 phút, 3–5 phần × 60–90 giây (mỗi phần 250–340 từ). `/chu-de <tên>`.
+- **`le`:** một video 75–90 giây (280–300 từ). `/chu-de <tên> --le`.
+- Dữ liệu chuỗi: mỗi cảnh có `"phan"`; `video.json` có `"dinh_dang": "chuoi"` + `"chuoi": {so_phan, diem_cat, nhac_lai, teaser, bia_phan}` (chi tiết đầu `pipeline/kiem-canh.py`). `kich-ban.md` có dòng `## Phần n`.
+- Máy kiểm: `kiem-canh.py` kiểm cấu trúc chuỗi; `kiem-lap.py` áp kiểu cảnh ≤2 lần/phần, ≤3 lần cả chuỗi, cảnh mở đầu các phần khác nhau.
+- Dựng: quay toàn bộ một lần → `ghep.py` ra bản gốc → `ghep-chuoi.py` ghép từng phần (nhãn "PHẦN n/N" 1,5 giây, màn "Phần n+1 ▶" + teaser 1,5 giây, phần cuối logo + "Theo dõi Tâm Cơ"), bìa từng phần (`quay.mjs --bia --phan n` + `ghep-chuoi.py --bia`). `chot-phong-cach.sh` tự làm cả chuỗi, kiểm từng phần 60–90 giây → `xuat-ban/<slug>/phan-<n>/` + `ban-goc.mp4`.
+- Sửa một cảnh: `quay.mjs ... --ds <id> --sua` (giữ các cảnh khác) rồi ghép lại; chuỗi thì chạy thêm `ghep-chuoi.py`.
+
 ## Dàn cảnh = dữ liệu (không viết code cho từng chủ đề)
 - Thư viện khối: `render/thu-vien/khoi.js` (nguồn duy nhất về tên khối). Sửa xong chạy `node render/thu-vien/xuat-catalog.mjs` để sinh lại `docs/catalog.md` (cho agent) và `render/thu-vien/ten-khoi.json` (cho máy kiểm).
 - `render/canh-chung.js` là bộ ráp: đọc `canh.json` (bo_cuc, nen, goc_may, nhan_vat, xep, dao_cu, man_hinh, hieu_ung, so) + `video.json` (chu_de, tong_mau, seed) rồi ghép khối. Không có mã riêng cho từng cảnh.
@@ -34,6 +42,11 @@
 ## Chống lặp
 - Luật trong một video và giữa các video: xem đầu file `pipeline/kiem-lap.py`. Nội dung màn hình (tên nhóm chat, tên người, tin nhắn, tiêu đề) không được trùng video trước (`logs/da-dung.json` trường `man_hinh`).
 - **Cứ sau 10 video** (máy tự nhắc): đọc `logs/da-dung.json`, liệt kê khối/bố cục dùng nhiều nhất, đề xuất 2–3 khối hoặc bối cảnh mới → **đại ca duyệt** rồi mới vẽ.
+
+## Hệ thống
+- `./kiem-tra-he-thong.sh`: kiểm toàn bộ (0 token). `pipeline/don.sh`: liệt kê file trung gian >14 ngày, `--xoa` chỉ khi đại ca đồng ý.
+- Sao lưu git (code, cấu hình, khối, agent, tài liệu; không video/âm thanh): sau mỗi thay đổi hệ thống, `git add -A && git commit`.
+- Hướng dẫn cho đại ca: `HUONG_DAN_SU_DUNG.md`.
 
 ## Mẹo
 - Mở trang hoặc video cho đại ca bằng lệnh `open <đường dẫn>`, vì khung xem file trong ứng dụng không phát được video.

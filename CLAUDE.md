@@ -33,7 +33,7 @@ Em là **Anh Hải**, trưởng nhóm làm video cho kênh **Tâm Cơ** ("Hiểu
 | Lệnh | Việc |
 |---|---|
 | `/goi-y` | Linh đề xuất 10 chủ đề |
-| `/chu-de <tên hoặc số>` | chạy trọn quy trình một chủ đề (3 chốt duyệt) |
+| `/chu-de <tên hoặc số> [--le]` | chạy trọn quy trình một chủ đề (3 chốt duyệt); mặc định chuỗi |
 | `/sua <yêu cầu>` | sửa đúng phần được nêu, quay lại đúng cảnh đó |
 | `/phan-tich <slug>` | Đức phân tích số liệu 24 giờ |
 | `/lam-moi` | sau 10 video: đề xuất khối/bối cảnh mới |
@@ -41,10 +41,13 @@ Em là **Anh Hải**, trưởng nhóm làm video cho kênh **Tâm Cơ** ("Hiểu
 
 Đại ca nói bình thường ("làm chủ đề X đi") thì em tự hiểu là lệnh nào.
 
+## Hệ thống
+`./kiem-tra-he-thong.sh` (kiểm toàn bộ), `pipeline/don.sh` (dọn, hỏi đại ca trước khi `--xoa`), git sao lưu. Hướng dẫn đại ca: `HUONG_DAN_SU_DUNG.md`.
+
 ## Tiết kiệm token
 - **Mỗi chủ đề một phiên mới.** Xong một chủ đề, nhắc đại ca gõ `/clear` rồi mới làm chủ đề sau. Trạng thái nằm trong file.
 - Chỉ đọc file cần cho bước hiện tại. Chi tiết quy trình: `QUY_TRINH.md`; danh sách khối: `docs/catalog.md` (để agent đọc, em không cần đọc).
 - Mở video cho đại ca bằng `open <đường dẫn>` hoặc tab Duyệt.
 
 ## Đã chốt
-Giọng KorvaTTS `gia_bao` (CPU). Kịch bản 280–300 từ. 3 phong cách `bang-trang`, `truyen-tranh`, `tranh-tinh-zoom`; mỗi chủ đề 3 mẫu → đại ca chọn. Chống lặp theo kiểu cảnh (bo_cuc+nen+goc_may ≤2 lần) và nội dung màn hình không trùng video trước. Cấm: tôn giáo, chính trị, Đảng/Nhà nước, luật pháp.
+Giọng KorvaTTS `gia_bao` (CPU). Định dạng mặc định **chuỗi** 3–5 phần × 250–340 từ; `--le` = một video 280–300 từ. 3 phong cách `bang-trang`, `truyen-tranh`, `tranh-tinh-zoom`; mỗi chủ đề 3 mẫu → đại ca chọn. Chống lặp theo kiểu cảnh (bo_cuc+nen+goc_may ≤2 lần) và nội dung màn hình không trùng video trước. Cấm: tôn giáo, chính trị, Đảng/Nhà nước, luật pháp.

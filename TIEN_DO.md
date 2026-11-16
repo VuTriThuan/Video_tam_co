@@ -14,8 +14,15 @@ Kế hoạch: `CHAY_TOAN_BO.md` → Bước 3 (`BUOC_3_DOI_AGENT.md`) → Bướ
 - [x] Nghiệm thu thật (2026-11-16); còn `/phan-tich` chờ ảnh số liệu
 - [x] Tự mở Phòng điều hành khi đăng nhập: đại ca chọn KHÔNG, mở tay bằng `./dieu-hanh.sh`
 
-## Bước 4
-- [ ] chưa bắt đầu (làm sau khi Bước 3 nghiệm thu)
+## Bước 4 — đã dựng (2026-11-16), chờ nghiệm thu chuỗi thật
+- [x] kiem-canh.py (cấu trúc chuỗi), kiem-lap.py (luật theo phần)
+- [x] pipeline/ghep-chuoi.py (từng phần, nhãn, màn kết, bìa phần) — thử trên DARVO chia 3 phần: 9/9 mục kiểm tra đạt mỗi phần
+- [x] chot-phong-cach.sh nhánh chuỗi → xuat-ban/<slug>/phan-n + ban-goc.mp4
+- [x] quay.mjs `--sua` (sửa lỗi cũ: quay lại 1 cảnh từng làm mất cảnh khác khi ghép) + `--bia --phan n`
+- [x] Agent Tuấn/Chị Mai/Vy + lệnh /chu-de (--le) + /sua cho chuỗi; Đức đã có tỉ lệ đi tiếp từ Bước 3
+- [x] Phòng điều hành: Đăng bài hiện giờ đăng + gói đăng riêng từng phần (Duyệt theo phần đã có từ Bước 3)
+- [x] kiem-tra-he-thong.sh (15/16 đạt, thiếu chuỗi thật), pipeline/don.sh, git init + commit đầu, HUONG_DAN_SU_DUNG.md
+- [ ] **Nghiệm thu (phiên mới):** `/chu-de <số dạng chuỗi>` chạy trọn → `./kiem-tra-he-thong.sh` đạt hết → đo `npx ccusage@latest session --offline` (token/số phần) → điền `bao-cao-buoc-4.md` + viết `bao-cao-hoan-thien.md` (§8.3) → git commit.
 
 ## Quyết định đã có
 - Luật chống lặp theo kiểu cảnh (bo_cuc+nen+goc_may) — đại ca đã chấp nhận.
@@ -26,4 +33,4 @@ Kế hoạch: `CHAY_TOAN_BO.md` → Bước 3 (`BUOC_3_DOI_AGENT.md`) → Bướ
 1. ✅ (2026-11-16) `/goi-y` chạy thật OK; đã sửa su_kien.py cho agent chạy nền (báo cáo lấy ở SubagentStop: last_assistant_message hoặc SubagentHandback trong transcript). ~~Đại ca chạy `./dieu-hanh.sh`, gõ `/goi-y` → kiểm văn phòng 3D + bản tin với sự kiện thật. Nếu `dieu-hanh/loi-hook.log` có lỗi hoặc tin báo cáo không hiện: sửa `dieu-hanh/su_kien.py` theo dạng payload thật.~~
 2. ✅ `/chu-de 2` DARVO xong → `xuat-ban/darvo/`.
 3. ✅ Đo token: 4,71 triệu/~$2.83 một chủ đề (đã điền `bao-cao-buoc-3.md`).
-4. Sang Bước 4.
+4. ✅ Bước 4 đã dựng — còn nghiệm thu chuỗi thật (xem mục Bước 4).
