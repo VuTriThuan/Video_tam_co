@@ -247,6 +247,12 @@
         if (V.cavat) s += `<path d="M-12 ${-520 + th} L12 ${-520 + th} L18 ${-380 + th} L0 ${-356 + th} L-18 ${-380 + th} Z" ${A(V.cavat, { w: 4 })}/>`;
         if (o.vai === 'minh') s += `<rect x="-26" y="${-430 + th}" width="52" height="64" rx="8" ${A('#FFFFFF', { w: 4 })}/><rect x="-16" y="${-418 + th}" width="32" height="8" rx="4" fill="${M.do}"/>`;
       }
+      // bóng đổ: nhân vật chính đeo khăn quàng đỏ để phân biệt với các bóng khác
+      if (BONG && o.vai === 'minh') {
+        const KD = cfg.khanDo || '#E63946';
+        s += `<path d="M-74 ${-568 + th} Q0 ${-528 + th} 74 ${-568 + th} L70 ${-536 + th} Q0 ${-494 + th} -70 ${-536 + th} Z" fill="${KD}"/>`;
+        if (!o.quay) s += `<path d="M18 ${-516 + th} L48 ${-410 + th} L22 ${-418 + th} L6 ${-404 + th} L-4 ${-512 + th} Z" fill="${KD}"/>`;
+      }
       s += '</g>';
       s += canhTay(vaiT, tayT) + canhTay(vaiP, tayP);
       if (dang !== 1) s = `<g transform="scale(${dang},1)">${s}</g>`;
