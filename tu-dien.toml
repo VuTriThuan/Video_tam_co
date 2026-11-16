@@ -1,0 +1,23 @@
+# Từ điển sửa phát âm trước khi đưa vào TTS. Khóa: từ gốc (không phân biệt hoa thường); giá trị: cách đọc.
+[doc]
+"deadline" = "đét lai"
+"sếp" = "sếp"
+"team" = "tim"
+"meeting" = "mít tinh"
+"chat" = "chát"
+"group" = "gờ rúp"
+"email" = "i meo"
+"ok" = "ô kê"
+"KPI" = "ca pê i"
+"CV" = "xê vê"
+"HR" = "ếch a"
+"online" = "on lai"
+"Tâm Cơ" = "Tâm Cơ"
+
+[viet-tat]
+"vd" = "ví dụ"
+"tp" = "thành phố"
+"k" = "không"
+"ko" = "không"
+"đc" = "được"
+"%" = " phần trăm"

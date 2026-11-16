@@ -1,0 +1,41 @@
+# Quy trình làm một video Tâm Cơ
+
+> Dành cho Claude Code khi đại ca giao chủ đề mới. Xưng "em", gọi "đại ca", báo cáo ngắn gọn tiếng Việt. Chỉ dùng Opus.
+> Không chạy theo lịch: khi nào đại ca giao thì làm.
+
+## Đã chốt
+- **Giọng:** KorvaTTS `gia_bao`, tốc độ 1,0, chạy CPU (`pipeline/doc-giong.py`). Đọc nhanh ~245 từ/phút → kịch bản **280–300 từ**.
+- **3 phong cách:** `bang-trang`, `truyen-tranh`, `tranh-tinh-zoom`.
+- Kênh **Tâm Cơ**, "Hiểu chiêu để không trúng chiêu.", logo góc trái mờ 55%.
+
+## Đội agent và Phòng điều hành (Bước 3)
+- Phiên chính là **Anh Hải** (`CLAUDE.md`). Agent con: Linh `len-chu-de`, Tuấn `bien-kich`, Chị Mai `kiem-duyet`, Khoa `hoa-si`, Vy `dong-goi`, Đức `phan-tich`. Lệnh: `/goi-y`, `/chu-de`, `/sua`, `/phan-tich`, `/lam-moi`, `/token` (`.claude/commands/`).
+- Phòng điều hành: `./dieu-hanh.sh` → http://localhost:4747. Dữ liệu do hook ghi (`.claude/hooks/ghi-su-kien.sh` → `dieu-hanh/su-kien.jsonl`, tin nhắn nguyên văn vào `du-an/<slug>/ban-tin.jsonl`), 0 token. Script dựng gửi tiến độ qua `dieu-hanh/su_kien.py` và `render/quay.mjs`.
+- Đánh dấu chủ đề/giai đoạn: `python3 dieu-hanh/su_kien.py bat-dau <slug>` / `giai-doan <ten>`. Hook `chan-vong-lap.sh` đếm lượt theo (agent, giai đoạn): lượt 4 bị chặn.
+- Duyệt trên web ghi `du-an/<slug>/duyet.json`; đại ca gõ "tiếp" thì đọc mục `da_xu_ly: false` mới nhất.
+- Phân tích: ảnh vào `phan-tich/inbox/<slug>/` → `/phan-tich <slug>` → `phan-tich/so-lieu.csv`, `phan-tich/bao-cao/<slug>.md`, `chu-de/bai-hoc.md` (Tuấn, Linh, Vy đọc).
+
+## Dàn cảnh = dữ liệu (không viết code cho từng chủ đề)
+- Thư viện khối: `render/thu-vien/khoi.js` (nguồn duy nhất về tên khối). Sửa xong chạy `node render/thu-vien/xuat-catalog.mjs` để sinh lại `docs/catalog.md` (cho agent) và `render/thu-vien/ten-khoi.json` (cho máy kiểm).
+- `render/canh-chung.js` là bộ ráp: đọc `canh.json` (bo_cuc, nen, goc_may, nhan_vat, xep, dao_cu, man_hinh, hieu_ung, so) + `video.json` (chu_de, tong_mau, seed) rồi ghép khối. Không có mã riêng cho từng cảnh.
+- Xem nhanh một khối hoặc cảnh mà không cần giọng: `node render/thu-khoi.mjs <phong-cach> <file-canh-thu.json> <ra.jpg>`.
+- `seed` đổi bộ đồng nghiệp/sếp (tóc, áo, kính, dáng); **seed 0 = bộ gốc** (dùng cho `ghet-ngam`).
+
+## Các bước cho một chủ đề
+1. **Kịch bản:** gọi `bien-kich` (giao chủ đề + dàn ý) → `kich-ban.md`, `canh.json`, `video.json`.
+2. **Máy kiểm:** `python3 pipeline/kiem-canh.py` và `python3 pipeline/kiem-lap.py`. Còn lỗi khối/lặp → gửi nguyên văn cho `bien-kich` sửa đúng cảnh đó. Có `de_xuat_khoi` → giao `hoa-si` (Khoa) vẽ khối mới **một lần** vào `khoi.js`/`net-co-ban.js`, chạy lại `xuat-catalog.mjs`, kiểm 3 phong cách.
+3. **Duyệt lời:** gọi `kiem-duyet` (tự chạy 2 lệnh kiểm). **Dừng: đại ca duyệt kịch bản.**
+4. **Giọng:** `.venv/bin/python pipeline/doc-giong.py` rồi `.venv/bin/python pipeline/bien-do.py`.
+5. **Xem trước:** contact sheet vài cảnh, ví dụ `node render/quay.mjs truyen-tranh --ra <chu-de>/xem --xem c01:1,c05:2,...`.
+6. **Chọn phong cách:** `pipeline/lam-mau.sh <chu-de>` → 3 mẫu 20–30 giây + trang `review/<chu-de>.html` (phát cùng lúc); máy nhắc nếu một phong cách đã dùng 2 video liền. **Dừng: đại ca chọn.**
+7. **Bản đầy đủ:** `pipeline/chot-phong-cach.sh <chu-de> <phong-cach>` → xoá mẫu không chọn, quay, ghép, kiểm tra 10 mục, chép vào `xuat-ban/<chu-de>/`, ghi `logs/da-dung.json`, lưu dữ liệu vào `ra/<chu-de>/du-lieu/`. Xem `ra/<chu-de>/video-day-du/contact-12.jpg`.
+8. **Gói đăng:** giao `dong-goi` (Vy) viết `xuat-ban/<chu-de>/dang-bai.md`. **Dừng: đại ca xem bản nháp** (tối đa 2 vòng; sửa cảnh nào quay lại cảnh đó).
+
+## Chống lặp
+- Luật trong một video và giữa các video: xem đầu file `pipeline/kiem-lap.py`. Nội dung màn hình (tên nhóm chat, tên người, tin nhắn, tiêu đề) không được trùng video trước (`logs/da-dung.json` trường `man_hinh`).
+- **Cứ sau 10 video** (máy tự nhắc): đọc `logs/da-dung.json`, liệt kê khối/bố cục dùng nhiều nhất, đề xuất 2–3 khối hoặc bối cảnh mới → **đại ca duyệt** rồi mới vẽ.
+
+## Mẹo
+- Mở trang hoặc video cho đại ca bằng lệnh `open <đường dẫn>`, vì khung xem file trong ứng dụng không phát được video.
+- Lỗi kiểm tra hay gặp: khung đen (màu chuyển cảnh quá tối), chữ bị nhân vật đè (phong cách điện ảnh vẽ chữ ở lớp trên cùng), số bị lệch ra mép (parallax cộng zoom).
+- Thời gian máy tham khảo: ~11 phút cho video 90 giây; mỗi mẫu 27 giây mất khoảng 1,5–2 phút.

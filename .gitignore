@@ -1,0 +1,20 @@
+# Sao lưu: chỉ code, cấu hình, thư viện khối, agent, tài liệu. Không video/âm thanh/thư viện cài.
+node_modules/
+.venv/
+vendor/
+ra/
+giong/
+scratch/
+*.mp4
+*.wav
+*.mp3
+*.m4a
+xuat-ban/**/*.png
+review/*.mp4
+phan-tich/inbox/
+phan-tich/da-xu-ly/
+dieu-hanh/*.log
+dieu-hanh/su-kien.jsonl
+dieu-hanh/.nho*.json
+.DS_Store
+__pycache__/

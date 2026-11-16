@@ -1,0 +1,168 @@
+{
+ "bo_cuc": [
+  "hook-chu-to",
+  "nhan-vat-ke",
+  "nhan-vat-va-dong-nghiep",
+  "dien-thoai",
+  "dau-hieu-so",
+  "so-sanh",
+  "loi-khuyen",
+  "ket"
+ ],
+ "vai": [
+  "minh",
+  "dong-nghiep-nam",
+  "dong-nghiep-nu",
+  "dong-nghiep-nu-2",
+  "sep",
+  "nhom"
+ ],
+ "tu_the": [
+  "dung",
+  "khoanh-tay",
+  "om-dau",
+  "chi-tay",
+  "chi-tay-trai",
+  "quay-lung",
+  "ngoi-ban",
+  "nhin-dien-thoai",
+  "gio-tay",
+  "vay-tay",
+  "thi-tham",
+  "nhun-vai",
+  "dang-tay",
+  "chong-cam",
+  "chong-hong",
+  "cam-do"
+ ],
+ "bieu_cam": [
+  "binh-thuong",
+  "buon",
+  "ngac-nhien",
+  "suy-nghi",
+  "cuoi",
+  "lo-lang"
+ ],
+ "vi_tri": [
+  "trai-xa",
+  "trai",
+  "giua-trai",
+  "giua",
+  "giua-phai",
+  "phai",
+  "phai-xa"
+ ],
+ "vi_tri_dao_cu": [
+  "tren-trai",
+  "tren-phai",
+  "tren-giua",
+  "giua-trai",
+  "giua-phai",
+  "giua"
+ ],
+ "xep": [
+  "hang-ngang",
+  "doi-dien",
+  "nhom-quay-lung",
+  "tach-nhom",
+  "mot-minh-giua-dam-dong"
+ ],
+ "nen": [
+  "van-phong-mo",
+  "phong-hop",
+  "pantry",
+  "thang-may",
+  "phong-sep",
+  "quan-ca-phe",
+  "o-nha-toi",
+  "trung",
+  "dau-hieu",
+  "loi-khuyen",
+  "chia-doi",
+  "man-hinh",
+  "burst",
+  "van-phong",
+  "toi"
+ ],
+ "dao_cu": [
+  "dien-thoai",
+  "laptop",
+  "dong-ho",
+  "chuong",
+  "kinh-lup",
+  "dau-hoi",
+  "dau-than",
+  "ngoi-sao",
+  "tai-lieu",
+  "coc-ca-phe",
+  "mat-trang",
+  "phong-bi",
+  "lich",
+  "ban-hop",
+  "cua",
+  "tim",
+  "bieu-do",
+  "nghen",
+  "cham-lung",
+  "ban-lam-viec",
+  "bong-noi"
+ ],
+ "noi_dung_bong": [
+  "giay",
+  "khoa",
+  "cuoi-tuan",
+  "haha",
+  "sao",
+  "cham"
+ ],
+ "man_hinh": [
+  "nhom-chat",
+  "tin-nhan-rieng",
+  "thong-bao",
+  "tai-lieu",
+  "email",
+  "lich-hop"
+ ],
+ "hieu_ung": [
+  "vong-tron-do",
+  "gach-cheo",
+  "tick",
+  "so-thu-tu",
+  "mui-ten",
+  "rung",
+  "zoom-vao"
+ ],
+ "sfx": [
+  "whoosh",
+  "swoosh-nhe",
+  "pop",
+  "ding",
+  "tick",
+  "tin-nhan",
+  "thud"
+ ],
+ "goc_may": [
+  "can",
+  "trung",
+  "toan",
+  "tu-tren",
+  "qua-vai"
+ ],
+ "tong_mau": [
+  "hoang-hon",
+  "dem-xanh",
+  "sang-xam",
+  "mua-tim",
+  "binh-minh",
+  "den-vang"
+ ],
+ "boi_canh": [
+  "van-phong-mo",
+  "phong-hop",
+  "pantry",
+  "thang-may",
+  "phong-sep",
+  "quan-ca-phe",
+  "o-nha-toi"
+ ]
+}

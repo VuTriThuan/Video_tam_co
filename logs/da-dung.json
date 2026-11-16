@@ -1,0 +1,137 @@
+[
+ {
+  "chu_de": "ghet-ngam",
+  "ngay": "2026-11-16",
+  "phong_cach": "tranh-tinh-zoom",
+  "tong_mau": "hoang-hon",
+  "seed": 0,
+  "mo_dau": {
+   "bo_cuc": "hook-chu-to",
+   "nen": "burst"
+  },
+  "bo_cuc": {
+   "hook-chu-to": 1,
+   "nhan-vat-ke": 6,
+   "nhan-vat-va-dong-nghiep": 2,
+   "dien-thoai": 3,
+   "dau-hieu-so": 3,
+   "so-sanh": 1,
+   "loi-khuyen": 4,
+   "ket": 1
+  },
+  "nen": {
+   "burst": 1,
+   "van-phong-mo": 6,
+   "man-hinh": 3,
+   "toi": 1,
+   "trung": 1,
+   "dau-hieu": 3,
+   "chia-doi": 1,
+   "phong-hop": 1,
+   "loi-khuyen": 4
+  },
+  "goc_may": {
+   "trung": 21
+  },
+  "man_hinh": [
+   "Cả Phòng Mình",
+   "Ảnh mới"
+  ]
+ },
+ {
+  "chu_de": "thao-tung",
+  "ngay": "2026-11-16",
+  "phong_cach": "tranh-tinh-zoom",
+  "tong_mau": "dem-xanh",
+  "seed": 7,
+  "mo_dau": {
+   "bo_cuc": "hook-chu-to",
+   "nen": "toi"
+  },
+  "bo_cuc": {
+   "hook-chu-to": 1,
+   "nhan-vat-ke": 4,
+   "nhan-vat-va-dong-nghiep": 5,
+   "dau-hieu-so": 3,
+   "dien-thoai": 3,
+   "so-sanh": 1,
+   "loi-khuyen": 2,
+   "ket": 1
+  },
+  "nen": {
+   "toi": 1,
+   "van-phong-mo": 3,
+   "o-nha-toi": 2,
+   "dau-hieu": 3,
+   "man-hinh": 3,
+   "phong-hop": 3,
+   "chia-doi": 1,
+   "trung": 2,
+   "loi-khuyen": 2
+  },
+  "goc_may": {
+   "can": 4,
+   "trung": 10,
+   "qua-vai": 2,
+   "toan": 3,
+   "tu-tren": 1
+  },
+  "man_hinh": [
+   "Chị Hà",
+   "Cả Phòng Mình",
+   "Cả phòng ai cũng nghĩ vậy mà",
+   "Dạ, chắc tại em",
+   "Em nhạy cảm quá rồi đấy",
+   "Em đồng ý luôn nhé",
+   "Tối nay xong giúp chị nhé",
+   "Việc này chỉ em làm được thôi"
+  ]
+ },
+ {
+  "chu_de": "darvo",
+  "ngay": "2026-11-16",
+  "phong_cach": "bang-trang",
+  "tong_mau": "mua-tim",
+  "seed": 12,
+  "mo_dau": {
+   "bo_cuc": "hook-chu-to",
+   "nen": "phong-sep"
+  },
+  "bo_cuc": {
+   "hook-chu-to": 1,
+   "nhan-vat-ke": 6,
+   "dien-thoai": 3,
+   "nhan-vat-va-dong-nghiep": 4,
+   "dau-hieu-so": 3,
+   "so-sanh": 1,
+   "loi-khuyen": 2,
+   "ket": 1
+  },
+  "nen": {
+   "phong-sep": 3,
+   "o-nha-toi": 3,
+   "man-hinh": 3,
+   "van-phong-mo": 3,
+   "dau-hieu": 3,
+   "chia-doi": 1,
+   "trung": 2,
+   "loi-khuyen": 2,
+   "burst": 1
+  },
+  "goc_may": {
+   "can": 7,
+   "trung": 8,
+   "qua-vai": 2,
+   "tu-tren": 1,
+   "toan": 3
+  },
+  "man_hinh": [
+   "Anh Khánh",
+   "Anh không ngờ em nghĩ xấu anh vậy",
+   "Anh đã giúp em bao nhiêu lần rồi",
+   "Anh ơi, bản anh giao trễ nên em phải sửa lại cả bộ ạ",
+   "Còn hạn giao hôm thứ ba vẫn trễ hai ngày ạ",
+   "Em cảm ơn anh đã giúp em"
+  ]
+ }
+]

@@ -1,0 +1,27 @@
+<!doctype html><html lang="vi"><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Tâm Cơ — chọn phong cách: thao-tung</title>
+<style>
+:root{--nen:#141414;--chu:#F3EFEF;--do:#E63946;--phu:#8a8a93}
+body{margin:0;background:var(--nen);color:var(--chu);font:15px/1.5 system-ui,-apple-system,sans-serif;padding:20px 16px 40px}
+h1{margin:0 0 4px;font-size:22px} h1 b{color:var(--do)} p{margin:0 0 16px;color:var(--phu)}
+.nut{display:flex;gap:10px;flex-wrap:wrap;margin-bottom:18px}
+button{background:var(--do);color:#fff;border:0;border-radius:999px;padding:10px 18px;font-weight:700;font-size:15px;cursor:pointer}
+button.phu{background:#2a2a30}
+.luoi{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:14px;max-width:1100px}
+.the{margin:0;background:#1d1d22;border-radius:14px;padding:8px}
+video{width:100%;aspect-ratio:9/16;border-radius:10px;background:#000;display:block}
+figcaption{padding:8px 4px 2px;display:flex;flex-direction:column;gap:2px} figcaption span{color:var(--phu);font-size:13px} code{color:var(--phu)}
+details img{width:100%;border-radius:8px;margin-top:6px} summary{cursor:pointer;color:var(--phu);font-size:13px}
+</style>
+<h1><b>Tâm Cơ</b> · chọn phong cách cho chủ đề “thao-tung”</h1>
+<p>Cùng kịch bản, cùng giọng. Bấm "Phát cùng lúc" (chỉ video đầu có tiếng) rồi báo em số phong cách đại ca chọn.</p>
+<div class="nut"><button id="phat">▶ Phát cùng lúc</button><button class="phu" id="dung">■ Dừng</button><button class="phu" id="tieng">Bật tiếng tất cả</button></div>
+<div class="luoi"><figure class="the"><video src="../ra/thao-tung/mau-tranh-tinh-zoom/video.mp4" controls playsinline preload="metadata" poster="../ra/thao-tung/mau-tranh-tinh-zoom/anh-bia.png"></video>
+  <figcaption><b>3. Tranh điện ảnh</b> <code>tranh-tinh-zoom</code><span>Quay 82s + ghép 27s · video 26.0s · 7.0 MB</span>
+  <details><summary>Ảnh bìa</summary><img src="../ra/thao-tung/mau-tranh-tinh-zoom/anh-bia.png" alt="Ảnh bìa Tranh điện ảnh"></details></figcaption></figure></div>
+<script>
+const vs=[...document.querySelectorAll('video')];
+document.getElementById('phat').onclick=()=>{vs.forEach((v,i)=>{v.currentTime=0;v.muted=i>0;v.play()})};
+document.getElementById('dung').onclick=()=>vs.forEach(v=>v.pause());
+document.getElementById('tieng').onclick=()=>vs.forEach(v=>v.muted=false);
+</script></html>

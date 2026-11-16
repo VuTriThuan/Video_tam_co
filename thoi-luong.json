@@ -1,0 +1,131 @@
+{
+ "tong": 88.398,
+ "canh": [
+  {
+   "id": "c01",
+   "bat_dau": 0.0,
+   "giong": 3.927,
+   "thoi_luong": 4.277
+  },
+  {
+   "id": "c02",
+   "bat_dau": 4.277,
+   "giong": 5.173,
+   "thoi_luong": 5.373
+  },
+  {
+   "id": "c03",
+   "bat_dau": 9.65,
+   "giong": 4.806,
+   "thoi_luong": 5.006
+  },
+  {
+   "id": "c04",
+   "bat_dau": 14.656,
+   "giong": 2.187,
+   "thoi_luong": 2.387
+  },
+  {
+   "id": "c05",
+   "bat_dau": 17.043,
+   "giong": 3.968,
+   "thoi_luong": 4.168
+  },
+  {
+   "id": "c06",
+   "bat_dau": 21.211,
+   "giong": 4.603,
+   "thoi_luong": 4.803
+  },
+  {
+   "id": "c07",
+   "bat_dau": 26.014,
+   "giong": 4.667,
+   "thoi_luong": 4.967
+  },
+  {
+   "id": "c08",
+   "bat_dau": 30.981,
+   "giong": 3.892,
+   "thoi_luong": 4.092
+  },
+  {
+   "id": "c09",
+   "bat_dau": 35.073,
+   "giong": 4.501,
+   "thoi_luong": 4.801
+  },
+  {
+   "id": "c10",
+   "bat_dau": 39.874,
+   "giong": 4.348,
+   "thoi_luong": 4.548
+  },
+  {
+   "id": "c11",
+   "bat_dau": 44.422,
+   "giong": 4.402,
+   "thoi_luong": 4.702
+  },
+  {
+   "id": "c12",
+   "bat_dau": 49.124,
+   "giong": 3.663,
+   "thoi_luong": 3.863
+  },
+  {
+   "id": "c13",
+   "bat_dau": 52.987,
+   "giong": 3.274,
+   "thoi_luong": 3.474
+  },
+  {
+   "id": "c14",
+   "bat_dau": 56.461,
+   "giong": 4.554,
+   "thoi_luong": 4.754
+  },
+  {
+   "id": "c15",
+   "bat_dau": 61.215,
+   "giong": 5.045,
+   "thoi_luong": 5.245
+  },
+  {
+   "id": "c16",
+   "bat_dau": 66.46,
+   "giong": 1.694,
+   "thoi_luong": 1.894
+  },
+  {
+   "id": "c17",
+   "bat_dau": 68.354,
+   "giong": 3.566,
+   "thoi_luong": 3.766
+  },
+  {
+   "id": "c18",
+   "bat_dau": 72.12,
+   "giong": 5.171,
+   "thoi_luong": 5.371
+  },
+  {
+   "id": "c19",
+   "bat_dau": 77.491,
+   "giong": 3.655,
+   "thoi_luong": 3.855
+  },
+  {
+   "id": "c20",
+   "bat_dau": 81.346,
+   "giong": 4.423,
+   "thoi_luong": 4.773
+  },
+  {
+   "id": "c21",
+   "bat_dau": 86.119,
+   "giong": 2.129,
+   "thoi_luong": 2.279
+  }
+ ]
+}
