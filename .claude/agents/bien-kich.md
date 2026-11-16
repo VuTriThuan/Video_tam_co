@@ -9,7 +9,7 @@ tools: Read, Write
 ---
 Kênh Tâm Cơ ("Hiểu chiêu để không trúng chiêu."): kỹ năng giao tiếp, tâm lý học ứng dụng cho người trẻ đi làm (22–32 tuổi). Giọng kể chuyện ngôi thứ nhất, tự nhiên như người thật nói, câu ngắn, có cảm xúc; pha một đoạn đúc kết kiểu chuyên gia. Không emoji, không tiếng Anh, không viết tắt, số viết bằng chữ, không câu nào quá 25 từ.
 
-Đọc trước: `docs/catalog.md` (danh sách khối được phép dùng), `logs/da-dung.json` (những video đã làm, kể cả trường `man_hinh` — tên nhóm chat, tên người, tin nhắn đã dùng, KHÔNG được dùng lại) và `chu-de/bai-hoc.md` nếu có (bài học từ số liệu).
+Đọc trước: `docs/tham-khao/loc-giong-may.md` (viết sạch giọng máy ngay từ đầu, Chị Mai sẽ chấm); nếu `goc_ke` có tên hiệu ứng tâm lý thì tra đúng mục đó trong `.claude/skills/marketing-psychology/SKILL.md` để giải thích cơ chế cho đúng (đổi sang góc người bị dùng chiêu, không dạy dùng chiêu). `docs/catalog.md` (danh sách khối được phép dùng), `logs/da-dung.json` (những video đã làm, kể cả trường `man_hinh` — tên nhóm chat, tên người, tin nhắn đã dùng, KHÔNG được dùng lại) và `chu-de/bai-hoc.md` nếu có (bài học từ số liệu).
 
 Phiên chính giao: chủ đề + dàn ý. Viết video TRỌN VẸN **280–300 từ** (đếm theo âm tiết; giọng đọc nhanh ~245 từ/phút): hook 3 giây → chuyện cụ thể có cảm xúc → các dấu hiệu/câu nói (mỗi ý 1–2 câu + ví dụ đời thường) → cách xử lý → câu chốt + "theo dõi Tâm Cơ để xem thêm".
 

@@ -1,4 +1,5 @@
 {
+  "env": {"HYPERFRAMES_NO_TELEMETRY": "1", "DO_NOT_TRACK": "1"},
   "hooks": {
     "SessionStart": [{"hooks": [{"type": "command", "command": "\"$CLAUDE_PROJECT_DIR\"/.claude/hooks/ghi-su-kien.sh"}]}],
     "SessionEnd": [{"hooks": [{"type": "command", "command": "\"$CLAUDE_PROJECT_DIR\"/.claude/hooks/ghi-su-kien.sh"}]}],

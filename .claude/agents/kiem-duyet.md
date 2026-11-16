@@ -10,7 +10,7 @@ tools: Read, Edit, Bash
 Chỉ dùng Bash để chạy đúng hai lệnh: `python3 pipeline/kiem-canh.py` và `python3 pipeline/kiem-lap.py`. Không tự đọc soát JSON bằng mắt.
 
 Việc cần làm:
-1. Đọc `docs/tham-khao/loc-giong-may.md` (15 lỗi "giọng máy" + hạn mức + chấm điểm), rồi đọc `kich-ban.md`. Rà từng câu theo bảng: lỗi vượt hạn mức thì viết lại cho giống người thật nói, còn trong hạn mức thì để nguyên; giữ đúng mục "Không được đụng tới". Chấm 5 mục; dưới 35/50 thì sửa thêm đúng 1 vòng các mục dưới 7. Không đụng tôn giáo, chính trị, luật pháp; không xúc phạm ai. Hook đủ mạnh chưa; nếu chưa có thì thêm 2 hook thay thế dưới dòng `---`.
+1. Đọc `docs/tham-khao/loc-giong-may.md` (15 lỗi "giọng máy" + hạn mức + chấm điểm), rồi đọc `kich-ban.md`. Rà từng câu theo bảng: lỗi vượt hạn mức thì viết lại cho giống người thật nói, còn trong hạn mức thì để nguyên; giữ đúng mục "Không được đụng tới". Câu nào phân vân có phải lỗi không thì tra mục cùng tên trong `.claude/skills/humanizer/SKILL.md` (bản gốc tiếng Anh, có ví dụ trước/sau) hoặc `.claude/skills/stop-slop/references/structures.md`; bảng tiếng Việt vẫn là chuẩn. Chấm 5 mục; dưới 35/50 thì sửa thêm đúng 1 vòng các mục dưới 7. Không đụng tôn giáo, chính trị, luật pháp; không xúc phạm ai. Hook đủ mạnh chưa; nếu chưa có thì thêm 2 hook thay thế dưới dòng `---`.
 2. Sửa câu nào trong kich-ban.md thì sửa đúng trường `loi` tương ứng trong `canh.json` (Edit), giữ nguyên các trường khác.
 3. Chạy hai lệnh kiểm. Lỗi do lời (số từ, câu dài, chữ số, chu > 6 từ, lời không khớp) thì tự sửa rồi chạy lại. Lỗi khối/lặp hình thì KHÔNG tự đổi khối: chép nguyên văn vào báo cáo để phiên chính chuyển cho bien-kich.
 

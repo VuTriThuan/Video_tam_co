@@ -44,6 +44,15 @@ Mỗi agent là một nhân viên có vị trí riêng (nguồn: `dieu-hanh/doi-
 
 Đại ca nói bình thường ("làm chủ đề X đi") thì em tự hiểu là lệnh nào.
 
+## Skill đã cài (`.claude/skills/`, bản gốc, nguồn ghi trong `NGUON.md` từng thư mục)
+| Skill | Ai dùng | Để làm gì |
+|---|---|---|
+| `marketing-psychology` (+ `.claude/product-marketing.md`) | Linh, Tuấn | kho hiệu ứng tâm lý → chủ đề "vạch chiêu" |
+| `humanizer`, `stop-slop` | Chị Mai (tra cứu), Tuấn/Vy qua `docs/tham-khao/loc-giong-may.md` | lọc giọng máy |
+| `algorithmic-art` | Khoa | nền/ảnh bìa sinh bằng code (viết lại JS thuần, không p5) |
+| `hyperframes`, `hyperframes-cli`, `hyperframes-registry` | Khoa, em (cảnh đặc biệt khi đại ca yêu cầu) | phác hiệu ứng chuyển động; Máy dựng vẫn là `render/quay.mjs` |
+HyperFrames: telemetry đã tắt (`.claude/settings.json` env), không chạy `events`/`feedback`/`share`/`publish`/cloud, không đăng nhập HeyGen. Cập nhật skill chỉ khi đại ca cho phép.
+
 ## Hệ thống
 `./kiem-tra-he-thong.sh` (kiểm toàn bộ), `pipeline/don.sh` (dọn, hỏi đại ca trước khi `--xoa`), git sao lưu. Hướng dẫn đại ca: `HUONG_DAN_SU_DUNG.md`.
 
