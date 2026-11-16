@@ -1,1 +1,7 @@
-{"chu_de":"darvo","tong_mau":"mua-tim","seed":12,"bia":{"chu":"GÓP Ý XONG LẠI XIN LỖI","tu_khoa":"XIN LỖI"}}
+{"chu_de":"cuop-cong","tong_mau":"den-vang","seed":19,"bia":{"chu":"LÀM XONG, NGƯỜI KHÁC NHẬN CÔNG","tu_khoa":"NHẬN CÔNG"},
+ "dinh_dang":"chuoi",
+ "chuoi":{"so_phan":3,"diem_cat":["c21","c41"],"nhac_lai":["c22","c42"],
+  "teaser":["Ba cách để lại dấu vết","Một câu lấy lại công"],
+  "bia_phan":[{"chu":"SẾP CẢM ƠN CHỊ NGỒI CẠNH","tu_khoa":"CHỊ NGỒI CẠNH"},
+              {"chu":"ĐỂ LẠI DẤU VẾT","tu_khoa":"DẤU VẾT"},
+              {"chu":"LẤY LẠI CÔNG KHÔNG GÂY CHIẾN","tu_khoa":"LẤY LẠI CÔNG"}]}}

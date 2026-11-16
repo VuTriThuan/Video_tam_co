@@ -1,121 +1,2804 @@
 [
- {"id":"c01","loi":"Em nhắn góp ý cho sếp, ba phút sau người xin lỗi lại là em.","chu":"Góp ý xong, em xin lỗi","tu_khoa":"xin lỗi","bo_cuc":"hook-chu-to","nen":"phong-sep","goc_may":"can",
-  "nhan_vat":[{"vai":"minh","tu_the":"dung","bieu_cam":"binh-thuong","vi_tri":"giua-trai","co":"lon","vao":"nhay","t":0.15,"doi":[{"t":0.7,"tu_the":"om-dau","bieu_cam":"buon"}]},
-              {"vai":"sep","tu_the":"khoanh-tay","bieu_cam":"binh-thuong","vi_tri":"phai","co":"vua","hang":"sau","vao":"co-san"}],
-  "hieu_ung":[{"ten":"rung","t":0.75}],
-  "sfx":["whoosh",{"ten":"thud","t":0.75}]},
-
- {"id":"c02","loi":"Tối thứ năm, em nhắn riêng anh Khánh, gõ đi gõ lại cả chục lần mới dám gửi.","chu":"Gõ đi gõ lại","tu_khoa":"gõ lại","bo_cuc":"nhan-vat-ke","nen":"o-nha-toi","goc_may":"trung",
-  "nhan_vat":[{"vai":"minh","tu_the":"nhin-dien-thoai","bieu_cam":"lo-lang","vi_tri":"giua","co":"lon","vao":"tu-trai"}],
-  "dao_cu":[{"ten":"dien-thoai","vi_tri":"tay-0","t":0.2},{"ten":"dong-ho","vi_tri":"tren-phai","t":0.1}],
-  "sfx":["swoosh-nhe","tick"]},
-
- {"id":"c03","loi":"Em chỉ nói anh giao bản trễ hạn, nên em phải sửa lại cả bộ tài liệu.","chu":"","tu_khoa":"","bo_cuc":"dien-thoai","nen":"man-hinh","goc_may":"qua-vai",
-  "nhan_vat":[{"vai":"minh","tu_the":"nhin-dien-thoai","bieu_cam":"suy-nghi","vi_tri":"trai","co":"nho","vao":"co-san"}],
-  "man_hinh":{"loai":"tin-nhan-rieng","ten":"Anh Khánh","tin":[{"ai":"minh","nd":"Anh ơi, bản anh giao trễ nên em phải sửa lại cả bộ ạ","t":0.35}]},
-  "sfx":[{"ten":"tin-nhan","t":0.35}]},
-
- {"id":"c04","loi":"Ba phút sau, điện thoại rung.","chu":"Ba phút sau","tu_khoa":"Ba phút","bo_cuc":"nhan-vat-ke","nen":"o-nha-toi","goc_may":"can",
-  "nhan_vat":[{"vai":"minh","tu_the":"ngoi-ban","bieu_cam":"binh-thuong","vi_tri":"giua","co":"lon","vao":"co-san","doi":[{"t":0.65,"tu_the":"nhin-dien-thoai","bieu_cam":"ngac-nhien"}]}],
-  "dao_cu":[{"ten":"dien-thoai","vi_tri":"ban","t":0.1}],
-  "hieu_ung":[{"ten":"rung","t":0.65}],
-  "sfx":[{"ten":"tin-nhan","t":0.65}]},
-
- {"id":"c05","loi":"“Anh không ngờ em nghĩ xấu anh vậy, anh đã giúp em bao nhiêu lần.”","chu":"","tu_khoa":"","bo_cuc":"dien-thoai","nen":"man-hinh","goc_may":"trung",
-  "nhan_vat":[{"vai":"minh","tu_the":"nhin-dien-thoai","bieu_cam":"ngac-nhien","vi_tri":"phai","co":"nho","vao":"co-san"}],
-  "man_hinh":{"loai":"tin-nhan-rieng","ten":"Anh Khánh","tin":[{"ai":"minh","nd":"Anh ơi, bản anh giao trễ nên em phải sửa lại cả bộ ạ","t":0},{"ai":"Anh Khánh","nd":"Anh không ngờ em nghĩ xấu anh vậy","t":0.08},{"ai":"Anh Khánh","nd":"Anh đã giúp em bao nhiêu lần rồi","t":0.52}]},
-  "hieu_ung":[{"ten":"vong-tron-do","muc_tieu":"man-hinh","t":0.8}],
-  "sfx":[{"ten":"tin-nhan","t":0.08},{"ten":"tin-nhan","t":0.52}]},
-
- {"id":"c06","loi":"Em ngồi nhìn màn hình rất lâu, rồi gõ: “Dạ, em xin lỗi anh.”","chu":"Dạ, em xin lỗi anh","tu_khoa":"xin lỗi","bo_cuc":"nhan-vat-ke","nen":"o-nha-toi","goc_may":"tu-tren",
-  "nhan_vat":[{"vai":"minh","tu_the":"ngoi-ban","bieu_cam":"buon","vi_tri":"giua","co":"vua","vao":"co-san","doi":[{"t":0.6,"tu_the":"nhin-dien-thoai"}]}],
-  "dao_cu":[{"ten":"dien-thoai","vi_tri":"tay-0","t":0.55},{"ten":"bong-noi","vi_tri":"dau-0","noi_dung":"cham","t":0.2,"het":0.55}],
-  "sfx":["swoosh-nhe",{"ten":"tin-nhan","t":0.8}]},
-
- {"id":"c07","loi":"Sau này em mới biết, đó là một chiêu rất quen, ba bước nối liền nhau.","chu":"Ba bước nối liền","tu_khoa":"Ba bước","bo_cuc":"nhan-vat-va-dong-nghiep","nen":"van-phong-mo","goc_may":"toan",
-  "nhan_vat":[{"vai":"minh","tu_the":"cam-do","bieu_cam":"suy-nghi","vi_tri":"trai","co":"vua","vao":"di-vao"},
-              {"vai":"sep","tu_the":"khoanh-tay","bieu_cam":"cuoi","vi_tri":"phai","co":"vua","vao":"co-san"}],
-  "dao_cu":[{"ten":"kinh-lup","vi_tri":"tay-0","t":0.3}],
-  "hieu_ung":[{"ten":"so-thu-tu","so":3,"vi_tri":"tren-giua","t":0.8}],
-  "sfx":["whoosh",{"ten":"pop","t":0.8}]},
-
- {"id":"c08","loi":"Bước một, chối: “Làm gì có chuyện đó, em nhớ nhầm rồi.”","chu":"Chối","tu_khoa":"Chối","bo_cuc":"dau-hieu-so","nen":"dau-hieu","goc_may":"trung","so":1,
-  "nhan_vat":[{"vai":"sep","tu_the":"vay-tay","bieu_cam":"cuoi","vi_tri":"giua","co":"vua","vao":"tu-phai","noi_gia":true}],
-  "dao_cu":[{"ten":"bong-noi","vi_tri":"dau-0","noi_dung":"haha","t":0.35,"het":0.95}],
-  "sfx":["pop","swoosh-nhe"]},
-
- {"id":"c09","loi":"Họ xóa sự việc trước, để em bắt đầu nghi ngờ chính trí nhớ của mình.","chu":"Nghi chính trí nhớ mình","tu_khoa":"trí nhớ","bo_cuc":"nhan-vat-va-dong-nghiep","nen":"van-phong-mo","goc_may":"qua-vai",
-  "nhan_vat":[{"vai":"sep","tu_the":"dang-tay","bieu_cam":"binh-thuong","vi_tri":"trai","co":"lon","vao":"co-san"},
-              {"vai":"minh","tu_the":"dung","bieu_cam":"lo-lang","vi_tri":"giua-phai","co":"vua","vao":"co-san","doi":[{"t":0.6,"tu_the":"om-dau","bieu_cam":"suy-nghi"}]}],
-  "dao_cu":[{"ten":"tai-lieu","vi_tri":"giua","t":0.05,"het":0.35},{"ten":"dau-hoi","vi_tri":"dau-1","t":0.6}],
-  "hieu_ung":[{"ten":"gach-cheo","muc_tieu":"dc-0","t":0.25}],
-  "sfx":[{"ten":"swoosh-nhe","t":0.25},{"ten":"pop","t":0.6}]},
-
- {"id":"c10","loi":"Bước hai, tấn công: câu chuyện bỗng chuyển sang thái độ và con người em.","chu":"Tấn công con người","tu_khoa":"Tấn công","bo_cuc":"dau-hieu-so","nen":"dau-hieu","goc_may":"can","so":2,
-  "nhan_vat":[{"vai":"sep","tu_the":"chi-tay","bieu_cam":"binh-thuong","vi_tri":"giua-trai","co":"vua","vao":"nhay"},
-              {"vai":"minh","tu_the":"dung","bieu_cam":"ngac-nhien","vi_tri":"phai","co":"vua","vao":"co-san"}],
-  "hieu_ung":[{"ten":"mui-ten","tu":"nv-0","den":"nv-1","t":0.5}],
-  "sfx":["whoosh",{"ten":"thud","t":0.5}]},
-
- {"id":"c11","loi":"Họ hỏi “em nói chuyện với anh kiểu gì vậy”, và chuyện trễ hạn tự nhiên biến mất.","chu":"Hạn chót biến mất","tu_khoa":"biến mất","bo_cuc":"nhan-vat-va-dong-nghiep","nen":"phong-sep","goc_may":"trung","xep":"doi-dien",
-  "nhan_vat":[{"vai":"sep","tu_the":"chong-hong","bieu_cam":"binh-thuong","vi_tri":"trai","co":"vua","vao":"co-san","noi_gia":true},
-              {"vai":"minh","tu_the":"dung","bieu_cam":"buon","vi_tri":"phai","co":"vua","vao":"co-san"}],
-  "dao_cu":[{"ten":"lich","vi_tri":"tren-giua","t":0.1,"het":0.8}],
-  "sfx":["swoosh-nhe",{"ten":"whoosh","t":0.8}]},
-
- {"id":"c12","loi":"Bước ba, đảo vai: họ biến thành người bị tổn thương nhất.","chu":"Đảo vai","tu_khoa":"Đảo vai","bo_cuc":"dau-hieu-so","nen":"dau-hieu","goc_may":"toan","so":3,
-  "nhan_vat":[{"vai":"sep","tu_the":"om-dau","bieu_cam":"buon","vi_tri":"giua-trai","co":"vua","vao":"tu-duoi"},
-              {"vai":"minh","tu_the":"dang-tay","bieu_cam":"ngac-nhien","vi_tri":"giua-phai","co":"vua","vao":"co-san"}],
-  "dao_cu":[{"ten":"tim","vi_tri":"dau-0","t":0.6}],
-  "sfx":["pop","swoosh-nhe"]},
-
- {"id":"c13","loi":"“Anh tốt với em như vậy, mà em đối xử với anh thế à?”","chu":"Anh tốt với em vậy","tu_khoa":"tốt","bo_cuc":"nhan-vat-ke","nen":"phong-sep","goc_may":"can",
-  "nhan_vat":[{"vai":"minh","tu_the":"dung","bieu_cam":"lo-lang","vi_tri":"trai","co":"vua","vao":"co-san"},
-              {"vai":"sep","tu_the":"dang-tay","bieu_cam":"buon","vi_tri":"giua-phai","co":"lon","vao":"co-san","noi_gia":true,"bien_the":2}],
-  "dao_cu":[{"ten":"nghen","vi_tri":"dau-0","t":0.6}],
-  "sfx":["swoosh-nhe"]},
-
- {"id":"c14","loi":"Thế là em, người bị thiệt, lại quay sang dỗ dành chính người làm sai.","chu":"Dỗ dành người làm sai","tu_khoa":"người làm sai","bo_cuc":"so-sanh","nen":"chia-doi","goc_may":"trung",
-  "nhan_vat":[{"vai":"minh","tu_the":"gio-tay","bieu_cam":"buon","ben":"trai","vao":"tu-trai"},
-              {"vai":"sep","tu_the":"khoanh-tay","bieu_cam":"cuoi","ben":"phai","vao":"tu-phai","t":0.3}],
-  "dao_cu":[{"ten":"tim","vi_tri":"tay-0","den":"tay-1","t":0.6}],
-  "sfx":["whoosh",{"ten":"ding","t":0.6}]},
-
- {"id":"c15","loi":"Nói trắng ra, họ đang đẩy cảm giác tội lỗi từ người sai sang người góp ý.","chu":"Chuyển tội lỗi sang em","tu_khoa":"tội lỗi","bo_cuc":"nhan-vat-va-dong-nghiep","nen":"trung","goc_may":"toan",
-  "nhan_vat":[{"vai":"sep","tu_the":"nhun-vai","bieu_cam":"cuoi","vi_tri":"trai","co":"vua","vao":"co-san"},
-              {"vai":"minh","tu_the":"dung","bieu_cam":"buon","vi_tri":"phai","co":"vua","vao":"co-san"}],
-  "dao_cu":[{"ten":"cham-lung","vi_tri":"dau-1","t":0.75}],
-  "hieu_ung":[{"ten":"mui-ten","tu":"nv-0","den":"nv-1","t":0.5}],
-  "sfx":[{"ten":"swoosh-nhe","t":0.5},{"ten":"thud","t":0.75}]},
-
- {"id":"c16","loi":"Vậy làm sao để giữ trục?","chu":"Giữ trục thế nào?","tu_khoa":"Giữ trục","bo_cuc":"nhan-vat-ke","nen":"van-phong-mo","goc_may":"trung",
-  "nhan_vat":[{"vai":"minh","tu_the":"chong-cam","bieu_cam":"suy-nghi","vi_tri":"giua","co":"lon","vao":"nhay"}],
-  "dao_cu":[{"ten":"dau-hoi","vi_tri":"dau-0","t":0.4}],
-  "sfx":["pop"]},
-
- {"id":"c17","loi":"Nhắc lại đúng một sự việc, ngắn, không cãi về thái độ.","chu":"Một sự việc, không cãi","tu_khoa":"Một sự việc","bo_cuc":"loi-khuyen","nen":"loi-khuyen","goc_may":"trung","so":1,
-  "nhan_vat":[{"vai":"minh","tu_the":"gio-tay","bieu_cam":"binh-thuong","vi_tri":"giua-trai","co":"vua","vao":"tu-trai"}],
-  "dao_cu":[{"ten":"tai-lieu","vi_tri":"giua-phai","t":0.25}],
-  "hieu_ung":[{"ten":"tick","muc_tieu":"dc-0","t":0.5}],
-  "sfx":["ding",{"ten":"tick","t":0.5}]},
-
- {"id":"c18","loi":"“Em cảm ơn anh đã giúp em, còn hạn giao hôm thứ ba vẫn trễ hai ngày ạ.”","chu":"","tu_khoa":"","bo_cuc":"dien-thoai","nen":"man-hinh","goc_may":"can",
-  "nhan_vat":[{"vai":"minh","tu_the":"nhin-dien-thoai","bieu_cam":"binh-thuong","vi_tri":"trai","co":"nho","vao":"co-san"}],
-  "man_hinh":{"loai":"tin-nhan-rieng","ten":"Anh Khánh","tin":[{"ai":"minh","nd":"Em cảm ơn anh đã giúp em","t":0.1},{"ai":"minh","nd":"Còn hạn giao hôm thứ ba vẫn trễ hai ngày ạ","t":0.42}]},
-  "hieu_ung":[{"ten":"tick","muc_tieu":"man-hinh","t":0.85}],
-  "sfx":[{"ten":"tin-nhan","t":0.1},{"ten":"tin-nhan","t":0.42}]},
-
- {"id":"c19","loi":"Họ buồn là cảm xúc của họ, em không cần nhận lỗi thay.","chu":"Không nhận lỗi thay","tu_khoa":"lỗi thay","bo_cuc":"loi-khuyen","nen":"loi-khuyen","goc_may":"can","so":2,
-  "nhan_vat":[{"vai":"minh","tu_the":"khoanh-tay","bieu_cam":"binh-thuong","vi_tri":"giua","co":"vua","vao":"co-san","doi":[{"t":0.55,"tu_the":"vay-tay"}]}],
-  "dao_cu":[{"ten":"tim","vi_tri":"tren-trai","t":0.15},{"ten":"cua","vi_tri":"giua-phai","t":0.55}],
-  "sfx":["swoosh-nhe",{"ten":"ding","t":0.55}]},
-
- {"id":"c20","loi":"Góp ý không sai, sai là khi em xin lỗi cho việc mình không làm.","chu":"Góp ý không sai","tu_khoa":"không sai","bo_cuc":"nhan-vat-ke","nen":"burst","goc_may":"can",
-  "nhan_vat":[{"vai":"minh","tu_the":"chi-tay","bieu_cam":"binh-thuong","vi_tri":"giua","co":"lon","vao":"nhay"}],
-  "hieu_ung":[{"ten":"zoom-vao","t":0.4}],
-  "sfx":["whoosh",{"ten":"thud","t":0.4}]},
-
- {"id":"c21","loi":"Theo dõi Tâm Cơ để xem thêm.","chu":"","tu_khoa":"","bo_cuc":"ket","nen":"trung","goc_may":"trung",
-  "nhan_vat":[{"vai":"minh","tu_the":"vay-tay","bieu_cam":"cuoi","vi_tri":"giua","co":"vua","vao":"tu-duoi"}],
-  "sfx":["ding"]}
+ {
+  "id": "c01",
+  "phan": 1,
+  "loi": "Em thức ba đêm làm báo cáo, sáng ra sếp cảm ơn... chị ngồi cạnh.",
+  "chu": "Sếp cảm ơn chị ngồi cạnh",
+  "tu_khoa": "chị ngồi cạnh",
+  "bo_cuc": "hook-chu-to",
+  "nen": "phong-hop",
+  "goc_may": "can",
+  "nhan_vat": [
+   {
+    "vai": "minh",
+    "tu_the": "dung",
+    "bieu_cam": "binh-thuong",
+    "vi_tri": "giua-trai",
+    "co": "lon",
+    "vao": "nhay",
+    "t": 0.15,
+    "doi": [
+     {
+      "t": 0.72,
+      "tu_the": "om-dau",
+      "bieu_cam": "ngac-nhien"
+     }
+    ]
+   },
+   {
+    "vai": "sep",
+    "tu_the": "gio-tay",
+    "bieu_cam": "cuoi",
+    "vi_tri": "phai-xa",
+    "co": "vua",
+    "hang": "sau",
+    "vao": "co-san"
+   },
+   {
+    "vai": "dong-nghiep-nu",
+    "tu_the": "dung",
+    "bieu_cam": "cuoi",
+    "vi_tri": "phai",
+    "co": "vua",
+    "vao": "co-san"
+   }
+  ],
+  "hieu_ung": [
+   {
+    "ten": "rung",
+    "t": 0.72
+   }
+  ],
+  "sfx": [
+   "whoosh",
+   {
+    "ten": "thud",
+    "t": 0.72
+   }
+  ]
+ },
+ {
+  "id": "c02",
+  "phan": 1,
+  "loi": "Bản báo cáo đó, em làm từ con số đầu tiên tới trang cuối cùng.",
+  "chu": "Từ đầu tới cuối",
+  "tu_khoa": "đầu tới cuối",
+  "bo_cuc": "nhan-vat-ke",
+  "nen": "o-nha-toi",
+  "goc_may": "trung",
+  "nhan_vat": [
+   {
+    "vai": "minh",
+    "tu_the": "ngoi-ban",
+    "bieu_cam": "suy-nghi",
+    "vi_tri": "giua",
+    "co": "lon",
+    "vao": "tu-trai"
+   }
+  ],
+  "dao_cu": [
+   {
+    "ten": "laptop",
+    "vi_tri": "ban",
+    "man": "bieu-do",
+    "t": 0.1
+   },
+   {
+    "ten": "dong-ho",
+    "vi_tri": "tren-phai",
+    "t": 0.3
+   },
+   {
+    "ten": "coc-ca-phe",
+    "vi_tri": "giua-trai",
+    "t": 0.5
+   }
+  ],
+  "sfx": [
+   "swoosh-nhe",
+   {
+    "ten": "tick",
+    "t": 0.3
+   }
+  ]
+ },
+ {
+  "id": "c03",
+  "phan": 1,
+  "loi": "Tối thứ năm, em gửi cho chị Hà, nhắn thêm một câu: “Chị xem giúp em với.”",
+  "chu": "",
+  "tu_khoa": "",
+  "bo_cuc": "dien-thoai",
+  "nen": "man-hinh",
+  "goc_may": "qua-vai",
+  "nhan_vat": [
+   {
+    "vai": "minh",
+    "tu_the": "nhin-dien-thoai",
+    "bieu_cam": "lo-lang",
+    "vi_tri": "trai",
+    "co": "nho",
+    "vao": "co-san"
+   }
+  ],
+  "man_hinh": {
+   "loai": "tin-nhan-rieng",
+   "ten": "Hà Nguyễn",
+   "tin": [
+    {
+     "ai": "minh",
+     "nd": "Em gửi chị bản báo cáo quý ba",
+     "t": 0.3
+    },
+    {
+     "ai": "minh",
+     "nd": "Chị xem giúp em với",
+     "t": 0.75
+    }
+   ]
+  },
+  "sfx": [
+   {
+    "ten": "tin-nhan",
+    "t": 0.3
+   },
+   {
+    "ten": "tin-nhan",
+    "t": 0.75
+   }
+  ]
+ },
+ {
+  "id": "c04",
+  "phan": 1,
+  "loi": "Chị trả lời rất nhanh: “Ừ, để chị xem, em yên tâm.”",
+  "chu": "Em yên tâm",
+  "tu_khoa": "yên tâm",
+  "bo_cuc": "nhan-vat-ke",
+  "nen": "o-nha-toi",
+  "goc_may": "can",
+  "nhan_vat": [
+   {
+    "vai": "minh",
+    "tu_the": "nhin-dien-thoai",
+    "bieu_cam": "cuoi",
+    "vi_tri": "giua",
+    "co": "lon",
+    "vao": "co-san"
+   }
+  ],
+  "dao_cu": [
+   {
+    "ten": "dien-thoai",
+    "vi_tri": "tay-0",
+    "t": 0.05
+   },
+   {
+    "ten": "tim",
+    "vi_tri": "tren-phai",
+    "t": 0.6
+   }
+  ],
+  "sfx": [
+   {
+    "ten": "tin-nhan",
+    "t": 0.1
+   },
+   {
+    "ten": "ding",
+    "t": 0.6
+   }
+  ]
+ },
+ {
+  "id": "c05",
+  "phan": 1,
+  "loi": "Sáng hôm sau họp phòng, chị đứng lên trình bày nguyên bộ.",
+  "chu": "Chị trình bày nguyên bộ",
+  "tu_khoa": "nguyên bộ",
+  "bo_cuc": "nhan-vat-va-dong-nghiep",
+  "nen": "phong-hop",
+  "goc_may": "toan",
+  "nhan_vat": [
+   {
+    "vai": "dong-nghiep-nu",
+    "tu_the": "chi-tay",
+    "bieu_cam": "cuoi",
+    "vi_tri": "trai",
+    "co": "vua",
+    "vao": "di-vao"
+   },
+   {
+    "vai": "sep",
+    "tu_the": "chong-cam",
+    "bieu_cam": "binh-thuong",
+    "vi_tri": "giua-phai",
+    "co": "vua",
+    "vao": "co-san"
+   },
+   {
+    "vai": "minh",
+    "tu_the": "ngoi-ban",
+    "bieu_cam": "ngac-nhien",
+    "vi_tri": "phai-xa",
+    "co": "nho",
+    "hang": "sau",
+    "vao": "co-san"
+   }
+  ],
+  "dao_cu": [
+   {
+    "ten": "bieu-do",
+    "vi_tri": "tren-trai",
+    "t": 0.4
+   },
+   {
+    "ten": "ban-hop",
+    "vi_tri": "ban"
+   }
+  ],
+  "sfx": [
+   "whoosh",
+   {
+    "ten": "pop",
+    "t": 0.4
+   }
+  ]
+ },
+ {
+  "id": "c06",
+  "phan": 1,
+  "loi": "Câu đầu tiên chị nói: “Em làm cái này cả tuần đấy anh.”",
+  "chu": "Em làm cả tuần đấy anh",
+  "tu_khoa": "cả tuần",
+  "bo_cuc": "nhan-vat-ke",
+  "nen": "phong-hop",
+  "goc_may": "can",
+  "nhan_vat": [
+   {
+    "vai": "minh",
+    "tu_the": "dung",
+    "bieu_cam": "ngac-nhien",
+    "vi_tri": "trai-xa",
+    "co": "nho",
+    "hang": "sau",
+    "vao": "co-san"
+   },
+   {
+    "vai": "dong-nghiep-nu",
+    "tu_the": "dang-tay",
+    "bieu_cam": "cuoi",
+    "vi_tri": "giua-phai",
+    "co": "lon",
+    "vao": "co-san",
+    "noi_gia": true
+   }
+  ],
+  "hieu_ung": [
+   {
+    "ten": "vong-tron-do",
+    "muc_tieu": "nv-1",
+    "t": 0.6
+   }
+  ],
+  "sfx": [
+   "swoosh-nhe",
+   {
+    "ten": "thud",
+    "t": 0.6
+   }
+  ]
+ },
+ {
+  "id": "c07",
+  "phan": 1,
+  "loi": "Sếp gật gù, cả phòng vỗ tay.",
+  "chu": "Cả phòng vỗ tay",
+  "tu_khoa": "vỗ tay",
+  "bo_cuc": "nhan-vat-va-dong-nghiep",
+  "nen": "phong-hop",
+  "goc_may": "trung",
+  "nhan_vat": [
+   {
+    "vai": "sep",
+    "tu_the": "gio-tay",
+    "bieu_cam": "cuoi",
+    "vi_tri": "trai",
+    "co": "vua",
+    "vao": "co-san"
+   },
+   {
+    "vai": "dong-nghiep-nu",
+    "tu_the": "dung",
+    "bieu_cam": "cuoi",
+    "vi_tri": "giua",
+    "co": "vua",
+    "vao": "co-san"
+   },
+   {
+    "vai": "nhom",
+    "tu_the": "vay-tay",
+    "bieu_cam": "cuoi",
+    "vi_tri": "phai",
+    "co": "vua",
+    "vao": "co-san",
+    "t": 0.4
+   }
+  ],
+  "dao_cu": [
+   {
+    "ten": "ngoi-sao",
+    "vi_tri": "dau-1",
+    "t": 0.5
+   }
+  ],
+  "sfx": [
+   "ding",
+   {
+    "ten": "pop",
+    "t": 0.5
+   }
+  ]
+ },
+ {
+  "id": "c08",
+  "phan": 1,
+  "loi": "Còn em ngồi cuối bàn, tay cầm cây bút, không biết nói gì.",
+  "chu": "Em ngồi cuối bàn",
+  "tu_khoa": "cuối bàn",
+  "bo_cuc": "nhan-vat-ke",
+  "nen": "phong-hop",
+  "goc_may": "tu-tren",
+  "nhan_vat": [
+   {
+    "vai": "minh",
+    "tu_the": "ngoi-ban",
+    "bieu_cam": "buon",
+    "vi_tri": "giua",
+    "co": "vua",
+    "vao": "co-san"
+   }
+  ],
+  "dao_cu": [
+   {
+    "ten": "ban-hop",
+    "vi_tri": "ban"
+   },
+   {
+    "ten": "bong-noi",
+    "vi_tri": "dau-0",
+    "noi_dung": "cham",
+    "t": 0.6
+   }
+  ],
+  "sfx": [
+   "swoosh-nhe"
+  ]
+ },
+ {
+  "id": "c09",
+  "phan": 1,
+  "loi": "Em nhìn trang trình chiếu, từng biểu đồ em chỉnh tới hai giờ sáng.",
+  "chu": "",
+  "tu_khoa": "",
+  "bo_cuc": "dien-thoai",
+  "nen": "man-hinh",
+  "goc_may": "trung",
+  "nhan_vat": [
+   {
+    "vai": "minh",
+    "tu_the": "dung",
+    "bieu_cam": "buon",
+    "vi_tri": "phai",
+    "co": "nho",
+    "vao": "co-san"
+   }
+  ],
+  "man_hinh": {
+   "loai": "tai-lieu",
+   "tieu_de": "Báo cáo doanh thu quý ba"
+  },
+  "dao_cu": [
+   {
+    "ten": "dong-ho",
+    "vi_tri": "tren-phai",
+    "t": 0.75
+   }
+  ],
+  "hieu_ung": [
+   {
+    "ten": "zoom-vao",
+    "t": 0.4
+   }
+  ],
+  "sfx": [
+   "swoosh-nhe",
+   {
+    "ten": "tick",
+    "t": 0.75
+   }
+  ]
+ },
+ {
+  "id": "c10",
+  "phan": 1,
+  "loi": "Cái cảm giác đó, nó không phải giận, mà là nghẹn.",
+  "chu": "Không phải giận, là nghẹn",
+  "tu_khoa": "nghẹn",
+  "bo_cuc": "nhan-vat-ke",
+  "nen": "toi",
+  "goc_may": "can",
+  "nhan_vat": [
+   {
+    "vai": "minh",
+    "tu_the": "dung",
+    "bieu_cam": "buon",
+    "vi_tri": "giua",
+    "co": "lon",
+    "vao": "co-san"
+   }
+  ],
+  "dao_cu": [
+   {
+    "ten": "nghen",
+    "vi_tri": "dau-0",
+    "t": 0.75
+   }
+  ],
+  "hieu_ung": [
+   {
+    "ten": "zoom-vao",
+    "t": 0.55
+   }
+  ],
+  "sfx": [
+   {
+    "ten": "thud",
+    "t": 0.8
+   }
+  ]
+ },
+ {
+  "id": "c11",
+  "phan": 1,
+  "loi": "Sau này em mới để ý, kiểu người này có vài dấu hiệu rất dễ nhận ra.",
+  "chu": "Vài dấu hiệu dễ nhận ra",
+  "tu_khoa": "dấu hiệu",
+  "bo_cuc": "nhan-vat-va-dong-nghiep",
+  "nen": "van-phong-mo",
+  "goc_may": "toan",
+  "nhan_vat": [
+   {
+    "vai": "minh",
+    "tu_the": "cam-do",
+    "bieu_cam": "suy-nghi",
+    "vi_tri": "trai",
+    "co": "vua",
+    "vao": "di-vao"
+   },
+   {
+    "vai": "dong-nghiep-nu",
+    "tu_the": "khoanh-tay",
+    "bieu_cam": "cuoi",
+    "vi_tri": "phai",
+    "co": "vua",
+    "hang": "sau",
+    "vao": "co-san"
+   }
+  ],
+  "dao_cu": [
+   {
+    "ten": "kinh-lup",
+    "vi_tri": "tay-0",
+    "t": 0.4
+   }
+  ],
+  "sfx": [
+   "whoosh",
+   {
+    "ten": "pop",
+    "t": 0.8
+   }
+  ]
+ },
+ {
+  "id": "c12",
+  "phan": 1,
+  "loi": "Dấu hiệu thứ nhất: họ xin xem giúp, rồi tự tay gửi lên trên.",
+  "chu": "Xin xem giúp",
+  "tu_khoa": "xem giúp",
+  "bo_cuc": "dau-hieu-so",
+  "nen": "dau-hieu",
+  "goc_may": "trung",
+  "so": 1,
+  "nhan_vat": [
+   {
+    "vai": "dong-nghiep-nu",
+    "tu_the": "cam-do",
+    "bieu_cam": "cuoi",
+    "vi_tri": "giua-trai",
+    "co": "vua",
+    "vao": "tu-trai"
+   },
+   {
+    "vai": "sep",
+    "tu_the": "dung",
+    "bieu_cam": "binh-thuong",
+    "vi_tri": "phai",
+    "co": "vua",
+    "vao": "co-san"
+   }
+  ],
+  "dao_cu": [
+   {
+    "ten": "tai-lieu",
+    "vi_tri": "tay-0",
+    "t": 0.3
+   }
+  ],
+  "hieu_ung": [
+   {
+    "ten": "mui-ten",
+    "tu": "nv-0",
+    "den": "nv-1",
+    "t": 0.7
+   }
+  ],
+  "sfx": [
+   "pop",
+   {
+    "ten": "swoosh-nhe",
+    "t": 0.7
+   }
+  ]
+ },
+ {
+  "id": "c13",
+  "phan": 1,
+  "loi": "Họ không sửa gì nhiều, chỉ đổi tên người gửi, rồi chuyển thẳng cho sếp.",
+  "chu": "Đổi tên, chuyển thẳng sếp",
+  "tu_khoa": "Đổi tên",
+  "bo_cuc": "nhan-vat-va-dong-nghiep",
+  "nen": "van-phong-mo",
+  "goc_may": "qua-vai",
+  "nhan_vat": [
+   {
+    "vai": "dong-nghiep-nu",
+    "tu_the": "ngoi-ban",
+    "bieu_cam": "cuoi",
+    "vi_tri": "trai",
+    "co": "lon",
+    "vao": "co-san"
+   },
+   {
+    "vai": "sep",
+    "tu_the": "dung",
+    "bieu_cam": "binh-thuong",
+    "vi_tri": "phai",
+    "co": "vua",
+    "hang": "sau",
+    "vao": "co-san"
+   }
+  ],
+  "dao_cu": [
+   {
+    "ten": "laptop",
+    "vi_tri": "ban",
+    "man": "tai-lieu",
+    "t": 0.05
+   },
+   {
+    "ten": "phong-bi",
+    "vi_tri": "tay-0",
+    "den": "tay-1",
+    "t": 0.7
+   }
+  ],
+  "sfx": [
+   {
+    "ten": "tick",
+    "t": 0.4
+   },
+   {
+    "ten": "whoosh",
+    "t": 0.7
+   }
+  ]
+ },
+ {
+  "id": "c14",
+  "phan": 1,
+  "loi": "Giống như em nấu cả nồi canh, người ta bưng ra bàn và nhận là mình nấu.",
+  "chu": "Em nấu, người khác bưng",
+  "tu_khoa": "bưng",
+  "bo_cuc": "nhan-vat-ke",
+  "nen": "van-phong-mo",
+  "goc_may": "trung",
+  "nhan_vat": [
+   {
+    "vai": "minh",
+    "tu_the": "nhun-vai",
+    "bieu_cam": "buon",
+    "vi_tri": "giua-trai",
+    "co": "vua",
+    "vao": "tu-trai"
+   },
+   {
+    "vai": "dong-nghiep-nu",
+    "tu_the": "cam-do",
+    "bieu_cam": "cuoi",
+    "vi_tri": "phai",
+    "co": "vua",
+    "hang": "sau",
+    "vao": "co-san"
+   }
+  ],
+  "dao_cu": [
+   {
+    "ten": "coc-ca-phe",
+    "vi_tri": "tay-1",
+    "t": 0.55
+   }
+  ],
+  "sfx": [
+   "swoosh-nhe",
+   {
+    "ten": "pop",
+    "t": 0.55
+   }
+  ]
+ },
+ {
+  "id": "c15",
+  "phan": 1,
+  "loi": "Dấu hiệu thứ hai: nghe kỹ cách họ xưng hô.",
+  "chu": "Nghe cách xưng hô",
+  "tu_khoa": "xưng hô",
+  "bo_cuc": "dau-hieu-so",
+  "nen": "dau-hieu",
+  "goc_may": "can",
+  "so": 2,
+  "nhan_vat": [
+   {
+    "vai": "dong-nghiep-nu",
+    "tu_the": "thi-tham",
+    "bieu_cam": "cuoi",
+    "vi_tri": "giua",
+    "co": "vua",
+    "vao": "nhay",
+    "noi_gia": true
+   }
+  ],
+  "dao_cu": [
+   {
+    "ten": "bong-noi",
+    "vi_tri": "dau-0",
+    "noi_dung": "cham",
+    "t": 0.45
+   }
+  ],
+  "sfx": [
+   "pop",
+   "swoosh-nhe"
+  ]
+ },
+ {
+  "id": "c16",
+  "phan": 1,
+  "loi": "Lúc nhờ thì là “em làm giúp chị”, lúc báo cáo thì thành “tụi chị đã làm”.",
+  "chu": "Em làm, tụi chị làm",
+  "tu_khoa": "tụi chị",
+  "bo_cuc": "so-sanh",
+  "nen": "chia-doi",
+  "goc_may": "trung",
+  "nhan_vat": [
+   {
+    "vai": "dong-nghiep-nu",
+    "tu_the": "thi-tham",
+    "bieu_cam": "cuoi",
+    "ben": "trai",
+    "vao": "tu-trai",
+    "noi_gia": true
+   },
+   {
+    "vai": "minh",
+    "tu_the": "dung",
+    "bieu_cam": "binh-thuong",
+    "ben": "trai",
+    "vao": "co-san"
+   },
+   {
+    "vai": "dong-nghiep-nu",
+    "tu_the": "chi-tay",
+    "bieu_cam": "cuoi",
+    "ben": "phai",
+    "vao": "tu-phai",
+    "t": 0.5,
+    "noi_gia": true
+   },
+   {
+    "vai": "sep",
+    "tu_the": "dung",
+    "bieu_cam": "cuoi",
+    "ben": "phai",
+    "vao": "tu-phai",
+    "t": 0.55
+   }
+  ],
+  "sfx": [
+   "whoosh",
+   {
+    "ten": "ding",
+    "t": 0.55
+   }
+  ]
+ },
+ {
+  "id": "c17",
+  "phan": 1,
+  "loi": "Rồi dần dần, “tụi chị” chỉ còn lại một chữ “chị”.",
+  "chu": "Chỉ còn chữ chị",
+  "tu_khoa": "chữ chị",
+  "bo_cuc": "nhan-vat-va-dong-nghiep",
+  "nen": "van-phong-mo",
+  "goc_may": "trung",
+  "xep": "doi-dien",
+  "nhan_vat": [
+   {
+    "vai": "dong-nghiep-nu",
+    "tu_the": "dang-tay",
+    "bieu_cam": "cuoi",
+    "vi_tri": "trai",
+    "co": "vua",
+    "vao": "co-san",
+    "noi_gia": true
+   },
+   {
+    "vai": "sep",
+    "tu_the": "gio-tay",
+    "bieu_cam": "cuoi",
+    "vi_tri": "phai",
+    "co": "vua",
+    "vao": "co-san"
+   }
+  ],
+  "dao_cu": [
+   {
+    "ten": "ngoi-sao",
+    "vi_tri": "dau-0",
+    "t": 0.65
+   }
+  ],
+  "sfx": [
+   "swoosh-nhe",
+   {
+    "ten": "ding",
+    "t": 0.65
+   }
+  ]
+ },
+ {
+  "id": "c18",
+  "phan": 1,
+  "loi": "Tên em biến mất khỏi câu chuyện, nhẹ nhàng tới mức không ai thấy lạ.",
+  "chu": "Tên em biến mất",
+  "tu_khoa": "biến mất",
+  "bo_cuc": "nhan-vat-ke",
+  "nen": "van-phong-mo",
+  "goc_may": "toan",
+  "xep": "nhom-quay-lung",
+  "nhan_vat": [
+   {
+    "vai": "minh",
+    "tu_the": "dung",
+    "bieu_cam": "buon",
+    "vi_tri": "giua",
+    "co": "vua",
+    "vao": "co-san"
+   },
+   {
+    "vai": "nhom",
+    "tu_the": "quay-lung",
+    "bieu_cam": "binh-thuong",
+    "hang": "sau",
+    "vao": "co-san"
+   },
+   {
+    "vai": "sep",
+    "tu_the": "quay-lung",
+    "bieu_cam": "binh-thuong",
+    "hang": "sau",
+    "vao": "co-san"
+   }
+  ],
+  "sfx": [
+   "swoosh-nhe"
+  ]
+ },
+ {
+  "id": "c19",
+  "phan": 1,
+  "loi": "Kẻ cướp công sống được là nhờ người bị cướp ngại lên tiếng.",
+  "chu": "Vì em ngại lên tiếng",
+  "tu_khoa": "ngại",
+  "bo_cuc": "nhan-vat-va-dong-nghiep",
+  "nen": "trung",
+  "goc_may": "can",
+  "nhan_vat": [
+   {
+    "vai": "minh",
+    "tu_the": "chong-cam",
+    "bieu_cam": "lo-lang",
+    "vi_tri": "trai",
+    "co": "lon",
+    "vao": "co-san"
+   },
+   {
+    "vai": "dong-nghiep-nu",
+    "tu_the": "khoanh-tay",
+    "bieu_cam": "cuoi",
+    "vi_tri": "phai",
+    "co": "vua",
+    "hang": "sau",
+    "vao": "co-san"
+   }
+  ],
+  "dao_cu": [
+   {
+    "ten": "bong-noi",
+    "vi_tri": "dau-0",
+    "noi_dung": "khoa",
+    "t": 0.6
+   }
+  ],
+  "sfx": [
+   {
+    "ten": "pop",
+    "t": 0.6
+   }
+  ]
+ },
+ {
+  "id": "c20",
+  "phan": 1,
+  "loi": "Em cũng định lên tiếng, nhưng rồi lại im.",
+  "chu": "Định nói, rồi lại im",
+  "tu_khoa": "im",
+  "bo_cuc": "nhan-vat-ke",
+  "nen": "phong-hop",
+  "goc_may": "qua-vai",
+  "nhan_vat": [
+   {
+    "vai": "dong-nghiep-nu",
+    "tu_the": "dung",
+    "bieu_cam": "cuoi",
+    "vi_tri": "trai-xa",
+    "co": "lon",
+    "vao": "co-san"
+   },
+   {
+    "vai": "minh",
+    "tu_the": "gio-tay",
+    "bieu_cam": "lo-lang",
+    "vi_tri": "giua-phai",
+    "co": "vua",
+    "vao": "co-san",
+    "doi": [
+     {
+      "t": 0.6,
+      "tu_the": "ngoi-ban",
+      "bieu_cam": "buon"
+     }
+    ]
+   }
+  ],
+  "dao_cu": [
+   {
+    "ten": "ban-hop",
+    "vi_tri": "ban"
+   }
+  ],
+  "sfx": [
+   {
+    "ten": "swoosh-nhe",
+    "t": 0.6
+   }
+  ]
+ },
+ {
+  "id": "c21",
+  "phan": 1,
+  "loi": "Vì em chợt nhận ra, trong tay em không có lấy một bằng chứng nào...",
+  "chu": "Không một bằng chứng",
+  "tu_khoa": "bằng chứng",
+  "bo_cuc": "nhan-vat-va-dong-nghiep",
+  "nen": "toi",
+  "goc_may": "trung",
+  "nhan_vat": [
+   {
+    "vai": "minh",
+    "tu_the": "dang-tay",
+    "bieu_cam": "lo-lang",
+    "vi_tri": "giua",
+    "co": "lon",
+    "vao": "co-san"
+   },
+   {
+    "vai": "dong-nghiep-nu",
+    "tu_the": "khoanh-tay",
+    "bieu_cam": "cuoi",
+    "vi_tri": "phai",
+    "co": "vua",
+    "hang": "sau",
+    "vao": "co-san"
+   }
+  ],
+  "dao_cu": [
+   {
+    "ten": "dau-hoi",
+    "vi_tri": "dau-0",
+    "t": 0.5
+   },
+   {
+    "ten": "tai-lieu",
+    "vi_tri": "tren-trai",
+    "t": 0.2
+   }
+  ],
+  "hieu_ung": [
+   {
+    "ten": "gach-cheo",
+    "muc_tieu": "dc-1",
+    "t": 0.75
+   },
+   {
+    "ten": "rung",
+    "t": 0.75
+   }
+  ],
+  "sfx": [
+   {
+    "ten": "pop",
+    "t": 0.5
+   },
+   {
+    "ten": "thud",
+    "t": 0.75
+   }
+  ]
+ },
+ {
+  "id": "c22",
+  "phan": 2,
+  "loi": "Phần trước, chị Hà lấy trọn báo cáo của em.",
+  "chu": "Chị Hà lấy trọn báo cáo",
+  "tu_khoa": "lấy trọn",
+  "bo_cuc": "nhan-vat-ke",
+  "nen": "van-phong-mo",
+  "goc_may": "toan",
+  "nhan_vat": [
+   {
+    "vai": "minh",
+    "tu_the": "dung",
+    "bieu_cam": "buon",
+    "vi_tri": "trai",
+    "co": "vua",
+    "vao": "tu-trai"
+   },
+   {
+    "vai": "dong-nghiep-nu",
+    "tu_the": "cam-do",
+    "bieu_cam": "cuoi",
+    "vi_tri": "phai",
+    "co": "vua",
+    "vao": "co-san"
+   }
+  ],
+  "dao_cu": [
+   {
+    "ten": "tai-lieu",
+    "vi_tri": "tay-1",
+    "t": 0.3
+   }
+  ],
+  "sfx": [
+   "swoosh-nhe"
+  ]
+ },
+ {
+  "id": "c23",
+  "phan": 2,
+  "loi": "Việc em làm mà không ai thấy, thì sớm muộn cũng thành việc của người khác.",
+  "chu": "Thành việc của người khác",
+  "tu_khoa": "người khác",
+  "bo_cuc": "hook-chu-to",
+  "nen": "burst",
+  "goc_may": "trung",
+  "nhan_vat": [
+   {
+    "vai": "minh",
+    "tu_the": "dung",
+    "bieu_cam": "binh-thuong",
+    "vi_tri": "giua",
+    "co": "lon",
+    "vao": "nhay",
+    "t": 0.15,
+    "doi": [
+     {
+      "t": 0.7,
+      "tu_the": "chi-tay",
+      "bieu_cam": "ngac-nhien"
+     }
+    ]
+   },
+   {
+    "vai": "dong-nghiep-nu",
+    "tu_the": "cam-do",
+    "bieu_cam": "cuoi",
+    "vi_tri": "phai",
+    "co": "vua",
+    "hang": "sau",
+    "vao": "di-vao",
+    "t": 0.6
+   }
+  ],
+  "hieu_ung": [
+   {
+    "ten": "rung",
+    "t": 0.75
+   }
+  ],
+  "sfx": [
+   "whoosh",
+   {
+    "ten": "thud",
+    "t": 0.75
+   }
+  ]
+ },
+ {
+  "id": "c24",
+  "phan": 2,
+  "loi": "Sau vụ đó, em ngồi nghĩ lại cả buổi tối.",
+  "chu": "Nghĩ lại cả buổi tối",
+  "tu_khoa": "Nghĩ lại",
+  "bo_cuc": "nhan-vat-ke",
+  "nen": "o-nha-toi",
+  "goc_may": "tu-tren",
+  "nhan_vat": [
+   {
+    "vai": "minh",
+    "tu_the": "chong-cam",
+    "bieu_cam": "suy-nghi",
+    "vi_tri": "giua",
+    "co": "vua",
+    "vao": "co-san"
+   }
+  ],
+  "dao_cu": [
+   {
+    "ten": "dong-ho",
+    "vi_tri": "tren-phai",
+    "t": 0.3
+   },
+   {
+    "ten": "coc-ca-phe",
+    "vi_tri": "ban",
+    "t": 0.1
+   }
+  ],
+  "sfx": [
+   {
+    "ten": "tick",
+    "t": 0.3
+   }
+  ]
+ },
+ {
+  "id": "c25",
+  "phan": 2,
+  "loi": "Em mới nhận ra, việc gì em làm cũng phải qua tay chị rồi mới tới sếp.",
+  "chu": "Mọi thứ qua tay chị",
+  "tu_khoa": "qua tay chị",
+  "bo_cuc": "nhan-vat-va-dong-nghiep",
+  "nen": "trung",
+  "goc_may": "toan",
+  "nhan_vat": [
+   {
+    "vai": "minh",
+    "tu_the": "cam-do",
+    "bieu_cam": "binh-thuong",
+    "vi_tri": "trai",
+    "co": "vua",
+    "vao": "co-san"
+   },
+   {
+    "vai": "dong-nghiep-nu",
+    "tu_the": "dung",
+    "bieu_cam": "cuoi",
+    "vi_tri": "giua",
+    "co": "vua",
+    "vao": "co-san"
+   },
+   {
+    "vai": "sep",
+    "tu_the": "dung",
+    "bieu_cam": "binh-thuong",
+    "vi_tri": "phai",
+    "co": "vua",
+    "vao": "co-san"
+   }
+  ],
+  "dao_cu": [
+   {
+    "ten": "tai-lieu",
+    "vi_tri": "tay-0",
+    "den": "tay-1",
+    "t": 0.35
+   }
+  ],
+  "hieu_ung": [
+   {
+    "ten": "mui-ten",
+    "tu": "nv-1",
+    "den": "nv-2",
+    "t": 0.7
+   }
+  ],
+  "sfx": [
+   {
+    "ten": "swoosh-nhe",
+    "t": 0.35
+   },
+   {
+    "ten": "whoosh",
+    "t": 0.7
+   }
+  ]
+ },
+ {
+  "id": "c26",
+  "phan": 2,
+  "loi": "Sếp chưa từng thấy một dòng nào do chính em gửi.",
+  "chu": "Không một dòng của em",
+  "tu_khoa": "một dòng",
+  "bo_cuc": "nhan-vat-ke",
+  "nen": "van-phong-mo",
+  "goc_may": "qua-vai",
+  "nhan_vat": [
+   {
+    "vai": "sep",
+    "tu_the": "ngoi-ban",
+    "bieu_cam": "binh-thuong",
+    "vi_tri": "trai",
+    "co": "lon",
+    "vao": "co-san"
+   },
+   {
+    "vai": "minh",
+    "tu_the": "dung",
+    "bieu_cam": "lo-lang",
+    "vi_tri": "giua-phai",
+    "co": "vua",
+    "hang": "sau",
+    "vao": "co-san"
+   }
+  ],
+  "dao_cu": [
+   {
+    "ten": "laptop",
+    "vi_tri": "ban",
+    "man": "trong",
+    "t": 0.05
+   },
+   {
+    "ten": "dau-hoi",
+    "vi_tri": "dau-1",
+    "t": 0.6
+   }
+  ],
+  "sfx": [
+   {
+    "ten": "pop",
+    "t": 0.6
+   }
+  ]
+ },
+ {
+  "id": "c27",
+  "phan": 2,
+  "loi": "Nên chị đứng lên nhận, sếp thấy hợp lý quá còn gì.",
+  "chu": "Hợp lý trong mắt sếp",
+  "tu_khoa": "Hợp lý",
+  "bo_cuc": "nhan-vat-va-dong-nghiep",
+  "nen": "van-phong-mo",
+  "goc_may": "trung",
+  "nhan_vat": [
+   {
+    "vai": "dong-nghiep-nu",
+    "tu_the": "gio-tay",
+    "bieu_cam": "cuoi",
+    "vi_tri": "trai",
+    "co": "vua",
+    "vao": "di-vao"
+   },
+   {
+    "vai": "sep",
+    "tu_the": "chong-cam",
+    "bieu_cam": "cuoi",
+    "vi_tri": "phai",
+    "co": "vua",
+    "vao": "co-san"
+   }
+  ],
+  "hieu_ung": [
+   {
+    "ten": "tick",
+    "muc_tieu": "nv-0",
+    "t": 0.7
+   }
+  ],
+  "sfx": [
+   "swoosh-nhe",
+   {
+    "ten": "tick",
+    "t": 0.7
+   }
+  ]
+ },
+ {
+  "id": "c28",
+  "phan": 2,
+  "loi": "Từ hôm đó, em tập ba thói quen nhỏ, gọi là để lại dấu vết.",
+  "chu": "Để lại dấu vết",
+  "tu_khoa": "dấu vết",
+  "bo_cuc": "nhan-vat-ke",
+  "nen": "van-phong-mo",
+  "goc_may": "can",
+  "nhan_vat": [
+   {
+    "vai": "minh",
+    "tu_the": "chi-tay",
+    "bieu_cam": "binh-thuong",
+    "vi_tri": "giua",
+    "co": "lon",
+    "vao": "nhay"
+   }
+  ],
+  "hieu_ung": [
+   {
+    "ten": "so-thu-tu",
+    "so": 3,
+    "vi_tri": "tren-phai",
+    "t": 0.45
+   }
+  ],
+  "sfx": [
+   {
+    "ten": "pop",
+    "t": 0.45
+   }
+  ]
+ },
+ {
+  "id": "c29",
+  "phan": 2,
+  "loi": "Thói quen thứ nhất: gửi việc bằng thư, và luôn đồng gửi cho sếp.",
+  "chu": "Gửi thư, đồng gửi sếp",
+  "tu_khoa": "đồng gửi",
+  "bo_cuc": "loi-khuyen",
+  "nen": "loi-khuyen",
+  "goc_may": "trung",
+  "so": 1,
+  "nhan_vat": [
+   {
+    "vai": "minh",
+    "tu_the": "gio-tay",
+    "bieu_cam": "binh-thuong",
+    "vi_tri": "giua-trai",
+    "co": "vua",
+    "vao": "tu-trai"
+   }
+  ],
+  "dao_cu": [
+   {
+    "ten": "phong-bi",
+    "vi_tri": "giua-phai",
+    "t": 0.3
+   }
+  ],
+  "hieu_ung": [
+   {
+    "ten": "tick",
+    "muc_tieu": "dc-0",
+    "t": 0.75
+   }
+  ],
+  "sfx": [
+   "ding",
+   {
+    "ten": "tick",
+    "t": 0.75
+   }
+  ]
+ },
+ {
+  "id": "c30",
+  "phan": 2,
+  "loi": "Không cần dài, chỉ một dòng: “Em gửi chị bản nháp, nhờ chị góp ý giúp em.”",
+  "chu": "",
+  "tu_khoa": "",
+  "bo_cuc": "dien-thoai",
+  "nen": "man-hinh",
+  "goc_may": "can",
+  "nhan_vat": [
+   {
+    "vai": "minh",
+    "tu_the": "nhin-dien-thoai",
+    "bieu_cam": "binh-thuong",
+    "vi_tri": "trai",
+    "co": "nho",
+    "vao": "co-san"
+   }
+  ],
+  "man_hinh": {
+   "loai": "email",
+   "tu": "Em (đồng gửi anh Quân)",
+   "tieu_de": "Bản nháp báo cáo, nhờ chị góp ý"
+  },
+  "hieu_ung": [
+   {
+    "ten": "vong-tron-do",
+    "muc_tieu": "man-hinh",
+    "t": 0.6
+   }
+  ],
+  "sfx": [
+   {
+    "ten": "tin-nhan",
+    "t": 0.3
+   },
+   {
+    "ten": "pop",
+    "t": 0.6
+   }
+  ]
+ },
+ {
+  "id": "c31",
+  "phan": 2,
+  "loi": "Chị vẫn được xem trước, nhưng sếp đã biết bản đó từ đâu ra.",
+  "chu": "Sếp biết bản gốc của ai",
+  "tu_khoa": "bản gốc",
+  "bo_cuc": "nhan-vat-va-dong-nghiep",
+  "nen": "van-phong-mo",
+  "goc_may": "tu-tren",
+  "nhan_vat": [
+   {
+    "vai": "dong-nghiep-nu",
+    "tu_the": "ngoi-ban",
+    "bieu_cam": "suy-nghi",
+    "vi_tri": "trai",
+    "co": "vua",
+    "vao": "co-san"
+   },
+   {
+    "vai": "sep",
+    "tu_the": "dung",
+    "bieu_cam": "cuoi",
+    "vi_tri": "phai",
+    "co": "vua",
+    "hang": "sau",
+    "vao": "co-san"
+   }
+  ],
+  "dao_cu": [
+   {
+    "ten": "laptop",
+    "vi_tri": "ban",
+    "man": "tai-lieu",
+    "t": 0.05
+   }
+  ],
+  "hieu_ung": [
+   {
+    "ten": "tick",
+    "muc_tieu": "nv-1",
+    "t": 0.65
+   }
+  ],
+  "sfx": [
+   {
+    "ten": "tick",
+    "t": 0.65
+   }
+  ]
+ },
+ {
+  "id": "c32",
+  "phan": 2,
+  "loi": "Thói quen thứ hai: ghi tên mình ngay trang đầu tiên.",
+  "chu": "Ghi tên trang đầu",
+  "tu_khoa": "Ghi tên",
+  "bo_cuc": "loi-khuyen",
+  "nen": "loi-khuyen",
+  "goc_may": "can",
+  "so": 2,
+  "nhan_vat": [
+   {
+    "vai": "minh",
+    "tu_the": "chi-tay",
+    "bieu_cam": "cuoi",
+    "vi_tri": "giua",
+    "co": "vua",
+    "vao": "co-san"
+   }
+  ],
+  "dao_cu": [
+   {
+    "ten": "tai-lieu",
+    "vi_tri": "giua-phai",
+    "t": 0.2
+   },
+   {
+    "ten": "ngoi-sao",
+    "vi_tri": "tren-phai",
+    "t": 0.6
+   }
+  ],
+  "sfx": [
+   "ding",
+   {
+    "ten": "pop",
+    "t": 0.6
+   }
+  ]
+ },
+ {
+  "id": "c33",
+  "phan": 2,
+  "loi": "Một dòng nhỏ thôi: người thực hiện, kèm ngày tháng.",
+  "chu": "",
+  "tu_khoa": "",
+  "bo_cuc": "dien-thoai",
+  "nen": "man-hinh",
+  "goc_may": "trung",
+  "nhan_vat": [
+   {
+    "vai": "minh",
+    "tu_the": "dung",
+    "bieu_cam": "cuoi",
+    "vi_tri": "phai",
+    "co": "nho",
+    "vao": "co-san"
+   }
+  ],
+  "man_hinh": {
+   "loai": "tai-lieu",
+   "tieu_de": "Người thực hiện: em, ngày mười hai tháng mười một"
+  },
+  "hieu_ung": [
+   {
+    "ten": "vong-tron-do",
+    "muc_tieu": "man-hinh",
+    "t": 0.45
+   }
+  ],
+  "sfx": [
+   "swoosh-nhe",
+   {
+    "ten": "tick",
+    "t": 0.45
+   }
+  ]
+ },
+ {
+  "id": "c34",
+  "phan": 2,
+  "loi": "Ai muốn xóa thì phải cố tình, mà cố tình là dễ lộ.",
+  "chu": "Cố tình thì dễ lộ",
+  "tu_khoa": "dễ lộ",
+  "bo_cuc": "nhan-vat-va-dong-nghiep",
+  "nen": "van-phong-mo",
+  "goc_may": "qua-vai",
+  "nhan_vat": [
+   {
+    "vai": "dong-nghiep-nu",
+    "tu_the": "ngoi-ban",
+    "bieu_cam": "lo-lang",
+    "vi_tri": "trai",
+    "co": "lon",
+    "vao": "co-san"
+   },
+   {
+    "vai": "sep",
+    "tu_the": "dung",
+    "bieu_cam": "suy-nghi",
+    "vi_tri": "phai",
+    "co": "vua",
+    "hang": "sau",
+    "vao": "co-san"
+   }
+  ],
+  "dao_cu": [
+   {
+    "ten": "laptop",
+    "vi_tri": "ban",
+    "man": "tai-lieu",
+    "t": 0.05
+   },
+   {
+    "ten": "kinh-lup",
+    "vi_tri": "tay-1",
+    "t": 0.55
+   },
+   {
+    "ten": "dau-than",
+    "vi_tri": "dau-0",
+    "t": 0.8
+   }
+  ],
+  "sfx": [
+   {
+    "ten": "swoosh-nhe",
+    "t": 0.55
+   },
+   {
+    "ten": "pop",
+    "t": 0.8
+   }
+  ]
+ },
+ {
+  "id": "c35",
+  "phan": 2,
+  "loi": "Thói quen thứ ba: cập nhật tiến độ trong nhóm chung, không nhắn riêng.",
+  "chu": "Cập nhật trong nhóm chung",
+  "tu_khoa": "nhóm chung",
+  "bo_cuc": "loi-khuyen",
+  "nen": "loi-khuyen",
+  "goc_may": "toan",
+  "so": 3,
+  "nhan_vat": [
+   {
+    "vai": "minh",
+    "tu_the": "nhin-dien-thoai",
+    "bieu_cam": "cuoi",
+    "vi_tri": "giua-trai",
+    "co": "vua",
+    "vao": "tu-trai"
+   },
+   {
+    "vai": "nhom",
+    "tu_the": "dung",
+    "bieu_cam": "cuoi",
+    "vi_tri": "phai",
+    "co": "nho",
+    "hang": "sau",
+    "vao": "co-san",
+    "t": 0.5
+   }
+  ],
+  "dao_cu": [
+   {
+    "ten": "dien-thoai",
+    "vi_tri": "tay-0",
+    "t": 0.2
+   }
+  ],
+  "sfx": [
+   "ding",
+   {
+    "ten": "tin-nhan",
+    "t": 0.6
+   }
+  ]
+ },
+ {
+  "id": "c36",
+  "phan": 2,
+  "loi": "Kiểu như: “Em xong phần số liệu rồi ạ, mai em gửi bản đầy đủ.”",
+  "chu": "",
+  "tu_khoa": "",
+  "bo_cuc": "dien-thoai",
+  "nen": "man-hinh",
+  "goc_may": "tu-tren",
+  "nhan_vat": [
+   {
+    "vai": "minh",
+    "tu_the": "nhin-dien-thoai",
+    "bieu_cam": "cuoi",
+    "vi_tri": "trai",
+    "co": "nho",
+    "vao": "co-san"
+   }
+  ],
+  "man_hinh": {
+   "loai": "nhom-chat",
+   "ten": "Dự Án Quý Ba",
+   "thanh_vien": 9,
+   "tin": [
+    {
+     "ai": "minh",
+     "nd": "Em xong phần số liệu rồi ạ",
+     "t": 0.15
+    },
+    {
+     "ai": "minh",
+     "nd": "Mai em gửi bản đầy đủ",
+     "t": 0.6
+    },
+    {
+     "ai": "sep",
+     "icon": "tim",
+     "t": 0.9
+    }
+   ]
+  },
+  "sfx": [
+   {
+    "ten": "tin-nhan",
+    "t": 0.15
+   },
+   {
+    "ten": "tin-nhan",
+    "t": 0.6
+   }
+  ]
+ },
+ {
+  "id": "c37",
+  "phan": 2,
+  "loi": "Cả nhóm cùng đọc, nên không ai còn nói được “Em làm cái này cả tuần.”",
+  "chu": "Hết đường nhận vơ",
+  "tu_khoa": "nhận vơ",
+  "bo_cuc": "nhan-vat-va-dong-nghiep",
+  "nen": "trung",
+  "goc_may": "trung",
+  "nhan_vat": [
+   {
+    "vai": "nhom",
+    "tu_the": "nhin-dien-thoai",
+    "bieu_cam": "binh-thuong",
+    "vi_tri": "trai",
+    "co": "vua",
+    "vao": "co-san"
+   },
+   {
+    "vai": "dong-nghiep-nu",
+    "tu_the": "khoanh-tay",
+    "bieu_cam": "ngac-nhien",
+    "vi_tri": "phai",
+    "co": "vua",
+    "vao": "co-san"
+   }
+  ],
+  "dao_cu": [
+   {
+    "ten": "bong-noi",
+    "vi_tri": "dau-1",
+    "noi_dung": "cham",
+    "t": 0.5
+   }
+  ],
+  "hieu_ung": [
+   {
+    "ten": "gach-cheo",
+    "muc_tieu": "dc-0",
+    "t": 0.8
+   }
+  ],
+  "sfx": [
+   "swoosh-nhe",
+   {
+    "ten": "thud",
+    "t": 0.8
+   }
+  ]
+ },
+ {
+  "id": "c38",
+  "phan": 2,
+  "loi": "Cái này không phải khoe, mà là cho công sức của mình một cái tên.",
+  "chu": "Cho công sức một cái tên",
+  "tu_khoa": "cái tên",
+  "bo_cuc": "nhan-vat-ke",
+  "nen": "van-phong-mo",
+  "goc_may": "trung",
+  "nhan_vat": [
+   {
+    "vai": "minh",
+    "tu_the": "chi-tay",
+    "bieu_cam": "cuoi",
+    "vi_tri": "giua",
+    "co": "lon",
+    "vao": "tu-duoi"
+   }
+  ],
+  "dao_cu": [
+   {
+    "ten": "ngoi-sao",
+    "vi_tri": "tren-giua",
+    "t": 0.7
+   }
+  ],
+  "sfx": [
+   "swoosh-nhe",
+   {
+    "ten": "ding",
+    "t": 0.7
+   }
+  ]
+ },
+ {
+  "id": "c39",
+  "phan": 2,
+  "loi": "Người làm giỏi mà cứ im, thường là người dễ bị lấy công nhất.",
+  "chu": "Giỏi mà im, dễ mất công",
+  "tu_khoa": "im",
+  "bo_cuc": "so-sanh",
+  "nen": "chia-doi",
+  "goc_may": "toan",
+  "nhan_vat": [
+   {
+    "vai": "minh",
+    "tu_the": "ngoi-ban",
+    "bieu_cam": "buon",
+    "ben": "trai",
+    "vao": "tu-trai"
+   },
+   {
+    "vai": "dong-nghiep-nu",
+    "tu_the": "gio-tay",
+    "bieu_cam": "cuoi",
+    "ben": "phai",
+    "vao": "tu-phai",
+    "t": 0.45
+   }
+  ],
+  "dao_cu": [
+   {
+    "ten": "bong-noi",
+    "vi_tri": "dau-0",
+    "noi_dung": "khoa",
+    "ben": "trai",
+    "t": 0.25
+   },
+   {
+    "ten": "ngoi-sao",
+    "vi_tri": "dau-1",
+    "ben": "phai",
+    "t": 0.65
+   }
+  ],
+  "sfx": [
+   "whoosh",
+   {
+    "ten": "pop",
+    "t": 0.65
+   }
+  ]
+ },
+ {
+  "id": "c40",
+  "phan": 2,
+  "loi": "Ba thói quen này giúp em không bị cướp lần sau.",
+  "chu": "Không bị cướp lần sau",
+  "tu_khoa": "lần sau",
+  "bo_cuc": "loi-khuyen",
+  "nen": "trung",
+  "goc_may": "trung",
+  "nhan_vat": [
+   {
+    "vai": "minh",
+    "tu_the": "khoanh-tay",
+    "bieu_cam": "cuoi",
+    "vi_tri": "giua",
+    "co": "vua",
+    "vao": "co-san"
+   }
+  ],
+  "dao_cu": [
+   {
+    "ten": "phong-bi",
+    "vi_tri": "tren-trai",
+    "t": 0.15
+   },
+   {
+    "ten": "tai-lieu",
+    "vi_tri": "tren-giua",
+    "t": 0.3
+   },
+   {
+    "ten": "dien-thoai",
+    "vi_tri": "tren-phai",
+    "t": 0.45
+   }
+  ],
+  "hieu_ung": [
+   {
+    "ten": "tick",
+    "muc_tieu": "dc-0",
+    "t": 0.6
+   },
+   {
+    "ten": "tick",
+    "muc_tieu": "dc-2",
+    "t": 0.8
+   }
+  ],
+  "sfx": [
+   {
+    "ten": "tick",
+    "t": 0.6
+   },
+   {
+    "ten": "ding",
+    "t": 0.85
+   }
+  ]
+ },
+ {
+  "id": "c41",
+  "phan": 2,
+  "loi": "Còn nếu đã bị cướp rồi, ngay giữa buổi họp, thì sao?",
+  "chu": "Bị cướp rồi thì sao?",
+  "tu_khoa": "thì sao",
+  "bo_cuc": "nhan-vat-ke",
+  "nen": "phong-hop",
+  "goc_may": "toan",
+  "nhan_vat": [
+   {
+    "vai": "minh",
+    "tu_the": "dung",
+    "bieu_cam": "lo-lang",
+    "vi_tri": "trai",
+    "co": "vua",
+    "vao": "co-san",
+    "doi": [
+     {
+      "t": 0.6,
+      "tu_the": "om-dau",
+      "bieu_cam": "ngac-nhien"
+     }
+    ]
+   },
+   {
+    "vai": "dong-nghiep-nu",
+    "tu_the": "chi-tay",
+    "bieu_cam": "cuoi",
+    "vi_tri": "giua-phai",
+    "co": "vua",
+    "hang": "sau",
+    "vao": "co-san"
+   },
+   {
+    "vai": "sep",
+    "tu_the": "dung",
+    "bieu_cam": "cuoi",
+    "vi_tri": "phai",
+    "co": "vua",
+    "hang": "sau",
+    "vao": "co-san"
+   }
+  ],
+  "dao_cu": [
+   {
+    "ten": "dau-hoi",
+    "vi_tri": "dau-0",
+    "t": 0.75
+   }
+  ],
+  "hieu_ung": [
+   {
+    "ten": "zoom-vao",
+    "t": 0.5
+   }
+  ],
+  "sfx": [
+   {
+    "ten": "swoosh-nhe",
+    "t": 0.5
+   },
+   {
+    "ten": "thud",
+    "t": 0.8
+   }
+  ]
+ },
+ {
+  "id": "c42",
+  "phan": 3,
+  "loi": "Phần trước là ba cách để khỏi bị cướp công.",
+  "chu": "Ba cách giữ tên mình",
+  "tu_khoa": "Ba cách",
+  "bo_cuc": "loi-khuyen",
+  "nen": "trung",
+  "goc_may": "toan",
+  "nhan_vat": [
+   {
+    "vai": "minh",
+    "tu_the": "gio-tay",
+    "bieu_cam": "binh-thuong",
+    "vi_tri": "giua-trai",
+    "co": "vua",
+    "vao": "tu-trai"
+   }
+  ],
+  "dao_cu": [
+   {
+    "ten": "phong-bi",
+    "vi_tri": "tren-trai",
+    "t": 0.3
+   },
+   {
+    "ten": "tai-lieu",
+    "vi_tri": "tren-giua",
+    "t": 0.45
+   },
+   {
+    "ten": "dien-thoai",
+    "vi_tri": "tren-phai",
+    "t": 0.6
+   }
+  ],
+  "sfx": [
+   "swoosh-nhe",
+   {
+    "ten": "pop",
+    "t": 0.6
+   }
+  ]
+ },
+ {
+  "id": "c43",
+  "phan": 3,
+  "loi": "Bị cướp công ngay trước mặt sếp, em chỉ có đúng một phút để lấy lại.",
+  "chu": "Một phút để lấy lại",
+  "tu_khoa": "Một phút",
+  "bo_cuc": "hook-chu-to",
+  "nen": "toi",
+  "goc_may": "can",
+  "nhan_vat": [
+   {
+    "vai": "minh",
+    "tu_the": "dung",
+    "bieu_cam": "lo-lang",
+    "vi_tri": "giua",
+    "co": "lon",
+    "vao": "nhay",
+    "t": 0.15,
+    "doi": [
+     {
+      "t": 0.65,
+      "tu_the": "khoanh-tay",
+      "bieu_cam": "binh-thuong"
+     }
+    ]
+   }
+  ],
+  "dao_cu": [
+   {
+    "ten": "dong-ho",
+    "vi_tri": "tren-phai",
+    "t": 0.55
+   }
+  ],
+  "hieu_ung": [
+   {
+    "ten": "rung",
+    "t": 0.55
+   }
+  ],
+  "sfx": [
+   "whoosh",
+   {
+    "ten": "thud",
+    "t": 0.55
+   }
+  ]
+ },
+ {
+  "id": "c44",
+  "phan": 3,
+  "loi": "Quay lại buổi họp hôm đó, giả sử em được làm lại.",
+  "chu": "Giả sử được làm lại",
+  "tu_khoa": "làm lại",
+  "bo_cuc": "nhan-vat-va-dong-nghiep",
+  "nen": "phong-hop",
+  "goc_may": "toan",
+  "nhan_vat": [
+   {
+    "vai": "dong-nghiep-nu",
+    "tu_the": "chi-tay",
+    "bieu_cam": "cuoi",
+    "vi_tri": "trai",
+    "co": "vua",
+    "vao": "co-san"
+   },
+   {
+    "vai": "sep",
+    "tu_the": "chong-cam",
+    "bieu_cam": "binh-thuong",
+    "vi_tri": "giua-phai",
+    "co": "vua",
+    "vao": "co-san"
+   },
+   {
+    "vai": "minh",
+    "tu_the": "ngoi-ban",
+    "bieu_cam": "suy-nghi",
+    "vi_tri": "phai-xa",
+    "co": "nho",
+    "hang": "sau",
+    "vao": "co-san"
+   }
+  ],
+  "dao_cu": [
+   {
+    "ten": "bieu-do",
+    "vi_tri": "tren-trai",
+    "t": 0.1
+   }
+  ],
+  "hieu_ung": [
+   {
+    "ten": "vong-tron-do",
+    "muc_tieu": "nv-2",
+    "t": 0.6
+   }
+  ],
+  "sfx": [
+   "swoosh-nhe",
+   {
+    "ten": "pop",
+    "t": 0.6
+   }
+  ]
+ },
+ {
+  "id": "c45",
+  "phan": 3,
+  "loi": "Phản xạ đầu tiên của nhiều người là cãi, hoặc là nuốt cục tức vào trong.",
+  "chu": "Cãi, hay nuốt cục tức",
+  "tu_khoa": "nuốt",
+  "bo_cuc": "so-sanh",
+  "nen": "chia-doi",
+  "goc_may": "toan",
+  "nhan_vat": [
+   {
+    "vai": "minh",
+    "tu_the": "chi-tay",
+    "bieu_cam": "ngac-nhien",
+    "ben": "trai",
+    "vao": "tu-trai",
+    "t": 0.3
+   },
+   {
+    "vai": "dong-nghiep-nam",
+    "tu_the": "dung",
+    "bieu_cam": "buon",
+    "ben": "phai",
+    "vao": "tu-phai",
+    "t": 0.55
+   }
+  ],
+  "dao_cu": [
+   {
+    "ten": "nghen",
+    "vi_tri": "dau-1",
+    "ben": "phai",
+    "t": 0.75
+   }
+  ],
+  "sfx": [
+   "whoosh",
+   {
+    "ten": "thud",
+    "t": 0.75
+   }
+  ]
+ },
+ {
+  "id": "c46",
+  "phan": 3,
+  "loi": "Cãi thì em thành người nhỏ nhen, còn nuốt thì lần sau chị lại làm tiếp.",
+  "chu": "Cãi thành nhỏ nhen",
+  "tu_khoa": "nhỏ nhen",
+  "bo_cuc": "nhan-vat-va-dong-nghiep",
+  "nen": "phong-hop",
+  "goc_may": "trung",
+  "nhan_vat": [
+   {
+    "vai": "minh",
+    "tu_the": "chi-tay",
+    "bieu_cam": "lo-lang",
+    "vi_tri": "trai",
+    "co": "vua",
+    "vao": "co-san"
+   },
+   {
+    "vai": "nhom",
+    "tu_the": "dung",
+    "bieu_cam": "ngac-nhien",
+    "vi_tri": "giua-phai",
+    "co": "vua",
+    "hang": "sau",
+    "vao": "co-san"
+   },
+   {
+    "vai": "dong-nghiep-nu",
+    "tu_the": "khoanh-tay",
+    "bieu_cam": "cuoi",
+    "vi_tri": "phai",
+    "co": "vua",
+    "vao": "co-san"
+   }
+  ],
+  "dao_cu": [
+   {
+    "ten": "dau-than",
+    "vi_tri": "dau-1",
+    "t": 0.3
+   }
+  ],
+  "sfx": [
+   {
+    "ten": "thud",
+    "t": 0.3
+   },
+   {
+    "ten": "swoosh-nhe",
+    "t": 0.7
+   }
+  ]
+ },
+ {
+  "id": "c47",
+  "phan": 3,
+  "loi": "Có một cách thứ ba, nhẹ nhàng hơn mà lại hiệu quả hơn.",
+  "chu": "Có một cách thứ ba",
+  "tu_khoa": "thứ ba",
+  "bo_cuc": "nhan-vat-ke",
+  "nen": "pantry",
+  "goc_may": "can",
+  "nhan_vat": [
+   {
+    "vai": "minh",
+    "tu_the": "chong-cam",
+    "bieu_cam": "cuoi",
+    "vi_tri": "giua",
+    "co": "lon",
+    "vao": "co-san"
+   }
+  ],
+  "dao_cu": [
+   {
+    "ten": "coc-ca-phe",
+    "vi_tri": "tay-0",
+    "t": 0.1
+   }
+  ],
+  "hieu_ung": [
+   {
+    "ten": "so-thu-tu",
+    "so": 3,
+    "vi_tri": "tren-phai",
+    "t": 0.3
+   }
+  ],
+  "sfx": [
+   {
+    "ten": "pop",
+    "t": 0.3
+   }
+  ]
+ },
+ {
+  "id": "c48",
+  "phan": 3,
+  "loi": "Là nói thêm một câu thật chi tiết, ngay trong buổi họp.",
+  "chu": "Nói tiếp một câu chi tiết",
+  "tu_khoa": "chi tiết",
+  "bo_cuc": "loi-khuyen",
+  "nen": "loi-khuyen",
+  "goc_may": "trung",
+  "nhan_vat": [
+   {
+    "vai": "minh",
+    "tu_the": "gio-tay",
+    "bieu_cam": "binh-thuong",
+    "vi_tri": "giua-trai",
+    "co": "vua",
+    "vao": "tu-trai"
+   }
+  ],
+  "dao_cu": [
+   {
+    "ten": "kinh-lup",
+    "vi_tri": "giua-phai",
+    "t": 0.5
+   }
+  ],
+  "hieu_ung": [
+   {
+    "ten": "tick",
+    "muc_tieu": "dc-0",
+    "t": 0.8
+   }
+  ],
+  "sfx": [
+   "ding",
+   {
+    "ten": "tick",
+    "t": 0.8
+   }
+  ]
+ },
+ {
+  "id": "c49",
+  "phan": 3,
+  "loi": "Chờ chị trình bày xong, em giơ tay rất bình thường.",
+  "chu": "Giơ tay rất bình thường",
+  "tu_khoa": "bình thường",
+  "bo_cuc": "nhan-vat-va-dong-nghiep",
+  "nen": "phong-hop",
+  "goc_may": "qua-vai",
+  "nhan_vat": [
+   {
+    "vai": "sep",
+    "tu_the": "ngoi-ban",
+    "bieu_cam": "binh-thuong",
+    "vi_tri": "trai",
+    "co": "lon",
+    "vao": "co-san"
+   },
+   {
+    "vai": "minh",
+    "tu_the": "ngoi-ban",
+    "bieu_cam": "binh-thuong",
+    "vi_tri": "giua-phai",
+    "co": "vua",
+    "vao": "co-san",
+    "doi": [
+     {
+      "t": 0.45,
+      "tu_the": "gio-tay"
+     }
+    ]
+   },
+   {
+    "vai": "dong-nghiep-nu",
+    "tu_the": "dung",
+    "bieu_cam": "cuoi",
+    "vi_tri": "phai",
+    "co": "vua",
+    "hang": "sau",
+    "vao": "co-san"
+   }
+  ],
+  "sfx": [
+   {
+    "ten": "swoosh-nhe",
+    "t": 0.45
+   }
+  ]
+ },
+ {
+  "id": "c50",
+  "phan": 3,
+  "loi": "“Phần số liệu em làm, em xin bổ sung thêm một điểm ạ.”",
+  "chu": "Em xin bổ sung",
+  "tu_khoa": "bổ sung",
+  "bo_cuc": "nhan-vat-ke",
+  "nen": "phong-hop",
+  "goc_may": "can",
+  "nhan_vat": [
+   {
+    "vai": "minh",
+    "tu_the": "dung",
+    "bieu_cam": "binh-thuong",
+    "vi_tri": "giua",
+    "co": "lon",
+    "vao": "co-san",
+    "doi": [
+     {
+      "t": 0.5,
+      "tu_the": "chi-tay"
+     }
+    ]
+   }
+  ],
+  "dao_cu": [
+   {
+    "ten": "bieu-do",
+    "vi_tri": "tren-phai",
+    "t": 0.3
+   }
+  ],
+  "sfx": [
+   {
+    "ten": "pop",
+    "t": 0.3
+   }
+  ]
+ },
+ {
+  "id": "c51",
+  "phan": 3,
+  "loi": "Rồi em nói một chi tiết mà chỉ người làm thật mới biết.",
+  "chu": "Chỉ người làm mới biết",
+  "tu_khoa": "người làm",
+  "bo_cuc": "nhan-vat-va-dong-nghiep",
+  "nen": "phong-hop",
+  "goc_may": "tu-tren",
+  "nhan_vat": [
+   {
+    "vai": "minh",
+    "tu_the": "chi-tay",
+    "bieu_cam": "binh-thuong",
+    "vi_tri": "trai",
+    "co": "vua",
+    "vao": "co-san"
+   },
+   {
+    "vai": "nhom",
+    "tu_the": "dung",
+    "bieu_cam": "ngac-nhien",
+    "vi_tri": "giua-phai",
+    "co": "vua",
+    "vao": "co-san"
+   },
+   {
+    "vai": "sep",
+    "tu_the": "chong-cam",
+    "bieu_cam": "suy-nghi",
+    "vi_tri": "phai",
+    "co": "vua",
+    "vao": "co-san"
+   }
+  ],
+  "dao_cu": [
+   {
+    "ten": "bieu-do",
+    "vi_tri": "tren-trai",
+    "t": 0.1
+   }
+  ],
+  "hieu_ung": [
+   {
+    "ten": "vong-tron-do",
+    "muc_tieu": "nv-0",
+    "t": 0.7
+   }
+  ],
+  "sfx": [
+   {
+    "ten": "ding",
+    "t": 0.7
+   }
+  ]
+ },
+ {
+  "id": "c52",
+  "phan": 3,
+  "loi": "Ví dụ, con số tháng tám bị lệch vì có một đơn hàng trả lại.",
+  "chu": "",
+  "tu_khoa": "",
+  "bo_cuc": "dien-thoai",
+  "nen": "man-hinh",
+  "goc_may": "toan",
+  "nhan_vat": [
+   {
+    "vai": "minh",
+    "tu_the": "chi-tay",
+    "bieu_cam": "binh-thuong",
+    "vi_tri": "phai",
+    "co": "nho",
+    "vao": "co-san"
+   }
+  ],
+  "man_hinh": {
+   "loai": "tai-lieu",
+   "tieu_de": "Tháng tám lệch do một đơn hàng trả lại"
+  },
+  "hieu_ung": [
+   {
+    "ten": "vong-tron-do",
+    "muc_tieu": "man-hinh",
+    "t": 0.45
+   }
+  ],
+  "sfx": [
+   "swoosh-nhe",
+   {
+    "ten": "ding",
+    "t": 0.45
+   }
+  ]
+ },
+ {
+  "id": "c53",
+  "phan": 3,
+  "loi": "Em không tố ai, không cãi ai, chỉ cho cả phòng thấy em hiểu từng con số.",
+  "chu": "Hiểu từng con số",
+  "tu_khoa": "từng con số",
+  "bo_cuc": "nhan-vat-ke",
+  "nen": "phong-hop",
+  "goc_may": "trung",
+  "nhan_vat": [
+   {
+    "vai": "minh",
+    "tu_the": "dang-tay",
+    "bieu_cam": "cuoi",
+    "vi_tri": "giua",
+    "co": "vua",
+    "vao": "co-san"
+   }
+  ],
+  "dao_cu": [
+   {
+    "ten": "bieu-do",
+    "vi_tri": "tren-trai",
+    "t": 0.55
+   }
+  ],
+  "hieu_ung": [
+   {
+    "ten": "tick",
+    "muc_tieu": "dc-0",
+    "t": 0.8
+   }
+  ],
+  "sfx": [
+   {
+    "ten": "tick",
+    "t": 0.8
+   }
+  ]
+ },
+ {
+  "id": "c54",
+  "phan": 3,
+  "loi": "Sếp không ngốc đâu, tự khắc sếp hiểu ai mới là người làm thật.",
+  "chu": "Ai mới làm thật?",
+  "tu_khoa": "làm thật",
+  "bo_cuc": "nhan-vat-va-dong-nghiep",
+  "nen": "trung",
+  "goc_may": "can",
+  "nhan_vat": [
+   {
+    "vai": "sep",
+    "tu_the": "chong-cam",
+    "bieu_cam": "suy-nghi",
+    "vi_tri": "giua",
+    "co": "lon",
+    "vao": "co-san"
+   },
+   {
+    "vai": "minh",
+    "tu_the": "dung",
+    "bieu_cam": "binh-thuong",
+    "vi_tri": "trai-xa",
+    "co": "nho",
+    "hang": "sau",
+    "vao": "co-san"
+   },
+   {
+    "vai": "dong-nghiep-nu",
+    "tu_the": "dung",
+    "bieu_cam": "lo-lang",
+    "vi_tri": "phai-xa",
+    "co": "nho",
+    "hang": "sau",
+    "vao": "co-san"
+   }
+  ],
+  "dao_cu": [
+   {
+    "ten": "dau-hoi",
+    "vi_tri": "dau-0",
+    "t": 0.6
+   }
+  ],
+  "sfx": [
+   {
+    "ten": "pop",
+    "t": 0.6
+   }
+  ]
+ },
+ {
+  "id": "c55",
+  "phan": 3,
+  "loi": "Sau họp nếu chị Hà có hỏi, em chỉ cần cười: “Em bổ sung cho đủ thôi chị.”",
+  "chu": "Em bổ sung cho đủ",
+  "tu_khoa": "cho đủ",
+  "bo_cuc": "nhan-vat-ke",
+  "nen": "pantry",
+  "goc_may": "trung",
+  "nhan_vat": [
+   {
+    "vai": "minh",
+    "tu_the": "dung",
+    "bieu_cam": "cuoi",
+    "vi_tri": "trai",
+    "co": "vua",
+    "vao": "co-san"
+   },
+   {
+    "vai": "dong-nghiep-nu",
+    "tu_the": "khoanh-tay",
+    "bieu_cam": "suy-nghi",
+    "vi_tri": "phai",
+    "co": "vua",
+    "vao": "di-vao",
+    "t": 0.1
+   }
+  ],
+  "dao_cu": [
+   {
+    "ten": "coc-ca-phe",
+    "vi_tri": "tay-0",
+    "t": 0.05
+   }
+  ],
+  "sfx": [
+   "swoosh-nhe",
+   {
+    "ten": "ding",
+    "t": 0.75
+   }
+  ]
+ },
+ {
+  "id": "c56",
+  "phan": 3,
+  "loi": "Không ai mất mặt, nhưng ai cũng hiểu.",
+  "chu": "Không ai mất mặt",
+  "tu_khoa": "mất mặt",
+  "bo_cuc": "nhan-vat-va-dong-nghiep",
+  "nen": "pantry",
+  "goc_may": "toan",
+  "nhan_vat": [
+   {
+    "vai": "minh",
+    "tu_the": "dung",
+    "bieu_cam": "cuoi",
+    "vi_tri": "trai",
+    "co": "vua",
+    "vao": "co-san"
+   },
+   {
+    "vai": "dong-nghiep-nu",
+    "tu_the": "nhun-vai",
+    "bieu_cam": "cuoi",
+    "vi_tri": "phai",
+    "co": "vua",
+    "vao": "co-san"
+   }
+  ],
+  "hieu_ung": [
+   {
+    "ten": "tick",
+    "muc_tieu": "nv-0",
+    "t": 0.7
+   }
+  ],
+  "sfx": [
+   {
+    "ten": "tick",
+    "t": 0.7
+   }
+  ]
+ },
+ {
+  "id": "c57",
+  "phan": 3,
+  "loi": "Tóm lại, kẻ cướp công sợ nhất ba thứ: chữ viết, người chứng kiến, và chi tiết.",
+  "chu": "Ba thứ họ sợ nhất",
+  "tu_khoa": "sợ",
+  "bo_cuc": "dau-hieu-so",
+  "nen": "dau-hieu",
+  "goc_may": "toan",
+  "so": 3,
+  "nhan_vat": [
+   {
+    "vai": "dong-nghiep-nu",
+    "tu_the": "om-dau",
+    "bieu_cam": "lo-lang",
+    "vi_tri": "giua-trai",
+    "co": "vua",
+    "vao": "tu-duoi"
+   },
+   {
+    "vai": "nhom",
+    "tu_the": "dung",
+    "bieu_cam": "binh-thuong",
+    "vi_tri": "phai",
+    "co": "nho",
+    "hang": "sau",
+    "vao": "nhay",
+    "t": 0.65
+   }
+  ],
+  "dao_cu": [
+   {
+    "ten": "phong-bi",
+    "vi_tri": "tren-trai",
+    "t": 0.45
+   },
+   {
+    "ten": "kinh-lup",
+    "vi_tri": "tren-phai",
+    "t": 0.85
+   }
+  ],
+  "sfx": [
+   "pop",
+   {
+    "ten": "ding",
+    "t": 0.85
+   }
+  ]
+ },
+ {
+  "id": "c58",
+  "phan": 3,
+  "loi": "Chữ viết là thư có sếp đọc cùng, người chứng kiến là nhóm chung.",
+  "chu": "Thư và nhóm chung",
+  "tu_khoa": "nhóm chung",
+  "bo_cuc": "loi-khuyen",
+  "nen": "loi-khuyen",
+  "goc_may": "can",
+  "nhan_vat": [
+   {
+    "vai": "minh",
+    "tu_the": "chi-tay",
+    "bieu_cam": "binh-thuong",
+    "vi_tri": "giua",
+    "co": "vua",
+    "vao": "co-san"
+   }
+  ],
+  "dao_cu": [
+   {
+    "ten": "phong-bi",
+    "vi_tri": "tren-trai",
+    "t": 0.15
+   },
+   {
+    "ten": "dien-thoai",
+    "vi_tri": "tren-phai",
+    "t": 0.65
+   }
+  ],
+  "hieu_ung": [
+   {
+    "ten": "tick",
+    "muc_tieu": "dc-0",
+    "t": 0.4
+   },
+   {
+    "ten": "tick",
+    "muc_tieu": "dc-1",
+    "t": 0.85
+   }
+  ],
+  "sfx": [
+   {
+    "ten": "tick",
+    "t": 0.4
+   },
+   {
+    "ten": "tick",
+    "t": 0.85
+   }
+  ]
+ },
+ {
+  "id": "c59",
+  "phan": 3,
+  "loi": "Còn chi tiết thì họ không chép của em được.",
+  "chu": "Thứ không chép được",
+  "tu_khoa": "không chép",
+  "bo_cuc": "nhan-vat-va-dong-nghiep",
+  "nen": "trung",
+  "goc_may": "toan",
+  "nhan_vat": [
+   {
+    "vai": "dong-nghiep-nu",
+    "tu_the": "cam-do",
+    "bieu_cam": "lo-lang",
+    "vi_tri": "trai",
+    "co": "vua",
+    "vao": "co-san"
+   },
+   {
+    "vai": "minh",
+    "tu_the": "khoanh-tay",
+    "bieu_cam": "cuoi",
+    "vi_tri": "phai",
+    "co": "vua",
+    "vao": "co-san"
+   }
+  ],
+  "dao_cu": [
+   {
+    "ten": "tai-lieu",
+    "vi_tri": "tay-0",
+    "t": 0.2
+   }
+  ],
+  "hieu_ung": [
+   {
+    "ten": "gach-cheo",
+    "muc_tieu": "dc-0",
+    "t": 0.75
+   }
+  ],
+  "sfx": [
+   "swoosh-nhe",
+   {
+    "ten": "thud",
+    "t": 0.75
+   }
+  ]
+ },
+ {
+  "id": "c60",
+  "phan": 3,
+  "loi": "Người ta chép được trang trình chiếu, nhưng không chép được cái đầu đã làm ra nó.",
+  "chu": "Không chép được cái đầu",
+  "tu_khoa": "cái đầu",
+  "bo_cuc": "nhan-vat-ke",
+  "nen": "burst",
+  "goc_may": "can",
+  "nhan_vat": [
+   {
+    "vai": "minh",
+    "tu_the": "chi-tay",
+    "bieu_cam": "binh-thuong",
+    "vi_tri": "giua",
+    "co": "lon",
+    "vao": "nhay"
+   }
+  ],
+  "hieu_ung": [
+   {
+    "ten": "zoom-vao",
+    "t": 0.45
+   }
+  ],
+  "sfx": [
+   "whoosh",
+   {
+    "ten": "thud",
+    "t": 0.5
+   }
+  ]
+ },
+ {
+  "id": "c61",
+  "phan": 3,
+  "loi": "Theo dõi Tâm Cơ để xem thêm.",
+  "chu": "",
+  "tu_khoa": "",
+  "bo_cuc": "ket",
+  "nen": "trung",
+  "goc_may": "trung",
+  "nhan_vat": [
+   {
+    "vai": "minh",
+    "tu_the": "vay-tay",
+    "bieu_cam": "cuoi",
+    "vi_tri": "giua",
+    "co": "vua",
+    "vao": "tu-duoi"
+   }
+  ],
+  "sfx": [
+   "ding"
+  ]
+ }
 ]

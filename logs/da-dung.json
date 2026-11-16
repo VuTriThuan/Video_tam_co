@@ -133,5 +133,61 @@
    "Còn hạn giao hôm thứ ba vẫn trễ hai ngày ạ",
    "Em cảm ơn anh đã giúp em"
   ]
+ },
+ {
+  "chu_de": "cuop-cong",
+  "ngay": "2026-11-16",
+  "phong_cach": "tranh-tinh-zoom",
+  "tong_mau": "den-vang",
+  "seed": 19,
+  "mo_dau": {
+   "bo_cuc": "hook-chu-to",
+   "nen": "phong-hop"
+  },
+  "bo_cuc": {
+   "hook-chu-to": 3,
+   "nhan-vat-ke": 19,
+   "dien-thoai": 6,
+   "nhan-vat-va-dong-nghiep": 19,
+   "dau-hieu-so": 3,
+   "so-sanh": 3,
+   "loi-khuyen": 7,
+   "ket": 1
+  },
+  "nen": {
+   "phong-hop": 13,
+   "o-nha-toi": 3,
+   "man-hinh": 6,
+   "toi": 3,
+   "van-phong-mo": 12,
+   "dau-hieu": 3,
+   "chia-doi": 3,
+   "trung": 8,
+   "burst": 2,
+   "loi-khuyen": 5,
+   "pantry": 3
+  },
+  "goc_may": {
+   "can": 15,
+   "trung": 20,
+   "qua-vai": 6,
+   "toan": 15,
+   "tu-tren": 5
+  },
+  "man_hinh": [
+   "Báo cáo doanh thu quý ba",
+   "Bản nháp báo cáo, nhờ chị góp ý",
+   "Chị xem giúp em với",
+   "Dự Án Quý Ba",
+   "Em (đồng gửi anh Quân)",
+   "Em gửi chị bản báo cáo quý ba",
+   "Em xong phần số liệu rồi ạ",
+   "Hà Nguyễn",
+   "Mai em gửi bản đầy đủ",
+   "Người thực hiện: em, ngày mười hai tháng mười một",
+   "Tháng tám lệch do một đơn hàng trả lại"
+  ],
+  "dinh_dang": "chuoi",
+  "so_phan": 3
  }
 ]

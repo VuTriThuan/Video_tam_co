@@ -9,7 +9,7 @@
 - goc_ke: Em gửi file báo cáo cho chị Hà "xem giúp", hôm sau buổi họp chị trình bày nguyên bộ, câu đầu tiên là "em làm cái này cả tuần", còn em ngồi cuối bàn không biết nói gì.
 - y_chinh: 1) Dấu hiệu: xin "xem giúp" file rồi tự gửi lên trên, hay dùng "tụi chị" và "chị" thay cho "em" 2) Để lại dấu vết: gửi email có CC sếp, ghi tên vào file, cập nhật tiến độ trong nhóm chung 3) Lấy lại công mà không gây chiến: hỏi tiếp một câu chi tiết trong họp, kiểu "phần số liệu em làm, em bổ sung thêm..."
 - khoi: có sẵn đủ
-- trang_thai: moi
+- trang_thai: da-lam
 
 ## 2. DARVO: em góp ý, cuối cùng em phải xin lỗi
 - slug: darvo
