@@ -25,6 +25,8 @@ Luật dùng khối:
 - Màn hình (`man_hinh`) truyền nội dung qua tham số (tên nhóm, tin nhắn ngắn…), không cần mô tả hình.
 - Thời gian `t` là tỷ lệ câu đọc (0–1); chỉ ghi khi muốn khớp một chữ cụ thể trong câu.
 
+Hiệu ứng (`hieu_ung`, danh sách trong catalog mục HIEU_UNG, kèm "dùng khi / không dùng khi"): là **gia vị, không phải món chính**. Chỉ đặt ở cảnh có lý do (hook, lật mặt, lời khuyên chốt, chuyển ý); cảnh kể bình thường thì không dùng. Nhóm chú thích (vong-tron-do, gach-cheo, tick, so-thu-tu, mui-ten) dùng thoải mái khi cần chỉ vào thứ gì. Nhóm đặc biệt (rung, zoom-vao, den-roi và các hiệu ứng mới): tối đa 4 lượt mỗi video (chuỗi: mỗi phần), mỗi tên tối đa 2 lượt, không 2 cảnh liền nhau cùng một hiệu ứng. Không bắt buộc dùng hết hay dùng hiệu ứng mới; chọn cái hợp khoảnh khắc nhất.
+
 Chống lặp (máy sẽ kiểm, sai phải sửa):
 - Một kiểu cảnh (bo_cuc + nen + goc_may) dùng tối đa 2 lần; **không 2 cảnh liền nhau cùng bo_cuc** (xen cảnh minh họa giữa các dấu hiệu/lời khuyên).
 - Ít nhất 3 loại `goc_may`; dùng 2–4 bối cảnh; một nền không quá 4 cảnh liên tiếp.

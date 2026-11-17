@@ -1,131 +1,137 @@
 {
- "tong": 87.291,
+ "tong": 88.862,
  "canh": [
   {
    "id": "c01",
    "bat_dau": 0.0,
-   "giong": 4.636,
-   "thoi_luong": 4.986
+   "giong": 5.974,
+   "thoi_luong": 6.324
   },
   {
    "id": "c02",
-   "bat_dau": 4.986,
-   "giong": 3.88,
-   "thoi_luong": 4.08
+   "bat_dau": 6.324,
+   "giong": 4.405,
+   "thoi_luong": 4.605
   },
   {
    "id": "c03",
-   "bat_dau": 9.066,
-   "giong": 4.124,
-   "thoi_luong": 4.324
+   "bat_dau": 10.929,
+   "giong": 3.029,
+   "thoi_luong": 3.229
   },
   {
    "id": "c04",
-   "bat_dau": 13.39,
-   "giong": 3.544,
-   "thoi_luong": 3.744
+   "bat_dau": 14.158,
+   "giong": 3.847,
+   "thoi_luong": 4.047
   },
   {
    "id": "c05",
-   "bat_dau": 17.134,
-   "giong": 4.355,
-   "thoi_luong": 4.555
+   "bat_dau": 18.205,
+   "giong": 1.228,
+   "thoi_luong": 1.428
   },
   {
    "id": "c06",
-   "bat_dau": 21.689,
-   "giong": 4.234,
-   "thoi_luong": 4.434
+   "bat_dau": 19.633,
+   "giong": 2.705,
+   "thoi_luong": 2.905
   },
   {
    "id": "c07",
-   "bat_dau": 26.123,
-   "giong": 2.472,
-   "thoi_luong": 2.672
+   "bat_dau": 22.538,
+   "giong": 4.352,
+   "thoi_luong": 4.552
   },
   {
    "id": "c08",
-   "bat_dau": 28.795,
-   "giong": 3.833,
-   "thoi_luong": 4.133
+   "bat_dau": 27.09,
+   "giong": 3.995,
+   "thoi_luong": 4.195
   },
   {
    "id": "c09",
-   "bat_dau": 32.928,
-   "giong": 4.7,
-   "thoi_luong": 4.9
+   "bat_dau": 31.285,
+   "giong": 2.606,
+   "thoi_luong": 2.806
   },
   {
    "id": "c10",
-   "bat_dau": 37.828,
-   "giong": 3.393,
-   "thoi_luong": 3.593
+   "bat_dau": 34.091,
+   "giong": 5.173,
+   "thoi_luong": 5.373
   },
   {
    "id": "c11",
-   "bat_dau": 41.421,
-   "giong": 5.551,
-   "thoi_luong": 5.751
+   "bat_dau": 39.464,
+   "giong": 4.132,
+   "thoi_luong": 4.332
   },
   {
    "id": "c12",
-   "bat_dau": 47.172,
-   "giong": 2.728,
-   "thoi_luong": 2.928
+   "bat_dau": 43.796,
+   "giong": 3.628,
+   "thoi_luong": 3.928
   },
   {
    "id": "c13",
-   "bat_dau": 50.1,
-   "giong": 4.052,
-   "thoi_luong": 4.252
+   "bat_dau": 47.724,
+   "giong": 4.724,
+   "thoi_luong": 4.925
   },
   {
    "id": "c14",
-   "bat_dau": 54.352,
-   "giong": 5.059,
-   "thoi_luong": 5.259
+   "bat_dau": 52.649,
+   "giong": 0.747,
+   "thoi_luong": 0.947
   },
   {
    "id": "c15",
-   "bat_dau": 59.611,
-   "giong": 4.25,
-   "thoi_luong": 4.45
+   "bat_dau": 53.596,
+   "giong": 5.591,
+   "thoi_luong": 5.791
   },
   {
    "id": "c16",
-   "bat_dau": 64.061,
-   "giong": 3.673,
-   "thoi_luong": 3.873
+   "bat_dau": 59.387,
+   "giong": 3.632,
+   "thoi_luong": 3.832
   },
   {
    "id": "c17",
-   "bat_dau": 67.934,
-   "giong": 4.135,
-   "thoi_luong": 4.335
+   "bat_dau": 63.219,
+   "giong": 5.329,
+   "thoi_luong": 5.529
   },
   {
    "id": "c18",
-   "bat_dau": 72.269,
-   "giong": 4.27,
-   "thoi_luong": 4.47
+   "bat_dau": 68.748,
+   "giong": 4.809,
+   "thoi_luong": 5.009
   },
   {
    "id": "c19",
-   "bat_dau": 76.739,
-   "giong": 4.949,
-   "thoi_luong": 5.149
+   "bat_dau": 73.757,
+   "giong": 3.802,
+   "thoi_luong": 4.002
   },
   {
    "id": "c20",
-   "bat_dau": 81.888,
-   "giong": 2.734,
-   "thoi_luong": 3.084
+   "bat_dau": 77.759,
+   "giong": 4.568,
+   "thoi_luong": 4.768
   },
   {
    "id": "c21",
-   "bat_dau": 84.972,
-   "giong": 2.169,
-   "thoi_luong": 2.319
+   "bat_dau": 82.527,
+   "giong": 3.693,
+   "thoi_luong": 4.043
+  },
+  {
+   "id": "c22",
+   "bat_dau": 86.57,
+   "giong": 2.142,
+   "thoi_luong": 2.292
   }
  ]
 }

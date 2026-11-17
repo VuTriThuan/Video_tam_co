@@ -77,7 +77,10 @@
       const wl = TC.doRong(ln, fit.font), y = (o.y ?? 300) + lh * (k + 0.8);
       const id = 'ct' + (_id++);
       s += `<defs><clipPath id="${id}"><rect x="${cx - wl / 2 - 10}" y="${y - fit.co}" width="${(wl + 20) * E.out3(p)}" height="${fit.co * 1.4}"/></clipPath></defs>`;
+      const g = o.lop && { k, dong: fit.lines, line: ln, font: fit.font, co: fit.co, cx, yb: y, w: wl, gian: 0, ox: 0, oy: 0, dem: 10 };
+      if (g) s += o.lop(g, 'duoi');
       s += `<text x="${cx}" y="${y}" text-anchor="middle" font-family="PH" font-size="${fit.co}" clip-path="url(#${id})">${toTuKhoa(ln, canh.tu_khoa, MUC, DO)}</text>`;
+      if (g) s += o.lop(g, 'tren');
     });
     const pg = pha(t, t0 + fit.lines.length * tocDo, 0.35);
     if (pg > 0) {

@@ -8,6 +8,8 @@ Trong một video:
   - một kiểu cảnh (bo_cuc + nen + goc_may) dùng tối đa 2 lần; không 2 cảnh liền nhau cùng bo_cuc
   - ít nhất 3 loại goc_may; một nền không quá 4 cảnh liên tiếp; 2–4 bối cảnh
   - một kiểu chuyển cảnh không quá 3 lần liên tiếp (theo vòng chuyển cảnh của từng phong cách)
+  - hiệu ứng đặc biệt (mọi hieu_ung trừ nhóm chú thích vong-tron-do/gach-cheo/tick/so-thu-tu/mui-ten) là gia vị:
+    tối đa 4 lượt mỗi video (chuỗi: mỗi phần), mỗi tên tối đa 2 lượt, không 2 cảnh liền nhau cùng một hiệu ứng
 Chuỗi (video.json "dinh_dang": "chuoi"): kiểu cảnh tối đa 2 lần trong TỪNG phần, tối đa 3 lần cả chuỗi;
   cảnh mở đầu các phần phải khác nhau (khác bo_cuc hoặc nen).
 Giữa các video (logs/da-dung.json):
@@ -21,6 +23,8 @@ from collections import Counter
 
 GOC = pathlib.Path(__file__).resolve().parent.parent
 LOG = GOC / "logs" / "da-dung.json"
+CHU_THICH = {"vong-tron-do", "gach-cheo", "tick", "so-thu-tu", "mui-ten"}  # hiệu ứng chú thích, không tính là "đặc biệt"
+TOI_DA_HU, TOI_DA_MOI_HU = 4, 2
 BOI_CANH = set(json.loads((GOC / "render/thu-vien/ten-khoi.json").read_text())["boi_canh"])
 # vòng chuyển cảnh của từng phong cách (khớp phong-cach.js)
 VONG = {"bang-trang": ["lat", "xoa", "lat", "xoa"], "truyen-tranh": ["truot", "lat", "truot", "phong"], "tranh-tinh-zoom": ["den", "phong", "den", "truot"]}
@@ -63,6 +67,7 @@ def tom_tat(canh, video, pc):
             "seed": video.get("seed"), "mo_dau": {"bo_cuc": canh[0]["bo_cuc"], "nen": canh[0].get("nen", "burst")},
             "bo_cuc": dict(Counter(c["bo_cuc"] for c in canh)), "nen": dict(Counter(c.get("nen") for c in canh)),
             "goc_may": dict(Counter(c.get("goc_may") for c in canh)), "man_hinh": sorted(noi_dung_mh(canh)),
+            "hieu_ung": dict(Counter(h.get("ten") for c in canh for h in c.get("hieu_ung", []))),
             "dinh_dang": video.get("dinh_dang", "le"), "so_phan": (video.get("chuoi") or {}).get("so_phan", 1)}
 
 
@@ -86,6 +91,18 @@ def kiem():
             mo.setdefault(k, p)
     else:
         dem_kieu(canh, 2, "")
+    def dem_hu(ds, noi):
+        luot = [(c["id"], h.get("ten")) for c in ds for h in c.get("hieu_ung", []) if h.get("ten") not in CHU_THICH]
+        if len(luot) > TOI_DA_HU: vp.append(f"{noi}{len(luot)} lượt hiệu ứng đặc biệt (tối đa {TOI_DA_HU}) — bỏ bớt, giữ ở hook/lật mặt/chốt: " + ", ".join(f"{i}:{t}" for i, t in luot))
+        for ten, n in Counter(t for _, t in luot).items():
+            if n > TOI_DA_MOI_HU: vp.append(f"{noi}hiệu ứng '{ten}' dùng {n} lần (tối đa {TOI_DA_MOI_HU}): " + ", ".join(i for i, t in luot if t == ten))
+    if chuoi:
+        for p in phan: dem_hu(nhom[p], f"phần {p}: ")
+    else:
+        dem_hu(canh, "")
+    for a, b in zip(canh, canh[1:]):
+        chung = {h.get("ten") for h in a.get("hieu_ung", [])} & {h.get("ten") for h in b.get("hieu_ung", [])} - CHU_THICH
+        if chung: vp.append(f"{a['id']}–{b['id']}: 2 cảnh liền nhau cùng hiệu ứng {sorted(chung)}")
     for a, b in zip(canh, canh[1:]):
         if a["bo_cuc"] == b["bo_cuc"]: vp.append(f"{a['id']}–{b['id']}: 2 cảnh liền nhau cùng bo_cuc '{a['bo_cuc']}'")
     goc = {c.get("goc_may") for c in canh}

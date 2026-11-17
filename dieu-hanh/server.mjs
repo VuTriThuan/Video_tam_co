@@ -261,6 +261,16 @@ function canDuyet() {
   return { ...co, loai: san ? loai : null };
 }
 
+// khối mới /lam-moi đề xuất: du-an/lam-moi/de-xuat.json, mục trang_thai 'cho' | 'duyet' | 'khong'
+function deXuatKhoi(tv) {
+  const d = docJson(p('du-an', 'lam-moi', 'de-xuat.json'), null);
+  if (!d || !Array.isArray(d.muc) || !tv) return d && Array.isArray(d.muc) ? d : null;
+  const co = new Set(tv.nhom.flatMap(g => g.khoi.map(k => k.ten)));
+  d.muc.forEach(m => { m.da_ve = m.viec === 'bo' ? !co.has(m.ten) : co.has(m.ten); });
+  return d;
+}
+const soKhoiCho = () => (deXuatKhoi()?.muc || []).filter(m => m.trang_thai === 'cho').length;
+
 function banTin(slug, n = 300) {
   const docF = f => docTxt(f).split('\n').filter(Boolean).map(d => { try { return JSON.parse(d); } catch { return null; } }).filter(Boolean);
   let ds = slug ? docF(p('du-an', slug, 'ban-tin.jsonl')) : thuMuc(p('du-an')).flatMap(s => docF(p('du-an', s, 'ban-tin.jsonl')));
@@ -350,7 +360,7 @@ const server = http.createServer(async (req, res) => {
     if (req.method === 'GET') {
       if (pn === '/' || pn === '/index.html') return guiTep(req, res, path.join(DH, 'index.html'));
       if (pn === '/van-phong.js') return guiTep(req, res, path.join(DH, 'van-phong.js'));
-      if (pn === '/api/trang-thai') return json(res, { nhan_vien: Object.values(NV).map(({ id, trang_thai, viec, model, ts }) => ({ id, trang_thai: conLam(id, trang_thai, ts), viec, model, ts })), tien_do: tienDo, hien_tai: hienTai(), phien: ttPhien(), can_duyet: canDuyet() });
+      if (pn === '/api/trang-thai') return json(res, { nhan_vien: Object.values(NV).map(({ id, trang_thai, viec, model, ts }) => ({ id, trang_thai: conLam(id, trang_thai, ts), viec, model, ts })), tien_do: tienDo, hien_tai: hienTai(), phien: ttPhien(), can_duyet: canDuyet(), khoi_cho: soKhoiCho() });
       if (pn === '/api/doi-ngu') return json(res, { ds: doiNgu() });
       if (pn === '/api/kho') return json(res, { ds: kho() });
       if (pn === '/api/cau-hinh') return json(res, cauHinh());
@@ -361,7 +371,7 @@ const server = http.createServer(async (req, res) => {
       if (pn === '/api/du-an') return json(res, { ds: danhSach(), hien_tai: hienTai() });
       if (pn.startsWith('/api/du-an/')) { const s = pn.slice(11); return slugHopLe(s) ? json(res, duAn(s)) : json(res, { loi: 'slug' }, 400); }
       if (pn === '/api/ban-tin') { const s = u.searchParams.get('slug'); return json(res, { ds: banTin(slugHopLe(s) ? s : '') }); }
-      if (pn === '/api/thu-vien') return json(res, thuVien());
+      if (pn === '/api/thu-vien') { const tv = thuVien(); return json(res, { ...tv, de_xuat: deXuatKhoi(tv) }); }
       if (pn === '/api/phan-tich') return json(res, phanTich());
       if (pn === '/api/token') return token(t => json(res, t));
       if (pn.startsWith('/tep/')) {
@@ -386,6 +396,25 @@ const server = http.createServer(async (req, res) => {
         const r = b.gui === false ? {} : guiLenh('tiếp');
         return json(res, { ok: true, da_gui: !!r.ok, xep_hang: r.xep_hang || 0 });
       }
+      if (pn === '/api/duyet-khoi') {
+        const b = JSON.parse((await docBody(req, 1e5)).toString() || '{}');
+        const f = p('du-an', 'lam-moi', 'de-xuat.json'), d = docJson(f, null);
+        if (!d) return json(res, { loi: 'Chưa có đề xuất nào.' }, 400);
+        const chon = new Set((b.chon || []).map(String)), ghi = String(b.ghi_chu || '').slice(0, 2000);
+        const cho = d.muc.filter(m => m.trang_thai === 'cho');
+        if (!cho.length) return json(res, { loi: 'Không còn mục nào chờ duyệt.' }, 400);
+        cho.forEach(m => { m.trang_thai = chon.has(m.id) ? 'duyet' : 'khong'; m.luc_duyet = new Date().toISOString(); });
+        fs.writeFileSync(f, JSON.stringify(d, null, 1));
+        const ok = cho.filter(m => m.trang_thai === 'duyet'), khong = cho.filter(m => m.trang_thai === 'khong');
+        const fd = p('du-an', 'lam-moi', 'duyet.json'), ds = docJson(fd, []);
+        ds.push({ luc: new Date().toISOString(), loai: 'khoi-moi', quyet: ok.length ? 'duyet' : 'bo', chon: ok.map(m => m.ten), khong: khong.map(m => m.ten), ghi_chu: ghi, da_xu_ly: !ok.length });
+        fs.writeFileSync(fd, JSON.stringify(ds, null, 1));
+        const ten = a => a.map(m => (m.viec === 'bo' ? 'bỏ ' : '') + m.ten).join(', ');
+        const cau = (ok.length ? `Duyệt khối mới: ${ten(ok)}` : 'Không duyệt khối mới nào') + (khong.length && ok.length ? `. Không làm: ${ten(khong)}` : '') + (ghi ? ' — ' + ghi : '');
+        ghiTin('dai-ca', 'truong-nhom', cau, 'lam-moi');
+        const r = ok.length ? guiLenh(`${cau}. Mục đã duyệt nằm trong du-an/lam-moi/de-xuat.json (trang_thai "duyet"). Làm bước 4 của /lam-moi: giao Khoa vẽ từng khối, xong thì đặt da_xu_ly: true ở mục cuối du-an/lam-moi/duyet.json.`) : {};
+        return json(res, { ok: true, da_gui: !!r.ok, xep_hang: r.xep_hang || 0 });
+      }
       if (pn === '/api/lenh') {
         const b = JSON.parse((await docBody(req, 1e5)).toString() || '{}');
         const r = guiLenh(b.noi, !!b.moi); return json(res, r, r.loi ? 400 : 200);
@@ -405,6 +434,12 @@ const server = http.createServer(async (req, res) => {
         const d = docJson(f, {}); const k = b.phan ? 'phan-' + (+b.phan) : 'video';
         if (b.bo) delete d[k]; else d[k] = new Date().toISOString();
         fs.writeFileSync(f, JSON.stringify(d, null, 1)); return json(res, d);
+      }
+      if (pn === '/api/xoa-anh') {
+        const s = u.searchParams.get('slug'), ten = path.basename(u.searchParams.get('ten') || '');
+        const f = p('phan-tich', 'inbox', s || '', ten);
+        if (!slugHopLe(s) || !ten || ten.startsWith('.') || !fs.existsSync(f)) return json(res, { loi: 'không thấy ảnh' }, 400);
+        fs.unlinkSync(f); return json(res, { ok: true });
       }
       if (pn === '/api/tai-anh') {
         const s = u.searchParams.get('slug'), ten = (u.searchParams.get('ten') || '').normalize('NFC');

@@ -43,6 +43,8 @@ kt "Bản tin có tin nhắn thật" "grep -q '\"loai\": \"tin\"' dieu-hanh/su-k
 
 # 8. Hook chặn vòng lặp, không Fable
 kt "Hook chặn vòng lặp đã gắn" "grep -q chan-vong-lap .claude/settings.json && test -x .claude/hooks/chan-vong-lap.sh"
+test -f render/kiem-bo-cuc.mjs && grep -q kiem-bo-cuc pipeline/lam-mau.sh && dat "Kiểm bố cục gắn vào lam-mau.sh" || loi "Thiếu kiểm bố cục"
+grep -q -- "--luong" render/quay.mjs && dat "quay.mjs quay song song (--luong)" || loi "quay.mjs chưa quay song song"
 ls .claude/skills/{marketing-psychology,humanizer,stop-slop,algorithmic-art,hyperframes,hyperframes-cli,hyperframes-registry}/SKILL.md >/dev/null 2>&1 && dat "7 skill đã cài trong .claude/skills" || loi "Thiếu skill trong .claude/skills"
 grep -qil "fable" .claude/agents/*.md .claude/settings.json 2>/dev/null && loi "Có agent/cấu hình nhắc tới Fable" || dat "Mọi agent dùng Opus ($(grep -h '^model:' .claude/agents/*.md | sort -u | tr '\n' ' '))"
 

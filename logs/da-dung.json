@@ -236,5 +236,66 @@
   ],
   "dinh_dang": "le",
   "so_phan": 1
+ },
+ {
+  "chu_de": "sep-nong-lanh",
+  "ngay": "2026-11-17",
+  "phong_cach": "tranh-tinh-zoom",
+  "tong_mau": "binh-minh",
+  "seed": 31,
+  "mo_dau": {
+   "bo_cuc": "hook-chu-to",
+   "nen": "soi-day"
+  },
+  "bo_cuc": {
+   "hook-chu-to": 1,
+   "nhan-vat-va-dong-nghiep": 6,
+   "dien-thoai": 4,
+   "nhan-vat-ke": 6,
+   "so-sanh": 1,
+   "dau-hieu-so": 1,
+   "loi-khuyen": 2,
+   "ket": 1
+  },
+  "nen": {
+   "soi-day": 3,
+   "van-phong-mo": 5,
+   "o-nha-toi": 2,
+   "phong-sep": 3,
+   "chia-doi": 1,
+   "trung": 2,
+   "man-hinh": 3,
+   "dau-hieu": 1,
+   "loi-khuyen": 2
+  },
+  "goc_may": {
+   "trung": 12,
+   "toan": 4,
+   "can": 3,
+   "tu-tren": 1,
+   "qua-vai": 2
+  },
+  "man_hinh": [
+   "Anh Phong",
+   "Báo cáo tuần: doanh số tháng mười một",
+   "Bản này được đấy em",
+   "Con mẹ giỏi quá",
+   "Em làm theo mấy tiêu chí này, anh xem thiếu gì không ạ?",
+   "Hôm nay sếp khen con trước cả phòng mẹ ạ",
+   "Sao lại làm thế này?",
+   "Thêm biểu đồ là đủ",
+   "Ừ, lần này ổn"
+  ],
+  "hieu_ung": {
+   "rung": 1,
+   "dung-hinh": 1,
+   "tick": 7,
+   "gach-cheo": 3,
+   "gach-thay": 1,
+   "so-thu-tu": 2,
+   "to-da-quang": 1
+  },
+  "dinh_dang": "le",
+  "so_phan": 1
  }
 ]

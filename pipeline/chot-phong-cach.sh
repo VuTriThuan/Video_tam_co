@@ -16,6 +16,10 @@ done
 
 OUT=ra/$CD/video-day-du
 python3 dieu-hanh/su_kien.py giai-doan day-du
+# kiểm bố cục đúng phong cách đã chọn; có lỗi vẫn quay nhưng báo anh Hải
+BC=$(node render/kiem-bo-cuc.mjs $PC --ra $CD) && BCQ=0 || BCQ=1
+echo "$BC" | tail -12
+[ $BCQ = 0 ] || python3 dieu-hanh/su_kien.py tin may-dung truong-nhom "Bố cục $CD ($PC) còn lỗi: $(echo "$BC" | tail -1). Xem ra/$CD/bo-cuc/"
 t0=$(date +%s)
 TC_NHAN="Quay bản đầy đủ ($PC)" node render/quay.mjs $PC --ra $CD/video-day-du | tail -1
 t1=$(date +%s)

@@ -15,7 +15,7 @@ Làm theo `QUY_TRINH.md` với các vai sau. Dừng đúng 3 chốt; mỗi chố
 5. **Chị Mai** (`kiem-duyet`) rà lời.
 6. **Chốt 1 — duyệt kịch bản:** gửi đại ca hook + số từ + số cảnh + đường dẫn `kich-ban.md` (chuỗi: số phần, số từ từng phần, câu cắt cuối mỗi phần). Dừng.
 7. Đại ca duyệt → `su_kien.py giai-doan giong`; `su_kien.py trang-thai may-dung lam "Đọc giọng"`; `.venv/bin/python pipeline/doc-giong.py && .venv/bin/python pipeline/bien-do.py`; `su_kien.py tin may-dung truong-nhom "Đọc giọng xong: <số giây>"`.
-8. `pipeline/lam-mau.sh <slug>` (chạy nền nếu lâu; mẫu lấy từ đầu phần 1). **Chốt 2 — chọn phong cách.** Dừng.
+8. `pipeline/lam-mau.sh <slug>` (chạy nền nếu lâu; mẫu lấy từ đầu phần 1). Script tự chạy **kiểm bố cục** (`render/kiem-bo-cuc.mjs`, ảnh lỗi ở `ra/<slug>/bo-cuc/`). Lỗi ✗ ở một cảnh (chữ đè đầu/tay nhân vật, chữ đè đạo cụ có chữ) → gửi Tuấn nguyên văn để sửa đúng cảnh đó (rút gọn `chu`, đổi `co`/`vi_tri`/`tu_the` nhân vật, đổi vị trí đạo cụ), rồi chạy lại `node render/kiem-bo-cuc.mjs tat-ca`; tối đa 1 vòng. Lỗi lặp ở nhiều cảnh cùng kiểu (do Máy dựng) → Khoa. ⚠ chữ hiện ngắn chỉ ghi chú cho đại ca. **Chốt 2 — chọn phong cách.** Dừng.
 9. `pipeline/chot-phong-cach.sh <slug> <phong-cach>` (chạy nền; chuỗi tự ghép từng phần + `ban-goc.mp4`). Xem `ra/<slug>/video-day-du/contact-12.jpg`.
 10. `su_kien.py giai-doan dong-goi`; **Vy** (`dong-goi`) viết `xuat-ban/<slug>/dang-bai.md`.
 11. `su_kien.py giai-doan nhap`. **Chốt 3 — xem bản nháp:** `open xuat-ban/<slug>/video.mp4` (chuỗi: `open xuat-ban/<slug>/phan-1/video.mp4`, các phần khác và `ban-goc.mp4` xem ở tab Duyệt). Duyệt cả chuỗi một lần hoặc nêu phần cần sửa. Dừng. Sửa thì dùng `/sua`.

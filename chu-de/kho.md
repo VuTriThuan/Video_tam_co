@@ -117,7 +117,7 @@
 - goc_ke: Thứ hai sếp khen em trước cả phòng "đây mới là chuẩn". Thứ tư cũng kiểu làm đó, sếp ném tài liệu lên bàn "em làm cái gì thế này". Từ đó sáng nào em cũng nhìn mặt sếp trước khi dám mở lời.
 - y_chinh: 1) Thưởng ngẫu nhiên: khen và chê không theo quy luật làm người ta bám chặt hơn cả khi được khen đều 2) Hậu quả: em bắt đầu đọc sắc mặt thay vì nhìn vào chất lượng công việc 3) Dấu hiệu: cùng một việc mà phản ứng trái ngược, tiêu chuẩn đổi theo tâm trạng 4) Giữ trục: tự viết ra tiêu chí đạt của từng việc, nhờ sếp xác nhận trước khi làm, đánh giá mình theo tiêu chí đó chứ không theo câu khen
 - khoi: có sẵn đủ
-- trang_thai: moi
+- trang_thai: da-lam
 
 ## 14. "Cả team còn ngồi mà em về à?": tội lỗi vì về đúng giờ
 - slug: ve-dung-gio

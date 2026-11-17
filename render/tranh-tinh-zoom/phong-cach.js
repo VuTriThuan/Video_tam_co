@@ -64,7 +64,13 @@
     const gian = dap ? lerp(30, 4, p) : lerp(14, 3, p);
     let s = `<g opacity="${p.toFixed(3)}" transform="translate(0,${((1 - p) * 20).toFixed(1)})">`;
     if (!dap) s += `<rect x="${540 - 60}" y="${y0 - 40}" width="120" height="6" fill="${DO}"/>`;
-    fit.lines.forEach((l, k) => (s += `<text x="540" y="${y0 + lh * (k + 0.8)}" text-anchor="middle" font-family="BVP" font-weight="${dap ? 800 : 700}" font-size="${fit.co}" letter-spacing="${gian.toFixed(1)}" style="paint-order:stroke" stroke="#000" stroke-opacity=".55" stroke-width="10">${toTuKhoa(l, canh.tu_khoa, '#FFFFFF', '#FF6B6B')}</text>`));
+    fit.lines.forEach((l, k) => {
+      const yb = y0 + lh * (k + 0.8);
+      const g = o.lop && { k, dong: fit.lines, line: l, font: fit.font, co: fit.co, cx: 540, yb, w: doRong(l, fit.font) + gian * [...l].length, gian, ox: 0, oy: (1 - p) * 20, dem: 10 };
+      if (g) s += o.lop(g, 'duoi');
+      s += `<text x="540" y="${yb}" text-anchor="middle" font-family="BVP" font-weight="${dap ? 800 : 700}" font-size="${fit.co}" letter-spacing="${gian.toFixed(1)}" style="paint-order:stroke" stroke="#000" stroke-opacity=".55" stroke-width="10">${toTuKhoa(l, canh.tu_khoa, '#FFFFFF', '#FF6B6B')}</text>`;
+      if (g) s += o.lop(g, 'tren');
+    });
     return s + '</g>';
   }
   P.ket = (c, t, ctx, nvSvg) => {

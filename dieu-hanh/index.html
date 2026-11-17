@@ -218,8 +218,20 @@ table{border-collapse:collapse;width:100%;font-size:13px}th,td{border-bottom:1px
 .nhac{background:var(--cam-nhat);color:var(--cam);border-radius:12px;padding:10px 14px;margin-bottom:14px;font-weight:500}
 .khoi-t{display:inline-flex;gap:6px;align-items:center;border:1px solid var(--vien);border-radius:999px;padding:2px 10px;margin:3px;font-size:13px}
 .khoi-t i{font-style:normal;font-size:11px;color:var(--phu)}.khoi-t.it{opacity:.5}.khoi-t.nhieu{border-color:var(--do);color:var(--do)}
+.dx-the{border:1.5px solid var(--do)}
+.dx-muc{display:flex;gap:12px;align-items:flex-start;padding:10px 0;border-top:1px solid var(--vien)}.dx-muc:first-of-type{border-top:0}
+.dx-muc input{margin-top:4px;width:18px;height:18px;accent-color:var(--do);flex:none}
+.dx-muc b{font-family:ui-monospace,Menlo,monospace;font-size:14px}.dx-muc .mo{font-size:13px}
+.dx-nhom{display:inline-block;font-size:11px;border:1px solid var(--vien2);border-radius:999px;padding:0 8px;margin-left:6px;color:var(--phu)}
+.dx-tt{margin-left:auto;font-size:12px;white-space:nowrap;color:var(--phu)}.dx-tt.ok{color:#2f7d4f}
 #tha{border:2px dashed var(--vien2);border-radius:14px;padding:26px;text-align:center;color:var(--phu);cursor:pointer}
 #tha.tren{border-color:var(--do);color:var(--do);background:var(--do-nhat)}
+.anh-cho{display:grid;grid-template-columns:repeat(auto-fill,minmax(130px,1fr));gap:12px;margin-top:14px}
+.anh-cho figure{position:relative;margin:0;border:1px solid var(--vien2);border-radius:10px;overflow:hidden;background:var(--nen,#fff)}
+.anh-cho img{display:block;width:100%;height:180px;object-fit:cover;object-position:top}
+.anh-cho figcaption{font-size:12px;color:var(--phu);padding:6px 8px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.xoa-anh{position:absolute;top:6px;right:6px;width:26px;height:26px;border-radius:50%;border:0;background:rgba(0,0,0,.6);color:#fff;font-size:16px;line-height:1;cursor:pointer}
+.xoa-anh:hover{background:var(--do)}
 .cot rect{fill:var(--lam)}.cot text{fill:var(--phu);font-size:11px}
 .so-buoc{width:26px;height:26px;border-radius:50%;background:var(--muc);color:var(--nen);display:grid;place-items:center;font-size:13px;font-weight:800;flex:none}
 
@@ -415,9 +427,9 @@ async function lenh(noi,moi){
 const MUC=[['ban','Bàn làm việc'],['chude','Chủ đề'],['duyet','Duyệt'],['dangbai','Đăng bài'],['phantich','Phân tích'],['doingu','Đội ngũ'],['thuvien','Thư viện'],['hethong','Hệ thống']];
 function veNav(){
   const chuaDang=S.duAn.filter(d=>d.xuat_ban).reduce((n,d)=>n+Math.max(0,d.so_muc-Object.keys(d.da_dang||{}).length),0);
-  const so={duyet:S.can?.loai?1:0,dangbai:chuaDang};
+  const so={duyet:S.can?.loai?1:0,dangbai:chuaDang,thuvien:S.khoiCho||0};
   $('#nav').innerHTML=MUC.map(([k,t])=>`<button data-v="${k}" class="${S.view===k?'on':''}">${ic(k)}<span>${t}</span>${so[k]?`<i class="so" style="font-style:normal">${so[k]}</i>`:''}</button>`).join('');
-  document.title=(S.can?.loai?'(1) ':'')+'Tâm Cơ · Phòng điều hành';
+  {const n=(S.can?.loai?1:0)+(S.khoiCho?1:0);document.title=(n?`(${n}) `:'')+'Tâm Cơ · Phòng điều hành';}
 }
 $('#nav').onclick=e=>{const b=e.target.closest('button');if(b)mo(b.dataset.v);};
 const VE={};
@@ -426,7 +438,7 @@ addEventListener('hashchange',()=>{const v=location.hash.slice(1);if(v&&v!==S.vi
 document.addEventListener('click',e=>{const b=e.target.closest('[data-mo]');if(b)mo(b.dataset.mo);const l=e.target.closest('[data-lenh]');if(l)lenh(l.dataset.lenh,l.dataset.moi==='1');});
 
 /* ---------- nạp dữ liệu ---------- */
-async function napTT(){const r=await api('/api/trang-thai');for(const n of r.nhan_vien)S.nv[n.id]=n;S.hienTai=r.hien_tai||{};S.tienDo=r.tien_do;S.phien=r.phien||{};S.can=r.can_duyet;capNhat();}
+async function napTT(){const r=await api('/api/trang-thai');for(const n of r.nhan_vien)S.nv[n.id]=n;S.hienTai=r.hien_tai||{};S.tienDo=r.tien_do;S.phien=r.phien||{};S.can=r.can_duyet;S.khoiCho=r.khoi_cho||0;capNhat();}
 async function napDuAn(){const r=await api('/api/du-an');S.duAn=r.ds;veNav();}
 async function napTin(){const r=await api('/api/ban-tin');S.tin=r.ds;veLuong();}
 function capNhat(){veNav();veChatDau();veBanDong();}
@@ -434,7 +446,7 @@ function capNhat(){veNav();veChatDau();veBanDong();}
 /* ================= BÀN LÀM VIỆC ================= */
 const BUOC=[['kich-ban','Kịch bản','Tuấn, Chị Mai',1],['giong','Giọng đọc','Máy dựng',0],['mau','3 mẫu phong cách','Máy dựng',1],['day-du','Dựng đầy đủ','Máy dựng',0],['dong-goi','Gói đăng bài','Vy',0],['nhap','Bản nháp','Đại ca xem',1]];
 const KHU=[['Ban lãnh đạo',['dai-ca']],['Điều phối',['truong-nhom']],['Nội dung',['len-chu-de','bien-kich','kiem-duyet']],['Hình ảnh & dựng',['hoa-si','may-dung']],['Xuất bản & số liệu',['dong-goi','phan-tich']]];
-function ttCua(id){if(id==='dai-ca')return S.can?.loai?{trang_thai:'cho',viec:'Có việc chờ duyệt'}:{trang_thai:'onl',viec:''};
+function ttCua(id){if(id==='dai-ca')return S.can?.loai||S.khoiCho?{trang_thai:'cho',viec:'Có việc chờ duyệt'}:{trang_thai:'onl',viec:''};
   const n=S.nv[id]||{trang_thai:'off',viec:''}, hai=S.nv['truong-nhom']?.trang_thai||'off';
   if(id==='truong-nhom'){if(S.phien.dang_chay)return {trang_thai:'lam',viec:S.phien.hoat_dong||n.viec};
     if(n.trang_thai==='cho')return S.can?.loai?{trang_thai:'cho',viec:'Chờ đại ca duyệt'}:{trang_thai:'onl',viec:''};return n;}
@@ -448,6 +460,7 @@ function theCan(){
   if(hai.trang_thai==='lam'||S.phien.dang_chay){const td=S.tienDo&&S.tienDo.phan_tram<100&&Date.now()/1000-S.tienDo.ts<900?S.tienDo:null;
     const dang=Object.values(S.nv).filter(n=>n.trang_thai==='lam'&&n.id!=='truong-nhom').map(n=>hoTen(n.id));
     return `<div class="can chay"><div class="giua"><div class="nhan"><span class="nhip"></span>&nbsp; Đội đang làm việc</div><h2>${esc(td?.viec||hai.viec||'Anh Hải đang xử lý')}</h2><div class="mo">${dang.length?'Đang làm: '+esc(dang.join(', ')):esc(hoTen('truong-nhom'))}${S.phien.xep_hang?` · ${S.phien.xep_hang} lệnh đang xếp hàng`:''}</div>${td?`<div class="thanh"><i style="width:${td.phan_tram}%"></i></div>`:''}</div>${S.phien.dang_chay?`<button class="nut" id="dung2">${ic('dung')} Dừng</button>`:''}</div>`;}
+  if(S.khoiCho)return `<div class="can goi"><div class="giua"><div class="nhan">Đang chờ đại ca</div><h2>Duyệt khối mới</h2><div class="mo">${S.khoiCho} khối/bối cảnh mới anh Hải đề xuất. Đại ca tích cái muốn làm, Khoa vẽ ngay.</div></div><button class="nut chinh" data-mo="thuvien">Mở để duyệt ${ic('toi')}</button></div>`;
   if(c?.cho_hai)return `<div class="can"><div class="giua"><div class="nhan">Đã ghi ý đại ca</div><h2>Chờ anh Hải làm tiếp</h2><div class="mo">${esc(c.ten)}</div></div><button class="nut chinh" data-lenh="tiếp">Bảo anh Hải làm tiếp</button></div>`;
   return `<div class="can"><div class="giua"><div class="nhan">Chưa có việc đang chạy</div><h2>Hôm nay làm chủ đề nào, đại ca?</h2><div class="mo">Chọn trong kho, hoặc nhờ Linh tìm 10 chủ đề mới.</div></div><div class="hang"><button class="nut chinh" data-mo="chude">Chọn chủ đề</button><button class="nut" data-lenh="/goi-y" data-moi="1">Gợi ý chủ đề mới</button></div></div>`;
 }
@@ -456,7 +469,7 @@ function veBan(){
   $('#view').innerHTML=`
    <div class="dau"><div><h1 id="b-chao"></h1><p id="b-ngay"></p></div></div>
    <div class="khoi" id="b-can"></div><div id="b-buoc"></div>
-   <div class="vp khoi"><div class="vp-tuong"><span class="bang">TÂM <i>CƠ</i> STUDIO</span><span class="cau">hiểu chiêu để không trúng chiêu</span><button class="nut be" id="vp-ve" style="margin-left:auto" hidden>Xoay về giữa</button><span class="gio" id="vp-gio"></span></div><div id="b-vp"></div><div class="ds-gon" id="b-ds"></div></div>
+   <div class="vp khoi"><div class="vp-tuong"><span class="bang"><i>TÂM CƠ</i> STUDIO</span><span class="cau">hiểu chiêu để không trúng chiêu</span><button class="nut be" id="vp-ve" style="margin-left:auto" hidden>Xoay về giữa</button><span class="gio" id="vp-gio"></span></div><div id="b-vp"></div><div class="ds-gon" id="b-ds"></div></div>
    <div class="the khoi"><h2>Làm nhanh</h2><div class="hang">
      <button class="nut" data-lenh="/goi-y" data-moi="1">${ic('chude')} Linh gợi ý 10 chủ đề</button>
      <button class="nut" data-mo="chude">${ic('ban')} Bắt đầu chủ đề</button>
@@ -625,7 +638,8 @@ VE.phantich=async function(){await napDuAn();const r=await api('/api/phan-tich')
    <div class="dau"><div><h1>Phân tích</h1><p>Thả ảnh chụp số liệu 24 giờ, Đức · Phân tích số liệu đọc và rút bài học cho cả đội.</p></div></div>
    <div class="the"><h2>Gửi số liệu</h2><div class="hang" style="margin-bottom:10px"><label class="mo">Video <select id="pt-slug">${ds.map(d=>`<option value="${d.slug}"${d.slug===slugPT?' selected':''}>${esc(d.ten)}</option>`).join('')}</select></label></div>
      <div id="tha">Kéo thả ảnh chụp màn hình vào đây, hoặc bấm để chọn<input type="file" id="pt-file" accept="image/*" multiple hidden></div>
-     <div class="hang" style="margin-top:10px"><span class="mo">${ib.length?`${ib.length} ảnh đang chờ: ${esc(ib.join(', '))}`:'Chưa có ảnh nào chờ xử lý.'}</span><span style="flex:1"></span><button class="nut chinh" id="pt-giao"${ib.length?'':' disabled'}>Giao Đức phân tích</button></div></div>
+     ${ib.length?`<div class="anh-cho">${ib.map(t=>{const u='/tep/phan-tich/inbox/'+encodeURIComponent(slugPT)+'/'+encodeURIComponent(t);return `<figure><a href="${u}" target="_blank" rel="noopener"><img src="${u}?v=${Date.now()}" alt="${esc(t)}" loading="lazy"></a><figcaption title="${esc(t)}">${esc(t)}</figcaption><button class="xoa-anh" data-ten="${esc(t)}" title="Bỏ ảnh này" aria-label="Bỏ ảnh ${esc(t)}">×</button></figure>`;}).join('')}</div>`:''}
+     <div class="hang" style="margin-top:10px"><span class="mo">${ib.length?`${ib.length} ảnh đang chờ Đức đọc`:'Chưa có ảnh nào chờ xử lý.'}</span><span style="flex:1"></span><button class="nut chinh" id="pt-giao"${ib.length?'':' disabled'}>Giao Đức phân tích</button></div></div>
    <div class="the"><h2>Lượt xem mỗi video</h2><div>${bieuDo(r.dong)}</div></div>
    <div class="the"><h2>Bảng số liệu</h2><div style="overflow:auto">${r.dong.length?`<table><tr>${r.cot.map(c=>`<th>${esc(c)}</th>`).join('')}</tr>${r.dong.map(x=>`<tr>${r.cot.map(c=>`<td>${esc(x[c])}</td>`).join('')}</tr>`).join('')}</table>`:'<span class="mo">Chưa có.</span>'}</div></div>
    ${bc.map(([s,t])=>`<div class="the md">${md(t)}</div>`).join('')}
@@ -635,6 +649,7 @@ VE.phantich=async function(){await napDuAn();const r=await api('/api/phan-tich')
   tha.onclick=()=>$('#pt-file').click();tha.ondragover=e=>{e.preventDefault();tha.classList.add('tren');};tha.ondragleave=()=>tha.classList.remove('tren');
   tha.ondrop=e=>{e.preventDefault();tha.classList.remove('tren');tai(e.dataTransfer.files);};$('#pt-file').onchange=e=>tai(e.target.files);
   $('#pt-slug').onchange=e=>{slugPT=e.target.value;VE.phantich();};
+  document.querySelectorAll('.xoa-anh').forEach(b=>b.onclick=async()=>{const r=await api(`/api/xoa-anh?slug=${slugPT}&ten=${encodeURIComponent(b.dataset.ten)}`,{method:'POST'});if(r.loi)bao(r.loi);VE.phantich();});
   $('#pt-giao').onclick=()=>lenh('/phan-tich '+slugPT,true);
 };
 
@@ -650,9 +665,24 @@ VE.doingu=function(){
 };
 
 /* ================= THƯ VIỆN ================= */
+function theDeXuat(d){if(!d||!d.muc.length)return '';
+  const cho=d.muc.filter(m=>m.trang_thai==='cho'),xong=d.muc.filter(m=>m.trang_thai!=='cho');
+  const dong=(m,o)=>`<label class="dx-muc">${o?`<input type="checkbox" value="${esc(m.id)}" checked>`:''}<div style="flex:1;min-width:0"><div><b>${m.viec==='bo'?'Bỏ ':''}${esc(m.ten)}</b><span class="dx-nhom">${esc(m.nhom||'')}</span></div><div class="mo">${esc(m.mo_ta||'')}${m.thay_cho?` · thay cho <code>${esc(m.thay_cho)}</code>`:''}</div></div>${o?'':`<span class="dx-tt${m.trang_thai==='duyet'&&m.da_ve?' ok':''}">${m.trang_thai==='khong'?'Không làm':m.da_ve?(m.viec==='bo'?'Đã bỏ':'Đã có trong thư viện'):'Đã duyệt · Khoa đang vẽ'}</span>`}</label>`;
+  return (cho.length?`<div class="the dx-the" id="dx"><h2>Khối mới chờ duyệt <span class="mo" style="font-weight:400">(${cho.length})</span></h2><p class="mo" style="margin-top:0">Anh Hải đề xuất sau khi đếm ${d.so_video||''} video. Tích những khối muốn làm, bỏ tích cái không cần. Duyệt xong, Khoa · Họa sĩ thiết kế vẽ ngay.</p>
+    ${cho.map(m=>dong(m,1)).join('')}<textarea id="dx-ghi" placeholder="Ghi chú cho Khoa (không bắt buộc)" style="margin-top:8px"></textarea>
+    <div class="hang" style="margin-top:10px"><span class="mo" id="dx-dem"></span><span style="flex:1"></span><button class="nut chinh" id="dx-duyet">Duyệt</button></div></div>`:'')
+   +(xong.length?`<div class="the"><h2>Khối đã duyệt gần đây</h2>${xong.map(m=>dong(m,0)).join('')}</div>`:'');}
 VE.thuvien=async function(){const r=await api('/api/thu-vien');if(S.view!=='thuvien')return;
   $('#view').innerHTML=`<div class="dau"><div><h1>Thư viện khối</h1><p>Đếm trên ${r.so_video} video đã làm. Viền đỏ: dùng nhiều nhất nhóm · mờ: chưa dùng. Khoa · Họa sĩ thiết kế vẽ khối mới.</p></div><div class="phai"><button class="nut" data-lenh="/lam-moi" data-moi="1">Đề xuất khối mới</button></div></div>`+r.nhom.map(g=>{const mx=Math.max(...g.khoi.map(k=>k.dung));
-    return `<div class="the"><h2>${esc(g.ten)} <span class="mo" style="font-weight:400">(${g.khoi.length})</span></h2>${g.khoi.sort((a,b)=>b.dung-a.dung).map(k=>`<span class="khoi-t${k.dung===0?' it':''}${k.dung===mx&&mx>0?' nhieu':''}" title="${esc(k.mo_ta)}">${esc(k.ten)}<i>${k.dung}</i></span>`).join('')}</div>`;}).join('');};
+    return `<div class="the"><h2>${esc(g.ten)} <span class="mo" style="font-weight:400">(${g.khoi.length})</span></h2>${g.khoi.sort((a,b)=>b.dung-a.dung).map(k=>`<span class="khoi-t${k.dung===0?' it':''}${k.dung===mx&&mx>0?' nhieu':''}" title="${esc(k.mo_ta)}">${esc(k.ten)}<i>${k.dung}</i></span>`).join('')}</div>`;}).join('');
+  const dx=theDeXuat(r.de_xuat);if(dx)$('#view .dau').insertAdjacentHTML('afterend',dx);
+  const nut=$('#dx-duyet');if(!nut)return;
+  const hop=[...document.querySelectorAll('#dx input[type=checkbox]')];
+  const dem=()=>{const n=hop.filter(x=>x.checked).length;$('#dx-dem').textContent=n?`Duyệt ${n}/${hop.length} khối`:'Không chọn khối nào: bấm để bỏ cả đợt đề xuất này';nut.textContent=n?'Duyệt':'Bỏ cả đợt';};
+  hop.forEach(x=>x.onchange=dem);dem();
+  nut.onclick=async()=>{nut.disabled=true;const r2=await api('/api/duyet-khoi',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({chon:hop.filter(x=>x.checked).map(x=>x.value),ghi_chu:$('#dx-ghi').value})});
+    if(r2.loi){bao(r2.loi);nut.disabled=false;return;}bao(r2.da_gui?(r2.xep_hang?'Đã ghi, anh Hải làm sau lệnh đang chạy':'Đã gửi anh Hải giao Khoa vẽ'):'Đã ghi');S.khoiCho=0;veNav();VE.thuvien();};
+};
 
 /* ================= HỆ THỐNG ================= */
 VE.hethong=async function(){const ch=await api('/api/cau-hinh');if(S.view!=='hethong')return;

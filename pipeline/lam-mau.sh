@@ -22,6 +22,11 @@ EOF
 echo "Cảnh mẫu: $DS"
 python3 dieu-hanh/su_kien.py giai-doan mau; python3 dieu-hanh/su_kien.py trang-thai may-dung lam "Làm 3 mẫu phong cách"
 
+# kiểm bố cục toàn bộ cảnh ở cả 3 phong cách (chữ đè nhân vật, chữ đè chữ, chữ lấn vùng TikTok che)
+BC=$(node render/kiem-bo-cuc.mjs tat-ca --ra $CD) && BCQ="đạt" || BCQ="có lỗi"
+echo "$BC"
+[ "$BCQ" = "đạt" ] || python3 dieu-hanh/su_kien.py tin may-dung truong-nhom "Kiểm bố cục $CD: $(echo "$BC" | tail -1). Chi tiết + ảnh: ra/$CD/bo-cuc/"
+
 for pc in bang-trang truyen-tranh tranh-tinh-zoom; do
   OUT=ra/$CD/mau-$pc
   t0=$(date +%s)

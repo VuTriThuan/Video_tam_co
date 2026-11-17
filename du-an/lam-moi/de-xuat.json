@@ -1,0 +1,76 @@
+{
+ "luc": "2026-11-17T15:30:00+07:00",
+ "so_video": 6,
+ "muc": [
+  {
+   "id": "1",
+   "viec": "them",
+   "ten": "hook-canh-nong",
+   "nhom": "bo_cuc",
+   "mo_ta": "Mở đầu vào thẳng khoảnh khắc căng (sếp gọi tên giữa phòng), cận mặt, chữ nhỏ ở dưới.",
+   "thay_cho": "hook-chu-to (6/6 video mở đầu)",
+   "trang_thai": "khong",
+   "luc_duyet": "2026-11-17T04:08:15.007Z"
+  },
+  {
+   "id": "2",
+   "viec": "them",
+   "ten": "noi-vs-nghi",
+   "nhom": "bo_cuc",
+   "mo_ta": "Nhân vật nói một câu, bong bóng suy nghĩ phía sau hiện điều thật trong đầu, hai bên tương phản.",
+   "thay_cho": "nhan-vat-ke (46 lần)",
+   "trang_thai": "khong",
+   "luc_duyet": "2026-11-17T04:08:15.007Z"
+  },
+  {
+   "id": "3",
+   "viec": "them",
+   "ten": "hanh-lang",
+   "nhom": "nen",
+   "mo_ta": "Hành lang hoặc góc cầu thang, cho cảnh nói xấu sau lưng, thì thầm.",
+   "thay_cho": "van-phong-mo (32), phong-hop (25)",
+   "trang_thai": "khong",
+   "luc_duyet": "2026-11-17T04:08:15.007Z"
+  },
+  {
+   "id": "4",
+   "viec": "them",
+   "ten": "cuc-can",
+   "nhom": "goc_may",
+   "mo_ta": "Chỉ khuôn mặt, cho khoảnh khắc lật mặt.",
+   "thay_cho": "trung (80/166 cảnh)",
+   "trang_thai": "khong",
+   "luc_duyet": "2026-11-17T04:08:15.007Z"
+  },
+  {
+   "id": "5",
+   "viec": "them",
+   "ten": "chu-dap-man-hinh",
+   "nhom": "hieu_ung",
+   "mo_ta": "Một chữ khoá đập mạnh vào giữa màn hình kèm rung nhẹ, cho câu chốt chiêu.",
+   "thay_cho": "tick (21 lần, dùng nhiều nhất)",
+   "trang_thai": "khong",
+   "luc_duyet": "2026-11-17T04:08:15.007Z"
+  },
+  {
+   "id": "6",
+   "viec": "bo",
+   "ten": "den-roi",
+   "nhom": "hieu_ung",
+   "mo_ta": "0 lần trong 6 video. Lý do: mới thêm đợt này, chưa video nào kịp dùng. Em khuyên GIỮ, để Tuấn dùng cho cảnh lật mặt.",
+   "thay_cho": "",
+   "trang_thai": "khong",
+   "luc_duyet": "2026-11-17T04:08:15.007Z"
+  },
+  {
+   "id": "7",
+   "viec": "bo",
+   "ten": "ap-luc-vay-quanh",
+   "nhom": "hieu_ung",
+   "mo_ta": "0 lần trong 6 video. Lý do: mới thêm đợt này, chưa video nào kịp dùng. Em khuyên GIỮ, dùng cho cảnh bị dồn ép.",
+   "thay_cho": "",
+   "trang_thai": "duyet",
+   "luc_duyet": "2026-11-17T04:08:15.007Z"
+  }
+ ]
+}

@@ -433,7 +433,12 @@
         const goc = (k % 2 ? 1.2 : -1.2) + Math.sin(t * 1.3 + k) * 0.4;
         s += `<g transform="translate(${cx + rung},${y}) rotate(${goc.toFixed(2)}) scale(${sc.toFixed(4)})" opacity="${clamp(p * 3).toFixed(3)}">`;
         if (cfg.nenChu !== false) s += `<rect x="${-wl / 2}" y="${-lh / 2}" width="${wl}" height="${lh}" rx="18" ${o.kieu === 'dap' ? `fill="${M.chuNenDap || M.den}"` : A(M.chuNen, { w: 5 })}/>`;
-        s += `<text y="${fit.co * 0.36}" text-anchor="middle" font-family="${ho}" font-weight="${cfg.damChu || 800}" font-size="${fit.co}">${toTuKhoa(ln, canh.tu_khoa, o.kieu === 'dap' ? (M.chuDap || '#FFFFFF') : M.chu, o.kieu === 'dap' ? (M.nhanDap || M.do) : M.do)}</text></g>`;
+        // o.lop(g, 'duoi'|'tren'): hiệu ứng chữ (to-da-quang, gach-thay) vẽ dưới/trên dòng chữ, toạ độ cục bộ của dòng
+        const g = o.lop && { k, dong: fit.lines, line: ln, font: fit.font, co: fit.co, cx: 0, yb: fit.co * 0.36, w: wl - 48, gian: 0, ox: cx, oy: y, dem: 24 };
+        if (g) s += o.lop(g, 'duoi');
+        s += `<text y="${fit.co * 0.36}" text-anchor="middle" font-family="${ho}" font-weight="${cfg.damChu || 800}" font-size="${fit.co}">${toTuKhoa(ln, canh.tu_khoa, o.kieu === 'dap' ? (M.chuDap || '#FFFFFF') : M.chu, o.kieu === 'dap' ? (M.nhanDap || M.do) : M.do)}</text>`;
+        if (g) s += o.lop(g, 'tren');
+        s += '</g>';
       });
       return s;
     }

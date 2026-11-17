@@ -36,3 +36,9 @@ Kế hoạch: `CHAY_TOAN_BO.md` → Bước 3 (`BUOC_3_DOI_AGENT.md`) → Bướ
 4. ✅ Bước 4 nghiệm thu xong → `bao-cao-buoc-4.md`, `bao-cao-hoan-thien.md`.
 5. ✅ Đã sửa 5 lỗi gặp khi chạy chuỗi thật (`bao-cao-buoc-4.md` mục "Đã sửa"). Lần `/chu-de` tới: xem `du-an/<slug>/luot.json` có bảng `_ten` (hook bắt được agentId) không.
 6. ⏳ `/phan-tich` khi có ảnh số liệu 24 giờ.
+
+## Hiệu ứng mới từ HyperFrames (2026-11-17) — TẠM DỪNG, chờ đại ca bổ sung
+- Đã xong đợt 1 (4 hiệu ứng: to-da-quang, gach-thay, dung-hinh, ap-luc-vay-quanh), kiểm hệ thống ĐẠT TOÀN BỘ, **chưa commit**.
+- Còn 6 hiệu ứng ưu tiên 2–3 trong `docs/tham-khao/hieu-ung-de-xuat.md` (cuon-tu, vet-muc-chuyen, khung-ve-tay, go-chu, xe-giay, dem-so). Khi đại ca nói làm đợt 2: giao Khoa như đợt 1 (brief mẫu: giữ `data-kb`, SVG thuần, thử 3 phong cách, tối đa 3 lượt).
+- Luật "hiệu ứng là gia vị" đã ghi ở bien-kich.md, kiem-duyet.md, kiem-lap.py, lam-moi.md, QUY_TRINH.md. `/lam-moi` chỉ đề xuất bỏ, đại ca duyệt mới bỏ.
+- Cùng đợt này còn chưa commit: quay song song (`quay.mjs --luong`), máy kiểm bố cục (`render/kiem-bo-cuc.mjs`), hiệu ứng `den-roi`, sửa zoom-vao và vị trí số thứ tự trong `canh-chung.js`.

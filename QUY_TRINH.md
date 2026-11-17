@@ -23,6 +23,7 @@
 - Dữ liệu chuỗi: mỗi cảnh có `"phan"`; `video.json` có `"dinh_dang": "chuoi"` + `"chuoi": {so_phan, diem_cat, nhac_lai, teaser, bia_phan}` (chi tiết đầu `pipeline/kiem-canh.py`). `kich-ban.md` có dòng `## Phần n`.
 - Máy kiểm: `kiem-canh.py` kiểm cấu trúc chuỗi; `kiem-lap.py` áp kiểu cảnh ≤2 lần/phần, ≤3 lần cả chuỗi, cảnh mở đầu các phần khác nhau.
 - Dựng: quay toàn bộ một lần → `ghep.py` ra bản gốc → `ghep-chuoi.py` ghép từng phần (nhãn "PHẦN n/N" 1,5 giây, màn "Phần n+1 ▶" + teaser 1,5 giây, phần cuối logo + "Theo dõi Tâm Cơ"), bìa từng phần (`quay.mjs --bia --phan n` + `ghep-chuoi.py --bia`). `chot-phong-cach.sh` tự làm cả chuỗi, kiểm từng phần 60–90 giây → `xuat-ban/<slug>/phan-<n>/` + `ban-goc.mp4`.
+- Quay song song: `quay.mjs` quay 3 cảnh cùng lúc (mỗi luồng một Chrome riêng, nhanh ~1,7 lần), đổi bằng `--luong N` hoặc biến `TC_LUONG`; từng khung giống hệt quay lần lượt.
 - Sửa một cảnh: `quay.mjs ... --ds <id> --sua` (giữ các cảnh khác) rồi ghép lại; chuỗi thì chạy thêm `ghep-chuoi.py`.
 
 ## Dàn cảnh = dữ liệu (không viết code cho từng chủ đề)
@@ -37,12 +38,12 @@
 3. **Duyệt lời:** gọi `kiem-duyet` (tự chạy 2 lệnh kiểm). **Dừng: đại ca duyệt kịch bản.**
 4. **Giọng:** `.venv/bin/python pipeline/doc-giong.py` rồi `.venv/bin/python pipeline/bien-do.py`.
 5. **Xem trước:** contact sheet vài cảnh, ví dụ `node render/quay.mjs truyen-tranh --ra <chu-de>/xem --xem c01:1,c05:2,...`.
-6. **Chọn phong cách:** `pipeline/lam-mau.sh <chu-de>` → 3 mẫu 20–30 giây + trang `review/<chu-de>.html` (phát cùng lúc); máy nhắc nếu một phong cách đã dùng 2 video liền. **Dừng: đại ca chọn.**
+6. **Chọn phong cách:** `pipeline/lam-mau.sh <chu-de>` (tự chạy kiểm bố cục `node render/kiem-bo-cuc.mjs tat-ca` trước: chữ đè đầu/tay nhân vật, chữ đè chữ, chữ lấn vùng TikTok che; ảnh lỗi ở `ra/<chu-de>/bo-cuc/`) → 3 mẫu 20–30 giây + trang `review/<chu-de>.html` (phát cùng lúc); máy nhắc nếu một phong cách đã dùng 2 video liền. **Dừng: đại ca chọn.**
 7. **Bản đầy đủ:** `pipeline/chot-phong-cach.sh <chu-de> <phong-cach>` → xoá mẫu không chọn, quay, ghép, kiểm tra 10 mục, chép vào `xuat-ban/<chu-de>/`, ghi `logs/da-dung.json`, lưu dữ liệu vào `ra/<chu-de>/du-lieu/`. Xem `ra/<chu-de>/video-day-du/contact-12.jpg`.
 8. **Gói đăng:** giao `dong-goi` (Vy) viết `xuat-ban/<chu-de>/dang-bai.md`. **Dừng: đại ca xem bản nháp** (tối đa 2 vòng; sửa cảnh nào quay lại cảnh đó).
 
 ## Chống lặp
-- Luật trong một video và giữa các video: xem đầu file `pipeline/kiem-lap.py`. Nội dung màn hình (tên nhóm chat, tên người, tin nhắn, tiêu đề) không được trùng video trước (`logs/da-dung.json` trường `man_hinh`).
+- Luật trong một video và giữa các video: xem đầu file `pipeline/kiem-lap.py`. Hiệu ứng đặc biệt là gia vị: ≤4 lượt/video (chuỗi: mỗi phần), mỗi tên ≤2, không 2 cảnh liền cùng hiệu ứng; Tuấn không bắt buộc dùng hiệu ứng mới. `/lam-moi` chỉ **đề xuất** bỏ hiệu ứng không ai dùng, đại ca duyệt mới bỏ. Nội dung màn hình (tên nhóm chat, tên người, tin nhắn, tiêu đề) không được trùng video trước (`logs/da-dung.json` trường `man_hinh`).
 - **Cứ sau 10 video** (máy tự nhắc): đọc `logs/da-dung.json`, liệt kê khối/bố cục dùng nhiều nhất, đề xuất 2–3 khối hoặc bối cảnh mới → **đại ca duyệt** rồi mới vẽ.
 
 ## Hệ thống

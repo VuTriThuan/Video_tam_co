@@ -120,6 +120,10 @@
     'mui-ten': 'mũi tên cong từ "tu" đến "den"',
     'rung': 'rung cả khung tại t',
     'zoom-vao': 'phóng to dần từ t',
+    'den-roi': 'đèn rọi: cảnh tối dần, vòng sáng mềm rọi "tu" (hoặc muc_tieu); có "den" thì trượt sang "den" (t_den tuỳ chọn). Dùng cho khoảnh khắc lật mặt, vd {"ten":"den-roi","tu":"nv-0","den":"nv-1","t":0.5}',
+    'to-da-quang': 'vệt bút dạ quang nét tay quét trái → phải (0,4 s) dưới đúng từ "tu" trong chu (bỏ trống = tu_khoa); kieu "to" (vệt dày, mặc định) | "gach-duoi". Dùng khi: câu chốt/lời khuyên có một từ "đinh" ("im lặng", "ranh giới"). Không dùng khi: chữ dài quá 2 dòng, hoặc cảnh đã có vong-tron-do / gach-cheo. Vd {"ten":"to-da-quang","tu":"ranh giới","t":0.4,"kieu":"to"}',
+    'gach-thay': 'chữ cũ "cu" bị gạch tay 2 lần, mờ đi và tụt xuống, chữ thật "moi" bật lên ngay cạnh; THAY cho chu thường của cảnh (vẫn ghi chu = moi). Dùng khi: lật mặt kiểu "tưởng là… hoá ra…", sửa một niềm tin sai. Không dùng khi: cần gạch nhân vật/đồ vật (dùng gach-cheo), hoặc moi dài hơn cu quá nhiều. Vd {"ten":"gach-thay","cu":"Sếp khen bạn","moi":"Sếp đang thử bạn","t":0.35}',
+    'dung-hinh': 'cảnh khựng lại tại t, chớp sáng ngắn, co thành tấm ảnh viền giấy nghiêng "nghieng" độ (mặc định -2), 2 miếng băng dính, nhãn viết tay "nhan". Dùng khi: hook ("dừng lại ở đây") hoặc đúng lúc lật mặt, để nhìn kỹ một chi tiết. Không dùng khi: cảnh thoại dồn dập, hoặc cảnh liền trước vừa dùng zoom-vao / rung. Vd {"ten":"dung-hinh","t":0.5,"nhan":"Khoảnh khắc này","nghieng":-2}',
   };
   TV.MUC_TIEU = '"man-hinh" | "nv-<k>" (nhân vật thứ k, đếm từ 0) | "dc-<k>" (đạo cụ thứ k) | tên vị trí | [x, y]';
   TV.SFX = ['whoosh', 'swoosh-nhe', 'pop', 'ding', 'tick', 'tin-nhan', 'thud'];
