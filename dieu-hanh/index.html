@@ -313,6 +313,7 @@ table{border-collapse:collapse;width:100%;font-size:13px}th,td{border-bottom:1px
   <nav id="nav"></nav>
   <div class="ray-duoi">
     <div class="khau">Hiểu chiêu để không trúng chiêu.</div>
+    <div id="nhac-o"></div>
     <button class="nho" id="giaodien"></button>
   </div>
 </aside>
@@ -441,7 +442,14 @@ document.addEventListener('click',e=>{const b=e.target.closest('[data-mo]');if(b
 async function napTT(){const r=await api('/api/trang-thai');for(const n of r.nhan_vien)S.nv[n.id]=n;S.hienTai=r.hien_tai||{};S.tienDo=r.tien_do;S.phien=r.phien||{};S.can=r.can_duyet;S.khoiCho=r.khoi_cho||0;capNhat();}
 async function napDuAn(){const r=await api('/api/du-an');S.duAn=r.ds;veNav();}
 async function napTin(){const r=await api('/api/ban-tin');S.tin=r.ds;veLuong();}
-function capNhat(){veNav();veChatDau();veBanDong();}
+function capNhat(){veNav();veChatDau();veBanDong();kiemBao();}
+// âm báo: so trạng thái mới với lần trước (lần nạp đầu chỉ ghi nhớ, không kêu)
+let baoTruoc=null,hBatDau=0;
+function kiemBao(){const p=S.tienDo,n={can:S.can?.loai?S.can.loai+'|'+S.can.slug:'',chay:!!S.phien?.dang_chay,dung:p?(p.phan_tram>=100?'xong|'+p.viec:'lam'):''};
+  const t=baoTruoc;baoTruoc=n;if(n.chay&&!t?.chay)hBatDau=Date.now();if(!t||!window.NHAC)return;
+  if(n.can&&n.can!==t.can)NHAC.bao('duyet');
+  else if(n.dung.startsWith('xong')&&t.dung==='lam')NHAC.bao('dung');
+  else if(t.chay&&!n.chay&&Date.now()-hBatDau>30000)NHAC.bao('hai');}
 
 /* ================= BÀN LÀM VIỆC ================= */
 const BUOC=[['kich-ban','Kịch bản','Tuấn, Chị Mai',1],['giong','Giọng đọc','Máy dựng',0],['mau','3 mẫu phong cách','Máy dựng',1],['day-du','Dựng đầy đủ','Máy dựng',0],['dong-goi','Gói đăng bài','Vy',0],['nhap','Bản nháp','Đại ca xem',1]];
@@ -756,16 +764,19 @@ function nhanSuKien(ev){let d;try{d=JSON.parse(ev.data);}catch{return;}
   if(d.loai==='trang-thai'){S.nv[d.id]={...(S.nv[d.id]||{id:d.id}),trang_thai:d.trang_thai,ts:d.ts,...(d.viec!==undefined?{viec:d.viec}:{})};
     const e=$(`.tram[data-id="${d.id}"]`);if(e&&S.view==='ban'){const t=ttCua(d.id);e.dataset.tt=t.trang_thai;e.querySelector('.bong').textContent=t.viec||TT[t.trang_thai];e.querySelector('.tt').textContent=TT[t.trang_thai];}
     veChatDau();dongBoVP();if(d.id==='truong-nhom')napSau();}
-  else if(d.loai==='tien-do'){S.tienDo=d;S.nv['may-dung']={...(S.nv['may-dung']||{}),id:'may-dung',trang_thai:d.phan_tram>=100?'onl':'lam',viec:d.viec};veBanDong();}
+  else if(d.loai==='tien-do'){S.tienDo=d;S.nv['may-dung']={...(S.nv['may-dung']||{}),id:'may-dung',trang_thai:d.phan_tram>=100?'onl':'lam',viec:d.viec};veBanDong();kiemBao();}
   else if(d.loai==='tin'){themTin(d);bayThu(d.tu,d.den);if(d.tu==='may-dung'||d.den==='dai-ca')napSau(1200);}
   else if(d.loai==='hoat-dong'){S.phien.hoat_dong=d.noi;veChatDau();const e=$('.tram[data-id="truong-nhom"] .bong');if(e)e.textContent=d.noi;VP?.trangThai('truong-nhom','lam',d.noi);}
-  else if(d.loai==='phien'){const truoc=S.phien.dang_chay;S.phien=d;veChatDau();if(truoc!==d.dang_chay){napSau(500);if(!d.dang_chay&&['duyet','dangbai','chude','phantich'].includes(S.view)&&!$$('#view textarea').some(t=>t.value.trim()))setTimeout(()=>VE[S.view](),900);}}
+  else if(d.loai==='phien'){const truoc=S.phien.dang_chay;S.phien=d;veChatDau();kiemBao();if(truoc!==d.dang_chay){napSau(500);if(!d.dang_chay&&['duyet','dangbai','chude','phantich'].includes(S.view)&&!$$('#view textarea').some(t=>t.value.trim()))setTimeout(()=>VE[S.view](),900);}}
 }
 moLuong();
 setInterval(()=>{if(!document.hidden)napTT();},30000);
+// tab ẩn thì luồng sự kiện đóng: vẫn hỏi trạng thái mỗi 15 giây để âm báo kêu được
+setInterval(()=>{if(document.hidden&&window.NHAC?.baoBat())napTT();},15000);
 
 (async()=>{veGD();veFab();S.doi=(await api('/api/doi-ngu')).ds;await Promise.all([napTT(),napDuAn()]);napTin();mo(location.hash.slice(1)||'ban',1);})();
 })();
 </script>
+<script src="/nhac.js"></script>
 </body>
 </html>

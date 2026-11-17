@@ -360,6 +360,7 @@ const server = http.createServer(async (req, res) => {
     if (req.method === 'GET') {
       if (pn === '/' || pn === '/index.html') return guiTep(req, res, path.join(DH, 'index.html'));
       if (pn === '/van-phong.js') return guiTep(req, res, path.join(DH, 'van-phong.js'));
+      if (pn === '/nhac.js') return guiTep(req, res, path.join(DH, 'nhac.js'));
       if (pn === '/api/trang-thai') return json(res, { nhan_vien: Object.values(NV).map(({ id, trang_thai, viec, model, ts }) => ({ id, trang_thai: conLam(id, trang_thai, ts), viec, model, ts })), tien_do: tienDo, hien_tai: hienTai(), phien: ttPhien(), can_duyet: canDuyet(), khoi_cho: soKhoiCho() });
       if (pn === '/api/doi-ngu') return json(res, { ds: doiNgu() });
       if (pn === '/api/kho') return json(res, { ds: kho() });
