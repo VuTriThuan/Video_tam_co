@@ -5,6 +5,8 @@ import fs from 'node:fs';
 import path from 'node:path';
 import { execFile, spawn } from 'node:child_process';
 import readline from 'node:readline';
+import * as NS from './nhan-su.mjs';
+import * as LU from './luong.mjs';
 
 const GOC = path.resolve(path.dirname(new URL(import.meta.url).pathname), '..');
 const DH = path.join(GOC, 'dieu-hanh');
@@ -16,10 +18,14 @@ const docTxt = (f, d = '') => { try { return fs.readFileSync(f, 'utf8'); } catch
 const coFile = f => { try { return fs.statSync(f).isFile(); } catch { return false; } };
 
 /* ---------------- trạng thái nhân viên ---------------- */
-const MODEL = { 'truong-nhom': 'opus · medium', 'len-chu-de': 'opus · medium', 'bien-kich': 'opus · high', 'kiem-duyet': 'opus · medium',
-  'hoa-si': 'opus · medium', 'dong-goi': 'opus · medium', 'phan-tich': 'opus · high', 'may-dung': 'script · 0 token' };
+// model của từng người đọc thẳng từ .claude/agents/<id>.md (nhan-su.mjs), không chép cứng ở đây
 const NV = {};
-for (const id in MODEL) NV[id] = { id, trang_thai: 'off', viec: '', model: MODEL[id], ts: 0 };
+function napNV() {
+  const ds = NS.docDoi().filter(m => m.id !== 'dai-ca'), con = new Set(ds.map(m => m.id));
+  for (const m of ds) { const md = NS.modelCua(m.id); if (NV[m.id]) NV[m.id].model = md; else NV[m.id] = { id: m.id, trang_thai: 'off', viec: '', model: md, ts: 0 }; }
+  for (const id of Object.keys(NV)) if (!con.has(id)) delete NV[id];
+}
+napNV();
 let tienDo = null;
 const khach = new Set();
 
@@ -77,15 +83,11 @@ function ghiTin(tu, den, noi, slug) {
 }
 
 /* ---------------- đội ngũ: mỗi agent là một nhân viên có chức danh ---------------- */
-const DOI = docJson(path.join(DH, 'doi-ngu.json'), []);
-const TEN = Object.fromEntries(DOI.map(m => [m.id, m.ten]));
-function doiNgu() {
-  return DOI.map(m => {
-    const fm = {}; const mm = docTxt(p('.claude', 'agents', m.id + '.md')).match(/^---\n([\s\S]*?)\n---/);
-    if (mm) for (const d of mm[1].split('\n')) { const k = d.match(/^(\w+):\s*(.*)/); if (k) fm[k[1]] = k[2]; }
-    return { ...m, model: fm.model ? `${fm.model}${fm.effort ? ' · ' + fm.effort : ''}` : (MODEL[m.id] || ''), cong_cu: fm.tools || '' };
-  });
-}
+// đọc lại sau mỗi lần sửa nhân sự trên web (nhan-su.mjs ghi file)
+let TEN = {};
+function napDoi() { TEN = Object.fromEntries(NS.docDoi().map(m => [m.id, m.ten])); napNV(); }
+napDoi();
+const doiNgu = () => NS.dsNhanSu();
 
 /* ---------------- kho chủ đề ---------------- */
 function kho() {
@@ -151,7 +153,7 @@ function chayLenh(noi, moi, thuLai) {
     PATH: `${process.env.HOME}/.local/bin:/opt/homebrew/bin:/usr/local/bin:${process.env.PATH || ''}` });
   if (!thuLai) ghiTin('dai-ca', 'truong-nhom', noi);
   const proc = spawn(process.env.CLAUDE_BIN || 'claude', args, { cwd: GOC, env, stdio: ['pipe', 'pipe', 'pipe'], detached: true });
-  const c = chay = { proc, bat_dau: Date.now(), noi, xong: false, loi: '', hoat_dong: 'Đọc yêu cầu của đại ca', dung: false };
+  const c = chay = { proc, bat_dau: Date.now(), noi, xong: false, loi: '', hoat_dong: 'Đọc yêu cầu của sếp', dung: false };
   phat({ loai: 'phien', ...ttPhien() });
   proc.on('error', e => { c.loi += String(e.message || e); });
   proc.stdin.on('error', () => {}); proc.stdin.end(moRong(noi));
@@ -167,11 +169,11 @@ function chayLenh(noi, moi, thuLai) {
       let t = String(j.result || '').trim();
       if (j.is_error || (j.subtype && j.subtype !== 'success')) t = t || `Phiên dừng vì lỗi (${j.subtype}).`;
       if (/not logged in|\/login/i.test(t) && t.length < 200) {
-        t = 'Em chưa nhận được lệnh: chương trình `claude` trên máy này chưa đăng nhập. Đại ca mở Terminal, chạy `claude`, gõ `/login` và đăng nhập một lần, rồi gửi lại lệnh ở đây.';
+        t = 'Em chưa nhận được lệnh: chương trình `claude` trên máy này chưa đăng nhập. Sếp mở Terminal, chạy `claude`, gõ `/login` và đăng nhập một lần, rồi gửi lại lệnh ở đây.';
         phien = {}; luuPhien();
       }
       const tc = [...new Set((j.permission_denials || []).map(d => d.tool_name + (d.tool_input?.command ? ': ' + String(d.tool_input.command).slice(0, 80) : '')))];
-      if (tc.length) t += `\n\n(Có lệnh bị chặn quyền: ${tc.join('; ')}. Đại ca đồng ý thì thêm vào mục cho_phep của dieu-hanh/cau-hinh.json.)`;
+      if (tc.length) t += `\n\n(Có lệnh bị chặn quyền: ${tc.join('; ')}. Sếp đồng ý thì thêm vào mục cho_phep của dieu-hanh/cau-hinh.json.)`;
       ghiTin('truong-nhom', 'dai-ca', t || '(Anh Hải không trả lời gì.)');
     }
   });
@@ -180,16 +182,16 @@ function chayLenh(noi, moi, thuLai) {
     chay = null;
     if (!c.xong) {
       if (!thuLai && !c.dung && phien.session_id && /No conversation found|session/i.test(c.loi)) return chayLenh(noi, true, true);
-      ghiTin('truong-nhom', 'dai-ca', c.dung ? 'Em đã dừng theo lệnh đại ca.' : 'Phiên kết thúc bất thường. ' + c.loi.slice(-600));
+      ghiTin('truong-nhom', 'dai-ca', c.dung ? 'Em đã dừng theo lệnh sếp.' : 'Phiên kết thúc bất thường. ' + c.loi.slice(-600));
       // hook Stop có thể chưa chạy: trả mọi người về trạng thái nghỉ
       const slug = hienTai().slug || 'chung';
       for (const n of Object.values(NV)) if (n.trang_thai === 'lam' && n.id !== 'truong-nhom') ghiSuKien({ slug, loai: 'trang-thai', id: n.id, trang_thai: 'onl', viec: '' });
-      ghiSuKien({ slug, loai: 'trang-thai', id: 'truong-nhom', trang_thai: 'cho', viec: 'Chờ đại ca' });
+      ghiSuKien({ slug, loai: 'trang-thai', id: 'truong-nhom', trang_thai: 'cho', viec: 'Chờ sếp' });
     }
     const ke = hangCho.shift();
     if (ke) return chayLenh(ke.noi, ke.moi);
     // lượt hỏng trước khi hook Stop kịp chạy (ví dụ chưa đăng nhập) thì anh Hải vẫn phải về trạng thái chờ
-    if (c.xong) ghiSuKien({ slug: hienTai().slug || 'chung', loai: 'trang-thai', id: 'truong-nhom', trang_thai: 'cho', viec: 'Chờ đại ca' });
+    if (c.xong) ghiSuKien({ slug: hienTai().slug || 'chung', loai: 'trang-thai', id: 'truong-nhom', trang_thai: 'cho', viec: 'Chờ sếp' });
     phat({ loai: 'phien', ...ttPhien() });
   });
 }
@@ -275,6 +277,41 @@ function banTin(slug, n = 300) {
   const docF = f => docTxt(f).split('\n').filter(Boolean).map(d => { try { return JSON.parse(d); } catch { return null; } }).filter(Boolean);
   let ds = slug ? docF(p('du-an', slug, 'ban-tin.jsonl')) : thuMuc(p('du-an')).flatMap(s => docF(p('du-an', s, 'ban-tin.jsonl')));
   return ds.sort((a, b) => a.ts - b.ts).slice(-n);
+}
+
+/* ---------------- bàn giao: việc anh Hải giao và kết quả từng người nộp (chỉ đọc) ---------------- */
+const KET_QUA = {
+  'len-chu-de': ['chu-de/kho.md'],
+  'bien-kich': ['du-an/{s}/kich-ban.md', 'du-an/{s}/canh.json', 'du-an/{s}/video.json'],
+  'kiem-duyet': ['du-an/{s}/kich-ban.md'],
+  'hoa-si': ['render/thu-vien/khoi.js', 'docs/catalog.md'],
+  'may-dung': ['review/{s}.html', 'xuat-ban/{s}/video.mp4', 'xuat-ban/{s}/ban-goc.mp4', 'xuat-ban/{s}/anh-bia.png'],
+  'dong-goi': ['xuat-ban/{s}/dang-bai.md'],
+  'phan-tich': ['phan-tich/bao-cao/{s}.md'],
+};
+const VIEC_CHUNG = { 'goi-y': 'Gợi ý chủ đề', 'lam-moi': 'Làm mới khối' };
+function banGiao(slug) {
+  const ten = Object.fromEntries(danhSach().map(d => [d.slug, d.ten]));
+  const ds = (slug ? [slug] : thuMuc(p('du-an'))).filter(s => coFile(p('du-an', s, 'ban-tin.jsonl')));
+  const tep = r => { const f = p(...r.split('/')); try { const st = fs.statSync(f); if (!st.isFile()) throw 0;
+    return { duong: r, co: true, sua: st.mtimeMs, kb: Math.max(1, Math.round(st.size / 1024)), url: CHO_PHEP.includes(r.split('/')[0]) ? url(f) : null }; } catch { return { duong: r, co: false }; } };
+  return ds.map(s => {
+    const nguoi = {};
+    for (const t of banTin(s, 100000)) {
+      if (t.loai !== 'tin' || !t.tu || !t.den) continue;
+      if (t.tu === 'truong-nhom' && t.den !== 'dai-ca') (nguoi[t.den] ??= { giao: [], nop: [] }).giao.push({ ts: t.ts, noi: t.noi });
+      else if (t.den === 'truong-nhom' && t.tu !== 'dai-ca') (nguoi[t.tu] ??= { giao: [], nop: [] }).nop.push({ ts: t.ts, noi: t.noi });
+    }
+    const phan = thuMuc(p('xuat-ban', s)).filter(d => /^phan-\d+$/.test(d)).sort();
+    for (const [id, n] of Object.entries(nguoi)) {
+      const ds2 = VIEC_CHUNG[s] ? (KET_QUA[id] || []).filter(r => !r.includes('{s}')) : (KET_QUA[id] || []).map(r => r.replaceAll('{s}', s));
+      if (id === 'may-dung' && !VIEC_CHUNG[s]) ds2.push(...phan.map(d => `xuat-ban/${s}/${d}/video.mp4`));
+      n.tep = ds2.map(tep).filter((x, i) => x.co || i === 0 || id === 'bien-kich');
+    }
+    const tin = Object.values(nguoi).flatMap(n => [...n.giao, ...n.nop]).map(t => t.ts);
+    return { slug: s, ten: VIEC_CHUNG[s] || ten[s] || s, chung: !!VIEC_CHUNG[s], cuoi: tin.length ? Math.max(...tin) : 0,
+      duyet: docJson(p('du-an', s, 'duyet.json'), []), nguoi };
+  }).filter(x => Object.keys(x.nguoi).length).sort((a, b) => b.cuoi - a.cuoi);
 }
 
 /* thư viện khối: đọc docs/catalog.md + đếm số lần dùng trong canh.json của các video đã làm */
@@ -372,6 +409,12 @@ const server = http.createServer(async (req, res) => {
       if (pn === '/api/du-an') return json(res, { ds: danhSach(), hien_tai: hienTai() });
       if (pn.startsWith('/api/du-an/')) { const s = pn.slice(11); return slugHopLe(s) ? json(res, duAn(s)) : json(res, { loi: 'slug' }, 400); }
       if (pn === '/api/ban-tin') { const s = u.searchParams.get('slug'); return json(res, { ds: banTin(slugHopLe(s) ? s : '') }); }
+      if (pn === '/api/nhan-su') return json(res, NS.chiTietNhanSu(u.searchParams.get('id') || ''));
+      if (pn === '/api/skill-ds') return json(res, { ds: NS.dsSkill(), cong_cu: NS.CONG_CU, khoa: NS.KHOA });
+      if (pn === '/api/skill') return json(res, NS.chiTietSkill(u.searchParams.get('ten') || ''));
+      if (pn === '/api/da-go') return json(res, { ds: NS.dsDaGo() });
+      if (pn === '/api/luong') return json(res, { luong: LU.docLuong() });
+      if (pn === '/api/ban-giao') { const s = u.searchParams.get('slug'); return json(res, { ds: banGiao(slugHopLe(s) ? s : ''), hien_tai: hienTai().slug || '' }); }
       if (pn === '/api/thu-vien') { const tv = thuVien(); return json(res, { ...tv, de_xuat: deXuatKhoi(tv) }); }
       if (pn === '/api/phan-tich') return json(res, phanTich());
       if (pn === '/api/token') return token(t => json(res, t));
@@ -382,6 +425,20 @@ const server = http.createServer(async (req, res) => {
       }
     }
     if (req.method === 'POST') {
+      if (['/api/nhan-su', '/api/nhan-su/xoa', '/api/skill', '/api/skill/xoa', '/api/khoi-phuc', '/api/luong', '/api/luong/bo'].includes(pn)) {
+        const b = JSON.parse((await docBody(req, 5e5)).toString() || '{}');
+        if (chay && /xoa|khoi-phuc/.test(pn)) return json(res, { loi: 'Anh Hải đang làm, đợi xong rồi hãy xoá hoặc khôi phục.' }, 409);
+        let r;
+        if (pn === '/api/nhan-su') r = NS.luuNhanSu(b);
+        else if (pn === '/api/nhan-su/xoa') { const id = String(b.id || ''), ten = TEN[id] || id; r = NS.xoaNhanSu(id); r.buoc_chuyen = LU.chuyenBuocCuaNguoi(id, ten, NS.docDoi()); if (r.buoc_chuyen) phat({ loai: 'luong' }); }
+        else if (pn === '/api/skill') r = NS.luuSkill(b);
+        else if (pn === '/api/skill/xoa') r = NS.xoaSkill(String(b.ten || ''));
+        else if (pn === '/api/khoi-phuc') r = NS.khoiPhuc(b.loai === 'skill' ? 'skill' : 'nhan-vien', String(b.ma || ''));
+        else if (pn === '/api/luong') r = LU.luuLuong(b, NS.docDoi());
+        else r = LU.boLuong();
+        if (pn.startsWith('/api/luong')) phat({ loai: 'luong' }); else { napDoi(); phat({ loai: 'doi-ngu' }); }
+        return json(res, r);
+      }
       if (pn === '/api/duyet') {
         const b = JSON.parse((await docBody(req, 1e5)).toString() || '{}');
         if (!slugHopLe(b.slug) || !['kich-ban', 'phong-cach', 'nhap'].includes(b.loai) || !['duyet', 'sua'].includes(b.quyet)) return json(res, { loi: 'thiếu thông tin' }, 400);
@@ -452,6 +509,6 @@ const server = http.createServer(async (req, res) => {
       }
     }
     res.writeHead(404); res.end('Không thấy');
-  } catch (e) { json(res, { loi: String(e.message || e) }, 500); }
+  } catch (e) { json(res, { loi: String(e.message || e) }, e.ma || 500); }
 });
 server.listen(PORT, '127.0.0.1', () => console.log(`Phòng điều hành: http://localhost:${PORT}`));

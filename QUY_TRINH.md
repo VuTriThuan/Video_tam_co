@@ -14,7 +14,8 @@
 - Đánh dấu chủ đề/giai đoạn: `python3 dieu-hanh/su_kien.py bat-dau <slug>` / `giai-doan <ten>`. Hook `chan-vong-lap.sh` đếm lượt theo (agent, giai đoạn): lượt 4 bị chặn.
 - Duyệt trên web ghi `du-an/<slug>/duyet.json` rồi máy chủ tự gửi "tiếp" cho Anh Hải (`dieu-hanh/server.mjs` chạy `claude -p`, lệnh gạch chéo được mở rộng từ `.claude/commands/`); nhận "tiếp" thì đọc mục `da_xu_ly: false` mới nhất.
 - Văn phòng 3D: `dieu-hanh/van-phong.js` (Three.js 0.160 tải từ jsDelivr qua importmap trong `index.html`; vị trí từng người ở bảng `VT`). Lỗi tải hoặc màn hình hẹp thì `index.html` vẽ sơ đồ 2D.
-- Nhân viên và vị trí: `dieu-hanh/doi-ngu.json` (giao diện đọc file này; thêm agent mới thì thêm một dòng ở đây và trong `MODEL` của `su_kien.py`, `server.mjs`).
+- Nhân viên và vị trí: `dieu-hanh/doi-ngu.json`. Thêm, sửa, gỡ agent và skill ở trang **Skill & nhân sự** (`dieu-hanh/nhan-su.mjs` ghi `.claude/agents/<id>.md`, `.claude/skills/`, `doi-ngu.json`; gỡ là chuyển vào `dieu-hanh/_da-go/`, khôi phục được). Model đọc thẳng từ file agent, văn phòng 3D tự xếp bàn. Agent mới có hiệu lực từ phiên mới.
+- Luồng làm việc: trang **Luồng làm việc** lưu `dieu-hanh/luong.json` + `luong.md`; `/chu-de`, `/lam-moi`, `/phan-tich` đọc `luong.md` nếu có. Gỡ một người thì bước của họ chuyển về anh Hải. "Về quy trình gốc" xoá hai file này.
 - Phân tích: ảnh vào `phan-tich/inbox/<slug>/` → `/phan-tich <slug>` → `phan-tich/so-lieu.csv`, `phan-tich/bao-cao/<slug>.md`, `chu-de/bai-hoc.md` (Tuấn, Linh, Vy đọc).
 
 ## Hai định dạng (Bước 4)

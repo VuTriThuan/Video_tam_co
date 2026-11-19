@@ -1,0 +1,23 @@
+{
+ "marketing-psychology": {
+  "mo_ta": "Kho hiệu ứng tâm lý (neo giá, khan hiếm, bằng chứng xã hội, sợ mất…) để tìm và gọi đúng tên chiêu"
+ },
+ "humanizer": {
+  "mo_ta": "Nhận diện và gỡ các kiểu viết lộ là máy viết, cho lời nghe như người thật nói"
+ },
+ "stop-slop": {
+  "mo_ta": "Bỏ câu sáo, câu chốt và nhịp văn kiểu AI"
+ },
+ "algorithmic-art": {
+  "mo_ta": "Sinh nền và ảnh bìa bằng mã (viết lại JavaScript thuần, không p5)"
+ },
+ "hyperframes": {
+  "mo_ta": "Phác hiệu ứng chuyển động bằng HTML trước khi chuyển thành khối của thư viện"
+ },
+ "hyperframes-cli": {
+  "mo_ta": "Xem trước, kiểm khung bản phác HyperFrames (không dùng lệnh đám mây)"
+ },
+ "hyperframes-registry": {
+  "mo_ta": "Tra khối dựng sẵn: chuyển cảnh, chữ động, lớp phủ, biểu đồ"
+ }
+}

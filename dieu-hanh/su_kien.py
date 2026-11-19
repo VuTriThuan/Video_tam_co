@@ -18,8 +18,32 @@ GOC = pathlib.Path(__file__).resolve().parent.parent
 LOG = GOC / "dieu-hanh" / "su-kien.jsonl"
 HIEN_TAI = GOC / "du-an" / "hien-tai.json"
 NHO = GOC / "dieu-hanh" / ".nho-agent.json"  # agent_id -> agent_type, việc đang giao
-MODEL = {"truong-nhom": "opus · medium", "len-chu-de": "opus · medium", "bien-kich": "opus · high", "kiem-duyet": "opus · medium",
-         "hoa-si": "opus · medium", "dong-goi": "opus · medium", "phan-tich": "opus · high", "may-dung": "script · 0 token"}
+def _nap_model():
+    """id -> "model · mức suy nghĩ", đọc từ doi-ngu.json và .claude/agents/<id>.md (nhân viên thêm trên web cũng có)."""
+    m = {"truong-nhom": "opus · medium"}
+    try:
+        doi = json.loads((GOC / "dieu-hanh" / "doi-ngu.json").read_text(encoding="utf-8"))
+    except Exception:
+        doi = []
+    for x in doi:
+        i = x.get("id")
+        if not i or i in m or i in ("dai-ca", "may-dung") or x.get("loai") != "ai":
+            continue
+        fm = {}
+        try:
+            t = (GOC / ".claude" / "agents" / f"{i}.md").read_text(encoding="utf-8")
+            if t.startswith("---"):
+                for d in t.split("---", 2)[1].splitlines():
+                    if ":" in d:
+                        k, v = d.split(":", 1); fm[k.strip()] = v.strip()
+        except Exception:
+            continue
+        m[i] = fm.get("model", "opus") + (" · " + fm["effort"] if fm.get("effort") else "")
+    m["may-dung"] = "script · 0 token"
+    return m
+
+
+MODEL = _nap_model()
 DOI = [k for k in MODEL if k not in ("truong-nhom", "may-dung")]
 WEB = bool(os.environ.get("TAMCO_WEB"))
 
@@ -105,16 +129,16 @@ def hook():
         if d.get("source") in ("startup", "clear"):
             for k in DOI: tt(k, "onl", "")  # phiên mới: chưa ai nhận việc
     elif e == "UserPromptSubmit":
-        tt("truong-nhom", "lam", "Đọc yêu cầu của đại ca")
+        tt("truong-nhom", "lam", "Đọc yêu cầu của sếp")
         # phiên mở từ web (TAMCO_WEB) thì máy chủ đã tự ghi lời đại ca và câu trả lời
         if not WEB and (d.get("prompt") or "").strip(): tin("dai-ca", "truong-nhom", d["prompt"].strip()[:4000])
     elif e == "Stop":
-        tt("truong-nhom", "cho", "Chờ đại ca")
+        tt("truong-nhom", "cho", "Chờ sếp")
         if not WEB:
             bc = bo_duoi(chu_cua(d.get("last_assistant_message") or bao_cao_tu_transcript(d.get("transcript_path", ""))))
             if bc: tin("truong-nhom", "dai-ca", bc)
     elif e == "Notification":
-        tt("truong-nhom", "cho", (d.get("message") or "Chờ đại ca duyệt")[:120])
+        tt("truong-nhom", "cho", (d.get("message") or "Chờ sếp duyệt")[:120])
     elif e == "SessionEnd":
         # phiên mở từ web kết thúc sau mỗi lệnh nhưng đội vẫn trực: không cho mọi người "vắng"
         if not WEB:

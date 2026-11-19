@@ -4,6 +4,8 @@ argument-hint: <tên chủ đề hoặc số trong chu-de/kho.md> [--le]
 ---
 Chủ đề: $ARGUMENTS
 
+**Luồng sếp chỉnh trên web:** nếu có `dieu-hanh/luong.md`, đọc mục `chu-de` trước khi giao việc. Bước nào luồng giao cho người khác, hoặc có thêm bước hay chốt duyệt, thì làm theo luồng (giao đúng người, dừng đúng chốt). Bước của Máy dựng vẫn chạy bằng script như dưới đây; luồng mâu thuẫn với script thì hỏi đại ca. Không có file thì làm như dưới.
+
 **Định dạng:** có `--le` → video lẻ 75–90 giây. Không có → lấy định dạng ghi trong mục kho (`chuoi`/`le`); chủ đề tự đặt tên thì mặc định **chuỗi** (3–5 phần, mỗi phần 60–90 giây).
 
 Làm theo `QUY_TRINH.md` với các vai sau. Dừng đúng 3 chốt; mỗi chốt hỏi đại ca một câu ngắn, kèm đường dẫn, nhắc có thể duyệt ở tab Duyệt (http://localhost:4747) rồi gõ "tiếp".

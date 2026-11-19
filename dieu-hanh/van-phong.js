@@ -14,6 +14,11 @@ const DANG = { 'dai-ca': ['vuot', '#f0c9a0', 0, '#1f1b1a'], 'truong-nhom': ['nga
 // vị trí theo ô (cột, hàng tính từ tâm bàn cờ)
 const VT = { 'dai-ca': [-3, -2], 'truong-nhom': [0, -1], 'len-chu-de': [-4, 1], 'bien-kich': [-2, 1], 'kiem-duyet': [0, 1],
   'hoa-si': [2, -1], 'may-dung': [4, -2], 'dong-goi': [2, 2], 'phan-tich': [4, 2] };
+// ô trống cho nhân viên thêm sau (tránh đồ đạc), lần lượt theo thứ tự
+const TRONG = [[-2, -2], [2, 1], [-3, 1], [-1, 2], [3, -1], [1, 2], [-1, -2], [3, 0], [-2, 2], [1, -3]];
+// người mới: chọn kiểu tóc, màu da, kính theo mã để mỗi người một vẻ
+const bam = s => [...s].reduce((h, c) => (h * 31 + c.charCodeAt(0)) >>> 0, 7);
+const dangMoi = id => { const h = bam(id); return [['ngan', 'dinh', 'roi', 'bob', 'dai', 'bui'][h % 6], ['#f0c9a0', '#e9bb8f', '#f3d0ad', '#e3b081'][(h >> 3) % 4], (h >> 5) % 3 === 0 ? 1 : 0, ['#1f1b1a', '#3b2a22', '#5a3a32'][(h >> 7) % 3]]; };
 const KHU = [['BAN LÃNH ĐẠO', -3, -2.62], ['ĐIỀU PHỐI', 0, -1.62], ['NỘI DUNG', -2, 0.38], ['HÌNH ẢNH & DỰNG', 3, -2.62], ['XUẤT BẢN & SỐ LIỆU', 3, 1.38]];
 const BUOC = ['Kịch bản', 'Giọng', 'Mẫu', 'Dựng', 'Gói đăng', 'Nháp'];
 
@@ -168,7 +173,7 @@ export async function taoVanPhong({ doi, bia = [], toi = false, chon = () => {} 
     else if (kieu === 'dai') { v(1.6); dat(hop(0.46, 0.52, 0.16, mau, 0.08), 0, -0.2, -0.17, g); dat(vien(0.075, 0.3, mau), -0.22, -0.16, -0.03, g); dat(vien(0.075, 0.3, mau), 0.22, -0.16, -0.03, g); }
     else if (kieu === 'bob') { v(1.6); const b = cau(0.275, mau, 16, 10); b.scale.set(1, 0.92, 0.7); dat(b, 0, -0.07, -0.1, g); dat(vien(0.07, 0.12, mau), -0.225, -0.1, 0, g); dat(vien(0.07, 0.12, mau), 0.225, -0.1, 0, g); }
     return g; }
-  function taoNguoi(id, mau) { const [kieu, da_, kinh, mauToc] = DANG[id] || DANG['truong-nhom'], g = new THREE.Group();
+  function taoNguoi(id, mau) { const [kieu, da_, kinh, mauToc] = DANG[id] || dangMoi(id), g = new THREE.Group();
     const than = dat(vien(0.24, 0.34, mau), 0, 0.88, 0, g);
     if (id === 'truong-nhom' || id === 'dai-ca') { dat(hop(0.2, 0.2, 0.04, '#ffffff', 0.02), 0, 1.06, 0.215, g).rotation.x = -0.2; dat(hop(0.06, 0.26, 0.03, '#1c1a18', 0.01), 0, 0.95, 0.24, g).rotation.x = -0.1; }
     const dau = new THREE.Group(); dat(dau, 0, 1.44, 0, g);
@@ -189,7 +194,8 @@ export async function taoVanPhong({ doi, bia = [], toi = false, chon = () => {} 
     const tay = [-1, 1].map(s => { const t = new THREE.Group(); dat(t, s * 0.33, 0.9, 0.05, g); const c = hop(0.1, 0.36, 0.1, '#aab3c0', 0.04); c.position.y = -0.16; t.add(c); t.rotation.x = -1.0; return t; });
     return { g, than, dau, tay, mat }; }
 
-  for (const m of doi) { const v = VT[m.id]; if (!v) continue;
+  const choNgoi = {}; { let k = 0; for (const m of doi) choNgoi[m.id] = VT[m.id] || TRONG[k++]; }
+  for (const m of doi) { const v = choNgoi[m.id]; if (!v) continue;
     const g = new THREE.Group(), sep = m.id === 'dai-ca', may = m.id === 'may-dung', TL = 1.32, x = oX(v[0]), z = oZ(v[1]) - 0.45;
     // ô sáng dưới chân: màu riêng của người đó, đổi theo trạng thái
     const o = new THREE.Mesh(new RoundedBoxGeometry(O - 0.16, 0.05, O - 0.16, 2, 0.02), new THREE.MeshLambertMaterial({ color: m.mau, emissive: m.mau, emissiveIntensity: 0.15, transparent: true, opacity: 0.55 }));
