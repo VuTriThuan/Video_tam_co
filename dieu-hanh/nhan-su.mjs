@@ -14,7 +14,7 @@ const D_GO = path.join(DH, '_da-go');
 export const KHOA = ['dai-ca', 'truong-nhom', 'may-dung'];          // không xoá được
 export const CONG_CU = ['Read', 'Write', 'Edit', 'Bash', 'Glob', 'Grep', 'WebSearch', 'WebFetch'];
 export const MUC_NGHI = ['low', 'medium', 'high'];
-const MAC_DINH_MODEL = { 'truong-nhom': 'opus · medium', 'may-dung': 'script · 0 token' };
+const MAC_DINH_MODEL = { 'truong-nhom': 'Opus 5.5 · medium', 'may-dung': 'script · 0 token' };
 const ID = /^[a-z][a-z0-9-]{1,39}$/;
 const MAU = /^#[0-9a-f]{6}$/i;
 
@@ -41,18 +41,64 @@ export function docAgent(id) {
   let than = m[2];
   const kh = than.match(/\n*<!-- skill: [^\n]*-->[\s\S]*?<!-- \/skill -->\n*/);
   if (kh) than = than.replace(kh[0], '\n');
+  const ka = than.match(/\n*<!-- ai-ngoai: [^\n]*-->[\s\S]*?<!-- \/ai-ngoai -->\n*/);
+  if (ka) than = than.replace(ka[0], '\n');
   return { fm: Object.fromEntries(fm), thu_tu: fm.map(x => x[0]), than: than.trim() };
 }
-export const modelCua = (id, a = docAgent(id)) => MAC_DINH_MODEL[id] || (a ? `${a.fm.model || 'opus'}${a.fm.effort ? ' · ' + a.fm.effort : ''}` : '');
+// mô hình chọn được cho từng nhân viên (Fable không dùng theo CLAUDE.md; Gemini chỉ gói miễn phí)
+// mô hình chọn được cho từng nhân viên (Fable không dùng theo CLAUDE.md; Gemini chỉ gói miễn phí).
+// Claude: tên gọi trong Claude Code (opus/sonnet/haiku) trỏ tới dòng 5.5 hiện tại.
+// Gemini: tên "latest" do Google tự nâng cấp; bản thật lấy từ logs/phien-ban-ai.json (ghi sau mỗi lần gọi).
+const CLAUDE_BAN = { opus: ['Opus 5.5', 'claude-opus-5-5'], sonnet: ['Sonnet 5.5', 'claude-sonnet-5-5'], haiku: ['Haiku 5.5', 'claude-haiku-5-5'] };
+const F_BAN_AI = path.join(GOC, 'logs', 'phien-ban-ai.json');
+export function moHinh() {
+  const ban = docJson(F_BAN_AI, {}), so = id => (String(ban[id]?.ban || '').match(/gemini-(\d+(?:\.\d+)?)/) || [])[1];
+  const g = (id, ten, mo_ta, khoa) => { const v = so(id); return { id, ten: v ? `${ten} ${v}` : ten, ma: ban[id]?.ban || id,
+    mo_ta: mo_ta + (v ? '' : ' · chưa đo được bản'), ...(khoa ? { khoa: true } : {}), ...(ban[id]?.luc ? { do_luc: ban[id].luc } : {}) }; };
+  return {
+    claude: [
+      { id: 'opus', ten: CLAUDE_BAN.opus[0], ma: CLAUDE_BAN.opus[1], mo_ta: 'mạnh nhất · tốn token nhất' },
+      { id: 'sonnet', ten: CLAUDE_BAN.sonnet[0], ma: CLAUDE_BAN.sonnet[1], mo_ta: 'cân bằng · rẻ hơn Opus' },
+      { id: 'haiku', ten: CLAUDE_BAN.haiku[0], ma: CLAUDE_BAN.haiku[1], mo_ta: 'nhanh · rẻ nhất · việc đơn giản' },
+    ],
+    gemini: [
+      g('gemini-flash-lite-latest', 'Flash Lite', 'nhanh · ổn định ở gói miễn phí'),
+      g('gemini-flash-latest', 'Flash', 'viết tốt hơn · hay quá tải giờ cao điểm'),
+      g('gemini-pro-latest', 'Pro', 'không có trong gói miễn phí', true),
+    ],
+  };
+}
+const tenMH = id => Object.values(moHinh()).flat().find(x => x.id === id)?.ten || id;
+export const modelCua = (id, a = docAgent(id), m = docDoi().find(x => x.id === id)) => MAC_DINH_MODEL[id] || (m?.bo_nao === 'gemini' ? `Gemini ${tenMH(m.mo_hinh_ngoai || 'gemini-flash-lite-latest')} · miễn phí` : a ? `${tenMH(a.fm.model || 'opus')}${a.fm.effort ? ' · ' + a.fm.effort : ''}` : '');
+// bộ não ngoài chạy qua pipeline/nhan-vien-ngoai.py: chỉ có công cụ tệp
+export const CC_BO_NAO_NGOAI = ['Read', 'Write', 'Edit', 'Glob', 'Grep'];
+const TIEN_TO_NAO = /^\[Bộ não Gemini[^\]]*\]\s*/;
 
 function khoiSkill(ds) {
   if (!ds.length) return '';
   return `\n\n<!-- skill: Phòng điều hành tự ghi, sửa ở trang Skill & nhân sự -->\nSkill được giao (đọc \`.claude/skills/<tên>/SKILL.md\` khi việc cần):\n`
     + ds.map(s => `- \`${s.ten}\`${s.de ? ': ' + motDong(s.de) : ''}`).join('\n') + '\n<!-- /skill -->\n';
 }
-function ghiAgent(id, fm, thuTu, than, skill) {
+/* ---------- AI phụ trợ (chỉ miễn phí, qua pipeline/goi-ai.py) ---------- */
+const F_AI = path.join(GOC, 'pipeline', 'ai-ngoai.json');
+export const dsNhaAi = () => Object.keys(docJson(F_AI, { nha: {} }).nha || {});
+function khoiAiNgoai(ai) {
+  if (!ai?.nha) return '';
+  const nha = ai.nha === 'tu-chon' ? '' : ` --nha ${ai.nha}`;
+  return `\n<!-- ai-ngoai: Phòng điều hành tự ghi, sửa ở trang Skill & nhân sự -->\nAI phụ trợ (miễn phí): ${ai.nha === 'tu-chon' ? 'tự chọn nhà còn lượt' : ai.nha}. Bộ não vẫn là em; chỉ nhờ AI phụ khi có ích${ai.de ? ': ' + motDong(ai.de) : ''}.\n`
+    + `- Chữ: \`python3 pipeline/goi-ai.py chu "<yêu cầu>"${nha}\` (thêm \`--anh <ảnh>\` để đọc ảnh, cần Gemini)\n`
+    + `- Ảnh: \`python3 pipeline/goi-ai.py anh "<mô tả, no text>" --ra <tệp.png>\` (Pollinations, có logo góc dưới phải)\n`
+    + `- Lỗi hoặc hết lượt thì tự làm tiếp, không thử quá 2 lần. Kết quả AI phụ phải tự rà lại trước khi dùng. Không gửi thông tin cá nhân.\n<!-- /ai-ngoai -->\n`;
+}
+function kiemAiNgoai(v) {
+  if (!v || !v.nha || v.nha === 'khong') return null;
+  const nha = String(v.nha);
+  if (nha !== 'tu-chon' && !dsNhaAi().includes(nha)) throw loi(`AI phụ "${nha}" không nằm trong danh sách miễn phí.`);
+  return { nha, ...(String(v.de || '').trim() ? { de: chuoi(v.de, 200, 'Việc nhờ AI phụ') } : {}) };
+}
+function ghiAgent(id, fm, thuTu, than, skill, ai) {
   const khoa = [...new Set([...thuTu, 'name', 'description', 'model', 'effort', 'maxTurns', 'omitClaudeMd', 'tools'])].filter(k => fm[k] !== undefined && fm[k] !== '');
-  const t = '---\n' + khoa.map(k => `${k}: ${motDong(String(fm[k]))}`).join('\n') + '\n---\n' + than.trim() + '\n' + khoiSkill(skill);
+  const t = '---\n' + khoa.map(k => `${k}: ${motDong(String(fm[k]))}`).join('\n') + '\n---\n' + than.trim() + '\n' + khoiSkill(skill) + khoiAiNgoai(ai);
   fs.mkdirSync(D_AGENT, { recursive: true });
   const f = path.join(D_AGENT, id + '.md'); fs.writeFileSync(f + '.tmp', t); fs.renameSync(f + '.tmp', f);
 }
@@ -62,14 +108,14 @@ export function dsNhanSu() {
   const coSkill = new Set(dsTenSkill());
   return docDoi().map(m => {
     const a = m.loai === 'ai' && m.id !== 'truong-nhom' ? docAgent(m.id) : null;
-    return { ...m, model: modelCua(m.id, a), cong_cu: a?.fm.tools || '', co_file: !!a,
+    return { ...m, model: modelCua(m.id, a, m), cong_cu: a?.fm.tools || '', co_file: !!a,
       skill: (m.skill || []).map(s => ({ ...s, co: coSkill.has(s.ten) })) };
   });
 }
 export function chiTietNhanSu(id) {
   const m = docDoi().find(x => x.id === id); if (!m) throw loi('Không có nhân viên này.', 404);
   const a = m.loai === 'ai' && id !== 'truong-nhom' ? docAgent(id) : null;
-  return { ...m, mo_ta: a?.fm.description || '', muc_nghi: a?.fm.effort || 'medium', luot: +(a?.fm.maxTurns || 0) || '',
+  return { ...m, mo_hinh: m.bo_nao === 'gemini' ? (m.mo_hinh_ngoai || 'gemini-flash-lite-latest') : (a?.fm.model || 'opus'), mo_ta: (a?.fm.description || '').replace(TIEN_TO_NAO, ''), muc_nghi: a?.fm.effort || 'medium', luot: +(a?.fm.maxTurns || 0) || '',
     cong_cu: a ? String(a.fm.tools || '').split(/\s*,\s*/).filter(Boolean) : [], loi_dan: a?.than || '', co_file: !!a };
 }
 
@@ -88,17 +134,31 @@ export function luuNhanSu(b) {
   const m = { ...(cu || { id, loai: 'ai' }), ten, chuc_danh: chuoi(b.chuc_danh, 60, 'Chức danh') || 'Nhân viên',
     phong: chuoi(b.phong, 40, 'Phòng') || 'Nội dung', mau: MAU.test(b.mau || '') ? b.mau : (cu?.mau || '#3d5a80'), viec: chuoi(b.viec, 300, 'Việc') };
   if (m.loai !== 'nguoi' && id !== 'may-dung') { const sk = kiemSkillGan(b.skill); if (sk.length) m.skill = sk; else delete m.skill; }
+  if (m.loai === 'ai' && id !== 'truong-nhom' && 'ai_ngoai' in b) { const ai = kiemAiNgoai(b.ai_ngoai); if (ai) m.ai_ngoai = ai; else delete m.ai_ngoai; }
   // agent thật: ghi file .claude/agents/<id>.md (trưởng nhóm là phiên chính, không có file agent)
   if (m.loai === 'ai' && id !== 'truong-nhom') {
     const a = docAgent(id) || { fm: { name: id, omitClaudeMd: 'true' }, thu_tu: [], than: '' };
     const congCu = (Array.isArray(b.cong_cu) ? b.cong_cu : []).filter(x => CONG_CU.includes(x));
+    if (m.ai_ngoai && !congCu.includes('Bash')) congCu.push('Bash');   // AI phụ gọi qua script nên cần chạy lệnh
+    if ('bo_nao' in b) {
+      if (b.bo_nao === 'gemini') {
+        const ngoai = congCu.filter(x => !CC_BO_NAO_NGOAI.includes(x) && !(x === 'Bash' && m.ai_ngoai));
+        if (ngoai.length) throw loi(`Bộ não Gemini chưa dùng được công cụ ${ngoai.join(', ')}. Bỏ các công cụ đó hoặc giữ Claude.`);
+        m.bo_nao = 'gemini';
+        const mh = moHinh().gemini.find(x => x.id === b.mo_hinh);
+        if (b.mo_hinh && (!mh || mh.khoa)) throw loi(`Mô hình "${b.mo_hinh}" không dùng được với gói miễn phí.`);
+        m.mo_hinh_ngoai = mh ? mh.id : 'gemini-flash-lite-latest';
+      } else { delete m.bo_nao; delete m.mo_hinh_ngoai; }
+    }
     if (!congCu.length) throw loi('Chọn ít nhất một công cụ (thường là Read).');
     const luot = Math.round(+b.luot || 0); if (b.luot !== '' && b.luot != null && (luot < 1 || luot > 60)) throw loi('Số lượt tối đa từ 1 đến 60.');
     const loiDan = chuoi(b.loi_dan, 30000, 'Lời dặn'); if (!loiDan) throw loi('Viết lời dặn việc cho nhân viên (họ là ai, đọc gì, làm gì, báo cáo thế nào).');
-    const fm = { ...a.fm, name: id, model: 'opus', effort: MUC_NGHI.includes(b.muc_nghi) ? b.muc_nghi : 'medium',
-      description: chuoi(b.mo_ta, 400, 'Mô tả') || `${ten} (${m.chuc_danh}) — ${m.viec || 'nhân viên Tâm Cơ'}`,
+    const mhClaude = m.bo_nao !== 'gemini' && moHinh().claude.some(x => x.id === b.mo_hinh) ? b.mo_hinh : (moHinh().claude.some(x => x.id === a.fm.model) ? a.fm.model : 'opus');
+    const fm = { ...a.fm, name: id, model: mhClaude, effort: MUC_NGHI.includes(b.muc_nghi) ? b.muc_nghi : 'medium',
+      description: (m.bo_nao === 'gemini' ? `[Bộ não Gemini: anh Hải giao bằng lệnh python3 pipeline/nhan-vien-ngoai.py ${id} "<việc>", không gọi agent; lỗi thì mới gọi agent này] ` : '')
+        + (chuoi(b.mo_ta, 400, 'Mô tả') || `${ten} (${m.chuc_danh}) — ${m.viec || 'nhân viên Tâm Cơ'}`),
       tools: congCu.join(', '), maxTurns: luot || undefined };
-    ghiAgent(id, fm, a.thu_tu, loiDan, m.skill || []);
+    ghiAgent(id, fm, a.thu_tu, loiDan, m.skill || [], m.ai_ngoai);
   }
   if (cu) ds[ds.indexOf(cu)] = m; else ds.push(m);
   ghiDoi(ds);
@@ -171,7 +231,7 @@ export function xoaSkill(ten) {
 }
 function capNhatKhoiSkill(m) {
   if (m.loai !== 'ai' || m.id === 'truong-nhom') return;
-  const a = docAgent(m.id); if (a) ghiAgent(m.id, a.fm, a.thu_tu, a.than, m.skill || []);
+  const a = docAgent(m.id); if (a) ghiAgent(m.id, a.fm, a.thu_tu, a.than, m.skill || [], m.ai_ngoai);
 }
 
 /* ---------- đã gỡ: xem và khôi phục ---------- */

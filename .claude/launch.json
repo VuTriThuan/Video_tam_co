@@ -1,6 +1,23 @@
 {
   "version": "0.0.1",
   "configurations": [
-    {"name": "dieu-hanh", "runtimeExecutable": "node", "runtimeArgs": ["dieu-hanh/server.mjs"], "port": 4747}
+    {
+      "name": "dieu-hanh",
+      "runtimeExecutable": "node",
+      "runtimeArgs": [
+        "dieu-hanh/server.mjs"
+      ],
+      "port": 4747
+    },
+    {
+      "name": "dieu-hanh-thu",
+      "runtimeExecutable": "env",
+      "runtimeArgs": [
+        "PORT=4748",
+        "node",
+        "dieu-hanh/server.mjs"
+      ],
+      "port": 4748
+    }
   ]
 }

@@ -107,11 +107,11 @@ let chay = null; const hangCho = [];
 const luuPhien = () => { try { fs.writeFileSync(PHIEN_F, JSON.stringify(phien)); } catch {} };
 const cauHinh = () => ({ model: 'opus', effort: 'medium', quyen: 'acceptEdits', cho_phep: [], ...docJson(path.join(DH, 'cau-hinh.json'), {}) });
 const ttPhien = () => ({ dang_chay: !!chay, bat_dau: chay?.bat_dau || 0, lenh: chay?.noi || '', xep_hang: hangCho.length, noi_tiep: !!phien.session_id, hoat_dong: chay?.hoat_dong || '' });
-const NHAC = `Phiên này do đại ca điều khiển từ Phòng điều hành trên web, không có ai bấm cho phép trong terminal.
+const NHAC = `Phiên này do sếp điều khiển từ Phòng điều hành trên web, không có ai bấm cho phép trong terminal.
 - Không dùng run_in_background. Lệnh dài chạy tiền cảnh với timeout đủ lớn (tối đa 3600000 ms).
-- Không dùng lệnh open, không đưa đường dẫn review/*.html hay localhost: đại ca xem video, ảnh bìa, gói đăng ngay trên web (mục Duyệt, Đăng bài). Chỉ cần nói "đại ca xem ở mục Duyệt".
-- Câu trả lời cuối mỗi lượt hiện trong khung trò chuyện của đại ca: viết ngắn, nói rõ đại ca cần làm gì tiếp.
-- Ở các chốt duyệt, đại ca bấm trên mục Duyệt; hệ thống tự gửi "tiếp" cho em.`;
+- Không dùng lệnh open, không đưa đường dẫn review/*.html hay localhost: sếp xem video, ảnh bìa, gói đăng ngay trên web (mục Duyệt, Đăng bài). Chỉ cần nói "sếp xem ở mục Duyệt".
+- Câu trả lời cuối mỗi lượt hiện trong khung trò chuyện của sếp: viết ngắn, nói rõ sếp cần làm gì tiếp.
+- Ở các chốt duyệt, sếp bấm trên mục Duyệt; hệ thống tự gửi "tiếp" cho em.`;
 
 // "/ten tham số" → nội dung .claude/commands/ten.md (chế độ -p không tự chạy lệnh gạch chéo của dự án)
 function moRong(noi) {
@@ -120,7 +120,7 @@ function moRong(noi) {
   const t = docTxt(p('.claude', 'commands', m[1] + '.md'), null);
   if (t == null) return noi;
   const than = t.replace(/^---\n[\s\S]*?\n---\n/, ''), a = (m[2] || '').trim();
-  return than.includes('$ARGUMENTS') ? than.replaceAll('$ARGUMENTS', a) : than + (a ? '\n\nYêu cầu thêm của đại ca: ' + a : '');
+  return than.includes('$ARGUMENTS') ? than.replaceAll('$ARGUMENTS', a) : than + (a ? '\n\nYêu cầu thêm của sếp: ' + a : '');
 }
 function hoatDong(b) {
   if (b.type === 'text') return (b.text || '').trim().split('\n')[0].slice(0, 160);
@@ -248,7 +248,7 @@ function danhSach() {
   return ds.sort((a, b) => b.hien_tai - a.hien_tai || b.sua - a.sua);
 }
 
-// chốt nào đang chờ đại ca: suy từ giai đoạn hiện tại + file đã có
+// chốt nào đang chờ sếp: suy từ giai đoạn hiện tại + file đã có
 function canDuyet() {
   const ht = hienTai(), slug = ht.slug;
   if (!slugHopLe(slug) || ['goi-y', 'lam-moi', 'chung', 'thu-hook'].includes(slug)) return null;
@@ -333,6 +333,25 @@ function tienDoChuDe() {
     const nhapF = [path.join(xb, 'video.mp4'), ...phan.map(d => path.join(xb, d, 'video.mp4')), p('ra', s, 'video-day-du', 'video.mp4')].find(coFile);
     const dang = docJson(p('du-an', s, 'dang.json'), {}), soDang = Object.keys(dang).length;
     const baoCao = p('phan-tich', 'bao-cao', s + '.md');
+    // đầu ra sản phẩm của từng bước: tệp thật trên đĩa, mở qua /tep/
+    const LOAI = { '.mp4': 'video', '.png': 'anh', '.jpg': 'anh', '.md': 'van-ban', '.json': 'json', '.html': 'trang', '.wav': 'am-thanh' };
+    const R = (f, ten) => { if (!coFile(f)) return null; let kb = 0; try { kb = Math.round(fs.statSync(f).size / 1024); } catch {}
+      return { ten, url: url(f), loai: LOAI[path.extname(f).toLowerCase()] || 'tep', kb, duong_dan: path.relative(GOC, f) }; };
+    const gom = (...ds) => ds.flat().filter(Boolean);
+    const thuMucDl = kbF && kbF.startsWith(dl) ? dl : kbF && kbF.startsWith(p('du-an')) ? p('du-an', s) : dl;
+    const soGiong = (() => { try { return fs.readdirSync(path.join(dl, 'giong')).filter(x => /^c\d+\.wav$/.test(x)).length; } catch { return 0; } })();
+    const RA = {
+      'kich-ban': gom(R(kbF || '', 'Kịch bản'), R(path.join(thuMucDl, 'canh.json'), 'Dàn cảnh (canh.json)'), R(path.join(thuMucDl, 'video.json'), 'Thông số video')),
+      giong: gom(R(path.join(dl, 'thoi-luong.json'), soGiong ? `Thời lượng ${soGiong} câu giọng` : 'Thời lượng giọng')),
+      mau: gom(PC.flatMap(pc => [R(p('ra', s, `mau-${pc}`, 'video.mp4'), `Mẫu ${pc}`), R(p('ra', s, `mau-${pc}`, 'anh-bia.png'), `Bìa mẫu ${pc}`)]), R(p('ra', s, 'bo-cuc', 'bao-cao.json'), 'Báo cáo kiểm bố cục')),
+      'chot-2': gom(R(p('review', s + '.html'), 'Trang so sánh mẫu')),
+      'day-du': gom(R(path.join(xb, 'video.mp4'), 'Video hoàn chỉnh'), phan.sort((a, b) => a.slice(5) - b.slice(5)).map(d => R(path.join(xb, d, 'video.mp4'), `Video ${d.replace('phan-', 'phần ')}`)),
+        R(path.join(xb, 'ban-goc.mp4'), 'Bản gốc (chưa cắt phần)'), coFile(path.join(xb, 'video.mp4')) ? null : R(p('ra', s, 'video-day-du', 'video.mp4'), 'Bản dựng đầy đủ')),
+      'dong-goi': gom(R(path.join(xb, 'dang-bai.md'), 'Gói đăng bài'), R(path.join(xb, 'anh-bia.png'), 'Ảnh bìa'), phan.map(d => R(path.join(xb, d, 'anh-bia.png'), `Bìa ${d.replace('phan-', 'phần ')}`)), R(path.join(xb, 'anh-bia-goc.png'), 'Ảnh bìa gốc')),
+      'phan-tich': gom(R(baoCao, 'Báo cáo phân tích 24 giờ')),
+    };
+    const quyetDinh = loai => quyet(loai).map(d => ({ luc: d.luc, quyet: d.quyet, ghi: [d.phong_cach, d.ghi_chu || d.ghi || d.yeu_cau].filter(Boolean).join(' · ') }));
+    const QD = { 'chot-1': quyetDinh('kich-ban'), 'chot-2': quyetDinh('phong-cach'), 'chot-3': quyetDinh('nhap') };
     const tg = (...ds) => Math.max(0, ...ds.flat().filter(Boolean));
     const ql = d => d.length ? Date.parse(d.at(-1).luc) / 1000 : 0;
     const B = (id, ten, ai, kieu, xong, luc, ghi = '', tuyChon = false) => ({ id, ten, ai, kieu, xong: !!xong, luc: luc || 0, ghi, tuy_chon: tuyChon });
@@ -367,9 +386,25 @@ function tienDoChuDe() {
       const lam = laHT && (tiep.ai !== 'dai-ca' && NV[tiep.ai]?.trang_thai === 'lam' || (tiep.ai === 'may-dung' && tienDo && tienDo.phan_tram < 100));
       tiep.tt = tiep.kieu === 'chot' && laHT ? 'cho-sep' : lam ? 'dang' : laHT && chay ? 'dang' : 'tiep';
     }
-    buoc.forEach(b => { b.tt ||= 'chua'; });
+    buoc.forEach(b => { b.tt ||= 'chua'; b.ra = RA[b.id] || []; if (QD[b.id]?.length) b.quyet = QD[b.id];
+      if (b.id === 'dang' && soDang) b.dang = Object.entries(dang).map(([k, v]) => ({ muc: k, luc: v })); });
+    // mốc thời gian cho biểu đồ Gantt: bd = bắt đầu, kt = kết thúc (giây). Lấy từ nhật ký giao/nộp, quyết định duyệt, giờ tạo tệp.
+    const tinTs = tin.map(t => t.ts).filter(Boolean);
+    const batDau = Math.min(...[tinTs.length ? Math.min(...tinTs) : Infinity, ...buoc.map(b => b.luc || Infinity)]);
+    let truoc = isFinite(batDau) ? batDau : 0;
+    for (const b of buoc) {
+      if (b.tt === 'bo-qua') continue;
+      const g = b.ai !== 'dai-ca' && b.ai !== 'may-dung' ? giao(b.ai).filter(x => !truoc || x >= truoc - 3600) : [];
+      if (b.tt === 'xong' && b.luc) {
+        b.bd = Math.min(g.length ? g[0] : truoc || b.luc, b.luc); b.kt = b.luc; b.moc = 'nhat-ky';
+      } else if (b.tt !== 'xong' && b.tt !== 'chua' && truoc) {
+        b.bd = g.length ? g[0] : truoc; b.kt = null; b.moc = 'dang-mo';     // bước đang chờ/đang làm: kéo tới hiện tại
+      }
+      if (b.kt) truoc = Math.max(truoc, b.kt);
+    }
     const tinh = buoc.filter(b => b.tt !== 'bo-qua');
-    return { slug: s, ten: ds.ten, hien_tai: laHT, giai_doan: gdHT, chuoi: ds.chuoi, so_muc: ds.so_muc, bia: ds.bia,
+    const moc = buoc.flatMap(b => [b.bd, b.kt]).filter(Boolean);
+    return { slug: s, ten: ds.ten, hien_tai: laHT, bd: moc.length ? Math.min(...moc) : null, kt: moc.length ? Math.max(...moc) : null, giai_doan: gdHT, chuoi: ds.chuoi, so_muc: ds.so_muc, bia: ds.bia,
       xong: tinh.filter(b => b.tt === 'xong').length, tong: tinh.length, tiep: tiep ? { ten: tiep.ten, ai: tiep.ai, tt: tiep.tt } : null,
       cuoi: Math.max(ds.sua / 1000 || 0, ...buoc.map(b => b.luc)), buoc };
   }).sort((a, b) => (b.hien_tai - a.hien_tai) || (b.cuoi - a.cuoi));
@@ -409,6 +444,27 @@ function phanTich() {
 }
 
 let tokenCache = { t: 0, data: null, loi: null };
+// thống kê: token/chi phí riêng dự án (pipeline/thong-ke.py, 0 token) + số liệu sản xuất từ tiến độ
+let tkCache = { t: 0, data: null };
+function thongKe(moi, cb) {
+  const ghep = data => {
+    const td = tienDoChuDe(), xong = td.filter(t => t.xong >= t.tong);
+    // thời gian làm thật của mỗi chủ đề: gộp các khoảng bước chồng nhau (không tính lúc nghỉ, lúc chờ)
+    const lam = td.map(t => { const k = t.buoc.filter(b => b.bd && b.kt).map(b => [b.bd, b.kt]).sort((x, y) => x[0] - y[0]); let n = 0, c = null;
+      for (const [a, b] of k) { if (!c || a > c[1]) { if (c) n += c[1] - c[0]; c = [a, b]; } else c[1] = Math.max(c[1], b); } return c ? n + c[1] - c[0] : 0; }).filter(Boolean);
+    const sua = { 'chot-1': 0, 'chot-2': 0, 'chot-3': 0 };
+    td.forEach(t => t.buoc.forEach(b => { if (sua[b.id] !== undefined) sua[b.id] += (b.quyet || []).filter(q => q.quyet === 'sua').length; }));
+    const ten = Object.fromEntries(td.map(t => [t.slug, t.ten]));
+    return { ...data, ten_chu_de: ten, san_xuat: { chu_de: td.length, hoan_tat: xong.length, video: td.reduce((n, t) => n + (t.buoc.find(b => b.id === 'day-du')?.tt === 'xong' ? t.so_muc : 0), 0),
+      dau_ra: td.reduce((n, t) => n + t.buoc.reduce((m, b) => m + (b.ra || []).length, 0), 0), lam_tb: lam.length ? Math.round(lam.reduce((a, b) => a + b, 0) / lam.length) : 0, sua } };
+  };
+  if (!moi && tkCache.data && Date.now() - tkCache.t < 60_000) return cb(ghep(tkCache.data));
+  execFile('python3', ['pipeline/thong-ke.py'], { cwd: GOC, timeout: 120_000, maxBuffer: 50e6 }, (err, out) => {
+    try { tkCache = { t: Date.now(), data: JSON.parse(out) }; cb(ghep(tkCache.data)); }
+    catch { cb({ loi: String(err?.message || 'không đọc được thống kê').slice(0, 200) }); }
+  });
+}
+
 function token(cb) {
   if (Date.now() - tokenCache.t < 600_000 && (tokenCache.data || tokenCache.loi)) return cb(tokenCache);
   execFile('npx', ['-y', 'ccusage@latest', 'daily', '--json', '--offline'], { timeout: 120_000, maxBuffer: 20e6 }, (err, out) => {
@@ -471,15 +527,18 @@ const server = http.createServer(async (req, res) => {
       if (pn.startsWith('/api/du-an/')) { const s = pn.slice(11); return slugHopLe(s) ? json(res, duAn(s)) : json(res, { loi: 'slug' }, 400); }
       if (pn === '/api/ban-tin') { const s = u.searchParams.get('slug'); return json(res, { ds: banTin(slugHopLe(s) ? s : '') }); }
       if (pn === '/api/nhan-su') return json(res, NS.chiTietNhanSu(u.searchParams.get('id') || ''));
-      if (pn === '/api/skill-ds') return json(res, { ds: NS.dsSkill(), cong_cu: NS.CONG_CU, khoa: NS.KHOA });
+      if (pn === '/api/skill-ds') return json(res, { ds: NS.dsSkill(), cong_cu: NS.CONG_CU, khoa: NS.KHOA, mo_hinh: NS.moHinh() });
       if (pn === '/api/skill') return json(res, NS.chiTietSkill(u.searchParams.get('ten') || ''));
       if (pn === '/api/da-go') return json(res, { ds: NS.dsDaGo() });
+      if (pn === '/api/ai-ngoai') return execFile('python3', ['pipeline/goi-ai.py', 'kiem', '--json'], { cwd: GOC, timeout: 20_000 }, (err, out) => {
+        try { return json(res, JSON.parse(out)); } catch { return json(res, { ds: [], loi: 'Không đọc được pipeline/goi-ai.py' }); } });
       if (pn === '/api/luong') return json(res, { luong: LU.docLuong() });
       if (pn === '/api/tien-do') return json(res, { ds: tienDoChuDe() });
       if (pn === '/api/ban-giao') { const s = u.searchParams.get('slug'); return json(res, { ds: banGiao(slugHopLe(s) ? s : ''), hien_tai: hienTai().slug || '' }); }
       if (pn === '/api/thu-vien') { const tv = thuVien(); return json(res, { ...tv, de_xuat: deXuatKhoi(tv) }); }
       if (pn === '/api/phan-tich') return json(res, phanTich());
       if (pn === '/api/token') return token(t => json(res, t));
+      if (pn === '/api/thong-ke') return thongKe(u.searchParams.has('moi'), r => json(res, r));
       if (pn.startsWith('/tep/')) {
         const rel = path.normalize(pn.slice(5)); const f = path.join(GOC, rel);
         if (!f.startsWith(GOC + path.sep) || !CHO_PHEP.includes(rel.split(path.sep)[0])) { res.writeHead(403); return res.end(); }
@@ -512,7 +571,7 @@ const server = http.createServer(async (req, res) => {
         const noi = { 'kich-ban': 'kịch bản', 'phong-cach': 'phong cách', nhap: 'bản nháp' }[b.loai];
         const cau = `${b.quyet === 'duyet' ? 'Duyệt' : 'Yêu cầu sửa'} ${noi}${muc.phong_cach ? ': ' + muc.phong_cach : ''}${muc.phan ? ' (phần ' + muc.phan + ')' : ''}${muc.ghi_chu ? ' — ' + muc.ghi_chu : ''}`;
         ghiTin('dai-ca', 'truong-nhom', cau, b.slug);
-        // báo luôn cho Anh Hải làm tiếp, đại ca không phải gõ "tiếp"
+        // báo luôn cho Anh Hải làm tiếp, sếp không phải gõ "tiếp"
         const r = b.gui === false ? {} : guiLenh('tiếp');
         return json(res, { ok: true, da_gui: !!r.ok, xep_hang: r.xep_hang || 0 });
       }

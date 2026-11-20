@@ -1,0 +1,10 @@
+{
+ "gemini-flash-latest": {
+  "ban": "gemini-3.8-flash",
+  "luc": "2026-11-20T14:40:00"
+ },
+ "gemini-flash-lite-latest": {
+  "ban": "gemini-3.5-flash-lite",
+  "luc": "2026-11-20T15:20:00"
+ }
+}

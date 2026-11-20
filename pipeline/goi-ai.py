@@ -16,6 +16,21 @@ import argparse, base64, datetime, json, mimetypes, os, sys, urllib.error, urlli
 GOC = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 CAU_HINH = os.path.join(GOC, "pipeline", "ai-ngoai.json")
 NHAT_KY = os.path.join(GOC, "logs", "ai-ngoai.jsonl")
+PHIEN_BAN = os.path.join(GOC, "logs", "phien-ban-ai.json")  # tên "latest" -> bản thật lần gọi gần nhất (Phòng điều hành đọc)
+
+
+def ghi_phien_ban(ten, that):
+    if not that or that == ten:
+        return
+    try:
+        d = json.load(open(PHIEN_BAN, encoding="utf-8"))
+    except (OSError, ValueError):
+        d = {}
+    if d.get(ten, {}).get("ban") == that:
+        return
+    d[ten] = {"ban": that, "luc": datetime.datetime.now().isoformat(timespec="seconds")}
+    os.makedirs(os.path.dirname(PHIEN_BAN), exist_ok=True)
+    json.dump(d, open(PHIEN_BAN, "w", encoding="utf-8"), ensure_ascii=False, indent=1)
 UA = "TamCo-pipeline/1.0"
 
 
@@ -89,6 +104,8 @@ def gui(url, du_lieu=None, dau=None, cho=120):
         raise RuntimeError(f"HTTP {e.code}: {e.read()[:300].decode('utf-8', 'replace')}")
     except urllib.error.URLError as e:
         raise RuntimeError(f"không kết nối được: {e.reason}")
+    except (TimeoutError, OSError) as e:
+        raise RuntimeError(f"quá giờ chờ: {e}")
 
 
 # ---------- kiểm luật miễn phí ----------
@@ -127,6 +144,7 @@ def chu_gemini(cfg, model, hoi, he, anh):
     url = f"https://generativelanguage.googleapis.com/v1beta/models/{model}:generateContent"
     raw, _ = gui(url, du, {"x-goog-api-key": os.environ[cfg["khoa"]]})
     j = json.loads(raw)
+    ghi_phien_ban(model, j.get("modelVersion"))
     return "".join(p.get("text", "") for p in j["candidates"][0]["content"]["parts"])
 
 
@@ -184,20 +202,29 @@ def goi_anh(ch, nha, model, mo_ta, ra, rong, cao, seed):
     return f"{ra} ({len(raw)//1024} KB)"
 
 
-def lenh_kiem(ch):
+def lenh_kiem(ch, kieu_json=False):
     dem = dem_hom_nay()
-    print("AI ngoài (chỉ gói miễn phí) — hôm nay", hom_nay())
+    ds = []
     for ten, cfg in ch["nha"].items():
         if cfg.get("khoa"):
-            co = "có khóa" if os.environ.get(cfg["khoa"]) else f"CHƯA có {cfg['khoa']}"
+            dung = bool(os.environ.get(cfg["khoa"]))
+            co = "có khóa" if dung else f"CHƯA có {cfg['khoa']}"
         elif ten == "ollama":
             try:
-                gui(cfg["dia_chi"] + "/api/tags", cho=3); co = "đang chạy"
+                gui(cfg["dia_chi"] + "/api/tags", cho=3); co, dung = "đang chạy", True
             except RuntimeError:
-                co = "chưa cài/chưa chạy"
+                co, dung = "chưa cài/chưa chạy", False
         else:
-            co = "không cần khóa"
-        print(f"  {ten:13} {co:28} {dem.get(ten, 0)}/{cfg['gioi_han_ngay']} lượt  · {cfg['mac_dinh']}")
+            co, dung = "không cần khóa", True
+        ds.append({"id": ten, "ten": cfg["ten"], "dung_duoc": dung, "trang_thai": co, "da_goi": dem.get(ten, 0),
+                   "gioi_han": cfg["gioi_han_ngay"], "model": cfg["mac_dinh"], "doc_anh": bool(cfg.get("doc_anh")),
+                   "ve_anh": ten in ch.get("thu_tu_anh", []), "lay_khoa": cfg.get("lay_khoa", "")})
+    if kieu_json:
+        print(json.dumps({"ngay": hom_nay(), "ds": ds, "khong_ho_tro": ch.get("khong_ho_tro", {})}, ensure_ascii=False))
+        return
+    print("AI ngoài (chỉ gói miễn phí) — hôm nay", hom_nay())
+    for d in ds:
+        print(f"  {d['id']:13} {d['trang_thai']:28} {d['da_goi']}/{d['gioi_han']} lượt  · {d['model']}")
     for ten, ly_do in ch.get("khong_ho_tro", {}).items():
         print(f"  {ten:13} không nối: {ly_do}")
 
@@ -228,10 +255,11 @@ def main():
     ap.add_argument("--anh", action="append", default=[])
     ap.add_argument("--ra"); ap.add_argument("--rong", type=int, default=1080)
     ap.add_argument("--cao", type=int, default=1920); ap.add_argument("--seed", type=int, default=0)
+    ap.add_argument("--json", action="store_true", help="kiem: in JSON cho Phòng điều hành")
     a = ap.parse_args()
 
     if a.lenh == "kiem":
-        return lenh_kiem(ch)
+        return lenh_kiem(ch, a.json)
     if not a.noi_dung:
         loi("thiếu nội dung")
     if a.lenh == "anh" and not a.ra:

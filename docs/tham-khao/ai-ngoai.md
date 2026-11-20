@@ -33,3 +33,14 @@ Khóa để trong `.env` (chép từ `.env.mau`). `.env` đã nằm trong `.giti
 - OpenRouter: **không nạp tiền** vào tài khoản.
 - Gói miễn phí có thể dùng dữ liệu gửi lên để huấn luyện: không gửi thông tin cá nhân.
 - Chưa có nhạc nền miễn phí qua API ổn định; nhạc nền vẫn tự tạo như cũ.
+
+## Bộ não Gemini cho nhân viên — `pipeline/nhan-vien-ngoai.py`
+Chọn ở trang Skill & nhân sự → Sửa → **Bộ não**. Chỉ dành cho nhân viên dùng công cụ tệp (Read, Write, Edit, Glob, Grep); ai cần Bash/WebSearch thì giữ Claude.
+```
+python3 pipeline/nhan-vien-ngoai.py dong-goi "<việc, đủ đường dẫn tệp>"            # chạy thật
+python3 pipeline/nhan-vien-ngoai.py dong-goi "<việc>" --thu /đường/dẫn/hộp-thử     # chạy thử, không đụng tệp thật
+```
+- Lời dặn lấy từ `.claude/agents/<id>.md`, giống bản Claude. Gemini chỉ đọc/ghi trong dự án, không ghi vào code (`.claude/`, `pipeline/`, `render/`, `dieu-hanh/`, `docs/`), không đọc `.env`.
+- Mặc định `gemini-flash-lite-latest`: bản Flash đầy đủ hay quá tải ở gói miễn phí (thử ngày 20/11: 50–90 giây mỗi lượt, thường quá giờ).
+- Mã thoát khác 0 → anh Hải giao lại cho bản Claude.
+- Thử 20/11 với Vy (xin-ba-duoc-mot): 6 lượt, 42 giây, 0 đồng. Đúng khuôn, nhưng ghi sai thời lượng, không đọc `bai-hoc.md` và `loc-giong-may.md`, thiếu câu mẫu dùng ngay, hashtag lạc đề.

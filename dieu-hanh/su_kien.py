@@ -20,7 +20,16 @@ HIEN_TAI = GOC / "du-an" / "hien-tai.json"
 NHO = GOC / "dieu-hanh" / ".nho-agent.json"  # agent_id -> agent_type, việc đang giao
 def _nap_model():
     """id -> "model · mức suy nghĩ", đọc từ doi-ngu.json và .claude/agents/<id>.md (nhân viên thêm trên web cũng có)."""
-    m = {"truong-nhom": "opus · medium"}
+    ban_claude = {"opus": "Opus 5.5", "sonnet": "Sonnet 5.5", "haiku": "Haiku 5.5"}
+    try:
+        ban_ai = json.loads((GOC / "logs" / "phien-ban-ai.json").read_text(encoding="utf-8"))
+    except Exception:
+        ban_ai = {}
+    def ten_gemini(i):
+        import re
+        so = re.search(r"gemini-(\d+(?:\.\d+)?)", ban_ai.get(i, {}).get("ban", ""))
+        return ("Flash Lite" if "lite" in i else "Flash") + (" " + so.group(1) if so else "")
+    m = {"truong-nhom": "Opus 5.5 · medium"}
     try:
         doi = json.loads((GOC / "dieu-hanh" / "doi-ngu.json").read_text(encoding="utf-8"))
     except Exception:
@@ -38,7 +47,7 @@ def _nap_model():
                         k, v = d.split(":", 1); fm[k.strip()] = v.strip()
         except Exception:
             continue
-        m[i] = fm.get("model", "opus") + (" · " + fm["effort"] if fm.get("effort") else "")
+        m[i] = ("Gemini " + ten_gemini(x.get("mo_hinh_ngoai") or "gemini-flash-lite-latest") + " · miễn phí") if x.get("bo_nao") == "gemini" else ban_claude.get(fm.get("model", "opus"), fm.get("model", "opus")) + (" · " + fm["effort"] if fm.get("effort") else "")
     m["may-dung"] = "script · 0 token"
     return m
 
@@ -130,7 +139,7 @@ def hook():
             for k in DOI: tt(k, "onl", "")  # phiên mới: chưa ai nhận việc
     elif e == "UserPromptSubmit":
         tt("truong-nhom", "lam", "Đọc yêu cầu của sếp")
-        # phiên mở từ web (TAMCO_WEB) thì máy chủ đã tự ghi lời đại ca và câu trả lời
+        # phiên mở từ web (TAMCO_WEB) thì máy chủ đã tự ghi lời sếp và câu trả lời
         if not WEB and (d.get("prompt") or "").strip(): tin("dai-ca", "truong-nhom", d["prompt"].strip()[:4000])
     elif e == "Stop":
         tt("truong-nhom", "cho", "Chờ sếp")

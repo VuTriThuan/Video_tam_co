@@ -11,8 +11,9 @@ N=$(grep -cE '^#+ *[0-9]+\.|^[0-9]+\. ' chu-de/kho.md 2>/dev/null); N=${N:-0}
 [ "$N" -ge 10 ] && dat "/goi-y: $N chủ đề trong chu-de/kho.md" || loi "/goi-y: chu-de/kho.md mới có $N chủ đề"
 
 # 2. /chu-de --le: ít nhất 1 video lẻ trong xuat-ban đạt kiểm tra
-LE=$(for d in xuat-ban/*/; do [ -f "$d/video.mp4" ] && echo "$d"; done | tail -1)
-if [ -n "$LE" ] && pipeline/kiem-tra.sh "$LE/video.mp4" >/dev/null; then dat "/chu-de --le: $(basename $LE) đạt kiểm tra"; else loi "/chu-de --le: chưa có video lẻ đạt kiểm tra"; fi
+LE=""; for v in $(ls -t xuat-ban/*/video.mp4 2>/dev/null); do  # video lẻ mới nhất trước
+  pipeline/kiem-tra.sh "$v" >/dev/null && { LE=$(dirname "$v"); break; }; done
+[ -n "$LE" ] && dat "/chu-de --le: $(basename $LE) đạt kiểm tra" || loi "/chu-de --le: chưa có video lẻ đạt kiểm tra"
 
 # 3. /chu-de chuỗi: 3–5 phần đạt + bản gốc + gói đăng
 CH=$(for d in xuat-ban/*/; do [ -d "$d/phan-1" ] && echo "$d"; done | tail -1)
