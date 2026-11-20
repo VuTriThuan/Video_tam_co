@@ -26,6 +26,7 @@
 - `dau-hieu-so`: Số thứ tự to (trường "so") + chữ nhấn + minh họa
 - `so-sanh`: Chia đôi khung: nhân vật có "ben": "trai" | "phai"
 - `loi-khuyen`: Lời khuyên: số nhỏ (trường "so", tùy chọn) + chữ + nhân vật + đạo cụ
+- `dong-thoi-gian`: Dòng thời gian: trục dọc giữa khung, tối đa 4 mốc so le trái/phải; mỗi mốc lần lượt bật một hình nhỏ (vai hoặc dao_cu) + thẻ nhãn đỏ + 1 dòng chữ ngắn, đoạn trục đỏ "giăng" dần tới mốc mới. Tham số "moc": [{"nhan","nd","hinh","t"}] — "nhan" ≤3 từ, "nd" ≤6 từ, "hinh" là tên vai (vd "sep") hoặc dao_cu (vd "phong-bi"), hoặc {"vai","bieu_cam","tu_the"}; "t" bỏ trống thì tự chia đều. Không dùng nhan_vat/dao_cu ngoài (bị bỏ qua); hiệu ứng nhắm mốc bằng muc_tieu "moc-<k>". Dùng khi: chiêu được giăng dần qua nhiều thời điểm ("Thứ 2… tuần sau… tháng sau"), kể lại chuỗi bước leo thang; thay cho nhan-vat-ke khi lời đọc là một trình tự. Không dùng khi: chỉ có 1 thời điểm, các bước không theo thời gian (dùng dau-hieu-so), hoặc chữ nội dung mỗi mốc dài hơn 6 từ. Vd {"bo_cuc":"dong-thoi-gian","chu":"Chiêu giăng từ từ","tu_khoa":"từ từ","nen":"trung","moc":[{"nhan":"Thứ 2","nd":"Khen bạn trước cả phòng","hinh":{"vai":"sep","bieu_cam":"cuoi"},"t":0.1},{"nhan":"Tuần sau","nd":"Nhờ làm thêm chút việc","hinh":"tai-lieu","t":0.35},{"nhan":"Tháng sau","nd":"Việc thêm thành việc chính","hinh":"dong-ho","t":0.6}]}
 - `ket`: Cảnh kết: logo, tên kênh, nút theo dõi
 
 ## vai
@@ -107,7 +108,7 @@ Nền đặc biệt (khi nào dùng):
 - `to-da-quang`: vệt bút dạ quang nét tay quét trái → phải (0,4 s) dưới đúng từ "tu" trong chu (bỏ trống = tu_khoa); kieu "to" (vệt dày, mặc định) | "gach-duoi". Dùng khi: câu chốt/lời khuyên có một từ "đinh" ("im lặng", "ranh giới"). Không dùng khi: chữ dài quá 2 dòng, hoặc cảnh đã có vong-tron-do / gach-cheo. Vd {"ten":"to-da-quang","tu":"ranh giới","t":0.4,"kieu":"to"}
 - `gach-thay`: chữ cũ "cu" bị gạch tay 2 lần, mờ đi và tụt xuống, chữ thật "moi" bật lên ngay cạnh; THAY cho chu thường của cảnh (vẫn ghi chu = moi). Dùng khi: lật mặt kiểu "tưởng là… hoá ra…", sửa một niềm tin sai. Không dùng khi: cần gạch nhân vật/đồ vật (dùng gach-cheo), hoặc moi dài hơn cu quá nhiều. Vd {"ten":"gach-thay","cu":"Sếp khen bạn","moi":"Sếp đang thử bạn","t":0.35}
 - `dung-hinh`: cảnh khựng lại tại t, chớp sáng ngắn, co thành tấm ảnh viền giấy nghiêng "nghieng" độ (mặc định -2), 2 miếng băng dính, nhãn viết tay "nhan". Dùng khi: hook ("dừng lại ở đây") hoặc đúng lúc lật mặt, để nhìn kỹ một chi tiết. Không dùng khi: cảnh thoại dồn dập, hoặc cảnh liền trước vừa dùng zoom-vao / rung. Vd {"ten":"dung-hinh","t":0.5,"nhan":"Khoảnh khắc này","nghieng":-2}
-- `muc_tieu`: "man-hinh" | "nv-<k>" (nhân vật thứ k, đếm từ 0) | "dc-<k>" (đạo cụ thứ k) | tên vị trí | [x, y]
+- `muc_tieu`: "man-hinh" | "nv-<k>" (nhân vật thứ k, đếm từ 0) | "dc-<k>" (đạo cụ thứ k) | "moc-<k>" (hình của mốc thứ k trong dong-thoi-gian) | tên vị trí | [x, y]
 
 ## sfx
 `whoosh`, `swoosh-nhe`, `pop`, `ding`, `tick`, `tin-nhan`, `thud` (tối đa 2 mỗi cảnh; có thể ghi `{"ten":"thud","t":0.7}`)

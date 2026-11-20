@@ -314,6 +314,67 @@ function banGiao(slug) {
   }).filter(x => Object.keys(x.nguoi).length).sort((a, b) => b.cuoi - a.cuoi);
 }
 
+/* ---------------- tiến độ: danh sách bước của từng chủ đề, suy từ dữ liệu thật (chỉ đọc) ---------------- */
+const THU_GD = ['kich-ban', 'giong', 'mau', 'day-du', 'dong-goi', 'nhap', 'phan-tich'];
+function tienDoChuDe() {
+  const ht = hienTai(), khoDs = kho();
+  const mtime = f => { try { return fs.statSync(f).mtimeMs / 1000; } catch { return 0; } };
+  return danhSach().filter(ds => !['lam-moi', 'goi-y'].includes(ds.slug)).map(ds => {
+    const s = ds.slug, laHT = ht.slug === s, gdHT = laHT ? (/^sua-/.test(ht.giai_doan || '') ? 'nhap' : ht.giai_doan || '') : '';
+    const tin = banTin(s, 100000).filter(t => t.loai === 'tin');
+    const nop = id => tin.filter(t => t.tu === id && t.den === 'truong-nhom').map(t => t.ts);
+    const giao = id => tin.filter(t => t.tu === 'truong-nhom' && t.den === id).map(t => t.ts);
+    const duyet = docJson(p('du-an', s, 'duyet.json'), []);
+    const quyet = loai => duyet.filter(d => d.loai === loai);
+    const xb = p('xuat-ban', s), dl = p('ra', s, 'du-lieu');
+    const kbF = [p('du-an', s, 'kich-ban.md'), path.join(dl, 'kich-ban.md')].find(coFile) || (laHT && docJson(p('video.json'), {}).chu_de === s && coFile(p('kich-ban.md')) ? p('kich-ban.md') : null);
+    const mauF = PC.map(pc => p('ra', s, `mau-${pc}`, 'video.mp4')).find(coFile) || (coFile(p('review', s + '.html')) ? p('review', s + '.html') : null);
+    const phan = thuMuc(xb).filter(d => /^phan-\d+$/.test(d));
+    const nhapF = [path.join(xb, 'video.mp4'), ...phan.map(d => path.join(xb, d, 'video.mp4')), p('ra', s, 'video-day-du', 'video.mp4')].find(coFile);
+    const dang = docJson(p('du-an', s, 'dang.json'), {}), soDang = Object.keys(dang).length;
+    const baoCao = p('phan-tich', 'bao-cao', s + '.md');
+    const tg = (...ds) => Math.max(0, ...ds.flat().filter(Boolean));
+    const ql = d => d.length ? Date.parse(d.at(-1).luc) / 1000 : 0;
+    const B = (id, ten, ai, kieu, xong, luc, ghi = '', tuyChon = false) => ({ id, ten, ai, kieu, xong: !!xong, luc: luc || 0, ghi, tuy_chon: tuyChon });
+    const buoc = [
+      B('kich-ban', 'Viết kịch bản và dàn cảnh', 'bien-kich', 'viec', kbF, tg(nop('bien-kich'), kbF && mtime(kbF)), giao('bien-kich').length > 1 ? `giao ${giao('bien-kich').length} lần` : ''),
+      B('kiem', 'Kiểm cảnh và kiểm lặp', 'may-dung', 'kiem', false, 0),
+      ...(giao('hoa-si').length || nop('hoa-si').length ? [B('khoi', 'Vẽ khối mới', 'hoa-si', 'viec', nop('hoa-si').length, tg(nop('hoa-si')), '', true)] : []),
+      B('ra-loi', 'Rà lời, chạy lại máy kiểm', 'kiem-duyet', 'viec', nop('kiem-duyet').length, tg(nop('kiem-duyet')), '', true),
+      B('chot-1', 'Chốt 1 · duyệt kịch bản', 'dai-ca', 'chot', quyet('kich-ban').some(d => d.quyet === 'duyet'), ql(quyet('kich-ban')), quyet('kich-ban').filter(d => d.quyet === 'sua').length ? `${quyet('kich-ban').filter(d => d.quyet === 'sua').length} lần yêu cầu sửa` : ''),
+      B('giong', 'Đọc giọng', 'may-dung', 'kiem', false, 0),
+      B('mau', 'Làm 3 mẫu, kiểm bố cục', 'may-dung', 'kiem', mauF, mauF && mtime(mauF)),
+      B('chot-2', 'Chốt 2 · chọn phong cách', 'dai-ca', 'chot', quyet('phong-cach').some(d => d.quyet === 'duyet'), ql(quyet('phong-cach')), quyet('phong-cach').find(d => d.phong_cach)?.phong_cach || ''),
+      B('day-du', phan.length ? `Bản đầy đủ (${phan.length} phần)` : 'Bản đầy đủ: quay, ghép, kiểm', 'may-dung', 'kiem', nhapF, nhapF && mtime(nhapF)),
+      B('dong-goi', 'Gói đăng bài và chữ ảnh bìa', 'dong-goi', 'viec', coFile(path.join(xb, 'dang-bai.md')), tg(nop('dong-goi'), mtime(path.join(xb, 'dang-bai.md')))),
+      B('chot-3', 'Chốt 3 · xem bản nháp', 'dai-ca', 'chot', quyet('nhap').some(d => d.quyet === 'duyet') || khoDs.find(k => k.slug === s)?.trang_thai === 'da-lam', ql(quyet('nhap'))),
+      B('dang', 'Đăng bài', 'dai-ca', 'viec', soDang >= ds.so_muc, tg(Object.values(dang).map(v => Date.parse(v) / 1000)), soDang ? `${soDang}/${ds.so_muc} đã đăng` : ''),
+      B('phan-tich', 'Phân tích số liệu 24 giờ', 'phan-tich', 'viec', coFile(baoCao), tg(nop('phan-tich'), mtime(baoCao))),
+    ];
+    // bước sau đã xong thì bước bắt buộc trước đó coi như xong (chủ đề cũ chưa có nhật ký); bước tuỳ chọn không ghi nhận thì "bỏ qua"
+    let sau = false;
+    for (let i = buoc.length - 1; i >= 0; i--) { const b = buoc[i];
+      if (b.xong) { b.tt = 'xong'; sau = true; continue; }
+      if (sau) { b.tt = b.tuy_chon ? 'bo-qua' : 'xong'; if (!b.tuy_chon) b.suy_ra = true; } }
+    // giai đoạn hiện tại của chủ đề đang làm cũng đánh dấu các bước trước nó
+    if (laHT && THU_GD.includes(gdHT)) {
+      const moc = { 'kich-ban': 'kich-ban', giong: 'giong', mau: 'mau', 'day-du': 'day-du', 'dong-goi': 'dong-goi', nhap: 'chot-3', 'phan-tich': 'phan-tich' }[gdHT];
+      const k = buoc.findIndex(b => b.id === moc);
+      buoc.slice(0, k).forEach(b => { if (!b.tt) { b.tt = b.tuy_chon ? 'bo-qua' : 'xong'; if (!b.tuy_chon) b.suy_ra = true; } });
+    }
+    const tiep = buoc.find(b => !b.tt);
+    if (tiep) {
+      const lam = laHT && (tiep.ai !== 'dai-ca' && NV[tiep.ai]?.trang_thai === 'lam' || (tiep.ai === 'may-dung' && tienDo && tienDo.phan_tram < 100));
+      tiep.tt = tiep.kieu === 'chot' && laHT ? 'cho-sep' : lam ? 'dang' : laHT && chay ? 'dang' : 'tiep';
+    }
+    buoc.forEach(b => { b.tt ||= 'chua'; });
+    const tinh = buoc.filter(b => b.tt !== 'bo-qua');
+    return { slug: s, ten: ds.ten, hien_tai: laHT, giai_doan: gdHT, chuoi: ds.chuoi, so_muc: ds.so_muc, bia: ds.bia,
+      xong: tinh.filter(b => b.tt === 'xong').length, tong: tinh.length, tiep: tiep ? { ten: tiep.ten, ai: tiep.ai, tt: tiep.tt } : null,
+      cuoi: Math.max(ds.sua / 1000 || 0, ...buoc.map(b => b.luc)), buoc };
+  }).sort((a, b) => (b.hien_tai - a.hien_tai) || (b.cuoi - a.cuoi));
+}
+
 /* thư viện khối: đọc docs/catalog.md + đếm số lần dùng trong canh.json của các video đã làm */
 function thuVien() {
   const md = docTxt(p('docs', 'catalog.md'));
@@ -414,6 +475,7 @@ const server = http.createServer(async (req, res) => {
       if (pn === '/api/skill') return json(res, NS.chiTietSkill(u.searchParams.get('ten') || ''));
       if (pn === '/api/da-go') return json(res, { ds: NS.dsDaGo() });
       if (pn === '/api/luong') return json(res, { luong: LU.docLuong() });
+      if (pn === '/api/tien-do') return json(res, { ds: tienDoChuDe() });
       if (pn === '/api/ban-giao') { const s = u.searchParams.get('slug'); return json(res, { ds: banGiao(slugHopLe(s) ? s : ''), hien_tai: hienTai().slug || '' }); }
       if (pn === '/api/thu-vien') { const tv = thuVien(); return json(res, { ...tv, de_xuat: deXuatKhoi(tv) }); }
       if (pn === '/api/phan-tich') return json(res, phanTich());

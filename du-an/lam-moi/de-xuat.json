@@ -1,76 +1,46 @@
 {
- "luc": "2026-11-17T15:30:00+07:00",
- "so_video": 6,
+ "luc": "2026-11-18T10:00:00+07:00",
+ "so_video": 7,
  "muc": [
   {
    "id": "1",
    "viec": "them",
-   "ten": "hook-canh-nong",
+   "ten": "dong-thoi-gian",
    "nhom": "bo_cuc",
-   "mo_ta": "Mở đầu vào thẳng khoảnh khắc căng (sếp gọi tên giữa phòng), cận mặt, chữ nhỏ ở dưới.",
-   "thay_cho": "hook-chu-to (6/6 video mở đầu)",
-   "trang_thai": "khong",
-   "luc_duyet": "2026-11-17T04:08:15.007Z"
+   "mo_ta": "Trục thời gian ngang (Thứ 2 → tuần sau → tháng sau), mỗi mốc bật một hình nhỏ + 1 dòng chữ, cho thấy chiêu được giăng dần từng bước.",
+   "thay_cho": "nhan-vat-ke (53 lần / 7 video)",
+   "trang_thai": "duyet",
+   "luc_duyet": "2026-11-17T18:54:48.410Z"
   },
   {
    "id": "2",
    "viec": "them",
-   "ten": "noi-vs-nghi",
+   "ten": "ban-co",
    "nhom": "bo_cuc",
-   "mo_ta": "Nhân vật nói một câu, bong bóng suy nghĩ phía sau hiện điều thật trong đầu, hai bên tương phản.",
-   "thay_cho": "nhan-vat-ke (46 lần)",
+   "mo_ta": "Bàn cờ nhìn nghiêng, quân cờ mang mặt nhân vật; người giăng chiêu đẩy quân, mỗi nước đi là một bước của chiêu. Hợp tên kênh Tâm Cơ.",
+   "thay_cho": "dau-hieu-so (16) / loi-khuyen (22)",
    "trang_thai": "khong",
-   "luc_duyet": "2026-11-17T04:08:15.007Z"
+   "luc_duyet": "2026-11-17T18:54:48.410Z"
   },
   {
    "id": "3",
    "viec": "them",
-   "ten": "hanh-lang",
-   "nhom": "nen",
-   "mo_ta": "Hành lang hoặc góc cầu thang, cho cảnh nói xấu sau lưng, thì thầm.",
-   "thay_cho": "van-phong-mo (32), phong-hop (25)",
+   "ten": "nghieng",
+   "nhom": "goc_may",
+   "mo_ta": "Góc máy nghiêng 8–10 độ, dùng lúc không khí bắt đầu lệch, nhân vật chính nhận ra có gì sai.",
+   "thay_cho": "trung (90/188 cảnh)",
    "trang_thai": "khong",
-   "luc_duyet": "2026-11-17T04:08:15.007Z"
+   "luc_duyet": "2026-11-17T18:54:48.410Z"
   },
   {
    "id": "4",
-   "viec": "them",
-   "ten": "cuc-can",
-   "nhom": "goc_may",
-   "mo_ta": "Chỉ khuôn mặt, cho khoảnh khắc lật mặt.",
-   "thay_cho": "trung (80/166 cảnh)",
-   "trang_thai": "khong",
-   "luc_duyet": "2026-11-17T04:08:15.007Z"
-  },
-  {
-   "id": "5",
-   "viec": "them",
-   "ten": "chu-dap-man-hinh",
-   "nhom": "hieu_ung",
-   "mo_ta": "Một chữ khoá đập mạnh vào giữa màn hình kèm rung nhẹ, cho câu chốt chiêu.",
-   "thay_cho": "tick (21 lần, dùng nhiều nhất)",
-   "trang_thai": "khong",
-   "luc_duyet": "2026-11-17T04:08:15.007Z"
-  },
-  {
-   "id": "6",
    "viec": "bo",
-   "ten": "den-roi",
+   "ten": "zoom-vao",
    "nhom": "hieu_ung",
-   "mo_ta": "0 lần trong 6 video. Lý do: mới thêm đợt này, chưa video nào kịp dùng. Em khuyên GIỮ, để Tuấn dùng cho cảnh lật mặt.",
+   "mo_ta": "0 lần trong 7 video. Phong cách tranh-tinh-zoom (6/7 video) đã tự zoom mỗi cảnh nên hiệu ứng này bị trùng; dung-hinh và den-roi đang làm thay việc nhấn khoảnh khắc.",
    "thay_cho": "",
    "trang_thai": "khong",
-   "luc_duyet": "2026-11-17T04:08:15.007Z"
-  },
-  {
-   "id": "7",
-   "viec": "bo",
-   "ten": "ap-luc-vay-quanh",
-   "nhom": "hieu_ung",
-   "mo_ta": "0 lần trong 6 video. Lý do: mới thêm đợt này, chưa video nào kịp dùng. Em khuyên GIỮ, dùng cho cảnh bị dồn ép.",
-   "thay_cho": "",
-   "trang_thai": "duyet",
-   "luc_duyet": "2026-11-17T04:08:15.007Z"
+   "luc_duyet": "2026-11-17T18:54:48.410Z"
   }
  ]
 }

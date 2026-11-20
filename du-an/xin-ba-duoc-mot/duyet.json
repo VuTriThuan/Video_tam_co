@@ -1,0 +1,24 @@
+[
+ {
+  "luc": "2026-11-17T18:22:02.276Z",
+  "loai": "kich-ban",
+  "quyet": "duyet",
+  "ghi_chu": "cho tình huống đóng sầm cửa gay gắt hơn",
+  "da_xu_ly": true
+ },
+ {
+  "luc": "2026-11-17T18:46:10.529Z",
+  "loai": "phong-cach",
+  "quyet": "duyet",
+  "phong_cach": "tranh-tinh-zoom",
+  "ghi_chu": "",
+  "da_xu_ly": true
+ },
+ {
+  "luc": "2026-11-17T18:52:37.498Z",
+  "loai": "nhap",
+  "quyet": "duyet",
+  "ghi_chu": "",
+  "da_xu_ly": true
+ }
+]

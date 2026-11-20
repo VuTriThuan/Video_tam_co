@@ -1,25 +1,25 @@
-Sếp không cần mắng em mỗi ngày, chỉ cần em không bao giờ biết hôm nay sếp vui hay giận.
-Thứ hai, sếp giơ bản kế hoạch của em trước cả phòng: “Đây mới là chuẩn.”
-Em vui cả ngày, tối về còn kể mẹ nghe.
-Thứ tư, vẫn cách làm đó, sếp ném tập tài liệu lên bàn.
-“Em làm cái gì thế này?”
-Đứng đó, em không hiểu mình sai ở đâu.
-Từ hôm đó, sáng nào em cũng nhìn mặt sếp rồi mới dám mở lời.
-Sếp cười, em nộp báo cáo; sếp cau mày, em ôm về chỗ.
-Tâm lý học gọi đây là thưởng ngẫu nhiên.
-Khen chê không theo quy luật nào, người ta lại bám chặt hơn cả khi được khen đều.
-Như người kéo máy đánh bạc: không biết lúc nào trúng nên cứ kéo mãi.
-Dần dần, em đọc mặt sếp kỹ hơn đọc bài của chính mình.
-Để ý xem: cùng một kiểu báo cáo, tuần này được khen, tuần sau bị chê.
-Tiêu chuẩn đổi theo tâm trạng.
-Hôm sếp vui, sai chính tả cũng cho qua; hôm sếp bực, thiếu một dấu phẩy cũng bị gạch.
-Trước mỗi việc, em tự viết ra tiêu chí thế nào là đạt.
-Ví dụ báo cáo tuần: hai trang, đủ số liệu, nộp trước năm giờ chiều thứ sáu.
-Gửi sếp một tin: “Em làm theo mấy tiêu chí này, anh xem thiếu gì không ạ?”
-Sếp đã gật, hôm nào sếp bực cũng khó đổi luật giữa chừng.
-Làm xong, em tự chấm mình theo tiêu chí đó, chứ không theo câu khen.
-Sắc mặt sếp đổi mỗi sáng, tờ tiêu chí của em thì không.
-Theo dõi Tâm Cơ để xem thêm.
+Sếp giao ba dự án, em kêu, sếp bớt còn một, và em cảm ơn rối rít.
+Chiều thứ năm, sếp gọi em vào phòng.
+“Ba dự án mới, thứ hai nộp hết, không kịp thì em tự tính.”
+Em tái mặt: “Ba ngày, tính cả cuối tuần hả anh?”
+Sếp im một lúc, rồi thở dài: “Thôi, anh thương em, nhận cái hội chợ thôi.”
+Em ra khỏi phòng nhẹ cả người, còn nhắn thêm một tin cảm ơn.
+Tối đó mở lịch ra, em mới nhớ.
+Cái hội chợ ấy vốn đã nặng gấp đôi việc em đang làm.
+Tâm lý học gọi đây là chiêu đóng sầm cửa.
+Người ta đưa yêu cầu quá đáng trước, để bị từ chối.
+Rồi lùi về đúng thứ họ muốn từ đầu, nghe như đang nhường mình.
+Ba dự án kia, sếp chưa từng định giao thật.
+Bảo sao vừa thấy em tái mặt, sếp đã lùi ngay.
+Em gật đầu không phải vì việc hợp lý, mà vì thấy sếp đã lùi một bước.
+Sếp nhường rồi, em mà còn lắc đầu thì thấy mình kỳ.
+Giống đi chợ: cái áo hô năm trăm nghìn, bớt còn ba trăm, mình mua mà thấy hời.
+Giờ em tách riêng yêu cầu thứ hai ra mà xét, coi như không có ba dự án kia.
+Em chỉ nói: “Dạ để em xem lại lịch, mai em báo anh nhận được phần nào.”
+Về bàn, em đặt hội chợ cạnh lịch đang có, đếm xem còn trống mấy giờ.
+Nhận thì nhận, nhưng em xin lùi hạn một việc cũ.
+Lời cảm ơn, để dành đến lúc xem lịch xong hẵng nói.
+Kể em nghe lần bạn được bớt kiểu này, rồi theo dõi Tâm Cơ để xem thêm.
 ---
-Thứ hai sếp khen em là chuẩn, thứ tư sếp ném chính bản đó lên bàn.
-Sáng nào em cũng nhìn mặt sếp trước, rồi mới dám mở miệng.
+Em vừa bị sếp mặc cả, mà còn đứng cảm ơn rối rít.
+Sếp đòi ba, em xin tha, sếp cho một, và em mang ơn sếp cả tuần.

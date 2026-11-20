@@ -142,6 +142,22 @@ def main():
             kiem_t(m, f"{n}.man_hinh")
             for x in m.get("tin", []): kiem_t(x, f"{n}.man_hinh.tin")
         if c.get("bo_cuc") == "dien-thoai" and not m: loi.append(f"{n}: bố cục dien-thoai cần man_hinh")
+        if c.get("bo_cuc") == "dong-thoi-gian":
+            mc = c.get("moc") or []
+            if not 1 <= len(mc) <= 4: loi.append(f"{n}: dong-thoi-gian cần 'moc' 1–4 mốc")
+            for j, x in enumerate(mc):
+                q = f"{n}.moc[{j}]"
+                if not isinstance(x, dict) or not x.get("nhan"): loi.append(f"{q}: cần 'nhan'"); continue
+                if len(str(x.get("nd", "")).split()) > 6: loi.append(f"{q}: nd quá 6 từ")
+                h = x.get("hinh")
+                if isinstance(h, str):
+                    if h not in S["vai"] and h not in S["dao_cu"]: co("dao_cu", h, q)
+                elif isinstance(h, dict):
+                    if "vai" in h: co("vai", h["vai"], q)
+                    elif h.get("dao_cu") or h.get("ten"): co("dao_cu", h.get("dao_cu") or h.get("ten"), q)
+                    if "tu_the" in h: co("tu_the", h["tu_the"], q)
+                    if "bieu_cam" in h: co("bieu_cam", h["bieu_cam"], q)
+                kiem_t(x, q)
         for h in c.get("hieu_ung", []):
             h = {"ten": h} if isinstance(h, str) else h
             co("hieu_ung", h.get("ten"), f"{n}.hieu_ung")

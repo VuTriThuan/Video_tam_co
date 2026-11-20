@@ -9,7 +9,7 @@
   const BASE_Y = { 'hook-chu-to': 1500, 'nhan-vat-ke': 1440, 'nhan-vat-va-dong-nghiep': 1440, 'dau-hieu-so': 1480, 'loi-khuyen': 1490, 'so-sanh': 1380, 'dien-thoai': 1720 };
   const AUTO_X = { 1: [540], 2: [300, 780], 3: [220, 540, 860], 4: [180, 400, 680, 900] };
   const AUTO_S = { 1: 0.84, 2: 0.74, 3: 0.64, 4: 0.52 };
-  const NEN_MD = { 'hook-chu-to': 'burst', 'dien-thoai': 'man-hinh', 'dau-hieu-so': 'dau-hieu', 'so-sanh': 'chia-doi', 'loi-khuyen': 'loi-khuyen' };
+  const NEN_MD = { 'dong-thoi-gian': 'trung', 'hook-chu-to': 'burst', 'dien-thoai': 'man-hinh', 'dau-hieu-so': 'dau-hieu', 'so-sanh': 'chia-doi', 'loi-khuyen': 'loi-khuyen' };
   const SLOT_DC = ['tren-phai', 'tren-trai', 'tren-giua', 'giua-phai', 'giua-trai'];
 
   const giay = (ctx, f, md) => (f === undefined || f === null ? md : f * ctx.giong);
@@ -32,6 +32,7 @@
     const dat = (r, x, y, s, them = {}) => Object.assign(r, { x, y, s, ...them });
 
     if (bo === 'dien-thoai') { ra.forEach((r, j) => dat(r, j === 0 ? 190 : 890, 1720, 0.53)); return ra; }
+    if (bo === 'dong-thoi-gian') return []; // nhân vật nằm trong từng mốc (moc[].hinh)
     if (xep === 'nhom-quay-lung') {
       if (iMinh >= 0) dat(ra[iMinh], 540, 1500, 0.86);
       khac.forEach((r, j) => dat(r, AUTO_X[4][j % 4], 1180, 0.5, { quayTu: 0.22 + j * 0.11, sau: true }));
@@ -233,6 +234,7 @@
   function mucTieu(v, ra, dc) {
     if (v === 'man-hinh') return [MH.x, MH.y, 380];
     let m;
+    if (v && (m = /^moc-(\d)$/.exec(v)) && ra.moc && ra.moc[+m[1]]) { const r = ra.moc[+m[1]], R = Math.min(230, r.h * 0.86) * 0.55; return [r.xHinh, r.y, R]; }
     if (v && (m = /^nv-(\d)$/.exec(v)) && ra[+m[1]]) { const r = ra[+m[1]], s = coNV(r); return [r.xNow ?? r.x, r.y - 720 * s, 170 * s]; }
     if (v && (m = /^dc-(\d)$/.exec(v)) && dc[+m[1]]) { const d = dc[+m[1]]; const p = viTri(d.vi_tri, ra, TV.VI_TRI_DAO_CU[SLOT_DC[+m[1] % 5]]); return [p[0], p[1], 100]; }
     const p = viTri(v, ra, [540, 1000]);
@@ -314,6 +316,7 @@
     if (c.bo_cuc === 'dau-hieu-so') L.chu = 0.45;
     if (c.bo_cuc === 'ket') Object.assign(L, { chu: 0.15, logo: 0.35, moi: Math.max(0.9, D - 1.6) });
     dsDC(c).forEach((d, i) => { if (d.ten !== 'ban-lam-viec' && !(d.ten === 'laptop' && d.t === undefined)) L.daoCu.push(giay(ctx, d.t, 0.38 + i * 0.17)); });
+    if (c.bo_cuc === 'dong-thoi-gian') { const ds = dsMoc(c); L.daoCu = ds.map((m, k) => tMoc(ctx, m, k, ds.length)); }
     if (!L.daoCu.length) L.daoCu = dsNV(c).map((n, k) => giay(ctx, n.t, c.bo_cuc === 'hook-chu-to' ? 1.15 + k * 0.18 : 0.06 + k * 0.12));
     L.daoCu.sort((a, b) => a - b);
     const m = c.man_hinh;
@@ -428,6 +431,7 @@
     if (bo === 'dau-hieu-so' && so) return { y: 330, x0: 400, maxW: 520, hien, t0, co: [92, 84, 76, 68, 60] };
     if (bo === 'loi-khuyen') return { y: 330, x0: so ? 265 : 80, maxW: so ? 635 : 820, hien, t0, co: [96, 88, 80, 72, 64] };
     if (bo === 'hook-chu-to') return { y: 330, hien: 1, t0: 0, kieu: 'dap', co: [150, 136, 124, 112] };
+    if (bo === 'dong-thoi-gian') return { y: 280, hien, t0, co: [88, 80, 72, 64] };
     return { y: 300, hien, t0, co: bo === 'dien-thoai' ? [104, 96, 88, 80, 72] : undefined };
   }
 
@@ -468,6 +472,97 @@
     return s + `<g transform="translate(${cx},${cyN.toFixed(1)}) rotate(${goc.toFixed(2)}) scale(${sc.toFixed(4)}) translate(${-cx},${-cy})">${a}</g>`;
   }
 
+  // ---------- dòng thời gian (bo_cuc 'dong-thoi-gian') ----------
+  // Trục dọc giữa khung, các mốc so le trái/phải: một bên là hình nhỏ (vai hoặc đạo cụ), bên kia là thẻ nhãn + 1 dòng chữ.
+  // Vùng trục tự né lớp chữ của cảnh (chữ ở trên: bang-trang/truyen-tranh; chữ phụ đề ở dưới: tranh-tinh-zoom).
+  const MOC_MAX = 4;
+  const dsMoc = c => (c.moc || []).slice(0, MOC_MAX).map(m => (typeof m === 'string' ? { nhan: m } : { ...m }));
+  const tMoc = (ctx, m, k, n) => giay(ctx, m.t, ctx.giong * (0.08 + k * 0.78 / Math.max(1, n)));
+  const _vungDTG = new WeakMap();
+  function boTriDTG(P, c, ctx) {
+    const ds = dsMoc(c), n = ds.length;
+    let nho = _vungDTG.get(c);
+    if (!nho || nho.P !== P) {
+      const oc = c.chu ? oChu(c, 0, ctx) : null;
+      const v = oc ? vungChuCanh(P, c, ctx, oc) : [];
+      const tren = v.filter(b => b.y0 < 960), duoi = v.filter(b => b.y0 >= 960);
+      const Y0 = tren.length ? Math.max(...tren.map(b => b.y1)) + 56 : 330;
+      const Y1 = duoi.length ? Math.min(...duoi.map(b => b.y0)) - 84 : 1480;
+      nho = { P, Y0, Y1 }; _vungDTG.set(c, nho);
+    }
+    const { Y0, Y1 } = nho, h = (Y1 - Y0) / Math.max(1, n);
+    return ds.map((m, k) => {
+      const trai = k % 2 === 0; // mốc chẵn: hình bên trái, chữ bên phải
+      return { m, k, y: Y0 + h * (k + 0.5), h, xHinh: trai ? 300 : 780, xThe: trai ? 750 : 330, hinhTrai: trai };
+    });
+  }
+  function veHinhMoc(P, c, t, ctx, hinh, cao, k) {
+    const x = typeof hinh === 'string' ? (TV.VAI[hinh] ? { vai: hinh } : { dao_cu: hinh }) : { ...(hinh || {}) };
+    if (x.ten && !x.vai && !x.dao_cu) x.dao_cu = x.ten;
+    if (x.vai && TV.VAI[x.vai]) {
+      const s = Math.min(0.3, cao / 900);
+      return { svg: `<g data-kb="dc" data-ten="moc-hinh">` + veNV(P, c, t, ctx, { n: { ...x, noi: false }, k: k + 1, s }) + '</g>', day: cao * 0.5, r: cao * 0.5 };
+    }
+    const ve = TV.DAO_CU[x.dao_cu];
+    if (!ve) return { svg: '', day: 0, r: cao * 0.4 };
+    const co = Math.min(1.25, cao / 170) * ({ cua: 0.5, 'ban-hop': 0.42, laptop: 0.55, 'bong-noi': 0.8 }[x.dao_cu] || 1);
+    return { svg: `<g data-kb="dc" data-ten="moc-hinh"><g transform="scale(${co.toFixed(3)})">${ve(P, { ...x, t, co: 1 })}</g></g>`, day: 0, r: cao * 0.42 };
+  }
+  function veDongThoiGian(P, c, t, ctx, ra) {
+    const hang = boTriDTG(P, c, ctx); ra.moc = hang;
+    if (!hang.length) return '';
+    const che = P.cfg.che, NET = che === 'net', BONG = che === 'bong', M = P.M;
+    const ho = P.cfg.hoChu || 'BVP', PH = ho === 'PH', n = hang.length;
+    const DO = BONG ? '#FF6B6B' : M.do, MUC = NET ? M.muc : (BONG ? '#FFFFFF' : M.chu || '#141414');
+    const T = P.tong(ctx), nen2 = T ? T.nen2 : M.nen2;
+    const txt = (s, o) => `<text x="${o.x}" y="${o.y}" text-anchor="${o.neo || 'middle'}" font-family="${ho}" font-weight="${o.dam}" font-size="${o.co}" fill="${o.mau}"` +
+      (BONG ? ' style="paint-order:stroke" stroke="#000" stroke-opacity=".6" stroke-width="8"' : '') + (NET ? ' class="vt"' : '') + `>${TC.thoat(s)}</text>`;
+    const ts = hang.map(r => tMoc(ctx, r.m, r.k, n));
+    let s = '';
+    // trục: nét đứt mờ cả chiều dài, đoạn đỏ "giăng" dần tới mốc mới nhất
+    const yA = hang[0].y - Math.min(90, hang[0].h * 0.4), yB = hang[n - 1].y + Math.min(60, hang[0].h * 0.25);
+    s += `<path d="M540 ${yA.toFixed(1)} L540 ${yB.toFixed(1)}" stroke="${NET ? M.muc : (BONG ? '#FFE3B0' : M.phu)}" stroke-width="6" stroke-dasharray="4 18" stroke-linecap="round" opacity="${(0.55 * mo(t, 0, 0.4)).toFixed(3)}"/>`;
+    let yDo = yA;
+    hang.forEach((r, k) => { const p = E.io3(pha(t, ts[k] - 0.3, 0.3)); if (p > 0) yDo = lerp(k ? hang[k - 1].y : yA, r.y, p); });
+    if (yDo > yA + 1) s += `<path d="M540 ${yA.toFixed(1)} L540 ${yDo.toFixed(1)}" stroke="${M.do}" stroke-width="${BONG ? 9 : 10}" stroke-linecap="round"/>`;
+    hang.forEach((r, k) => {
+      const t0 = ts[k], m = r.m, moi = k === n - 1 || t < ts[k + 1];
+      const hn = bat(t, t0, 0.35);
+      if (hn <= 0) return;
+      let g = '';
+      // nút trên trục
+      const rr = moi ? 26 + 4 * Math.sin(t * 6) * (t - t0 < 1.2 ? 1 : 0) : 22;
+      g += P.dat(`<circle r="${rr.toFixed(1)}" fill="${moi ? M.do : (NET ? M.giay : (BONG ? '#1A121C' : '#FFFFFF'))}" stroke="${moi ? (NET ? M.do : '#FFFFFF') : M.do}" stroke-width="${NET ? 7 : 6}"${NET ? ' pathLength="1" class="v"' : ''}/>`, { x: 540, y: r.y, hien: hn });
+      // hình nhỏ + đĩa nền
+      const cao = Math.min(230, r.h * 0.86);
+      const hh = veHinhMoc(P, c, t, ctx, m.hinh, cao, k);
+      if (hh.svg) {
+        const dia = BONG ? `<circle r="${(cao * 0.5).toFixed(1)}" fill="#FFE3B0" opacity=".26"/>`
+          : NET ? `<circle r="${(cao * 0.5).toFixed(1)}" ${P.A(M.giay, { w: 5 })}/>`
+          : `<circle r="${(cao * 0.5).toFixed(1)}" fill="${nen2}" stroke="${M.do}" stroke-width="5" stroke-dasharray="10 10"/>`;
+        g += P.dat(dia, { x: r.xHinh, y: r.y, hien: bat(t, t0 + 0.05, 0.4) });
+        g += P.dat(hh.svg, { x: r.xHinh, y: r.y + hh.day, hien: bat(t, t0 + 0.1, 0.45) });
+        // vạch nối hình ↔ nút
+        const x1 = r.hinhTrai ? r.xHinh + cao * 0.5 + 6 : r.xHinh - cao * 0.5 - 6;
+        if (Math.abs(540 - x1) > 40) s += `<path d="M${x1.toFixed(1)} ${r.y.toFixed(1)} L${(r.hinhTrai ? 510 : 570)} ${r.y.toFixed(1)}" stroke="${M.do}" stroke-width="5" stroke-dasharray="2 12" stroke-linecap="round" opacity="${(0.8 * bat(t, t0 + 0.05, 0.3)).toFixed(3)}"/>`;
+      }
+      // thẻ chữ: nhãn mốc (đỏ) + 1 dòng nội dung
+      const W = 330, coN = PH ? 54 : 44;
+      const fit = m.nd ? TC.vuaKhung(m.nd, { ho, dam: PH ? 400 : 600, maxW: W - 36, maxDong: 2, co: PH ? [46, 42, 38, 34] : [38, 34, 31, 28] }) : { lines: [], co: 0 };
+      const lh = fit.co * 1.18, hThe = 30 + coN + (fit.lines.length ? 10 + lh * fit.lines.length : 0) + 18;
+      let the = `<rect x="${-W / 2}" y="${-hThe / 2}" width="${W}" height="${hThe.toFixed(1)}" rx="18" ` +
+        (BONG ? 'fill="#0B0A0D" fill-opacity=".55" stroke="#FFE3B0" stroke-opacity=".35" stroke-width="2"' : P.A(NET ? M.giay : (M.chuNen || '#FFFFFF'), { w: 5 })) + '/>';
+      the += `<rect x="${-W / 2}" y="${-hThe / 2}" width="10" height="${hThe.toFixed(1)}" rx="5" fill="${M.do}"/>`;
+      const yN = -hThe / 2 + 22 + coN * 0.82;
+      the += txt(m.nhan || '', { x: -W / 2 + 28, y: yN.toFixed(1), neo: 'start', dam: PH ? 400 : 800, co: coN, mau: DO });
+      fit.lines.forEach((l, j) => { the += txt(l, { x: -W / 2 + 28, y: (yN + 12 + lh * (j + 0.85)).toFixed(1), neo: 'start', dam: PH ? 400 : 600, co: fit.co, mau: MUC }); });
+      const hT = bat(t, t0 + 0.18, 0.4), lech = (r.hinhTrai ? 1 : -1) * 40 * (1 - E.out3(clamp01(hT)));
+      g += P.dat(the, { x: r.xThe + lech, y: r.y, hien: hT, tu: 'zoom' });
+      s += `<g data-kb="dc" data-ten="moc">${g}</g>`;
+    });
+    return s;
+  }
+
   // ---------- ráp ----------
   function dungCanh(P, c, t, ctx) {
     const bo = c.bo_cuc;
@@ -491,6 +586,7 @@
     s += veDanhSachNV(P, c, tc, ctx, ra, false);
     s += veDaoCu(P, c, tc, ctx, ra, 'noi-that');
     s += veDaoCu(P, c, tc, ctx, ra, 'thuong');
+    if (bo === 'dong-thoi-gian') s += veDongThoiGian(P, c, tc, ctx, ra);
     s += veHieuUng(P, c, tc, ctx, ra);
     s = nenSvg + vong + gocMay(P, c, tc, ctx, ra, s);
     const zoom = bienHieuUng(c, tc, ctx, 'zoom');

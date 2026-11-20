@@ -1,6 +1,6 @@
 # Kho chủ đề Tâm Cơ
 
-> Đã làm (không lặp): ghet-ngam, thao-tung, darvo, cuop-cong.
+> Đã làm (không lặp): ghet-ngam, thao-tung, darvo, cuop-cong, bi-cuop-loi, sep-nong-lanh.
 
 ## 1. Kẻ cướp công: làm xong việc, tên trên slide lại là người khác
 - slug: cuop-cong
@@ -179,5 +179,95 @@
 - hook: Có những lời khen nghe xong em phải về nhà nghĩ cả tối mới thấy đau.
 - goc_ke: Em trình bày xong, chị Phương vỗ vai: "Em nói hay ghê, chị không nghĩ em làm được đấy". Cả phòng cười, em cũng cười, đến tối nằm nhớ lại mới thấy câu đó có hai nửa.
 - y_chinh: 1) Khen kẹp dao: nửa đầu là khen, nửa sau là hạ ("so với tuổi", "lần này", "không ngờ") 2) Mục đích: đặt em xuống thấp hơn mà người nói vẫn có vẻ tử tế, em phản ứng là thành "nhạy cảm" 3) Đáp lại nhẹ: chỉ nhận nửa khen, "Dạ em cảm ơn chị", không cười theo nửa còn lại; nếu lặp lại thì hỏi thẳng "Ý chị 'không nghĩ em làm được' là sao ạ?"
+- khoi: có sẵn đủ
+- trang_thai: moi
+
+## 21. Con số đầu tiên: HR nói "bên chị tầm 9 triệu" là em thua rồi
+- slug: mo-neo-luong
+- dinh_dang: chuoi
+- hook: Em định xin 15 triệu, HR nói trước "bên chị tầm 9 thôi", và em gật ở 10.
+- goc_ke: Vòng cuối phỏng vấn, em đã tính kỹ mức 15 triệu. Chưa kịp mở lời, chị HR cười: "Vị trí này bên chị thường tầm 9 triệu em ạ, nhưng em ổn thì chị cố xin cho 10". Em nghe xong thấy 10 là "được ưu ái", ký luôn, về nhà mới thấy mình tự trừ 5 triệu.
+- y_chinh: 1) Hiệu ứng mỏ neo (Anchoring): con số nói ra đầu tiên kéo mọi con số sau về gần nó, kể cả khi em đã chuẩn bị trước 2) Dấu hiệu: được hỏi "lương cũ em bao nhiêu" hoặc được nghe một con số thấp trước khi em kịp nói 3) Đừng thương lượng quanh con số của họ, đặt lại mỏ neo của em: "Với phạm vi việc này, mức em mong muốn là 15 triệu, em tham khảo từ thị trường" 4) Câu hỏi kết cho người xem: lần đầu bàn lương, ai nói số trước?
+- khoi: có sẵn đủ
+- trang_thai: moi
+
+## 22. Xin ba thì được một: em vừa bị "mặc cả" mà còn thấy biết ơn
+- slug: xin-ba-duoc-mot
+- dinh_dang: le
+- hook: Sếp giao em ba dự án, em kêu, sếp "thông cảm" bớt còn một, và em cảm ơn rối rít.
+- goc_ke: Chiều thứ năm sếp gọi em vào: "Tháng này em ôm thêm ba dự án mới nhé". Em tái mặt, nói không kịp. Sếp thở dài: "Thôi được, anh thương em, em chỉ cần nhận cái hội chợ thôi". Em ra khỏi phòng nhẹ nhõm, đến tối mới nhớ ra cái hội chợ đó vốn đã nặng gấp đôi việc em đang làm.
+- y_chinh: 1) Chiêu "đóng sầm cửa" (Door-in-the-Face): đưa yêu cầu quá đáng trước để yêu cầu thật nghe như một sự nhượng bộ 2) Em đồng ý không phải vì việc hợp lý, mà vì thấy người kia đã "lùi một bước" nên mình cũng phải lùi 3) Cách đáp: tách riêng yêu cầu thứ hai ra mà xét, "Dạ để em xem lại lịch, mai em báo anh nhận được phần nào"
+- khoi: có sẵn đủ
+- trang_thai: da-lam
+
+## 23. Ở lại vì tiếc ba năm: em không gắn bó, em đang "ôm việc"
+- slug: tiec-ba-nam
+- dinh_dang: chuoi
+- hook: Em không ở lại vì thích công ty, em ở lại vì tiếc ba năm đã bỏ vào đó.
+- goc_ke: Có offer chỗ mới tốt hơn, em mở ra đọc ba lần rồi đóng lại. Chị trưởng phòng nói "em ở đây ba năm rồi, đi bây giờ là phí hết công sức", và em gật, dù tối nào cũng thở dài trước khi mở laptop.
+- y_chinh: 1) Chi phí chìm (Sunk Cost Fallacy): ba năm đã qua không lấy lại được, nó không phải lý do để thêm năm thứ tư 2) "Ôm việc" (job hugging): bám chỗ cũ vì sợ, không phải vì thấy đường đi lên, và người khác biết em sợ nên dùng chính câu "phí công sức" để giữ em 3) Thiên kiến giữ nguyên hiện trạng (Status-Quo Bias): cái quen luôn trông an toàn hơn thực tế 4) Câu tự hỏi: "Nếu hôm nay em mới được mời vào đây với đúng mức này, em có nhận không?"
+- khoi: có sẵn đủ
+- trang_thai: moi
+
+## 24. "Cả phòng chuyển khoản rồi, còn mỗi em": tiền mừng bị ép
+- slug: con-moi-em
+- dinh_dang: le
+- hook: Không ai bắt em góp 500 nghìn, chỉ có danh sách "đã chuyển" dài dần trong nhóm chat.
+- goc_ke: Nhóm chat phòng báo "góp mừng sinh nhật sếp, mỗi người 500k nhé". Mười phút sau từng người nhắn "đã ck", "đã ck ạ". Em mới đi làm bốn tháng, lương còn chưa đủ tiền nhà, nhưng nhìn danh sách chỉ thiếu mỗi tên em, em chuyển luôn rồi ăn mì gói cả tuần.
+- y_chinh: 1) Bằng chứng xã hội (Social Proof): khi mọi người đã làm, không làm theo trông như mình chống lại cả nhóm 2) Danh sách công khai từng người biến chuyện tự nguyện thành chuyện bị điểm danh 3) Cách nói: nhắn riêng người gom tiền, ngắn và không xin lỗi, "Em gửi phần em 200k nhé chị, tháng này em chỉ góp được vậy ạ"; muốn bớt áp lực cho cả phòng thì đề xuất "mỗi người tùy tâm"
+- khoi: có sẵn đủ
+- trang_thai: moi
+
+## 25. Ly trà sữa 35 nghìn đổi lấy nguyên cuối tuần của em
+- slug: ly-tra-sua
+- dinh_dang: le
+- hook: Cả tuần chị mua trà sữa cho em, đến thứ sáu thì em hiểu mình đang mắc nợ cái gì.
+- goc_ke: Thứ hai chị Vy đặt trà sữa cho em, thứ ba mua bánh, thứ tư rủ ăn trưa và trả tiền luôn. Chiều thứ sáu chị ghé bàn: "Cuối tuần em làm giúp chị bộ slide cho khách nhé, chị bận đám cưới". Em không biết từ chối thế nào khi miệng vẫn còn vị trà sữa.
+- y_chinh: 1) Nguyên tắc có qua có lại (Reciprocity): nhận một món quà nhỏ là thấy nợ, và cái nợ đó luôn được đòi bằng thứ lớn hơn 2) Dấu hiệu: tử tế dồn dập không lý do, sau đó là một lời nhờ không cân xứng 3) Quà là quà, việc là việc: "Em cảm ơn chị mấy hôm nay nhé. Cuối tuần em có việc rồi, sáng thứ hai em xem được phần nào thì em hỗ trợ chị"
+- khoi: có sẵn đủ
+- trang_thai: moi
+
+## 26. "Hồi phỏng vấn em nói em chịu được áp lực mà?"
+- slug: em-da-noi-ma
+- dinh_dang: le
+- hook: Câu em nói để được nhận việc giờ thành sợi dây sếp dùng để kéo em.
+- goc_ke: Lúc phỏng vấn em nói "em là người cầu tiến, chịu được áp lực cao". Tám tháng sau, lần thứ ba trong tuần bị giao việc lúc 9 giờ tối, em nhắn xin dời hạn, sếp trả lời đúng một câu: "Hồi phỏng vấn em nói em chịu được áp lực mà?".
+- y_chinh: 1) Cam kết và nhất quán (Commitment & Consistency): người ta khó làm trái lời mình từng nói, nên lời cũ bị lôi ra làm đòn bẩy 2) Chịu được áp lực không có nghĩa là chịu mọi thứ, mọi lúc 3) Nhận lời cũ, đổi khung: "Dạ đúng, em vẫn muốn làm tốt, nên em cần mình thống nhất lại thời hạn để chất lượng không bị ảnh hưởng ạ"
+- khoi: có sẵn đủ
+- trang_thai: moi
+
+## 27. "Cơ hội để em phát triển": tên gọi mới của việc không lương
+- slug: co-hoi-phat-trien
+- dinh_dang: le
+- hook: Mỗi lần sếp nói chữ "cơ hội", em lại có thêm việc mà không có thêm đồng nào.
+- goc_ke: Chị trưởng phòng nghỉ, sếp gọi em vào, giọng rất ấm: "Đây là cơ hội để em thử sức quản lý, nhiều bạn mong còn không được". Sáu tháng em làm hai phần việc, chức danh vẫn là chuyên viên, lương vẫn y nguyên.
+- y_chinh: 1) Hiệu ứng đóng khung (Framing Effect): cùng một việc, gọi là "gánh thêm" thì em từ chối, gọi là "cơ hội" thì em cảm ơn 2) Bóc khung bằng ba câu hỏi: cơ hội này có thời hạn không, có tiêu chí không, xong thì em được gì 3) Câu mẫu: "Em rất muốn nhận. Mình thống nhất giúp em sau ba tháng sẽ xem xét chức danh và mức đãi ngộ nhé anh"
+- khoi: có sẵn đủ
+- trang_thai: moi
+
+## 28. Ba lựa chọn, cả ba đều là làm thêm giờ
+- slug: ba-lua-chon
+- dinh_dang: le
+- hook: Sếp cho em quyền chọn: làm thứ bảy, làm tới 10 giờ tối, hoặc làm tối nay ở nhà.
+- goc_ke: Dự án trễ, sếp nhắn rất "dân chủ": "Em chọn đi: một là lên văn phòng thứ bảy, hai là ở lại tới 10 giờ tối nay, ba là về nhà làm tiếp. Anh tôn trọng em". Em chọn số ba vì nghe đỡ nhất, và không hề nghĩ tới lựa chọn thứ tư: không làm thêm.
+- y_chinh: 1) Ảo giác lựa chọn và phương án mồi (Decoy Effect): đưa ra vài phương án tệ để một phương án trông "hợp lý", còn phương án em thật sự muốn thì không có trong danh sách 2) Khi được mời chọn, hỏi trước: danh sách này ai lập, còn phương án nào bị bỏ ra ngoài 3) Đưa thêm phương án của mình: "Em đề xuất thế này: em ưu tiên phần A trong giờ hành chính, phần B mình xin khách dời sang thứ hai ạ"
+- khoi: có sẵn đủ
+- trang_thai: moi
+
+## 29. Họ không đuổi em, họ chỉ lấy dần việc của em đi
+- slug: lay-dan-viec
+- dinh_dang: chuoi
+- hook: Không ai nói em bị cho nghỉ, chỉ là tuần nào bàn em cũng nhẹ hơn một chút.
+- goc_ke: Tháng chín khách hàng lớn nhất của em được "chuyển cho anh Đức theo cho tiện". Tháng mười em không còn trong lịch họp giao ban. Tháng mười một sếp hỏi "dạo này em có thấy việc ở đây còn hợp không?", và em nhận ra mọi thứ đã được sắp sẵn để em tự viết đơn.
+- y_chinh: 1) Đẩy ra mà không đuổi (quiet firing): rút việc, rút thông tin, rút cơ hội, để người ta tự thấy mình thừa 2) Dấu hiệu theo thứ tự: mất việc quan trọng, mất chỗ trong họp, mất phản hồi, rồi câu hỏi "còn hợp không" 3) Đừng đoán, hỏi thẳng và ghi lại: "Em thấy mấy tháng nay phạm vi việc của em thay đổi, anh cho em biết kỳ vọng của mình với em là gì ạ?" 4) Chuẩn bị đường lui trong im lặng: cập nhật hồ sơ, giữ bằng chứng kết quả mình đã làm
+- khoi: có sẵn đủ
+- trang_thai: moi
+
+## 30. Hoang tưởng công sở: một tin đồn cắt giảm, em đọc mọi cái nhíu mày thành bản án
+- slug: hoang-tuong-cong-so
+- dinh_dang: chuoi
+- hook: Sếp gọi một người vào phòng đóng cửa, cả dãy bàn mất ngủ ba đêm.
+- goc_ke: Nghe đồn công ty sắp cắt giảm, em bắt đầu để ý: sếp trả lời em chậm hơn, cuộc họp chiều nay không có tên em, chị bên nhân sự nhìn em hơi lâu. Em ghép lại thành một câu chuyện hoàn chỉnh, nghỉ trưa không dám đi ăn, rồi hóa ra lịch họp chỉ là gửi nhầm danh sách.
+- y_chinh: 1) Thiên kiến khẳng định (Confirmation Bias): khi đã sợ, em chỉ nhặt những chi tiết khớp với nỗi sợ 2) Thiên kiến sẵn có (Availability Heuristic): vài bài báo sa thải lướt thấy tối qua làm khả năng mình bị cắt trông lớn hơn thực tế 3) Có người lợi dụng nỗi sợ đó để ép em nhận thêm việc, ở lại muộn, im lặng chịu đựng 4) Kéo về sự thật: viết ra bằng chứng thật và bằng chứng mình tự suy, hỏi trực tiếp người có thông tin, và chuẩn bị phương án B thay vì ngồi đọc sắc mặt
 - khoi: có sẵn đủ
 - trang_thai: moi
