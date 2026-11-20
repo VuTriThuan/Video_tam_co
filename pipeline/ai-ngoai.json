@@ -1,0 +1,58 @@
+{
+ "_ghi_chu": "Danh sách AI ngoài được phép gọi qua pipeline/goi-ai.py. CHỈ gói miễn phí. Script từ chối mọi model không có trong danh sách. Khóa API để trong .env (không đưa lên git). gioi_han_ngay đặt thấp hơn hạn mức miễn phí của hãng để không bao giờ chạm trần.",
+ "thu_tu_chu": ["gemini", "groq", "openrouter", "ollama", "pollinations"],
+ "thu_tu_anh": ["pollinations"],
+ "nha": {
+  "gemini": {
+   "ten": "Google Gemini (AI Studio, gói miễn phí)",
+   "khoa": "GEMINI_API_KEY",
+   "lay_khoa": "https://aistudio.google.com/apikey",
+   "models": ["gemini-flash-latest", "gemini-flash-lite-latest"],
+   "mac_dinh": "gemini-flash-latest",
+   "doc_anh": true,
+   "gioi_han_ngay": 200,
+   "canh_bao": "KHÔNG bật thanh toán (billing) cho project chứa khóa này, bật là bị tính tiền. Gói miễn phí: Google có thể dùng dữ liệu gửi lên để cải thiện sản phẩm, đừng gửi thông tin riêng tư."
+  },
+  "groq": {
+   "ten": "Groq (gói miễn phí, không cần thẻ)",
+   "khoa": "GROQ_API_KEY",
+   "lay_khoa": "https://console.groq.com/keys",
+   "models": ["llama-3.3-70b-versatile", "llama-3.1-8b-instant"],
+   "mac_dinh": "llama-3.3-70b-versatile",
+   "doc_anh": false,
+   "gioi_han_ngay": 500
+  },
+  "openrouter": {
+   "ten": "OpenRouter (chỉ model đuôi :free)",
+   "khoa": "OPENROUTER_API_KEY",
+   "lay_khoa": "https://openrouter.ai/keys",
+   "models": ["meta-llama/llama-3.3-70b-instruct:free", "deepseek/deepseek-chat-v3-0324:free"],
+   "mac_dinh": "meta-llama/llama-3.3-70b-instruct:free",
+   "doc_anh": false,
+   "gioi_han_ngay": 40,
+   "canh_bao": "Không nạp tiền vào tài khoản OpenRouter. Script chỉ chấp nhận model có đuôi :free."
+  },
+  "ollama": {
+   "ten": "Ollama (chạy trên máy, miễn phí hoàn toàn, không cần mạng)",
+   "khoa": null,
+   "dia_chi": "http://localhost:11434",
+   "models": ["qwen2.5:7b", "llama3.2:3b"],
+   "mac_dinh": "qwen2.5:7b",
+   "doc_anh": false,
+   "gioi_han_ngay": 100000
+  },
+  "pollinations": {
+   "ten": "Pollinations.ai (không cần khóa)",
+   "khoa": null,
+   "models": ["openai", "flux"],
+   "mac_dinh": "openai",
+   "mac_dinh_anh": "flux",
+   "doc_anh": false,
+   "gioi_han_ngay": 100
+  }
+ },
+ "khong_ho_tro": {
+  "openai": "ChatGPT/OpenAI API không có gói miễn phí (phải nạp tiền), nên không nối trực tiếp. Muốn dùng model GPT miễn phí thì qua Pollinations (model 'openai').",
+  "anthropic": "Bộ não chính đã là Claude Opus qua Claude Code, không gọi thêm API trả tiền."
+ }
+}

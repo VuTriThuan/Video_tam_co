@@ -53,6 +53,9 @@ Mỗi agent là một nhân viên có vị trí riêng (nguồn: `dieu-hanh/doi-
 | `hyperframes`, `hyperframes-cli`, `hyperframes-registry` | Khoa, em (cảnh đặc biệt khi đại ca yêu cầu) | phác hiệu ứng chuyển động; Máy dựng vẫn là `render/quay.mjs` |
 HyperFrames: telemetry đã tắt (`.claude/settings.json` env), không chạy `events`/`feedback`/`share`/`publish`/cloud, không đăng nhập HeyGen. Cập nhật skill chỉ khi đại ca cho phép.
 
+## AI ngoài (chỉ miễn phí)
+`python3 pipeline/goi-ai.py kiem|chu|anh` — Gemini, Groq, OpenRouter `:free`, Ollama, Pollinations. Không có OpenAI/API trả tiền. Chi tiết: `docs/tham-khao/ai-ngoai.md`. Khóa trong `.env`.
+
 ## Hệ thống
 `./kiem-tra-he-thong.sh` (kiểm toàn bộ), `pipeline/don.sh` (dọn, hỏi đại ca trước khi `--xoa`), git sao lưu. Hướng dẫn đại ca: `HUONG_DAN_SU_DUNG.md`.
 

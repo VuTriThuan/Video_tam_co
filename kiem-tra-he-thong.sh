@@ -55,5 +55,8 @@ echo "· Dọn: $(pipeline/don.sh | head -1)"
 # 10. Sao lưu git
 kt "Git đã khởi tạo, bỏ video/âm thanh/node_modules/.venv" "git rev-parse --git-dir && grep -q node_modules .gitignore && grep -q '.venv' .gitignore && ! git ls-files | grep -qE '\.(mp4|wav)$'"
 
+# 11. AI ngoài (miễn phí)
+kt "goi-ai.py chạy được, .env không lên git" "python3 pipeline/goi-ai.py kiem >/dev/null && git check-ignore -q .env"
+
 [ $LOI = 0 ] && echo "ĐẠT TOÀN BỘ" || echo "CÒN MỤC CHƯA ĐẠT"
 exit $LOI

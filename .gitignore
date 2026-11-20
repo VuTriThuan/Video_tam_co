@@ -19,3 +19,9 @@ dieu-hanh/.nho*.json
 .DS_Store
 __pycache__/
 dieu-hanh/.phien.json
+
+# Khóa API AI ngoài (miễn phí) — không bao giờ đưa lên git
+.env
+logs/ai-ngoai.jsonl
+# File khóa tạm của Word/Office
+~$*
