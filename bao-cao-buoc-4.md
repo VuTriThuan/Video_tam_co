@@ -35,7 +35,7 @@
 | — Tuấn 297K · Chị Mai 481K · Vy 88K | 0,87 triệu, ra 85K |
 | Token trung bình mỗi video đăng | ≈3,1 triệu/phần (lẻ: 4,71 triệu/video) |
 | Thời gian máy | đọc giọng ~4 phút; 3 mẫu ~4 phút; quay 592 s + ghép 163 s; sửa c45 + ghép lại ~3 phút → **~24 phút máy** |
-| Thời gian từ đầu đến cuối | ~62 phút (08:08→09:10 UTC, gồm thời gian đại ca duyệt) |
+| Thời gian từ đầu đến cuối | ~62 phút (08:08→09:10 UTC, gồm thời gian sếp duyệt) |
 
 Ghi chú đo: `npx ccusage` bị chặn tải gói trong phiên, nên cộng `usage` trực tiếp từ transcript (`~/.claude/projects/.../<phiên>.jsonl` + `subagents/*.jsonl`, bỏ trùng theo message id).
 

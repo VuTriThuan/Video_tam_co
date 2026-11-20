@@ -12,7 +12,7 @@ Kế hoạch: `CHAY_TOAN_BO.md` → Bước 3 (`BUOC_3_DOI_AGENT.md`) → Bướ
 - [x] Phân tích: `phan-tich/` + `trung-vi.py`
 - [x] Thử bằng giả lập (xem `bao-cao-buoc-3.md`)
 - [x] Nghiệm thu thật (2026-11-16); còn `/phan-tich` chờ ảnh số liệu
-- [x] Tự mở Phòng điều hành khi đăng nhập: đại ca chọn KHÔNG, mở tay bằng `./dieu-hanh.sh`
+- [x] Tự mở Phòng điều hành khi đăng nhập: sếp chọn KHÔNG, mở tay bằng `./dieu-hanh.sh`
 
 ## Bước 4 — đã nghiệm thu bằng chuỗi thật cuop-cong (2026-11-16)
 - [x] kiem-canh.py (cấu trúc chuỗi), kiem-lap.py (luật theo phần)
@@ -25,20 +25,20 @@ Kế hoạch: `CHAY_TOAN_BO.md` → Bước 3 (`BUOC_3_DOI_AGENT.md`) → Bướ
 - [x] **Nghiệm thu (2026-11-16, cuop-cong, 9,41 triệu token, ĐẠT TOÀN BỘ):** `/chu-de <số dạng chuỗi>` chạy trọn → `./kiem-tra-he-thong.sh` đạt hết → đo `npx ccusage@latest session --offline` (token/số phần) → điền `bao-cao-buoc-4.md` + viết `bao-cao-hoan-thien.md` (§8.3) → git commit.
 
 ## Quyết định đã có
-- Luật chống lặp theo kiểu cảnh (bo_cuc+nen+goc_may) — đại ca đã chấp nhận.
-- Chỉ Opus; xưng em, gọi đại ca; làm theo yêu cầu, không chạy lịch.
+- Luật chống lặp theo kiểu cảnh (bo_cuc+nen+goc_may) — sếp đã chấp nhận.
+- Chỉ Opus; xưng em, gọi sếp; làm theo yêu cầu, không chạy lịch.
 - Hook đếm lượt theo (agent, giai đoạn trong `du-an/hien-tai.json`); `/sua` mở giai đoạn mới `sua-n`.
 
 ## Việc tiếp theo (phiên mới)
-1. ✅ (2026-11-16) `/goi-y` chạy thật OK; đã sửa su_kien.py cho agent chạy nền (báo cáo lấy ở SubagentStop: last_assistant_message hoặc SubagentHandback trong transcript). ~~Đại ca chạy `./dieu-hanh.sh`, gõ `/goi-y` → kiểm văn phòng 3D + bản tin với sự kiện thật. Nếu `dieu-hanh/loi-hook.log` có lỗi hoặc tin báo cáo không hiện: sửa `dieu-hanh/su_kien.py` theo dạng payload thật.~~
+1. ✅ (2026-11-16) `/goi-y` chạy thật OK; đã sửa su_kien.py cho agent chạy nền (báo cáo lấy ở SubagentStop: last_assistant_message hoặc SubagentHandback trong transcript). ~~Sếp chạy `./dieu-hanh.sh`, gõ `/goi-y` → kiểm văn phòng 3D + bản tin với sự kiện thật. Nếu `dieu-hanh/loi-hook.log` có lỗi hoặc tin báo cáo không hiện: sửa `dieu-hanh/su_kien.py` theo dạng payload thật.~~
 2. ✅ `/chu-de 2` DARVO xong → `xuat-ban/darvo/`.
 3. ✅ Đo token: 4,71 triệu/~$2.83 một chủ đề (đã điền `bao-cao-buoc-3.md`).
 4. ✅ Bước 4 nghiệm thu xong → `bao-cao-buoc-4.md`, `bao-cao-hoan-thien.md`.
 5. ✅ Đã sửa 5 lỗi gặp khi chạy chuỗi thật (`bao-cao-buoc-4.md` mục "Đã sửa"). Lần `/chu-de` tới: xem `du-an/<slug>/luot.json` có bảng `_ten` (hook bắt được agentId) không.
 6. ⏳ `/phan-tich` khi có ảnh số liệu 24 giờ.
 
-## Hiệu ứng mới từ HyperFrames (2026-11-17) — TẠM DỪNG, chờ đại ca bổ sung
+## Hiệu ứng mới từ HyperFrames (2026-11-17) — TẠM DỪNG, chờ sếp bổ sung
 - Đã xong đợt 1 (4 hiệu ứng: to-da-quang, gach-thay, dung-hinh, ap-luc-vay-quanh), kiểm hệ thống ĐẠT TOÀN BỘ, **chưa commit**.
-- Còn 6 hiệu ứng ưu tiên 2–3 trong `docs/tham-khao/hieu-ung-de-xuat.md` (cuon-tu, vet-muc-chuyen, khung-ve-tay, go-chu, xe-giay, dem-so). Khi đại ca nói làm đợt 2: giao Khoa như đợt 1 (brief mẫu: giữ `data-kb`, SVG thuần, thử 3 phong cách, tối đa 3 lượt).
-- Luật "hiệu ứng là gia vị" đã ghi ở bien-kich.md, kiem-duyet.md, kiem-lap.py, lam-moi.md, QUY_TRINH.md. `/lam-moi` chỉ đề xuất bỏ, đại ca duyệt mới bỏ.
+- Còn 6 hiệu ứng ưu tiên 2–3 trong `docs/tham-khao/hieu-ung-de-xuat.md` (cuon-tu, vet-muc-chuyen, khung-ve-tay, go-chu, xe-giay, dem-so). Khi sếp nói làm đợt 2: giao Khoa như đợt 1 (brief mẫu: giữ `data-kb`, SVG thuần, thử 3 phong cách, tối đa 3 lượt).
+- Luật "hiệu ứng là gia vị" đã ghi ở bien-kich.md, kiem-duyet.md, kiem-lap.py, lam-moi.md, QUY_TRINH.md. `/lam-moi` chỉ đề xuất bỏ, sếp duyệt mới bỏ.
 - Cùng đợt này còn chưa commit: quay song song (`quay.mjs --luong`), máy kiểm bố cục (`render/kiem-bo-cuc.mjs`), hiệu ứng `den-roi`, sửa zoom-vao và vị trí số thứ tự trong `canh-chung.js`.

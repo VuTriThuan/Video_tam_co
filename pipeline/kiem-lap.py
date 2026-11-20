@@ -155,7 +155,7 @@ def main():
         pc = a[a.index("--phong-cach") + 1]
         ls = lich_su()
         if len(ls) >= 2 and all(x["phong_cach"] == pc for x in ls[-2:]):
-            print(f"LƯU Ý: '{pc}' đã dùng 2 video liền trước; chọn nữa sẽ là 3 video liền (đại ca quyết).")
+            print(f"LƯU Ý: '{pc}' đã dùng 2 video liền trước; chọn nữa sẽ là 3 video liền (sếp quyết).")
         return
     sys.exit(1 if kiem() else 0)
 

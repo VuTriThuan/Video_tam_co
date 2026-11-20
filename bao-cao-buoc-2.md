@@ -15,12 +15,12 @@
 | Chống lặp | **7 bối cảnh** (văn phòng mở, phòng họp, pantry, thang máy, phòng sếp, quán cà phê, ở nhà tối), mỗi bối cảnh vẽ được ở cả 3 phong cách · **nhân vật phụ ráp theo seed**: 10 kiểu tóc (4 nam, 5 nữ, 2 sếp, có chồng lấn), 8 màu áo + 3 màu áo sếp, 5 màu tóc, kính có/không, 3 dáng · **6 tông màu** · **5 góc máy** · Minh cố định, mỗi tư thế có 2 biến thể. `kiem-lap.py` bắt được **13 lỗi** khi chạy thử trên video `ghet-ngam`, **0 lỗi** ở chủ đề 2 (agent đã tuân thủ ngay lần đầu). |
 | Contact sheet 2 chủ đề đặt cạnh nhau | `review/so-sanh-2-chu-de.jpg` (2 hàng trên là `ghet-ngam`, 2 hàng dưới là `thao-tung`). Nhìn rõ cùng kênh nhưng khác nền, khác tông, khác bộ đồng nghiệp, khác cảnh mở đầu. |
 
-## Diễn giải một luật (cần đại ca xác nhận)
+## Diễn giải một luật (cần sếp xác nhận)
 "Một `bo_cuc` dùng tối đa 2 lần" không thực hiện được với video 18–22 cảnh vì chỉ có 8 bố cục. Em áp dụng cho **kiểu cảnh** (tổ hợp bố cục + nền + góc máy), mỗi tổ hợp tối đa 2 lần. Luật "không 2 cảnh liền nhau cùng bố cục" giữ nguyên.
 
 ## Đề xuất
 1. Mỗi chủ đề nên mở **một phiên Claude Code mới** (`QUY_TRINH.md` đã đủ để phiên mới tự làm). Phần lớn token ở chủ đề 2 là đọc lại ngữ cảnh dài của phiên này.
-2. Sau 10 video, `kiem-lap.py` sẽ tự nhắc làm mới thư viện. Khi đó em đọc `logs/da-dung.json` và đề xuất 2–3 khối hoặc bối cảnh mới để đại ca duyệt.
+2. Sau 10 video, `kiem-lap.py` sẽ tự nhắc làm mới thư viện. Khi đó em đọc `logs/da-dung.json` và đề xuất 2–3 khối hoặc bối cảnh mới để sếp duyệt.
 
 ## Nhật ký thời gian
 | Bước | Giờ | Ghi chú |
@@ -30,10 +30,10 @@
 | Chống lặp + máy kiểm + agent + QUY_TRINH | 10:34 | 7 bối cảnh, 6 tông, 5 góc máy, ngoại hình theo seed; kiem-canh.py, kiem-lap.py, logs/da-dung.json |
 | Bắt đầu chủ đề 2 | 10:34 | snapshot token |
 | CĐ2 kịch bản (2 agent) | 10:38 | 292 từ, 20 cảnh; máy kiểm ĐẠT lần đầu; 0 khối mới |
-| CĐ2 đại ca duyệt kịch bản | 11:27 | hook chính |
+| CĐ2 sếp duyệt kịch bản | 11:27 | hook chính |
 | CĐ2 đọc giọng | 11:31 | 83,5s video, 186s máy |
 | CĐ2 quay 3 mẫu | 11:40 | 3/3 đạt (điện ảnh quay lại 1 lần) |
-| CĐ2 đại ca chọn | 11:41 | tranh-tinh-zoom |
+| CĐ2 sếp chọn | 11:41 | tranh-tinh-zoom |
 | CĐ2 bản đầy đủ | 11:47 | quay 263s + ghép 70s; kiểm tra 10/10 đạt |
 | Đo token, báo cáo | 11:48 | 17,1 triệu token (phiên chính) |
-| CĐ2 đại ca duyệt bản nháp | 11:50 | Duyệt, không sửa |
+| CĐ2 sếp duyệt bản nháp | 11:50 | Duyệt, không sửa |

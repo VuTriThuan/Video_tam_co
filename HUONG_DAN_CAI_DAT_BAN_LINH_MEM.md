@@ -1,7 +1,7 @@
 # HƯỚNG DẪN CÀI ĐẶT HỆ THỐNG "BẢN LĨNH MỀM" (bản 4)
 ## Đội AI agent làm video ngắn bằng Claude Code: miễn phí, chạy trên máy, tiết kiệm token
 
-> **Gửi Claude Code:** Đây là đặc tả toàn bộ dự án. Đọc hết một lượt, rồi làm theo **Phần 13**. **Ưu tiên số một hiện tại: GIAI ĐOẠN 1, tức là cài cho chạy được và ra sản phẩm mẫu.** Những mục ghi "(giai đoạn 2)" thì chưa làm, chỉ để biết hướng thiết kế cho đúng. Sau mỗi bước, báo kết quả thật ngắn gọn. Xưng "em", gọi chủ kênh là **"đại ca"**, trả lời bằng tiếng Việt.
+> **Gửi Claude Code:** Đây là đặc tả toàn bộ dự án. Đọc hết một lượt, rồi làm theo **Phần 13**. **Ưu tiên số một hiện tại: GIAI ĐOẠN 1, tức là cài cho chạy được và ra sản phẩm mẫu.** Những mục ghi "(giai đoạn 2)" thì chưa làm, chỉ để biết hướng thiết kế cho đúng. Sau mỗi bước, báo kết quả thật ngắn gọn. Xưng "em", gọi chủ kênh là **"sếp"**, trả lời bằng tiếng Việt.
 
 ---
 
@@ -31,19 +31,19 @@
 
 **Kiếm tiền:** tạm thời không gắn giỏ hàng, không giới thiệu sản phẩm.
 
-**Hai chốt duyệt của đại ca:** (1) duyệt **cả 7 kịch bản một lần vào thứ Hai**, (2) duyệt **bản nháp video** theo lô. Duyệt trên giao diện Phòng điều hành (Phần 10), không duyệt lẻ từng cái.
+**Hai chốt duyệt của sếp:** (1) duyệt **cả 7 kịch bản một lần vào thứ Hai**, (2) duyệt **bản nháp video** theo lô. Duyệt trên giao diện Phòng điều hành (Phần 10), không duyệt lẻ từng cái.
 
 **Lịch sản xuất hằng tuần (giai đoạn 2):** sẽ thiết kế sau, khi hệ thống đã chạy ra sản phẩm mẫu. Những gì đã chốt: duyệt 7 kịch bản một lần vào thứ Hai; các phần của một chủ đề đăng cùng ngày, cách nhau vài giờ. Chưa cần lập lịch, chưa cần chạy tự động qua đêm.
 
-**Đại ca chỉ nói chuyện với trưởng nhóm.** Ô chat của Claude Code là phiên của trưởng nhóm (agent cao nhất). Agent con không bao giờ hỏi thẳng đại ca; có gì cần đại ca quyết thì báo lên trưởng nhóm, trưởng nhóm gom lại và hỏi đại ca một lần.
+**Sếp chỉ nói chuyện với trưởng nhóm.** Ô chat của Claude Code là phiên của trưởng nhóm (agent cao nhất). Agent con không bao giờ hỏi thẳng sếp; có gì cần sếp quyết thì báo lên trưởng nhóm, trưởng nhóm gom lại và hỏi sếp một lần.
 
 **Một video dùng chung cho cả 3 nền tảng.** Mỗi video có **logo kênh nhỏ ở góc** để chống bị lấy lại (Phần 4.4).
 
-**Gói Claude: Pro.** Chỉ dùng **Opus 5.5** cho mọi agent. **Fable bị tắt mặc định**, vì trên gói Pro Fable không nằm trong hạn mức của gói mà trừ vào usage credits (tốn tiền thật). Chỉ dùng Fable khi đại ca gõ lệnh riêng (Phần 11), và phải hỏi xác nhận trước khi chạy.
+**Gói Claude: Pro.** Chỉ dùng **Opus 5.5** cho mọi agent. **Fable bị tắt mặc định**, vì trên gói Pro Fable không nằm trong hạn mức của gói mà trừ vào usage credits (tốn tiền thật). Chỉ dùng Fable khi sếp gõ lệnh riêng (Phần 11), và phải hỏi xác nhận trước khi chạy.
 
-**Sau khi đăng 24 giờ:** đại ca chụp màn hình kết quả, thả vào thư mục, agent `phan-tich` đánh giá và rút bài học cho tuần sau (Phần 9).
+**Sau khi đăng 24 giờ:** sếp chụp màn hình kết quả, thả vào thư mục, agent `phan-tich` đánh giá và rút bài học cho tuần sau (Phần 9).
 
-**Tách biệt hoàn toàn** với các dự án khác của đại ca.
+**Tách biệt hoàn toàn** với các dự án khác của sếp.
 
 ---
 
@@ -59,10 +59,10 @@
 
 **Bắt buộc tuân theo:**
 - **Không** tạo ảnh/video bằng AI (Stable Diffusion, Flux, video AI...). Hình ảnh **dựng bằng code**: HTML/CSS/SVG + JavaScript, quay từng khung hình bằng trình duyệt headless, ghép bằng ffmpeg.
-- **Không** dịch vụ trả phí, API trả phí, GPU thuê. Thứ duy nhất tốn phí là gói Claude đại ca đang dùng, nên phải **tiết kiệm token** (Phần 3).
+- **Không** dịch vụ trả phí, API trả phí, GPU thuê. Thứ duy nhất tốn phí là gói Claude sếp đang dùng, nên phải **tiết kiệm token** (Phần 3).
 - Encode H.264 dùng `-preset veryfast`. Mỗi lúc chỉ một job nặng (TTS hoặc render).
 - 7 chủ đề/tuần nghĩa là khoảng 35–50 phút video thành phẩm mỗi tuần. Giọng đọc và render chạy **qua đêm** bằng hàng đợi (Phần 4.5). Máy được để chạy liên tục, cắm sạc.
-- Chừa ít nhất 30 GB ổ trống. Sau khi đại ca đăng xong, tự xóa file trung gian (`03_giong/`, `04_canh/`) của chủ đề cũ hơn 14 ngày, chỉ giữ thành phẩm.
+- Chừa ít nhất 30 GB ổ trống. Sau khi sếp đăng xong, tự xóa file trung gian (`03_giong/`, `04_canh/`) của chủ đề cũ hơn 14 ngày, chỉ giữ thành phẩm.
 
 ---
 
@@ -109,7 +109,7 @@ Mức effort: `medium` = trung bình, `high` = cao, `xhigh` = cao hơn. Không d
 | Tiêu đề, mô tả, hashtag, giờ đăng | `dong-goi` | opus | medium | 4 |
 | Phân tích kết quả 24h | `phan-tich` | opus | high | 10 |
 | Tổng kết tháng | `phan-tich` | opus | xhigh (truyền qua tham số effort khi gọi) | 10 |
-| Viết lại kịch bản quan trọng | `bien-kich` | **fable**, chỉ khi đại ca ra lệnh | medium | 6 |
+| Viết lại kịch bản quan trọng | `bien-kich` | **fable**, chỉ khi sếp ra lệnh | medium | 6 |
 
 Cách khai báo trong frontmatter mỗi agent:
 ```yaml
@@ -119,7 +119,7 @@ maxTurns: 6           # chặn agent chạy vòng vo tốn token
 omitClaudeMd: true    # agent không nạp CLAUDE.md, chỉ dùng hướng dẫn riêng của nó
 ```
 - Phiên chính đặt mặc định: trong `.claude/settings.json` thêm `"model": "opus"` và `"modelSettings": {"claude-opus-5-5": {"effortLevel": "medium"}}`.
-- **Chặn Fable vô tình:** trưởng nhóm không bao giờ tự truyền `model: fable` khi gọi agent. Lệnh "viết lại bằng fable" phải hỏi đại ca xác nhận ("Lệnh này trừ usage credits, đại ca chắc chứ?") trước khi chạy.
+- **Chặn Fable vô tình:** trưởng nhóm không bao giờ tự truyền `model: fable` khi gọi agent. Lệnh "viết lại bằng fable" phải hỏi sếp xác nhận ("Lệnh này trừ usage credits, sếp chắc chứ?") trước khi chạy.
 - Phiên chính (trưởng nhóm) chỉ điều phối, không tự viết nội dung.
 
 ### 3.1b. Cách các agent giao tiếp: như đồng nghiệp thật, nhưng không nói chuyện phiếm
@@ -128,7 +128,7 @@ omitClaudeMd: true    # agent không nạp CLAUDE.md, chỉ dùng hướng dẫn
 **Mỗi agent có tên và vai** (để bản tin đọc như chat của một team):
 | Agent | Tên | Vai |
 |---|---|---|
-| trưởng nhóm (phiên chính) | Anh Hải | điều phối, quyết định, báo cáo đại ca |
+| trưởng nhóm (phiên chính) | Anh Hải | điều phối, quyết định, báo cáo sếp |
 | len-chu-de | Linh | lên ý tưởng |
 | bien-kich | Tuấn | biên kịch |
 | kiem-duyet | Chị Mai | kiểm duyệt |
@@ -147,7 +147,7 @@ omitClaudeMd: true    # agent không nạp CLAUDE.md, chỉ dùng hướng dẫn
 1. **Mỗi tin nhắn phải có nội dung công việc:** giao việc, kết quả, câu hỏi cụ thể, hoặc quyết định. Không có tin chỉ để chào, cảm ơn, tạm biệt, "ok", "đã nhận", "em bắt đầu đây".
 2. **Không chào đầu, không chào cuối.** Có thể mở bằng tên người nhận ("Tuấn ơi,…") nhưng câu tiếp theo phải là việc.
 3. **Làm xong là dừng.** Agent con báo kết quả xong thì kết thúc; trưởng nhóm **không** gửi lại tin xác nhận hay cảm ơn. Chỉ nhắn tiếp khi có yêu cầu sửa hoặc trả lời câu hỏi.
-4. **Tối đa 3 lượt qua lại** giữa trưởng nhóm và một agent cho cùng một việc (giao việc → báo cáo/hỏi → phản hồi → báo cáo cuối). Tới lượt thứ 3 mà chưa xong thì trưởng nhóm tự quyết, hoặc ghi vào danh sách hỏi đại ca.
+4. **Tối đa 3 lượt qua lại** giữa trưởng nhóm và một agent cho cùng một việc (giao việc → báo cáo/hỏi → phản hồi → báo cáo cuối). Tới lượt thứ 3 mà chưa xong thì trưởng nhóm tự quyết, hoặc ghi vào danh sách hỏi sếp.
 5. **Agent con được hỏi trưởng nhóm tối đa 1 câu cho mỗi việc**, và chỉ hỏi khi thật sự không tự quyết được. Câu hỏi phải kèm phương án em đề xuất ("Em định tách phần 3 làm đôi, anh thấy được không?").
 6. **Độ dài:** tin giao việc tối đa 4 câu (kèm đường dẫn file); tin báo cáo tối đa 5 câu. Nội dung dài (kịch bản, JSON) luôn nằm trong file, tin nhắn chỉ nói nằm ở đâu và điểm cần chú ý.
 7. **Hook chặn cứng** (Phần 10.2): tin trưởng nhóm gửi agent mà chỉ là chào/cảm ơn thì bị chặn; lượt thứ 4 với cùng một agent cho cùng một việc thì bị chặn.
@@ -179,14 +179,14 @@ omitClaudeMd: true    # agent không nạp CLAUDE.md, chỉ dùng hướng dẫn
 - Repo skill: `https://github.com/bachdyon/video-automator-skills` (thư mục `free_tts`/`free-tts`).
 - Mã nguồn VieNeu-TTS: `https://github.com/pnnbao97/VieNeu-TTS`.
 1. Clone vào thư mục riêng, trống: `~/BanLinhMem/vendor/video-automator-skills`.
-2. **Đọc `SKILL.md` và script trước khi chạy** (code bên thứ ba). Báo đại ca nếu thấy gửi dữ liệu đi đâu bất thường.
+2. **Đọc `SKILL.md` và script trước khi chạy** (code bên thứ ba). Báo sếp nếu thấy gửi dữ liệu đi đâu bất thường.
 3. Copy skill vào `.claude/skills/free-tts/`. Tạo môi trường `uv` Python 3.11/3.12 tại `.venv`.
 4. Cài `vieneu`. **Máy Intel: KHÔNG dùng extra index `.../whl/metal/`** (bản đó dành cho chip Apple). Cài bản CPU.
 5. Chạy thử chế độ `--mode turbo`, đo "bao nhiêu giây để đọc 60 giây lời", ghi vào `docs/ghi-chu-cai-dat.md`.
 
 **Dự phòng:** KorvaTTS (TTS tiếng Việt chạy trên máy, Apache-2.0, `pip install korvatts`, repo `github.com/dogenthq/KorvaTTS`). Cũng đọc mã trước khi chạy.
 
-**Chọn giọng:** tạo 4–6 mẫu cùng một đoạn 20 giây vào `review/giong-mau/`, **dừng cho đại ca nghe và chọn**, lưu vào `config/voice.toml`.
+**Chọn giọng:** tạo 4–6 mẫu cùng một đoạn 20 giây vào `review/giong-mau/`, **dừng cho sếp nghe và chọn**, lưu vào `config/voice.toml`.
 
 **Chuẩn hóa văn bản** (`pipeline/chuan_hoa.py`): số thành chữ, viết tắt thành cách đọc, bỏ emoji, giữ nguyên dấu; từ điển sửa phát âm tại `config/tu-dien-phat-am.toml`.
 
@@ -219,7 +219,7 @@ omitClaudeMd: true    # agent không nạp CLAUDE.md, chỉ dùng hướng dẫn
 Mỗi bước ghi trạng thái vào `du-an/<slug>/trang-thai.json` và **một dòng sự kiện** vào `logs/su-kien.jsonl` (để Phòng điều hành hiển thị).
 
 ### 4.5. Chạy qua đêm (giai đoạn 2)
-Sau khi đại ca đồng ý: tạo `launchd` job chạy `blm hangdoi` lúc 23:00 mỗi ngày (không tốn token vì không gọi Claude).
+Sau khi sếp đồng ý: tạo `launchd` job chạy `blm hangdoi` lúc 23:00 mỗi ngày (không tốn token vì không gọi Claude).
 
 ---
 
@@ -259,11 +259,11 @@ Khởi tạo git; `.gitignore` bỏ qua `*.wav *.mp4 *.m4a logs/ du-an/*/0[3-6]*
 ```
 CHỦ NHẬT — phiên "lên tuần" (chia 2 phiên sáng/tối):
   [len-chu-de] 7 chủ đề → [bien-kich] 7 kịch bản → [kiem-duyet]
-  → THỨ HAI: ★ ĐẠI CA DUYỆT 7 KỊCH BẢN trên Phòng điều hành
+  → THỨ HAI: ★ SẾP DUYỆT 7 KỊCH BẢN trên Phòng điều hành
   → [dao-dien] 7 bảng phân cảnh
 ĐÊM THỨ HAI → THỨ TƯ: blm hangdoi (giọng + hình + âm + ghép, không tốn token)
-THỨ NĂM: ★ ĐẠI CA DUYỆT BẢN NHÁP → [dong-goi] → 06_xuat-ban/
-ĐẠI CA ĐĂNG → sau 24h thả ảnh chụp vào phan-tich/inbox/ → [phan-tich]
+THỨ NĂM: ★ SẾP DUYỆT BẢN NHÁP → [dong-goi] → 06_xuat-ban/
+SẾP ĐĂNG → sau 24h thả ảnh chụp vào phan-tich/inbox/ → [phan-tich]
   → cập nhật config/bai-hoc.md → tuần sau len-chu-de và bien-kich đọc file này
 ```
 Quy trình tuần ở trên là hướng thiết kế (giai đoạn 2). Ở giai đoạn 1 chỉ chạy một chủ đề mẫu theo Phần 8.
@@ -373,7 +373,7 @@ Xem Phần 9.
 
 ## PHẦN 7. FILE `CLAUDE.md` CỦA DỰ ÁN (dưới 120 dòng)
 
-Gồm: tóm tắt Phần 0 thật ngắn; giới hạn máy; 10 quy tắc token (Phần 3.2); bảng lệnh của đại ca (Phần 11); bảng lệnh `blm`; quy tắc an toàn (đọc code bên thứ ba trước khi chạy, chỉ làm việc trong `~/BanLinhMem`, không xóa file ngoài `du-an/*/0[3-4]*` và `logs/`); xưng hô "đại ca" / "em". Mọi chi tiết khác trỏ tới `docs/`.
+Gồm: tóm tắt Phần 0 thật ngắn; giới hạn máy; 10 quy tắc token (Phần 3.2); bảng lệnh của sếp (Phần 11); bảng lệnh `blm`; quy tắc an toàn (đọc code bên thứ ba trước khi chạy, chỉ làm việc trong `~/BanLinhMem`, không xóa file ngoài `du-an/*/0[3-4]*` và `logs/`); xưng hô "sếp" / "em". Mọi chi tiết khác trỏ tới `docs/`.
 
 `docs/mau-kich-ban.md`:
 ```
@@ -390,7 +390,7 @@ Slug / Nỗi đau / Tổng thời lượng / Số phần
 ## PHẦN 8. GIAI ĐOẠN THỬ NGHIỆM: 5 VIDEO MẪU, GIỌNG MẪU, TÊN KÊNH, LOGO
 
 ### 8.1. Chủ đề mẫu: "Dấu hiệu bạn đang bị ghét ngầm nơi công sở"
-Dùng `bien-kich` + `kiem-duyet` viết kịch bản đủ (4–6 phút, 3–5 phần), **gửi đại ca duyệt**. Sau khi duyệt, lấy **Phần 1** làm video mẫu; cả 5 phong cách dùng chung giọng đọc và chung bảng phân cảnh lõi.
+Dùng `bien-kich` + `kiem-duyet` viết kịch bản đủ (4–6 phút, 3–5 phần), **gửi sếp duyệt**. Sau khi duyệt, lấy **Phần 1** làm video mẫu; cả 5 phong cách dùng chung giọng đọc và chung bảng phân cảnh lõi.
 
 Gợi ý (được thay đổi): hook "Có những người không bao giờ cãi nhau với bạn, nhưng lại ghét bạn theo cách bạn không nhận ra." Chuyện: mình tưởng quan hệ với chị đồng nghiệp rất ổn, cho tới khi phát hiện cả phòng có nhóm chat riêng không có mình. Dấu hiệu: chỉ nói chuyện công việc; khen trước mặt nhưng "quên" nhắc tên bạn trước sếp; trả lời tin nhắn chậm bất thường riêng với bạn; người và chân quay đi, cười không tới mắt; thông tin luôn tới tay bạn sau cùng; đùa "nói đùa thôi mà" nhưng có gai. Phần chuyên gia: đừng kết luận từ một dấu hiệu; cách kiểm tra nhẹ nhàng; cách xử lý. Điểm cắt phần 1: ngay trước dấu hiệu "đáng sợ nhất".
 
@@ -407,17 +407,17 @@ Mỗi phong cách cần tối thiểu các template: `mo-dau`, `nhan-vat-noi`, `
 ### 8.3. Tên kênh và logo (ĐÃ CHỐT)
 - **Tên kênh: Tâm Cơ.** Câu giới thiệu (bio): "Hiểu chiêu để không trúng chiêu."
 - **Logo:** quân mã cờ vua màu đỏ `#E63946` trên nền đen `#141414`. Màu phụ: xám ấm `#F3EFEF`, trắng.
-- File (đại ca đặt vào `assets/logo/`): `tam-co-anh-dai-dien.png` (1024×1024, ảnh đại diện), `tam-co-anh-dai-dien.svg`, `tam-co-bieu-tuong.svg` / `.png` (biểu tượng nền trong, dùng cho logo góc video).
+- File (sếp đặt vào `assets/logo/`): `tam-co-anh-dai-dien.png` (1024×1024, ảnh đại diện), `tam-co-anh-dai-dien.svg`, `tam-co-bieu-tuong.svg` / `.png` (biểu tượng nền trong, dùng cho logo góc video).
 - Ghi vào `config/kenh.toml`: ten = "Tâm Cơ", bio, màu, đường dẫn logo. Mọi phong cách hình ảnh dùng bảng màu này làm gốc; đỏ chỉ dùng làm điểm nhấn.
 
 ### 8.4. Trang duyệt thử nghiệm
-Trong Phòng điều hành có tab "Thử nghiệm": phát 5 video mẫu cạnh nhau, nghe giọng mẫu, nút chọn. Lựa chọn ghi vào `config/kenh.toml`. **Dừng chờ đại ca chọn** rồi mới sản xuất hàng loạt.
+Trong Phòng điều hành có tab "Thử nghiệm": phát 5 video mẫu cạnh nhau, nghe giọng mẫu, nút chọn. Lựa chọn ghi vào `config/kenh.toml`. **Dừng chờ sếp chọn** rồi mới sản xuất hàng loạt.
 
 ---
 
 ## PHẦN 9. AGENT `phan-tich`: ĐÁNH GIÁ VIDEO SAU 24 GIỜ (giai đoạn 2)
 
-**Cách đại ca gửi:** sau 24 giờ, chụp màn hình trang thống kê từng video trên từng nền tảng, thả vào `phan-tich/inbox/<slug>/` với tên `<nen-tang>-phan<n>-<so>.png` (ví dụ `tiktok-phan1-1.png`, `ytb-phan2-1.png`). Có thể kéo thả ngay trên Phòng điều hành (Phần 10). Rồi gõ lệnh **"phân tích <slug>"** (hoặc "phân tích hết").
+**Cách sếp gửi:** sau 24 giờ, chụp màn hình trang thống kê từng video trên từng nền tảng, thả vào `phan-tich/inbox/<slug>/` với tên `<nen-tang>-phan<n>-<so>.png` (ví dụ `tiktok-phan1-1.png`, `ytb-phan2-1.png`). Có thể kéo thả ngay trên Phòng điều hành (Phần 10). Rồi gõ lệnh **"phân tích <slug>"** (hoặc "phân tích hết").
 
 `.claude/agents/phan-tich.md`:
 ```markdown
@@ -456,7 +456,7 @@ Cuối tháng: lệnh **"tổng kết tháng"** → báo cáo phong cách nào, 
 - `https://github.com/disler/claude-code-hooks-multi-agent-observability`: dùng hook của Claude Code gửi sự kiện về server, hiện bảng điều khiển thời gian thực. Bản gốc cần Bun và có tùy chọn dùng API key ngoài, nên không cài nguyên.
 - `https://github.com/simple10/agents-observe` (MIT): hook ghi sự kiện, server SQLite, dashboard React.
 
-Lý do tự dựng: không cần Docker/Bun, chạy nhẹ trên máy 2017, gắn được với `blm`, bản tin agent và nút duyệt. Nếu đại ca muốn dùng nguyên bản thì hỏi trước khi cài.
+Lý do tự dựng: không cần Docker/Bun, chạy nhẹ trên máy 2017, gắn được với `blm`, bản tin agent và nút duyệt. Nếu sếp muốn dùng nguyên bản thì hỏi trước khi cài.
 
 ### 10.2. Thiết kế
 - `dieu-hanh/server.mjs`: Node thuần (chỉ dùng module có sẵn: http, fs), cổng `localhost:4747`, đọc `logs/su-kien.jsonl`, các `ban-tin.jsonl`, `trang-thai.json`, đẩy cập nhật bằng Server-Sent Events. Không cơ sở dữ liệu.
@@ -464,14 +464,14 @@ Lý do tự dựng: không cần Docker/Bun, chạy nhẹ trên máy 2017, gắn
 - Với tool gọi/nhắn agent (`Agent`, `Task`, `SendMessage` khi trưởng nhóm phản hồi tiếp cho agent đã chạy): hook PreToolUse ghi **nguyên văn** tin của trưởng nhóm, hook PostToolUse ghi **nguyên văn** tin báo cáo của agent con, kèm tên người gửi/nhận theo bảng tên ở Phần 3.1b, vào `ban-tin.jsonl` của chủ đề đang làm (slug đọc từ `logs/dang-lam.txt`). `blm` cũng ghi tin "Máy dựng" vào đây.
 - **Hook chặn vòng lặp** `.claude/hooks/chan-vong-lap.sh` (PreToolUse, matcher các tool gọi/nhắn agent):
   - Nếu tin của trưởng nhóm dưới 60 ký tự và chỉ gồm chào/cảm ơn/tạm biệt/ok/đã nhận (so bằng regex tiếng Việt và tiếng Anh) → chặn (exit code 2), stderr: "Tin không có nội dung công việc, không gửi."
-  - Đếm số lượt theo cặp (slug, agent) trong `logs/dem-luot.json`; lượt thứ 4 → chặn, stderr: "Đã 3 lượt với <tên> cho việc này. Anh tự quyết hoặc ghi vào danh sách hỏi đại ca." Bộ đếm reset khi việc đó được đánh dấu xong.
+  - Đếm số lượt theo cặp (slug, agent) trong `logs/dem-luot.json`; lượt thứ 4 → chặn, stderr: "Đã 3 lượt với <tên> cho việc này. Anh tự quyết hoặc ghi vào danh sách hỏi sếp." Bộ đếm reset khi việc đó được đánh dấu xong.
   - Khi không chặn: không in gì, chạy dưới 50 ms.
 - Thẻ agent hiển thị **model + effort** đang chạy; nếu thấy model `fable` thì thẻ đổi viền đỏ, kèm chữ "đang trừ usage credits".
 - `dieu-hanh/index.html` (một file, không framework), giao diện tiếng Việt, gồm các tab:
   1. **Văn phòng:** mỗi agent là một thẻ có avatar riêng (SVG đơn giản), trạng thái (rảnh / đang làm / chờ duyệt / lỗi), việc đang làm, model, thời gian chạy. Thẻ đang làm có hiệu ứng nhấp nháy nhẹ.
-  2. **Bản tin:** khung chat giống nhóm chat công ty: avatar + tên (Anh Hải, Tuấn, Chị Mai…), giờ gửi, tin nguyên văn. Lọc theo chủ đề. Chỉ để xem; đại ca nhắn thì nhắn trong Claude Code cho Anh Hải.
+  2. **Bản tin:** khung chat giống nhóm chat công ty: avatar + tên (Anh Hải, Tuấn, Chị Mai…), giờ gửi, tin nguyên văn. Lọc theo chủ đề. Chỉ để xem; sếp nhắn thì nhắn trong Claude Code cho Anh Hải.
   3. **Dây chuyền:** bảng 7 chủ đề × các bước (chủ đề, kịch bản, duyệt, phân cảnh, giọng, hình, ghép, duyệt nháp, đóng gói, đã đăng, đã phân tích), ô màu theo trạng thái.
-  4. **Duyệt:** đọc kịch bản ngay trên trang, xem bản nháp video, nút **Duyệt** / **Yêu cầu sửa** kèm ô ghi chú; bấm nút ghi file `du-an/<slug>/duyet.json`. Trưởng nhóm đọc file này khi đại ca gõ "làm tiếp".
+  4. **Duyệt:** đọc kịch bản ngay trên trang, xem bản nháp video, nút **Duyệt** / **Yêu cầu sửa** kèm ô ghi chú; bấm nút ghi file `du-an/<slug>/duyet.json`. Trưởng nhóm đọc file này khi sếp gõ "làm tiếp".
   5. **Đăng bài:** mỗi phần một thẻ có video, thumbnail, nút sao chép tiêu đề/mô tả/hashtag từng nền tảng, nút "Đã đăng" (ghi giờ đăng để nhắc chụp số liệu sau 24h).
   6. **Phân tích:** kéo thả ảnh chụp vào đúng `phan-tich/inbox/<slug>/`, xem báo cáo, biểu đồ đơn giản từ `so-lieu.csv`, danh sách "đến hạn chụp số liệu".
   7. **Token:** token theo ngày/tuần từ `ccusage --json --offline` (server gọi tối đa 1 lần/10 phút), token theo từng agent ước tính từ sự kiện.
@@ -484,11 +484,11 @@ Lý do tự dựng: không cần Docker/Bun, chạy nhẹ trên máy 2017, gắn
 
 ---
 
-## PHẦN 11. LỆNH ĐẠI CA DÙNG HẰNG NGÀY
+## PHẦN 11. LỆNH SẾP DÙNG HẰNG NGÀY
 
-| Đại ca gõ | Hệ thống làm |
+| Sếp gõ | Hệ thống làm |
 |---|---|
-| `lên tuần` | len-chu-de → bien-kich ×7 → kiem-duyet ×7 → báo "mời đại ca duyệt trên Phòng điều hành" |
+| `lên tuần` | len-chu-de → bien-kich ×7 → kiem-duyet ×7 → báo "mời sếp duyệt trên Phòng điều hành" |
 | `làm tiếp` | đọc các `duyet.json`: kịch bản đã duyệt → dao-dien → xếp hàng đợi render đêm; kịch bản bị yêu cầu sửa → bien-kich sửa theo ghi chú |
 | `sản xuất ngay <slug>` | chạy `blm sanxuat` ngay, không chờ đêm |
 | `đóng gói` | các bản nháp đã duyệt → dong-goi → 06_xuat-ban |
@@ -497,7 +497,7 @@ Lý do tự dựng: không cần Docker/Bun, chạy nhẹ trên máy 2017, gắn
 | `tổng kết tháng` | báo cáo tháng |
 | `token tuần này` | đọc logs/token-tuan.csv, trả 3 dòng |
 | `viết lại bằng fable <slug>` | **hỏi xác nhận trước** (trừ usage credits), rồi gọi bien-kich với model fable, effort medium, viết lại đúng 1 kịch bản |
-| `nghĩ kỹ <việc>` | chạy việc đó với effort xhigh (chỉ khi đại ca yêu cầu) |
+| `nghĩ kỹ <việc>` | chạy việc đó với effort xhigh (chỉ khi sếp yêu cầu) |
 
 ---
 
@@ -512,7 +512,7 @@ Lý do tự dựng: không cần Docker/Bun, chạy nhẹ trên máy 2017, gắn
 - [ ] Video thành phẩm có logo góc trên bên trái, không bị giao diện app che
 - [ ] Hook ghi sự kiện, không in ra stdout; Phòng điều hành mở được ở `localhost:4747`, có 3 tab Văn phòng, Bản tin, Thử nghiệm (5 tab còn lại: giai đoạn 2)
 - [ ] Kịch bản "Dấu hiệu bị ghét ngầm" đã gửi duyệt; 5 video mẫu, giọng mẫu nằm trong tab Thử nghiệm; logo Tâm Cơ có ở góc mọi video
-- [ ] Đại ca đã chọn phong cách, giọng (tên kênh đã chốt: Tâm Cơ) → `config/kenh.toml`
+- [ ] Sếp đã chọn phong cách, giọng (tên kênh đã chốt: Tâm Cơ) → `config/kenh.toml`
 - [ ] Chạy trọn chủ đề mẫu tới `06_xuat-ban/` (video từng phần, thumbnail, tiêu đề, mô tả, hashtag)
 - [ ] Ghi lại số token của lần chạy trọn đầu tiên làm mốc so sánh
 
@@ -520,21 +520,21 @@ Lý do tự dựng: không cần Docker/Bun, chạy nhẹ trên máy 2017, gắn
 
 ### GIAI ĐOẠN 1 (LÀM NGAY): chạy được và ra sản phẩm mẫu
 1. Phần 2: cài công cụ nền.
-2. Phần 4.1: giọng đọc. Tạo giọng mẫu xong thì báo đại ca nghe, **trong lúc chờ vẫn làm tiếp các bước sau** (dùng tạm giọng mẫu đầu tiên).
+2. Phần 4.1: giọng đọc. Tạo giọng mẫu xong thì báo sếp nghe, **trong lúc chờ vẫn làm tiếp các bước sau** (dùng tạm giọng mẫu đầu tiên).
 3. Phần 4.2: thư viện SFX.
 4. Phần 5: tạo thư mục; Phần 7: `CLAUDE.md`.
 5. Phần 6: tạo 5 agent `len-chu-de`, `bien-kich`, `kiem-duyet`, `dao-dien`, `dong-goi` (chưa cần `phan-tich`).
 6. Phần 4.3–4.4: template, `quay.mjs`, `blm` với các lệnh `giong`, `dung`, `tron`, `ghep`, `kiemtra`, `thumbnail`, `sanxuat`.
 7. Phần 10 bản rút gọn: server + hook ghi sự kiện + hook chặn vòng lặp + 3 tab **Văn phòng, Bản tin, Thử nghiệm**.
-8. Phần 8: kịch bản mẫu "Dấu hiệu bị ghét ngầm" → **dừng cho đại ca duyệt** → 5 video mẫu Phần 1 theo 5 phong cách (logo đã chốt: Tâm Cơ) → tab Thử nghiệm → **dừng cho đại ca chọn**.
+8. Phần 8: kịch bản mẫu "Dấu hiệu bị ghét ngầm" → **dừng cho sếp duyệt** → 5 video mẫu Phần 1 theo 5 phong cách (logo đã chốt: Tâm Cơ) → tab Thử nghiệm → **dừng cho sếp chọn**.
 9. Chạy trọn chủ đề mẫu đủ các phần với phong cách đã chọn, qua `dong-goi`, ra `06_xuat-ban/` (video, thumbnail, tiêu đề, mô tả, hashtag). Ghi số token của lần chạy này làm mốc.
 
-**Xong giai đoạn 1 khi:** đại ca có trong tay một chủ đề hoàn chỉnh, đăng được ngay.
+**Xong giai đoạn 1 khi:** sếp có trong tay một chủ đề hoàn chỉnh, đăng được ngay.
 
-### GIAI ĐOẠN 2 (LÀM SAU, khi đại ca bảo)
+### GIAI ĐOẠN 2 (LÀM SAU, khi sếp bảo)
 - Lịch sản xuất hằng tuần, lệnh "lên tuần" cho 7 chủ đề, duyệt theo lô thứ Hai.
 - `blm hangdoi` + `launchd` chạy qua đêm (hỏi trước khi bật).
 - Agent `phan-tich` (Phần 9) và các tab Dây chuyền, Duyệt, Đăng bài, Phân tích, Token.
 - `blm don`, tổng kết tháng.
 
-Gặp lỗi không tự xử lý được sau 2 lần thử: dừng, mô tả lỗi ngắn gọn và hỏi đại ca.
+Gặp lỗi không tự xử lý được sau 2 lần thử: dừng, mô tả lỗi ngắn gọn và hỏi sếp.

@@ -440,7 +440,7 @@ setInterval(gio,1000);
 /* ---------- demo script ---------- */
 let speed=1,demoOn=true,demoTimers=[];
 const KB=[
- [0,()=>{['truong-nhom','kiem-duyet','len-chu-de'].forEach(i=>capNhat(i,'onl'));capNhat('truong-nhom','lam','Đọc yêu cầu của đại ca');capNhat('may-dung','onl');}],
+ [0,()=>{['truong-nhom','kiem-duyet','len-chu-de'].forEach(i=>capNhat(i,'onl'));capNhat('truong-nhom','lam','Đọc yêu cầu của sếp');capNhat('may-dung','onl');}],
  [2500,()=>noi('truong-nhom','len-chu-de','Linh lên giúp anh 3 ý tưởng cho chủ đề "Dấu hiệu bị ghét ngầm" nhé, ghi vào chu-de/lich-tuan.md. Cần một góc kể chuyện công sở thật đời.')],
  [3700,()=>capNhat('len-chu-de','lam','Tìm góc kể cho "Bị ghét ngầm"')],
  [4200,()=>capNhat('bien-kich','onl')],
@@ -453,8 +453,8 @@ const KB=[
  [27000,()=>noi('truong-nhom','kiem-duyet','Chị rà kịch bản của Tuấn giúp em, Tuấn hỏi phần 3 có nên tách đôi.')],
  [28200,()=>capNhat('kiem-duyet','lam','Rà kịch bản "Bị ghét ngầm"')],
  [34500,()=>{noi('kiem-duyet','truong-nhom','Chị sửa 3 câu dài và gộp lại phần 3 cho gọn, không cần tách. Có thêm 2 hook thay thế cho phần 1 ở cuối file.');capNhat('kiem-duyet','onl');}],
- [37000,()=>capNhat('truong-nhom','cho','Chờ đại ca duyệt kịch bản')],
- [43000,()=>{capNhat('truong-nhom','lam','Đại ca đã duyệt, giao phân cảnh');capNhat('dao-dien','onl');}],
+ [37000,()=>capNhat('truong-nhom','cho','Chờ sếp duyệt kịch bản')],
+ [43000,()=>{capNhat('truong-nhom','lam','Sếp đã duyệt, giao phân cảnh');capNhat('dao-dien','onl');}],
  [45500,()=>noi('truong-nhom','dao-dien','Khoa làm bảng phân cảnh cho kịch bản đã duyệt nhé, phong cách hoạt hình phẳng. 3 giây đầu mỗi phần phải có chuyển động mạnh.')],
  [46700,()=>capNhat('dao-dien','lam','Phân cảnh "Bị ghét ngầm" · 84 cảnh')],
  [53500,()=>{noi('dao-dien','truong-nhom','Xong 84 cảnh, 4 phần. Không cần template mới, dùng hết đồ có sẵn.');capNhat('dao-dien','onl');}],
@@ -465,7 +465,7 @@ const KB=[
  [65500,()=>noi('truong-nhom','dong-goi','Vy viết tiêu đề, mô tả, hashtag cho 4 phần nhé. Các phần đăng cùng ngày, cách nhau vài tiếng.')],
  [66700,()=>{capNhat('dong-goi','lam','Viết mô tả + hashtag · 4 phần');capNhat('truong-nhom','onl');}],
  [72500,()=>{noi('dong-goi','truong-nhom','Xong rồi anh, mỗi phần 3 tiêu đề, mô tả cho từng nền tảng, giờ đăng 11:30, 15:30, 19:30, 21:30.');capNhat('dong-goi','onl');}],
- [74000,()=>{capNhat('may-dung','onl');capNhat('truong-nhom','cho','Chờ đại ca duyệt bản nháp');}],
+ [74000,()=>{capNhat('may-dung','onl');capNhat('truong-nhom','cho','Chờ sếp duyệt bản nháp');}],
  [82000,()=>{['len-chu-de','bien-kich','kiem-duyet','dao-dien','dong-goi'].forEach(i=>capNhat(i,'off'));capNhat('truong-nhom','onl');capNhat('may-dung','off');}],
  [86000,()=>{if(demoOn)chayDemo();}],
 ];

@@ -1,7 +1,7 @@
 # BƯỚC 2: TỔNG QUÁT HÓA DÀN CẢNH + THỬ CHỦ ĐỀ THỨ HAI
 
 > **Gửi Claude Code:** Bản thử đã khả thi (xem `bao-cao.md`, `QUY_TRINH.md`). Nút thắt lớn nhất là **dàn cảnh còn viết tay cho từng cảnh** của chủ đề `ghet-ngam` (`render/canh-chung.js`, c01–c21). Bước này biến dàn cảnh thành **ráp theo dữ liệu**, để chủ đề mới gần như không phải viết code nữa. Sau đó làm thử chủ đề thứ hai để đo token thật cho mỗi video.
-> Giữ nguyên mọi thứ đã chốt: giọng KorvaTTS `gia_bao` (CPU), kịch bản 280–300 từ, 3 phong cách (`bang-trang`, `truyen-tranh`, `tranh-tinh-zoom`), kênh Tâm Cơ, không chạy theo lịch. Chỉ dùng Opus, không dùng Fable. Xưng "em", gọi "đại ca".
+> Giữ nguyên mọi thứ đã chốt: giọng KorvaTTS `gia_bao` (CPU), kịch bản 280–300 từ, 3 phong cách (`bang-trang`, `truyen-tranh`, `tranh-tinh-zoom`), kênh Tâm Cơ, không chạy theo lịch. Chỉ dùng Opus, không dùng Fable. Xưng "em", gọi "sếp".
 
 ## 1. Thư viện khối dựng (làm một lần)
 
@@ -38,8 +38,8 @@ Mỗi cảnh thêm trường có cấu trúc, ví dụ:
 
 ## 4. Thử chủ đề thứ hai và đo token
 
-- Chủ đề: **"3 câu nói của người đang thao túng bạn nơi công sở"** (đúng chất Tâm Cơ: dạy nhận ra chiêu và cách đáp lại). Đại ca muốn đổi chủ đề thì đổi.
-- Chạy đúng `QUY_TRINH.md` (đã cập nhật theo bước này): kịch bản → **đại ca duyệt** → giọng → 3 mẫu → **đại ca chọn** → bản đầy đủ → gói đăng → **đại ca xem**.
+- Chủ đề: **"3 câu nói của người đang thao túng bạn nơi công sở"** (đúng chất Tâm Cơ: dạy nhận ra chiêu và cách đáp lại). Sếp muốn đổi chủ đề thì đổi.
+- Chạy đúng `QUY_TRINH.md` (đã cập nhật theo bước này): kịch bản → **sếp duyệt** → giọng → 3 mẫu → **sếp chọn** → bản đầy đủ → gói đăng → **sếp xem**.
 - **Đo token riêng cho chủ đề này:** ghi giờ bắt đầu/kết thúc, dùng `npx ccusage@latest session --offline` (hoặc `blocks`) lấy đúng phần của phiên này. Tách số liệu: token của 2 agent, token điều phối, token viết khối mới (nếu có).
 
 ## 5. Chống lặp hình (để xem nhiều video không thấy nhàm)
@@ -64,9 +64,9 @@ Dùng chung thư viện cho mọi chủ đề thì giữ được nhận diện 
 - Giữa các video: lưu lại mỗi video đã dùng gì vào `logs/da-dung.json` (bố cục, nền, góc máy, tông màu, cảnh mở đầu, phong cách).
   - **Cảnh mở đầu (3 giây hook) không được giống 5 video gần nhất** (khác ít nhất bố cục hoặc nền).
   - Tông màu không trùng 2 video gần nhất.
-  - Cùng một phong cách 3 video liền thì báo đại ca một dòng lúc chọn mẫu (vẫn để đại ca quyết).
+  - Cùng một phong cách 3 video liền thì báo sếp một dòng lúc chọn mẫu (vẫn để sếp quyết).
 
-**5.4. Làm mới định kỳ:** cứ sau 10 video, phiên chính đọc `logs/da-dung.json`, liệt kê khối/bố cục bị dùng nhiều nhất, đề xuất 2–3 khối hoặc bối cảnh mới. **Đại ca duyệt** rồi mới vẽ thêm (vẽ một lần, dùng mãi). Khi nào có agent phân tích: nếu bình luận chê "lặp", "nhàm" thì ưu tiên làm mới.
+**5.4. Làm mới định kỳ:** cứ sau 10 video, phiên chính đọc `logs/da-dung.json`, liệt kê khối/bố cục bị dùng nhiều nhất, đề xuất 2–3 khối hoặc bối cảnh mới. **Sếp duyệt** rồi mới vẽ thêm (vẽ một lần, dùng mãi). Khi nào có agent phân tích: nếu bình luận chê "lặp", "nhàm" thì ưu tiên làm mới.
 
 **5.5. Kiểm tra trong bước này:** sau khi làm xong chủ đề 2, xuất contact sheet của `ghet-ngam` và chủ đề 2 đặt cạnh nhau. Nhìn phải thấy rõ là cùng một kênh, nhưng là hai video khác nhau (khác nền, tông, bộ đồng nghiệp, cảnh mở đầu).
 
@@ -83,4 +83,4 @@ Dùng chung thư viện cho mọi chủ đề thì giữ được nhận diện 
 | Chống lặp: số bối cảnh, biến thể nhân vật phụ, tông màu đã có; `kiem-lap.py` bắt được bao nhiêu lỗi ở chủ đề 2 | |
 | Contact sheet 2 chủ đề đặt cạnh nhau | đường dẫn file |
 
-Cập nhật `QUY_TRINH.md` theo cách làm mới. Gặp lỗi không tự xử lý được sau 2 lần thử: dừng và hỏi đại ca.
+Cập nhật `QUY_TRINH.md` theo cách làm mới. Gặp lỗi không tự xử lý được sau 2 lần thử: dừng và hỏi sếp.

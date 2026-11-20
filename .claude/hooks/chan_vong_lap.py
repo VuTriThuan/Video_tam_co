@@ -58,7 +58,7 @@ def main():
     khoa = f"{ag}|{ht.get('giai_doan', '')}"
     if su_kien == "PreToolUse":
         if dem.get(khoa, 0) >= 3:
-            print("Đã 3 lượt, anh tự quyết hoặc hỏi đại ca.", file=sys.stderr)
+            print("Đã 3 lượt, anh tự quyết hoặc hỏi sếp.", file=sys.stderr)
             return 2
         return 0
     # PostToolUse: lượt đã chạy thật → đếm; nhớ agentId → loại agent

@@ -40,13 +40,13 @@ Không nhớ lệnh thì cứ nói, ví dụ "làm chủ đề DARVO đi", anh H
 ## Luật quan trọng nhất: mỗi chủ đề một phiên mới
 Bắt đầu chủ đề từ mục **Chủ đề** thì hệ thống tự mở phiên mới. Nếu gõ lệnh tay, bấm **Phiên mới** dưới ô nhắn trước khi sang chủ đề khác (trong ứng dụng Claude là `/clear`). Mọi thứ đã lưu trong máy, không mất gì. Làm vậy tiết kiệm lượt dùng rất nhiều.
 
-## Ba lần đại ca duyệt
+## Ba lần sếp duyệt
 Mỗi chủ đề anh Hải sẽ dừng lại 3 lần để hỏi:
 1. **Kịch bản:** đọc lời thoại. Với chuỗi, chỗ cắt giữa các phần được tô màu.
 2. **Phong cách:** xem 3 mẫu ngắn (bảng trắng, truyện tranh, tranh điện ảnh) và chọn 1.
 3. **Bản nháp:** xem video. Với chuỗi thì xem từng phần và bản gốc dài.
 
-Duyệt ở mục **Duyệt** trên Phòng điều hành: bấm *Duyệt* hoặc *Yêu cầu sửa* (ghi rõ chỗ cần sửa, có thể chọn đúng phần). Bấm xong anh Hải tự làm tiếp. Khi có chốt đang chờ, trang chủ hiện thẻ đỏ "Đang chờ đại ca".
+Duyệt ở mục **Duyệt** trên Phòng điều hành: bấm *Duyệt* hoặc *Yêu cầu sửa* (ghi rõ chỗ cần sửa, có thể chọn đúng phần). Bấm xong anh Hải tự làm tiếp. Khi có chốt đang chờ, trang chủ hiện thẻ đỏ "Đang chờ sếp".
 
 ## Đăng bài
 - Tab **Đăng bài** có video, ảnh bìa, tiêu đề, mô tả, hashtag và bình luận ghim. Rê chuột vào dòng nào thì bấm sao chép dòng đó.
@@ -60,13 +60,13 @@ Phòng điều hành sẽ nhắc. Chụp màn hình trang thống kê của TikT
 ## Khi gặp trục trặc
 - **Hết lượt dùng của gói:** chờ hết thời gian chờ, mở lại Terminal, gõ `cd ~/Desktop/video_tam_co` rồi `claude --continue`, sau đó nói "làm tiếp". Anh Hải đọc file trạng thái và làm tiếp từ chỗ dừng.
 - **Phòng điều hành không mở:** gõ lại `./dieu-hanh.sh`.
-- **Video bị lỗi kiểm tra:** anh Hải tự sửa tối đa 2 lần. Không được thì anh Hải mô tả lỗi và hỏi đại ca.
-- **Máy đầy ổ:** nói "dọn file cũ". Anh Hải liệt kê file trung gian cũ hơn 14 ngày và chỉ xoá khi đại ca đồng ý. Video đã xuất bản không bị đụng tới.
+- **Video bị lỗi kiểm tra:** anh Hải tự sửa tối đa 2 lần. Không được thì anh Hải mô tả lỗi và hỏi sếp.
+- **Máy đầy ổ:** nói "dọn file cũ". Anh Hải liệt kê file trung gian cũ hơn 14 ngày và chỉ xoá khi sếp đồng ý. Video đã xuất bản không bị đụng tới.
 - **Kiểm tra cả hệ thống:** mục **Hệ thống** → *Chạy kiểm tra* (hoặc gõ `./kiem-tra-he-thong.sh` trong Terminal).
-- **Anh Hải báo "có lệnh bị chặn quyền":** phiên trên web chỉ được chạy các lệnh trong `dieu-hanh/cau-hinh.json` (mục `cho_phep`). Thêm lệnh vào đó nếu đại ca đồng ý.
+- **Anh Hải báo "có lệnh bị chặn quyền":** phiên trên web chỉ được chạy các lệnh trong `dieu-hanh/cau-hinh.json` (mục `cho_phep`). Thêm lệnh vào đó nếu sếp đồng ý.
 - **Muốn dừng giữa chừng:** bấm nút vuông ở ô nhắn (hoặc nút *Dừng* trên trang chủ).
 
 ## Mất bao lâu, tốn bao nhiêu
-- **Video lẻ** (đo thật với DARVO): khoảng 22 phút từ lúc giao đến lúc có video, tính cả thời gian đại ca duyệt. Tốn khoảng 4,7 triệu token, tương đương ~2,8 USD nếu tính theo giá API.
+- **Video lẻ** (đo thật với DARVO): khoảng 22 phút từ lúc giao đến lúc có video, tính cả thời gian sếp duyệt. Tốn khoảng 4,7 triệu token, tương đương ~2,8 USD nếu tính theo giá API.
 - **Chuỗi** 3–5 phần: máy dựng lâu hơn khoảng 3–4 lần vì video dài 4–6 phút. Số đo thật sẽ điền sau lần chạy chuỗi đầu tiên (`bao-cao-buoc-4.md`).
 - Với gói Pro, nên làm **1 chủ đề mỗi lần ngồi**. Hết lượt thì chờ rồi làm tiếp bằng `claude --continue`.

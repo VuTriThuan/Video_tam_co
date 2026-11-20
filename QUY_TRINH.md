@@ -1,7 +1,7 @@
 # Quy trình làm một video Tâm Cơ
 
-> Dành cho Claude Code khi đại ca giao chủ đề mới. Xưng "em", gọi "đại ca", báo cáo ngắn gọn tiếng Việt. Chỉ dùng Opus.
-> Không chạy theo lịch: khi nào đại ca giao thì làm.
+> Dành cho Claude Code khi sếp giao chủ đề mới. Xưng "em", gọi "sếp", báo cáo ngắn gọn tiếng Việt. Chỉ dùng Opus.
+> Không chạy theo lịch: khi nào sếp giao thì làm.
 
 ## Đã chốt
 - **Giọng:** KorvaTTS `gia_bao`, tốc độ 1,0, chạy CPU (`pipeline/doc-giong.py`). Đọc nhanh ~245 từ/phút → kịch bản **280–300 từ**.
@@ -36,23 +36,23 @@
 ## Các bước cho một chủ đề
 1. **Kịch bản:** gọi `bien-kich` (giao chủ đề + dàn ý) → `kich-ban.md`, `canh.json`, `video.json`.
 2. **Máy kiểm:** `python3 pipeline/kiem-canh.py` và `python3 pipeline/kiem-lap.py`. Còn lỗi khối/lặp → gửi nguyên văn cho `bien-kich` sửa đúng cảnh đó. Có `de_xuat_khoi` → giao `hoa-si` (Khoa) vẽ khối mới **một lần** vào `khoi.js`/`net-co-ban.js`, chạy lại `xuat-catalog.mjs`, kiểm 3 phong cách.
-3. **Duyệt lời:** gọi `kiem-duyet` (tự chạy 2 lệnh kiểm). **Dừng: đại ca duyệt kịch bản.**
+3. **Duyệt lời:** gọi `kiem-duyet` (tự chạy 2 lệnh kiểm). **Dừng: sếp duyệt kịch bản.**
 4. **Giọng:** `.venv/bin/python pipeline/doc-giong.py` rồi `.venv/bin/python pipeline/bien-do.py`.
 5. **Xem trước:** contact sheet vài cảnh, ví dụ `node render/quay.mjs truyen-tranh --ra <chu-de>/xem --xem c01:1,c05:2,...`.
-6. **Chọn phong cách:** `pipeline/lam-mau.sh <chu-de>` (tự chạy kiểm bố cục `node render/kiem-bo-cuc.mjs tat-ca` trước: chữ đè đầu/tay nhân vật, chữ đè chữ, chữ lấn vùng TikTok che; ảnh lỗi ở `ra/<chu-de>/bo-cuc/`) → 3 mẫu 20–30 giây + trang `review/<chu-de>.html` (phát cùng lúc); máy nhắc nếu một phong cách đã dùng 2 video liền. **Dừng: đại ca chọn.**
+6. **Chọn phong cách:** `pipeline/lam-mau.sh <chu-de>` (tự chạy kiểm bố cục `node render/kiem-bo-cuc.mjs tat-ca` trước: chữ đè đầu/tay nhân vật, chữ đè chữ, chữ lấn vùng TikTok che; ảnh lỗi ở `ra/<chu-de>/bo-cuc/`) → 3 mẫu 20–30 giây + trang `review/<chu-de>.html` (phát cùng lúc); máy nhắc nếu một phong cách đã dùng 2 video liền. **Dừng: sếp chọn.**
 7. **Bản đầy đủ:** `pipeline/chot-phong-cach.sh <chu-de> <phong-cach>` → xoá mẫu không chọn, quay, ghép, kiểm tra 10 mục, chép vào `xuat-ban/<chu-de>/`, ghi `logs/da-dung.json`, lưu dữ liệu vào `ra/<chu-de>/du-lieu/`. Xem `ra/<chu-de>/video-day-du/contact-12.jpg`.
-8. **Gói đăng:** giao `dong-goi` (Vy) viết `xuat-ban/<chu-de>/dang-bai.md`. **Dừng: đại ca xem bản nháp** (tối đa 2 vòng; sửa cảnh nào quay lại cảnh đó).
+8. **Gói đăng:** giao `dong-goi` (Vy) viết `xuat-ban/<chu-de>/dang-bai.md`. **Dừng: sếp xem bản nháp** (tối đa 2 vòng; sửa cảnh nào quay lại cảnh đó).
 
 ## Chống lặp
-- Luật trong một video và giữa các video: xem đầu file `pipeline/kiem-lap.py`. Hiệu ứng đặc biệt là gia vị: ≤4 lượt/video (chuỗi: mỗi phần), mỗi tên ≤2, không 2 cảnh liền cùng hiệu ứng; Tuấn không bắt buộc dùng hiệu ứng mới. `/lam-moi` chỉ **đề xuất** bỏ hiệu ứng không ai dùng, đại ca duyệt mới bỏ. Nội dung màn hình (tên nhóm chat, tên người, tin nhắn, tiêu đề) không được trùng video trước (`logs/da-dung.json` trường `man_hinh`).
-- **Cứ sau 10 video** (máy tự nhắc): đọc `logs/da-dung.json`, liệt kê khối/bố cục dùng nhiều nhất, đề xuất 2–3 khối hoặc bối cảnh mới → **đại ca duyệt** rồi mới vẽ.
+- Luật trong một video và giữa các video: xem đầu file `pipeline/kiem-lap.py`. Hiệu ứng đặc biệt là gia vị: ≤4 lượt/video (chuỗi: mỗi phần), mỗi tên ≤2, không 2 cảnh liền cùng hiệu ứng; Tuấn không bắt buộc dùng hiệu ứng mới. `/lam-moi` chỉ **đề xuất** bỏ hiệu ứng không ai dùng, sếp duyệt mới bỏ. Nội dung màn hình (tên nhóm chat, tên người, tin nhắn, tiêu đề) không được trùng video trước (`logs/da-dung.json` trường `man_hinh`).
+- **Cứ sau 10 video** (máy tự nhắc): đọc `logs/da-dung.json`, liệt kê khối/bố cục dùng nhiều nhất, đề xuất 2–3 khối hoặc bối cảnh mới → **sếp duyệt** rồi mới vẽ.
 
 ## Hệ thống
-- `./kiem-tra-he-thong.sh`: kiểm toàn bộ (0 token). `pipeline/don.sh`: liệt kê file trung gian >14 ngày, `--xoa` chỉ khi đại ca đồng ý.
+- `./kiem-tra-he-thong.sh`: kiểm toàn bộ (0 token). `pipeline/don.sh`: liệt kê file trung gian >14 ngày, `--xoa` chỉ khi sếp đồng ý.
 - Sao lưu git (code, cấu hình, khối, agent, tài liệu; không video/âm thanh): sau mỗi thay đổi hệ thống, `git add -A && git commit`.
-- Hướng dẫn cho đại ca: `HUONG_DAN_SU_DUNG.md`.
+- Hướng dẫn cho sếp: `HUONG_DAN_SU_DUNG.md`.
 
 ## Mẹo
-- Mở trang hoặc video cho đại ca bằng lệnh `open <đường dẫn>`, vì khung xem file trong ứng dụng không phát được video.
+- Mở trang hoặc video cho sếp bằng lệnh `open <đường dẫn>`, vì khung xem file trong ứng dụng không phát được video.
 - Lỗi kiểm tra hay gặp: khung đen (màu chuyển cảnh quá tối), chữ bị nhân vật đè (phong cách điện ảnh vẽ chữ ở lớp trên cùng), số bị lệch ra mép (parallax cộng zoom).
 - Thời gian máy tham khảo: ~11 phút cho video 90 giây; mỗi mẫu 27 giây mất khoảng 1,5–2 phút.

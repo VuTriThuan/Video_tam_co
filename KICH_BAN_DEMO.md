@@ -71,13 +71,13 @@ Quay theo **3 buổi**. Buổi 2 là một lần chạy thật, không quay lạ
 **Dừng quay khi:** trang đã tải xong, văn phòng 3D hiện ra.
 
 #### Cảnh 2. Văn phòng 3D (20 giây)
-**Bắt đầu từ:** mục **Bàn làm việc**, chưa có việc chạy (thẻ trên cùng ghi "Hôm nay làm chủ đề nào, đại ca?").
+**Bắt đầu từ:** mục **Bàn làm việc**, chưa có việc chạy (thẻ trên cùng ghi "Hôm nay làm chủ đề nào, sếp?").
 1. Rê chuột xuống khung văn phòng 3D (có dòng chữ "TÂM CƠ STUDIO" phía trên).
 2. Nhấn giữ chuột trái, **kéo chậm sang ngang** cho bàn cờ xoay khoảng nửa vòng (5–6 giây).
 3. Thả chuột, rê lên từng ô nhân viên để hiện tên.
 4. Bấm **Xoay về giữa** (góc phải trên khung 3D).
 
-**Chữ chèn:** `Mỗi ô là một nhân viên` → `Anh Hải · Trưởng nhóm. Đại ca chỉ nói chuyện với Hải`
+**Chữ chèn:** `Mỗi ô là một nhân viên` → `Anh Hải · Trưởng nhóm. Sếp chỉ nói chuyện với Hải`
 **Dựng:** [ZOOM] vào ô anh Hải ở giữa khi hiện chữ thứ hai.
 
 #### Cảnh 3. Đội ngũ (20 giây)
@@ -102,9 +102,9 @@ Quay theo **3 buổi**. Buổi 2 là một lần chạy thật, không quay lạ
 2. Lọc **Chưa làm** (nút đầu tiên trên hàng lọc).
 3. Cuộn chậm qua vài thẻ, mỗi thẻ có số, tên, câu hook.
 4. Trên thẻ chủ đề đã chọn: bấm **Góc kể và ý chính** cho mở ra, để yên 3 giây.
-5. Rê chuột lên ô **Chủ đề của riêng đại ca** ở đầu trang (không gõ gì).
+5. Rê chuột lên ô **Chủ đề của riêng sếp** ở đầu trang (không gõ gì).
 
-**Chữ chèn:** `Linh tìm chủ đề từ tâm lý học và bài học cũ` → `Mỗi chủ đề có sẵn hook và góc kể` → `Hoặc đại ca tự đặt chủ đề`
+**Chữ chèn:** `Linh tìm chủ đề từ tâm lý học và bài học cũ` → `Mỗi chủ đề có sẵn hook và góc kể` → `Hoặc sếp tự đặt chủ đề`
 
 > Không bấm "Nhờ Linh gợi ý 10 chủ đề mới" để khỏi tốn lượt. Kho đang có sẵn chủ đề là đủ.
 
@@ -118,14 +118,14 @@ Quay theo **3 buổi**. Buổi 2 là một lần chạy thật, không quay lạ
 6. Để yên, chờ tin anh Hải giao việc cho Tuấn hiện ra. Trên khung 3D có sợi dây xanh nối Hải với Tuấn.
 7. Cứ để máy quay chạy. Tuấn viết xong thì dây chuyển sang Chị Mai.
 
-**Chữ chèn:** `Một cú bấm: cả đội vào việc` → `6 bước, đại ca chỉ duyệt 3 lần` → `Hải giao kịch bản cho Tuấn` → `Mọi lời giao việc đều hiện ở đây` → `Chị Mai rà lời, máy kiểm cảnh và chống lặp`
+**Chữ chèn:** `Một cú bấm: cả đội vào việc` → `6 bước, sếp chỉ duyệt 3 lần` → `Hải giao kịch bản cho Tuấn` → `Mọi lời giao việc đều hiện ở đây` → `Chị Mai rà lời, máy kiểm cảnh và chống lặp`
 **Dựng:** [ZOOM] dải 6 bước; [ZOOM] sợi dây xanh; [TUA x10] đoạn chờ Tuấn viết, đồng hồ góc màn hình `+6 phút`.
 **Chờ khoảng:** 5–8 phút.
 
 #### Cảnh 6. Chốt 1: duyệt kịch bản, có yêu cầu sửa (60 giây)
-**Bắt đầu từ:** Bàn làm việc, thẻ trên cùng chuyển sang **"Đang chờ đại ca · Duyệt kịch bản"**.
+**Bắt đầu từ:** Bàn làm việc, thẻ trên cùng chuyển sang **"Đang chờ sếp · Duyệt kịch bản"**.
 1. Bấm **Mở để duyệt** trên thẻ đó.
-2. Trang Duyệt mở sẵn khung **1 Kịch bản** (có nhãn đỏ "Đang chờ đại ca").
+2. Trang Duyệt mở sẵn khung **1 Kịch bản** (có nhãn đỏ "Đang chờ sếp").
 3. Cuộn chậm đọc lời thoại (5–6 giây), dừng ở mục **Hook thay thế**.
 4. Bấm vào ô **"Ghi chú cho anh Hải…"**, gõ chậm câu sửa đã chuẩn bị.
 5. Bấm **Yêu cầu sửa**. Thông báo nhỏ "Đã ghi và báo anh Hải làm tiếp" hiện ra.
@@ -133,14 +133,14 @@ Quay theo **3 buổi**. Buổi 2 là một lần chạy thật, không quay lạ
 7. Khi Bàn làm việc lại hiện thẻ "Duyệt kịch bản": bấm **Mở để duyệt**, cuộn tới câu mở đầu mới.
 8. Bấm **Duyệt** (nút đậm cạnh "Yêu cầu sửa").
 
-**Chữ chèn:** `Chốt 1/3: đại ca đọc kịch bản` → `Tuấn luôn viết kèm hook dự phòng` → `Chưa ưng? Ghi rõ chỗ cần sửa` → `Không cần gõ lệnh, Hải tự làm tiếp` → `Tuấn sửa đúng chỗ đó` → `Ưng rồi: Duyệt`
+**Chữ chèn:** `Chốt 1/3: sếp đọc kịch bản` → `Tuấn luôn viết kèm hook dự phòng` → `Chưa ưng? Ghi rõ chỗ cần sửa` → `Không cần gõ lệnh, Hải tự làm tiếp` → `Tuấn sửa đúng chỗ đó` → `Ưng rồi: Duyệt`
 **Dựng:** [ZOOM] mục Hook thay thế; [ZOOM] câu hook cũ và mới đặt cạnh nhau (chụp màn hình trước và sau); [TUA x10] đoạn chờ sửa, `+3 phút`.
 **Lưu ý:** mỗi kịch bản chỉ sửa **1 vòng**. Bản sửa chưa ưng lắm cũng bấm Duyệt.
 
 #### Cảnh 7. Chốt 2: chọn phong cách (45 giây)
 **Bắt đầu từ:** sau khi duyệt kịch bản, Bàn làm việc báo "Đội đang làm việc", thanh tiến độ của Máy dựng chạy.
 1. Để máy quay chạy qua đoạn Máy dựng đọc giọng và làm 3 mẫu.
-2. Thẻ chuyển sang **"Đang chờ đại ca · Chọn phong cách"**: bấm **Mở để duyệt**.
+2. Thẻ chuyển sang **"Đang chờ sếp · Chọn phong cách"**: bấm **Mở để duyệt**.
 3. Khung **2 Chọn phong cách** mở với 3 video mẫu. Bấm **▶ Phát cả 3 cùng lúc**.
 4. Để 3 mẫu chạy **8–10 giây** cho người xem so sánh.
 5. Bấm **Chọn Truyện tranh** dưới mẫu truyện tranh.
@@ -160,7 +160,7 @@ Quay theo **3 buổi**. Buổi 2 là một lần chạy thật, không quay lạ
 **Chờ khoảng:** 11–15 phút.
 
 #### Cảnh 9. Chốt 3: xem bản nháp, sửa một đoạn (60 giây)
-**Bắt đầu từ:** thẻ **"Đang chờ đại ca · Xem bản nháp"**.
+**Bắt đầu từ:** thẻ **"Đang chờ sếp · Xem bản nháp"**.
 1. Bấm **Mở để duyệt**. Khung **3 Bản nháp** mở với video.
 2. Bấm phát, xem 10–15 giây. Bấm nút toàn màn hình của video rồi thoát ra (Esc).
 3. Bấm mở **Gói đăng bài của Vy**, cuộn lướt qua, thu lại.
@@ -185,7 +185,7 @@ Quay theo **3 buổi**. Buổi 2 là một lần chạy thật, không quay lạ
 
 #### Cảnh 11. Đăng TikTok (15 giây, không bắt buộc)
 - Quay màn hình điện thoại (iPhone: Trung tâm điều khiển → Ghi màn hình): mở TikTok, chọn video, dán tiêu đề, bấm Đăng.
-- **Chữ chèn:** `Đại ca tự đăng, hệ thống không đụng vào tài khoản`
+- **Chữ chèn:** `Sếp tự đăng, hệ thống không đụng vào tài khoản`
 - Che tên tài khoản và số người theo dõi lúc dựng.
 
 ---
@@ -215,7 +215,7 @@ Quay theo **3 buổi**. Buổi 2 là một lần chạy thật, không quay lạ
 2. Cuộn chậm qua các nhóm khối: mỗi khối ghi số lần đã dùng. Viền đỏ là khối dùng nhiều nhất, khối mờ là chưa dùng lần nào.
 3. Cuộn lên đầu trang, bấm **Đề xuất khối mới** (góc phải trên). Bấm là chạy luôn, không có hộp hỏi lại.
 4. Về Bàn làm việc, chờ Hải đếm và đề xuất.
-5. Thẻ trên cùng thành **"Đang chờ đại ca · Duyệt khối mới"**: bấm **Mở để duyệt**.
+5. Thẻ trên cùng thành **"Đang chờ sếp · Duyệt khối mới"**: bấm **Mở để duyệt**.
 6. Thẻ **Khối mới chờ duyệt** hiện danh sách, mỗi khối có ô tích, tên, mô tả, "thay cho" khối nào.
 7. **Chỉ giữ tích 1 khối** (khối dễ hình dung nhất), bỏ tích các khối còn lại từng cái một. Chữ phía dưới đổi thành "Duyệt 1/N khối".
 8. Gõ vào ô **"Ghi chú cho Khoa"** một câu ngắn, ví dụ: `Vẽ rõ, nhìn trên điện thoại vẫn đọc được.`
@@ -224,17 +224,17 @@ Quay theo **3 buổi**. Buổi 2 là một lần chạy thật, không quay lạ
 11. Mở Finder thư mục `scratch/` trong dự án, tìm 3 ảnh `thu-<tên khối>-bang-trang.jpg`, `…-truyen-tranh.jpg`, `…-tranh-tinh-zoom.jpg`. Chọn cả 3, bấm Space, lướt qua.
 12. Quay lại mục **Thư viện**: khối mới nằm ở **Khối đã duyệt gần đây**, và có trong nhóm của nó với số dùng 0.
 
-**Chữ chèn:** `Hệ thống đếm hình nào dùng quá nhiều` → `Hải đề xuất hình mới` → `Đại ca chọn khối nào được vẽ` → `Khoa vẽ` → `Mỗi khối kiểm trên cả 3 phong cách` → `Khối mới vào thư viện, Tuấn dùng được ngay`
+**Chữ chèn:** `Hệ thống đếm hình nào dùng quá nhiều` → `Hải đề xuất hình mới` → `Sếp chọn khối nào được vẽ` → `Khoa vẽ` → `Mỗi khối kiểm trên cả 3 phong cách` → `Khối mới vào thư viện, Tuấn dùng được ngay`
 **Dựng:** [TUA x10] đoạn Hải đề xuất; [TUA x20] đoạn Khoa vẽ, `+15 phút`; 3 ảnh khối đặt cạnh nhau.
 **Chờ khoảng:** Hải 2–3 phút, Khoa 10–20 phút.
-**Lưu ý:** chỉ tích 1 khối để Khoa làm nhanh và đỡ tốn lượt. Hải có thể đưa lại vài khối đã bỏ hôm 17/11; không sao, cứ tích khối đại ca muốn có thật.
+**Lưu ý:** chỉ tích 1 khối để Khoa làm nhanh và đỡ tốn lượt. Hải có thể đưa lại vài khối đã bỏ hôm 17/11; không sao, cứ tích khối sếp muốn có thật.
 
 #### Sau khi quay xong buổi 3: trả lại dữ liệu thật
 Số liệu DARVO là số mẫu, không được để lại trong hệ thống. Chạy trong Terminal:
 ```bash
 cd ~/Desktop/video_tam_co && git checkout -- phan-tich/so-lieu.csv chu-de/bai-hoc.md du-an/lam-moi/ && rm -rf phan-tich/bao-cao/darvo.md phan-tich/da-xu-ly/darvo
 ```
-Khối Khoa vẽ là thật thì **giữ lại**. Nếu đại ca không muốn giữ, nhắn em gỡ.
+Khối Khoa vẽ là thật thì **giữ lại**. Nếu sếp không muốn giữ, nhắn em gỡ.
 
 ---
 

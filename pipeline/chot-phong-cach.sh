@@ -1,5 +1,5 @@
 #!/bin/bash
-# Sau khi đại ca chọn phong cách: xoá mẫu của các phong cách không được chọn, quay video đầy đủ,
+# Sau khi sếp chọn phong cách: xoá mẫu của các phong cách không được chọn, quay video đầy đủ,
 # kiểm tra chất lượng, xuất ảnh bìa và chép vào xuat-ban/<chu-de>/.
 # Chuỗi (video.json "dinh_dang": "chuoi"): quay toàn bộ một lần → ban-goc.mp4 + ghép từng phần (pipeline/ghep-chuoi.py)
 #   → xuat-ban/<chu-de>/phan-<n>/{video.mp4, anh-bia.png} + xuat-ban/<chu-de>/ban-goc.mp4

@@ -37,7 +37,7 @@ figcaption{{padding:8px 4px 2px;display:flex;flex-direction:column;gap:2px}} fig
 details img{{width:100%;border-radius:8px;margin-top:6px}} summary{{cursor:pointer;color:var(--phu);font-size:13px}}
 </style>
 <h1><b>Tâm Cơ</b> · chọn phong cách cho chủ đề “{chu_de}”</h1>
-<p>Cùng kịch bản, cùng giọng. Bấm "Phát cùng lúc" (chỉ video đầu có tiếng) rồi báo em số phong cách đại ca chọn.</p>
+<p>Cùng kịch bản, cùng giọng. Bấm "Phát cùng lúc" (chỉ video đầu có tiếng) rồi báo em số phong cách sếp chọn.</p>
 <div class="nut"><button id="phat">▶ Phát cùng lúc</button><button class="phu" id="dung">■ Dừng</button><button class="phu" id="tieng">Bật tiếng tất cả</button></div>
 <div class="luoi">{''.join(the)}</div>
 <script>

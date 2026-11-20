@@ -1,6 +1,6 @@
 #!/bin/bash
 # Dọn file trung gian của các chủ đề cũ hơn N ngày (mặc định 14). KHÔNG đụng xuat-ban/ và ra/<slug>/du-lieu/.
-# Mặc định chỉ LIỆT KÊ. Xoá thật phải thêm --xoa (anh Hải hỏi đại ca trước).
+# Mặc định chỉ LIỆT KÊ. Xoá thật phải thêm --xoa (anh Hải hỏi sếp trước).
 # Dùng: pipeline/don.sh [--ngay 14] [--xoa]
 cd "$(dirname "$0")/.."
 NGAY=14; XOA=0
@@ -19,4 +19,4 @@ for x in scratch/*; do [ -e "$x" ] && [ -n "$(find "$x" -maxdepth 0 -mtime +$NGA
 [ ${#DS[@]} = 0 ] && { echo "Không có gì cần dọn (cũ hơn $NGAY ngày)."; exit 0; }
 echo "File trung gian cũ hơn $NGAY ngày ($(du -shc "${DS[@]}" | tail -1 | cut -f1)):"
 for x in "${DS[@]}"; do echo "  $(du -sh "$x" | cut -f1)  $x"; done
-if [ $XOA = 1 ]; then rm -rf "${DS[@]}"; echo "Đã xoá."; else echo "(Chưa xoá. Chạy lại với --xoa sau khi đại ca đồng ý.)"; fi
+if [ $XOA = 1 ]; then rm -rf "${DS[@]}"; echo "Đã xoá."; else echo "(Chưa xoá. Chạy lại với --xoa sau khi sếp đồng ý.)"; fi

@@ -1,8 +1,8 @@
 # BẢN TỐI GIẢN: 5 VIDEO MẪU ĐỂ CHỌN + 1 VIDEO HOÀN CHỈNH ĐĂNG ĐƯỢC
 
-> **Gửi Claude Code:** Đây là bản thử để xem dự án "Bản lĩnh mềm" có khả thi không. **Phạm vi nhỏ, nhưng chất lượng phải đăng được thật:** từ **cùng một kịch bản và cùng một giọng đọc**, làm **5 video mẫu theo 5 phong cách hình ảnh** để đại ca chọn, rồi hoàn thiện **1 video dọc 75–90 giây** theo phong cách được chọn, chỉn chu, kèm ảnh bìa, tiêu đề, mô tả, hashtag. Tất cả miễn phí, chạy trên máy. Đồng thời đo thời gian và token.
+> **Gửi Claude Code:** Đây là bản thử để xem dự án "Bản lĩnh mềm" có khả thi không. **Phạm vi nhỏ, nhưng chất lượng phải đăng được thật:** từ **cùng một kịch bản và cùng một giọng đọc**, làm **5 video mẫu theo 5 phong cách hình ảnh** để sếp chọn, rồi hoàn thiện **1 video dọc 75–90 giây** theo phong cách được chọn, chỉn chu, kèm ảnh bìa, tiêu đề, mô tả, hashtag. Tất cả miễn phí, chạy trên máy. Đồng thời đo thời gian và token.
 > **Chưa làm:** Phòng điều hành, văn phòng 3D, lịch tuần, chọn tên kênh, agent phân tích.
-> Xưng "em", gọi chủ kênh là **"đại ca"**, trả lời bằng tiếng Việt, báo cáo ngắn gọn.
+> Xưng "em", gọi chủ kênh là **"sếp"**, trả lời bằng tiếng Việt, báo cáo ngắn gọn.
 
 ---
 
@@ -12,14 +12,14 @@
 |---|---|
 | Nội dung | Video **trọn vẹn một mình** (không phải "phần 1"): hook → chuyện → 3 dấu hiệu → cách xử lý → câu chốt. Người xem không cần xem video khác vẫn hiểu. |
 | 3 giây đầu | Câu hook mạnh + chuyển động lớn + chữ to + SFX. Không có màn hình tĩnh, không logo mở đầu. |
-| Giọng | Tự nhiên, đúng dấu, không vấp, nhịp khoảng 150–170 từ/phút, ngắt nghỉ hợp lý. Đại ca nghe duyệt trước khi dựng. |
+| Giọng | Tự nhiên, đúng dấu, không vấp, nhịp khoảng 150–170 từ/phút, ngắt nghỉ hợp lý. Sếp nghe duyệt trước khi dựng. |
 | Hình | Có chuyển động liên tục (nhân vật chớp mắt, miệng mấp máy theo giọng, đồ vật bật vào có nảy, chuyển cảnh mượt). Không cảnh nào đứng yên quá 2 giây. |
 | Chữ trên màn hình | Chỉ là chữ nhấn (không phải phụ đề), tối đa 6 từ, đủ dấu, không tràn, nằm trong vùng an toàn. |
 | Vùng an toàn | Chữ và mặt nhân vật cách mép trên ≥ 250px, mép dưới ≥ 420px, mép phải ≥ 160px (giao diện TikTok/Reels/Shorts che các vùng này). |
 | Âm thanh | Không nhạc nền. SFX có chọn lọc, khớp hành động trên hình, nhỏ hơn giọng ~12 dB. Tổng thể -14 LUFS, true peak ≤ -1,5 dB, không rè, không bị cắt tiếng. |
 | Kết | 2–3 giây cuối: câu chốt + logo và tên kênh **Tâm Cơ** + lời mời theo dõi. Không bán hàng. |
 | Kỹ thuật | 1080×1920, 30 fps, H.264 High, yuv420p, AAC 48 kHz 192 kbps, `+faststart`, dưới 100 MB. |
-| Kênh | Tên kênh **Tâm Cơ**, câu giới thiệu "Hiểu chiêu để không trúng chiêu." Logo: quân mã cờ vua đỏ `#E63946` trên nền đen `#141414` (file `assets/logo/tam-co-bieu-tuong.svg` và `tam-co-anh-dai-dien.png`, đại ca đặt sẵn vào thư mục). |
+| Kênh | Tên kênh **Tâm Cơ**, câu giới thiệu "Hiểu chiêu để không trúng chiêu." Logo: quân mã cờ vua đỏ `#E63946` trên nền đen `#141414` (file `assets/logo/tam-co-bieu-tuong.svg` và `tam-co-anh-dai-dien.png`, sếp đặt sẵn vào thư mục). |
 | Logo góc | Biểu tượng quân mã + chữ "Tâm Cơ" nhỏ ở góc trên bên trái (cách trái 48px, trên 180px), mờ 55%. |
 
 ---
@@ -28,7 +28,7 @@
 
 - MacBook Pro 15" 2017, Intel Core i7 4 nhân 2,8 GHz, Intel HD 630, RAM 16 GB, macOS Ventura 13.7.6.
 - Không AI vẽ ảnh, không dịch vụ trả phí, không GPU thuê. Gói Claude Pro: chỉ dùng **Opus 5.5**, **không dùng Fable**.
-- Làm trong thư mục `~/Desktop/video_tam_co/` (đại ca mở Claude Code ngay tại đây; logo đã có sẵn ở `assets/logo/`). Đọc code bên thứ ba trước khi chạy. Bỏ qua thư mục `giai-doan-2/` và file `HUONG_DAN_CAI_DAT_BAN_LINH_MEM.md` (để dành cho bản đầy đủ).
+- Làm trong thư mục `~/Desktop/video_tam_co/` (sếp mở Claude Code ngay tại đây; logo đã có sẵn ở `assets/logo/`). Đọc code bên thứ ba trước khi chạy. Bỏ qua thư mục `giai-doan-2/` và file `HUONG_DAN_CAI_DAT_BAN_LINH_MEM.md` (để dành cho bản đầy đủ).
 - **Tiết kiệm token:** lệnh in dài thì chỉ xem 20 dòng cuối; không đọc file wav/mp4 vào ngữ cảnh; kiểm tra hình bằng cách xuất vài khung JPG nhỏ rồi xem.
 - Ghi thời gian bắt đầu/kết thúc từng bước vào `bao-cao.md`.
 
@@ -51,14 +51,14 @@ npm init -y && npm install playwright && npx playwright install chromium
 2. Môi trường `uv` Python 3.11/3.12, cài `vieneu`. **Máy Intel: KHÔNG dùng extra index `.../whl/metal/`**, cài bản CPU.
 3. Không chạy được sau 2 lần thử thì dùng **KorvaTTS** (`pip install korvatts`, `github.com/dogenthq/KorvaTTS`).
 4. Đọc cùng một đoạn 20 giây bằng **3 giọng khác nhau** (nam/nữ, Bắc/Nam nếu có), cả chế độ thường và turbo. Đo hệ số tốc độ (thời gian xử lý / độ dài âm thanh).
-5. **Dừng cho đại ca nghe và chọn giọng + chế độ.** (Làm song song bước 4 và 5 trong lúc chờ.)
+5. **Dừng cho sếp nghe và chọn giọng + chế độ.** (Làm song song bước 4 và 5 trong lúc chờ.)
 6. **Hậu kỳ giọng** (`pipeline/giong.py`, chạy cho mọi file giọng):
    - cắt khoảng lặng thừa đầu/cuối, giữ 0,12 giây;
    - lọc `highpass=f=80`, khử xì nhẹ (`deesser`), nén nhẹ (`acompressor` ratio ~3), EQ tăng nhẹ vùng 3 kHz cho rõ lời;
    - xuất WAV 48 kHz mono.
 7. **Chuẩn hóa văn bản** trước khi đọc: số → chữ, viết tắt → cách đọc, bỏ ký hiệu; từ điển sửa phát âm `tu-dien.toml` (ví dụ "sếp", "deadline" → "đét lai").
 
-**Dừng hẳn và báo đại ca nếu:** cả hai công cụ đều hỏng, hoặc hệ số tốc độ > 15, hoặc giọng tốt nhất vẫn sai dấu nhiều / nghe như máy đến mức không đăng được.
+**Dừng hẳn và báo sếp nếu:** cả hai công cụ đều hỏng, hoặc hệ số tốc độ > 15, hoặc giọng tốt nhất vẫn sai dấu nhiều / nghe như máy đến mức không đăng được.
 
 ## 4. Kịch bản: 2 agent (ĐIỂM KIỂM TRA 2)
 
@@ -110,13 +110,13 @@ Báo cáo tối đa 3 câu: đã sửa gì.
 
 Phiên chính gọi `bien-kich` rồi `kiem-duyet`, **mỗi agent một lần** (chỉ gọi lại `bien-kich` 1 lần nếu sai yêu cầu rõ ràng). Tin nhắn giao việc và báo cáo viết tự nhiên, đi thẳng vào việc, không chào hỏi/cảm ơn.
 
-**Dừng cho đại ca duyệt kịch bản** (gửi lời đọc + 2 hook thay thế). Đại ca sửa gì thì sửa đúng chỗ đó.
+**Dừng cho sếp duyệt kịch bản** (gửi lời đọc + 2 hook thay thế). Sếp sửa gì thì sửa đúng chỗ đó.
 
 ## 5. Hình ảnh: 5 phong cách, chuyển động thật
 
 ### 5.1. Phần dùng chung cho cả 5 phong cách
 - **Bảng màu thương hiệu Tâm Cơ:** đen `#141414`, đỏ `#E63946`, xám ấm `#F3EFEF`, thêm trắng `#FFFFFF` và một màu phụ trung tính tùy phong cách. Đỏ chỉ dùng làm điểm nhấn (từ khóa, số dấu hiệu, chi tiết quan trọng). Mỗi phong cách được biến tấu nhưng phải nhận ra là cùng một kênh, chữ luôn dễ đọc.
-- **Cùng `canh.json`, cùng giọng, cùng thời lượng từng cảnh.** Mỗi phong cách chỉ khác cách vẽ từng `bo_cuc` (hook-chu-to, nhan-vat-ke, dien-thoai, nhan-vat-va-dong-nghiep, dau-hieu-so, so-sanh, loi-khuyen, ket). Nhờ vậy đại ca so sánh công bằng, và đổi phong cách sau này không phải viết lại kịch bản.
+- **Cùng `canh.json`, cùng giọng, cùng thời lượng từng cảnh.** Mỗi phong cách chỉ khác cách vẽ từng `bo_cuc` (hook-chu-to, nhan-vat-ke, dien-thoai, nhan-vat-va-dong-nghiep, dau-hieu-so, so-sanh, loi-khuyen, ket). Nhờ vậy sếp so sánh công bằng, và đổi phong cách sau này không phải viết lại kịch bản.
 - **Điện thoại/nhóm chat** luôn là giao diện chung chung tự vẽ, không logo hay nhận diện Zalo, Messenger.
 - Mọi nhân vật, đạo cụ, nền vẽ bằng SVG/CSS, lưu ở `assets/<phong-cach>/` để video sau dùng lại.
 
@@ -133,7 +133,7 @@ Phiên chính gọi `bien-kich` rồi `kiem-duyet`, **mỗi agent một lần** 
 - Mỗi phong cách làm **1 video mẫu 25–30 giây** = các cảnh đầu của kịch bản (hook + câu chuyện + dấu hiệu 1), đã có giọng, SFX, logo góc, đạt đủ chuẩn mục 0 (trừ thời lượng). Không cần dựng cả video cho cả 5 phong cách, để tiết kiệm thời gian máy.
 - Mỗi mẫu kèm 1 ảnh bìa thử.
 - `review/so-sanh.html`: một trang mở bằng trình duyệt, 5 video xếp cạnh nhau (có nút phát cùng lúc), dưới mỗi video: tên phong cách, thời gian render, ảnh bìa. Không cần server.
-- **Dừng cho đại ca chọn 1 phong cách** (hoặc kết hợp, ví dụ "hoạt hình phẳng + cảnh tin nhắn của phong cách 4"). Nếu đại ca muốn xem trọn video của 2 phong cách trước khi chọn thì làm thêm.
+- **Dừng cho sếp chọn 1 phong cách** (hoặc kết hợp, ví dụ "hoạt hình phẳng + cảnh tin nhắn của phong cách 4"). Nếu sếp muốn xem trọn video của 2 phong cách trước khi chọn thì làm thêm.
 - Sau khi chọn: hoàn thiện video đầy đủ 75–90 giây theo phong cách đó (mục 5.2 → 8).
 
 ### 5.2. Kỹ thuật dựng (quay từng khung hình)
@@ -157,7 +157,7 @@ Phiên chính gọi `bien-kich` rồi `kiem-duyet`, **mỗi agent một lần** 
 - Gắn SFX đúng khung hình đồ vật bật vào / chuyển cảnh (lấy mốc thời gian từ `renderAt`), mỗi cảnh tối đa 2 SFX, không đè lên âm tiết quan trọng.
 - Trộn: giọng là chính, SFX thấp hơn ~12 dB; `loudnorm=I=-14:TP=-1.5:LRA=11` (2 lượt cho chính xác). AAC 48 kHz 192 kbps.
 
-## 7. Kiểm tra chất lượng tự động (bắt buộc trước khi gửi đại ca)
+## 7. Kiểm tra chất lượng tự động (bắt buộc trước khi gửi sếp)
 
 `pipeline/kiem-tra.sh` in tối đa 10 dòng:
 - thời lượng 75–90 giây; độ phân giải, fps, codec, pix_fmt đúng mục 0;
@@ -175,11 +175,11 @@ Trong `xuat-ban/`:
 - `anh-bia.png` 1080×1920: nhân vật biểu cảm mạnh + chữ to 3–6 từ (ví dụ "BẠN ĐANG BỊ GHÉT NGẦM?"), trong vùng an toàn. Dựng bằng chính template, không phải cắt khung ngẫu nhiên.
 - `dang-bai.md`: 3 phương án tiêu đề (< 60 ký tự); mô tả TikTok (1–2 câu + câu hỏi kéo bình luận), Facebook (3–4 câu), YouTube Shorts (2–3 câu, có #Shorts); 5–8 hashtag (ví dụ #kynanggiaotiep #tamlyhoc #congso #nguoitredilam #tamco); 1 bình luận ghim; gợi ý giờ đăng.
 
-**Gửi đại ca xem bản nháp.** Đại ca góp ý thì sửa, tối đa 2 vòng.
+**Gửi sếp xem bản nháp.** Sếp góp ý thì sửa, tối đa 2 vòng.
 
 ## 9. Báo cáo khả thi
 
-`bao-cao.md`, báo đại ca bảng sau:
+`bao-cao.md`, báo sếp bảng sau:
 
 | Hạng mục | Kết quả |
 |---|---|
@@ -187,7 +187,7 @@ Trong `xuat-ban/`:
 | Giọng đọc: công cụ, giọng chọn, hệ số tốc độ | |
 | Thời gian đọc giọng cả video | |
 | Thời gian quay + encode: từng mẫu 30 giây của 5 phong cách, và video đầy đủ | |
-| Phong cách đại ca chọn, phong cách nào nặng/nhẹ máy nhất | |
+| Phong cách sếp chọn, phong cách nào nặng/nhẹ máy nhất | |
 | Tổng thời gian máy từ kịch bản đến mp4 | |
 | Token cả phiên (`/cost` hoặc `npx ccusage@latest daily --offline`) | |
 | Ước tính cho 7 chủ đề/tuần: thời gian máy + token, có vừa gói Pro không | |
@@ -198,5 +198,5 @@ Kết luận: **khả thi / khả thi có điều kiện / không khả thi**, n
 ---
 
 ## Thứ tự làm
-2 → 3 (dừng: đại ca chọn giọng) → 4 (dừng: đại ca duyệt kịch bản) → 5.1, 5.1b dựng nhân vật, đạo cụ, template 5 phong cách (làm song song khi chờ đại ca) → 6 → 5.2 quay 5 mẫu 30 giây → 5.1c trang so sánh (dừng: đại ca chọn phong cách) → 5.2 quay video đầy đủ → 7 → 8 (dừng: đại ca xem bản nháp) → 9.
-Gặp lỗi không tự xử lý được sau 2 lần thử: dừng, mô tả lỗi ngắn gọn, hỏi đại ca.
+2 → 3 (dừng: sếp chọn giọng) → 4 (dừng: sếp duyệt kịch bản) → 5.1, 5.1b dựng nhân vật, đạo cụ, template 5 phong cách (làm song song khi chờ sếp) → 6 → 5.2 quay 5 mẫu 30 giây → 5.1c trang so sánh (dừng: sếp chọn phong cách) → 5.2 quay video đầy đủ → 7 → 8 (dừng: sếp xem bản nháp) → 9.
+Gặp lỗi không tự xử lý được sau 2 lần thử: dừng, mô tả lỗi ngắn gọn, hỏi sếp.

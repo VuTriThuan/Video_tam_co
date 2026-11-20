@@ -34,12 +34,12 @@ claude
 
 **5. Dán câu lệnh này vào Claude Code rồi Enter:**
 ```
-Đọc file BAN_TOI_GIAN_THU_KHA_THI.md và làm theo đúng thứ tự trong đó. Dừng ở các điểm kiểm tra để hỏi anh. Gọi anh là đại ca.
+Đọc file BAN_TOI_GIAN_THU_KHA_THI.md và làm theo đúng thứ tự trong đó. Dừng ở các điểm kiểm tra để hỏi anh. Gọi anh là sếp.
 ```
 
 **6. Trong lúc chạy:**
 - Claude Code sẽ hỏi quyền trước khi chạy lệnh cài đặt. Đọc lướt rồi chọn **Yes** (hoặc "Yes, and don't ask again" cho các lệnh như `brew`, `npm`, `ffmpeg`, `uv`).
-- Có 3 lần dừng chờ đại ca: **chọn giọng đọc**, **duyệt kịch bản**, **chọn 1 trong 5 phong cách** (mở `review/so-sanh.html` để xem 5 video cạnh nhau). Cuối cùng là xem bản nháp video.
+- Có 3 lần dừng chờ sếp: **chọn giọng đọc**, **duyệt kịch bản**, **chọn 1 trong 5 phong cách** (mở `review/so-sanh.html` để xem 5 video cạnh nhau). Cuối cùng là xem bản nháp video.
 - Cắm sạc máy. Đọc giọng và dựng video trên máy 2017 có thể mất vài chục phút đến vài giờ.
 - Nếu Claude Code báo hết lượt dùng của gói Pro: đợi hạn mức reset (theo khung 5 giờ) rồi gõ `claude --continue` trong thư mục này để làm tiếp.
 
