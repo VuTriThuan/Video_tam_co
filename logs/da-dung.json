@@ -355,5 +355,65 @@
   },
   "dinh_dang": "le",
   "so_phan": 1
+ },
+ {
+  "chu_de": "banh-ve-thang-chuc",
+  "ngay": "2026-11-20",
+  "phong_cach": "tranh-tinh-zoom",
+  "tong_mau": "dem-xanh",
+  "seed": 41,
+  "mo_dau": {
+   "bo_cuc": "hook-chu-to",
+   "nen": "toi"
+  },
+  "bo_cuc": {
+   "hook-chu-to": 1,
+   "nhan-vat-va-dong-nghiep": 5,
+   "nhan-vat-ke": 5,
+   "dien-thoai": 3,
+   "dong-thoi-gian": 1,
+   "so-sanh": 1,
+   "dau-hieu-so": 2,
+   "loi-khuyen": 2,
+   "ket": 1
+  },
+  "nen": {
+   "toi": 1,
+   "phong-sep": 4,
+   "van-phong-mo": 3,
+   "man-hinh": 3,
+   "trung": 2,
+   "o-nha-toi": 2,
+   "chia-doi": 1,
+   "dau-hieu": 2,
+   "loi-khuyen": 2,
+   "soi-day": 1
+  },
+  "goc_may": {
+   "trung": 11,
+   "tu-tren": 1,
+   "qua-vai": 3,
+   "can": 2,
+   "toan": 4
+  },
+  "man_hinh": [
+   "Doanh số tháng mười hai",
+   "Em gửi anh Hưng",
+   "Em tóm tắt lại để mình cùng theo dõi nhé",
+   "Vượt chỉ tiêu hai mươi phần trăm",
+   "Xét thăng chức cho em"
+  ],
+  "hieu_ung": {
+   "rung": 1,
+   "vong-tron-do": 1,
+   "mui-ten": 1,
+   "gach-thay": 1,
+   "so-thu-tu": 1,
+   "gach-cheo": 1,
+   "tick": 2,
+   "to-da-quang": 1
+  },
+  "dinh_dang": "le",
+  "so_phan": 1
  }
 ]

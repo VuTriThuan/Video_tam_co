@@ -1,25 +1,24 @@
-Sếp giao ba dự án, em kêu, sếp bớt còn một, và em cảm ơn rối rít.
-Chiều thứ năm, sếp gọi em vào phòng.
-“Ba dự án mới, thứ hai nộp hết, không kịp thì em tự tính.”
-Em tái mặt: “Ba ngày, tính cả cuối tuần hả anh?”
-Sếp im một lúc, rồi thở dài: “Thôi, anh thương em, nhận cái hội chợ thôi.”
-Em ra khỏi phòng nhẹ cả người, còn nhắn thêm một tin cảm ơn.
-Tối đó mở lịch ra, em mới nhớ.
-Cái hội chợ ấy vốn đã nặng gấp đôi việc em đang làm.
-Tâm lý học gọi đây là chiêu đóng sầm cửa.
-Người ta đưa yêu cầu quá đáng trước, để bị từ chối.
-Rồi lùi về đúng thứ họ muốn từ đầu, nghe như đang nhường mình.
-Ba dự án kia, sếp chưa từng định giao thật.
-Bảo sao vừa thấy em tái mặt, sếp đã lùi ngay.
-Em gật đầu không phải vì việc hợp lý, mà vì thấy sếp đã lùi một bước.
-Sếp nhường rồi, em mà còn lắc đầu thì thấy mình kỳ.
-Giống đi chợ: cái áo hô năm trăm nghìn, bớt còn ba trăm, mình mua mà thấy hời.
-Giờ em tách riêng yêu cầu thứ hai ra mà xét, coi như không có ba dự án kia.
-Em chỉ nói: “Dạ để em xem lại lịch, mai em báo anh nhận được phần nào.”
-Về bàn, em đặt hội chợ cạnh lịch đang có, đếm xem còn trống mấy giờ.
-Nhận thì nhận, nhưng em xin lùi hạn một việc cũ.
-Lời cảm ơn, để dành đến lúc xem lịch xong hẵng nói.
-Kể em nghe lần bạn được bớt kiểu này, rồi theo dõi Tâm Cơ để xem thêm.
+Em được hứa thăng chức ba lần, lần nào cột mốc cũng dời thêm sáu tháng.
+Tháng ba, sếp vỗ vai em: “Làm tốt dự án này, cuối năm anh đề xuất em.”
+Em ôm dự án, tối nào cũng về sau chín giờ.
+Tháng mười hai, doanh số vượt chỉ tiêu hai mươi phần trăm.
+Sếp gật gù: “Em cần thêm kinh nghiệm dẫn nhóm, sang quý hai mình xem lại.”
+Quý hai tới, tiêu chí lại thành: “Phải có thêm một khách hàng lớn.”
+Tối đó em tự hỏi: bao nhiêu mới đủ?
+Chiêu này có tên: vẽ tương lai, rồi dời cột gôn.
+Sếp hứa thứ đẹp ở xa, em dốc sức bây giờ, còn sếp chưa mất gì.
+Em chạm mốc nào, mốc mới lại mọc ra.
+Càng gần đích mình càng cố, càng tiếc công đã bỏ ra, nên càng khó buông.
+Cả ba lời hứa đều chỉ nói miệng, ở hành lang, trong bữa trưa.
+Không có ngày cụ thể, chỉ có “cuối năm”, “quý sau”.
+Tiêu chí cũng chẳng ai ghi ra, nên sếp muốn đổi lúc nào cũng được.
+Lần thứ tư, em xin sếp ba mươi phút nói chuyện riêng.
+Em hỏi thẳng: “Em cần đạt gì, trước ngày nào, thì anh đề xuất ạ?”
+Họp xong, em gửi thư điện tử liền: “Em tóm tắt lại để mình cùng theo dõi nhé.”
+Trong thư ghi rõ hai tiêu chí và hạn chót ngày ba mươi tháng chín.
+Sếp đáp “Ừ, đúng rồi em”, nên giờ muốn dời mốc, sếp phải có lý do trên giấy.
+Bánh vẽ có ngày tháng, có chữ viết, mới bắt đầu ăn được.
+Bạn từng ăn bánh vẽ chưa, kể em nghe rồi theo dõi Tâm Cơ để xem thêm.
 ---
-Em vừa bị sếp mặc cả, mà còn đứng cảm ơn rối rít.
-Sếp đòi ba, em xin tha, sếp cho một, và em mang ơn sếp cả tuần.
+Câu “cuối năm anh tính cho em” em nghe ba lần, chưa lần nào thành sự thật.
+Mười tám tháng chờ thăng chức, em chỉ nhận về đúng một câu “quý sau”.

@@ -99,7 +99,7 @@
 - goc_ke: Tháng ba sếp bảo "làm tốt dự án này là cuối năm anh đề xuất em". Em làm vượt chỉ tiêu, tháng mười hai sếp nói "em cần thêm kinh nghiệm dẫn team, sang quý hai mình xem lại". Sang quý hai, tiêu chí lại là "phải có thêm một khách hàng lớn".
 - y_chinh: 1) Vẽ tương lai (future faking): hứa thật đẹp để em cố hết sức ở hiện tại mà không phải trả gì 2) Dời cột gôn: em đạt mốc nào, mốc mới lại xuất hiện, không bao giờ có chữ "đủ" 3) Dấu hiệu: lời hứa chỉ nói miệng, không có mốc thời gian, không có tiêu chí viết ra 4) Cách chốt: xin buổi 1-1, đề nghị ghi lại tiêu chí và thời hạn bằng email: "Em tóm tắt lại để mình cùng theo dõi nhé"
 - khoi: có sẵn đủ
-- trang_thai: moi
+- trang_thai: da-lam
 
 ## 12. "Ủa em không biết à?": bị giấu thông tin để tự trượt chân
 - slug: giau-thong-tin

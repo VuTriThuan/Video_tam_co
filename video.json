@@ -1,9 +1,10 @@
 {
- "chu_de": "xin-ba-duoc-mot",
- "tong_mau": "hoang-hon",
- "seed": 37,
+ "chu_de": "banh-ve-thang-chuc",
+ "tong_mau": "dem-xanh",
+ "seed": 41,
+ "dinh_dang": "le",
  "bia": {
-  "chu": "ĐƯỢC BỚT MÀ VẪN THIỆT",
-  "tu_khoa": "VẪN THIỆT"
+  "chu": "BÁNH VẼ THĂNG CHỨC",
+  "tu_khoa": "BÁNH VẼ"
  }
 }
